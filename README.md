@@ -1,3 +1,3 @@
 # Group_Project
-Group Project Aston Team 3
+Project: Ice Rock
 E-Commerce Book shop
