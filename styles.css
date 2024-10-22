@@ -1,3 +1,24 @@
+  /* adds the width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* adds a track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* adds a handle for the scrolltrack */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* handle colour on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
