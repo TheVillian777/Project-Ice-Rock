@@ -41,6 +41,7 @@ header {
 .logo img {
     width: 100px;
     height: auto;
+    text-align: center;
     
 }
 /* Title */
@@ -85,7 +86,7 @@ h1 {
 
 
 /* Banner */
-.banner {
+.navBar {
     width: 100%; 
     background-color: #333;
     color: white;
@@ -95,7 +96,11 @@ h1 {
     top: 200px; 
 }
 
-.banner p {
+.navBar p {
     font-size: 20px;
     margin: 0;
+}
+
+.aboutHeader {
+    
 }
