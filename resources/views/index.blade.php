@@ -17,7 +17,7 @@
 
     <h1>
         <div class="logo">
-            <img src="LogoTester.jpg" alt="Logo">
+            <img src="logo.jpg" alt="Logo">
         </div>
     </h1>
 
