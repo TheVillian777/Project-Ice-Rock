@@ -11,37 +11,39 @@
 <div class="container">
     <!-- login Section -->
     <div class="form-container" id="login-form">
-        <h2>Login</h2>
+        <h2>login</h2>
         <form action="#" method="post">
-            <label for="login-email">Email:</label>
+            <label for="login-email">email:</label>
             <input type="email" id="login-email" name="email" required>
 
-            <label for="login-password">Password:</label>
+            <label for="login-password">password:</label>
             <input type="password" id="login-password" name="password" required>
 
-            <button type="submit">Login</button>
+            <button type="submit">login</button>
 
-            <p>Don't have an account? <a href="javascript:void(0);" onclick="showRegisterForm()">Register</a></p>
+            <p>don't have an account? <a href="javascript:void(0);" onclick="showRegisterForm()">register</a></p>
+            <p><a href="javascript:void(0);" onclick="forgottenPassword()">forgotten your password?</a></p>
+
         </form>
     </div>
 
     <!-- register Section -->
     <div class="form-container" id="register-form" style="display: none;">
-        <h2>Register</h2>
+        <h2>register</h2>
         <form action="#" method="post">
 
-            <label for="register-email">Email:</label>
+            <label for="register-email">email:</label>
             <input type="email" id="register-email" name="email" required>
 
-            <label for="register-password">Password:</label>
+            <label for="register-password">password:</label>
             <input type="password" id="register-password" name="password" required>
 
-            <label for="register-confirm-password">Confirm Password:</label>
+            <label for="register-confirm-password">confirm password:</label>
             <input type="password" id="register-confirm-password" name="confirm-password" required>
 
-            <button type="submit">Register</button>
+            <button type="submit">register</button>
 
-            <p>Already have an account? <a href="javascript:void(0);" onclick="showLoginForm()">Login</a></p>
+            <p>already have an account? <a href="javascript:void(0);" onclick="showLoginForm()">login</a></p>
         </form>
     </div>
 </div>
@@ -56,6 +58,11 @@
         document.getElementById('login-form').style.display = 'none';
         document.getElementById('register-form').style.display = 'block';
     }
+
+function forgottenPassword() {
+        alert("write it down!")
+}
+
 </script>
 
 </body>
