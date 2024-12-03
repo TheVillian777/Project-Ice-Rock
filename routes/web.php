@@ -3,20 +3,20 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-route ::get('/aboutUs' , function(){
-    return view('aboutUs');
-
-});
-
-Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/register', function () {
-    return view('register');
+route ::get('/saved' , function(){
+    return view('saved');
+
+});
+
+Route::get('/shop', function () {
+    return view('shop');
+});
+
+Route::get('/login', function () {
+    return view('login');
 });
 
 //To run locally you must go to gitbash, navigate to the project directory in

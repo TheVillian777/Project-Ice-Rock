@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PageTurner</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="resources/css/app.css">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
     <div class="navBar">
         <a class="active" href="index.html">Home</a>
         <a href="whatsnew.html">Whats new!</a>
-        <a href="store.html">Books</a>
+        <a href="shop.blade.php">Books</a>
         <a href="aboutUs.html">About us</a>
       </div>
 
