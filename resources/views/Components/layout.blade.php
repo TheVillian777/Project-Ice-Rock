@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>PageTurner</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="resources/css/app.css">
 </head>
+
 <body>
 
-    <!-- Logo -->
     <header>
         <div class="title">
             <h1>PageTurner</h1>
@@ -17,33 +18,21 @@
 
     <h1>
         <div class="logo">
-            <img src="LogoTester.jpg" alt="Logo">
+            <img src="logo.jpg" alt="Logo">
         </div>
     </h1>
 
-    <!-- Search bar -->
-    <div class="search-box">
-        <input type="text" placeholder="Search for books..." id="search-bar">
-        <img src="magnifying-glass.png" alt="Search" class="search-icon">
-    </div>
-
-    <!-- Banner -->
     <div class="navBar">
         <p>PlaceHolder</p>
     </div>
 
     <div class="navBar">
         <a class="active" href="index.html">Home</a>
-        <a href="New page">Whats new!</a>
-        <a href="books page">Books</a>
-
+        <a href="whatsnew.html">Whats new!</a>
+        <a href="shop.blade.php">Books</a>
         <a href="aboutUs.html">About us</a>
       </div>
-<div Class="aboutHeader">
-    <h2>
-        About us
-      </h2>
-</div>
+
 
 </body>
 </html>
