@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('order_item', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('order_id')->index();
+            $table->unsignedBigInteger('book_id');
+            $table->unsignedBigInteger('quantity');
+            $table->decimal('book_price');
+            $table->decimal('subtotal_price');
         });
     }
 
