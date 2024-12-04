@@ -17,8 +17,8 @@
         <h2>login</h2>
 
         <!-- login form -->
-        <form action="#" method="post">
-
+        <form action="{{ route('login') }}" method="post">
+            @csrf
         <!-- input email -->
             <label for="login-email">email:</label>
             <input type="email" id="login-email" name="email" required>
@@ -40,8 +40,8 @@
     <!-- register Section -->
     <div class="form-container" id="register-form" style="display: none;">
         <h2>register</h2>
-        <form action="#" method="post">
-
+        <form action="{{ route('register') }}" method="post">
+            @csrf
         <!-- input email -->
             <label for="register-email">email:</label>
             <input type="email" id="register-email" name="email" required>
