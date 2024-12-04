@@ -16,7 +16,7 @@ return new class extends Migration
             $table->char("first_name", length: 15);
             $table->char("last_name", length: 15);
             $table->char("email_address", length: 30);
-            $table->int("phone_number", lenght: 15);
+            $table->integer("phone_number");
             $table->char("address", length: 30);
             $table->timestamps();
         });

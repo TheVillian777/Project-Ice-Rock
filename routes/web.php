@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-route ::get('/saved' , function(){
+route::get('/saved' , function(){
     return view('saved');
 
 });
