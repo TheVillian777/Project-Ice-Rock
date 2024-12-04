@@ -6,6 +6,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
 route::get('/saved' , function(){
     return view('saved');
 
@@ -15,8 +19,8 @@ Route::get('/shop', function () {
     return view('shop');
 });
 
-Route::get('/login', function () {
-    return view('login');
+Route::get('/basket', function () {
+    return view('basket');
 });
 
 //To run locally you must go to gitbash, navigate to the project directory in

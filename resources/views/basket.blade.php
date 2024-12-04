@@ -3,47 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PageTurner</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="basket.css">
+    <script src="basket.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Basket</title>
 </head>
 <body>
+    <div class="main-container">
+        <h1>done shopping?</h1>
+            <div class="basket-container">
+                <h2>basket:</h2>
 
-    <!-- Logo -->
-    <header>
-        <div class="title">
-            <h1>PageTurner</h1>
-        </div>
-    </header>
-
-    <h1>
-        <div class="logo">
-            <img src="LogoTester.jpg" alt="Logo">
-        </div>
-    </h1>
-
-    <!-- Search bar -->
-    <div class="search-box">
-        <input type="text" placeholder="Search for books..." id="search-bar">
-        <img src="magnifying-glass.png" alt="Search" class="search-icon">
+            </div>
+            <div class="checkout-container">
+                <h2>checkout:</h2>
+                
+            </div>
     </div>
-
-    <!-- Banner -->
-    <div class="navBar">
-        <p>PlaceHolder</p>
-    </div>
-
-    <div class="navBar">
-        <a class="active" href="index.html">Home</a>
-        <a href="New page">Whats new!</a>
-        <a href="books page">Books</a>
-
-        <a href="aboutUs.html">About us</a>
-      </div>
-<div Class="aboutHeader">
-    <h2>
-        About us
-      </h2>
-</div>
-
 </body>
 </html>
