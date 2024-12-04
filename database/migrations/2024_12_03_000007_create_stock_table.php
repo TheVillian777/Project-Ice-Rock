@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('stock', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Book::class)->index();
+            $table->foreignId('book_id')->constrained('book')->onDelete('cascade');
             $table->integer('stock_quantity');
             $table->timestamps();
         });

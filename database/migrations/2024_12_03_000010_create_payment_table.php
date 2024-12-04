@@ -4,7 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Order;
-use App\Models\Book;
 
 return new class extends Migration
 {
@@ -13,13 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_item', function (Blueprint $table) {
+        Schema::create('payment', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Order::class)->index();
-            $table->foreignIdFor(Book::class)->index();
-            $table->integer('quantity');
-            $table->decimal('book_price',10,2);
-            $table->decimal('subtotal_price',10,2);
+            $table->foreignId('order_id')->constrained('order')->onDelete('cascade');
+            $table->date('payment_date');
+            $table->char('payment_method', length: 15);
+            $table->decimal('payment_amount',total: 10 , places: 2);            
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_item');
+        Schema::dropIfExists('payment');
     }
 };

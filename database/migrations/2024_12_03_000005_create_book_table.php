@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('book', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Author::class)->index();
-            $table->foreignIdFor(Category::class)->index();
-            $table->string('book_name');
+            $table->foreignId('author_id')->constrained('author')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('category')->onDelete('cascade');
+            $table->char('book_name', length: 15);
             $table->string('isbn'); //may contain leading Zeros
-            $table->decimal('book_price',10,2);
-            $table->string('book_description');
+            $table->decimal('book_price', total: 10, places: 2);
+            $table->char('book_description', length: 100);
             $table->date('published_date');
         });
     }
