@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('index');
@@ -8,18 +9,16 @@ Route::get('/', function () {
 
 route::get('/saved' , function(){
     return view('saved');
-
 });
 
 Route::get('/shop', function () {
     return view('shop');
-});
+})->name('shop'); //allows login function in AuthController to redirect to shop once logged in
 
 Route::get('/login', function () {
     return view('login');
 });
 
-//To run locally you must go to gitbash, navigate to the project directory in
-//cd C:\xampp\htdocs\dashboard\'whateveryourfileiscalled'
-//start apache and mysql in xammp then in gitbash type php artisan serve
-//this will then run locally and you can then test changes
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+Route::post('/login', [AuthController::class, 'login'])->name('login');

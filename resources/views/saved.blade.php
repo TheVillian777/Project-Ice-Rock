@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
-<!-- stylesheet, javascript, bookmark icon -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,61 +12,8 @@
 </head>
 
 <body>
-
-<!-- holds all content -->
-<div class="store-container">
-
-    <!-- header, search bar -->
-    <header>
-        <h1>browse our books...</h1>
-        <div class="search-bar">
-            <input type="test" placeholder="search for books..." id="search">
-            <button type="button" id="search-button">search!</button>
-        <div>
-    </header>
-    <main>
-
-    <!-- side bar with filters -->
-    <aside class="filters">
-    <h2>filters:</h2>
-    <div class="filter-section">
-
-    <!-- genre filters -->
-        <h3>genre</h3>
-        <ul>
-            <li><input type="checkbox" id="fiction"> <label for="fiction">fiction</label></li>
-            <li><input type="checkbox" id="non-fiction"> <label for="non-fiction">non fiction</label></li>
-            <li><input type="checkbox" id="fantasy"> <label for="fantasy">fantasy</label></li>
-            <li><input type="checkbox" id="science-fiction"> <label for="science-fiction">science fiction</label></li>
-            <li><input type="checkbox" id="mystery"> <label for="mystery">mystery</label></li>
-        </ul>
-    </div>
-
-    <!-- price filter (sliding range) -->
-    <div class="filter">
-        <label for="priceRange">Max Price:</label>
-        <input type="range" id="priceRange" min="0" max="100" value="50">
-        <span id="priceValue">£50</span>
-    </div>
-
-    <!-- filter by rating -->
-        <div class="filter-section">
-            <h3>ratings</h3>
-            <div class="star-rating">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
-
-        </div>
-    </aside>
-
-
-        <!-- main content (book grid) -->
+    <div class="saved-container">
         <section class="book-grid">
-
         <!-- defining a book card -->
         <div class="book-card">
             <img src="book1.jpg" alt="book cover">
@@ -100,10 +47,7 @@
             <p>Margaret Atwood</p>
         </div>
         </section>
-
-
-        </main>
-    </div>      
+    </div>
 </body>
 
 </html>
