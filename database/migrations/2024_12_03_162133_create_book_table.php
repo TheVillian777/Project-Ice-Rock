@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('book', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('author_id')->index();
-            $table->unsignedBigInteger('category_id');
+            $table->foreignIdFor(Author::class)->index();
+            $table->foreignIdFor(Category::class)->index();
             $table->string('book_name');
-            $table->unsignedBigInteger('isbn');
-            $table->decimal('book_price');
+            $table->string('isbn'); //may contain leading Zeros
+            $table->decimal('book_price',10,2);
             $table->string('book_description');
             $table->date('published_date');
         });
