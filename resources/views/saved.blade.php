@@ -12,24 +12,42 @@
 </head>
 
 <body>
-    <!-- main content (book grid) -->
-    <section class="saved-grid-container">
-    <div class="saved-book-grid">
-    <div class="text-header">CONTACT</div>
+    <div class="saved-container">
+        <section class="book-grid">
+        <!-- defining a book card -->
         <div class="book-card">
             <img src="book1.jpg" alt="book cover">
-            <h3>The Master and Margarita</h3>
+            <h3>The Master and Margarita <i class="fas fa-bookmark save-bookmark" data-title="The Master and Margarita" data-author="Mikhail Bulgakov" data-image="book1.jpg"></i></h3>
             <p>Mikhail Bulgakov</p>
         </div>
+
         <div class="book-card">
             <img src="book2.jpg" alt="book cover">
-            <h3>Naked Lunch</h3>
+            <h3>Naked Lunch <i class="fas fa-bookmark save-bookmark" data-title="Naked Lunch" data-author="William S. Burroughs" data-image="book2.jpg"></i></h3>
             <p>William S. Burroughs</p>
         </div>
+        <div class="book-card">
+            <img src="book3.jpg" alt="book cover">
+            <h3>The Stranger <i class="fas fa-bookmark save-bookmark" data-title="The Stranger" data-author="Albert Camus" data-image="book3.jpg"></i></h3>
+            <p>Albert Camus</p>
+        </div>
+        <div class="book-card">
+            <img src="book4.jpg" alt="book cover">
+            <h3>The Origins of Totalitarianism <i class="fas fa-bookmark save-bookmark" data-title="The Origins of Totalitarianism" data-author="Hannah Arendt" data-image="book4.jpg"></i></h3>
+            <p>Hannah Arendt</p>
+        </div>
+        <div class="book-card">
+            <img src="book5.jpg" alt="book cover">
+            <h3>Food and Cooking <i class="fas fa-bookmark save-bookmark" data-title="Food and Cooking" data-author="Harold McGee" data-image="book5.jpg"></i></h3>
+            <p>Harold McGee</p>
+        </div>
+        <div class="book-card">
+            <img src="book6.jpg" alt="book cover">
+            <h3>The Handmaid's Tale <i class="fas fa-bookmark save-bookmark" data-title="The Handmaid's Tale" data-author="Margaret Atwood" data-image="book6.jpg"></i></h3>
+            <p>Margaret Atwood</p>
+        </div>
+        </section>
     </div>
-    </div>
-    </section>
-
 </body>
 
 </html>
