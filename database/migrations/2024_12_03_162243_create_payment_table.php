@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Order::class)->index();
             $table->date('payment_date');
-            $table->char('payment_method',15);
-            $table->decimal('payment_amount',10,2);            
+            $table->char('payment_method', length: 15);
+            $table->decimal('payment_amount',total: 10 , places: 2);            
         });
     }
 

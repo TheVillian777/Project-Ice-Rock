@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignIdFor(Order::class)->index();
             $table->foreignIdFor(Book::class)->index();
             $table->integer('quantity');
-            $table->decimal('book_price',10,2);
-            $table->decimal('subtotal_price',10,2);
+            $table->decimal('book_price', total: 10, places: 2);
+            $table->decimal('subtotal_price', total: 10, places: 2);
         });
     }
 
