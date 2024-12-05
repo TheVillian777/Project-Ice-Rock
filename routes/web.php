@@ -19,6 +19,16 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/aboutUs', function () {
+    return view('aboutUs');
+});
+Route::get('/index', function () {
+    return view('index');
+});
+
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
