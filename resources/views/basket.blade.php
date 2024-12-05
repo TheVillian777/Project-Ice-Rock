@@ -9,15 +9,27 @@
     <title>Basket</title>
 </head>
 <body>
+    <h1>done shopping?</h1> 
     <div class="main-container">
-        <h1>done shopping?</h1>
             <div class="basket-container">
                 <h2>basket:</h2>
-
+                <!-- basket card (book cover, title, author, quantity with arrows, price) -->
+                <div class="basket-card">
+                    <h2>item in basket</h2>
+                </div>
+                <div class="basket-card">
+                    <h2>item in basket</h2>
+                </div>
+                <div class="basket-card">
+                    <h2>item in basket</h2>
+                </div>
+                <div class="basket-card">
+                    <h2>item in basket</h2>
+                </div>
             </div>
             <div class="checkout-container">
                 <h2>checkout:</h2>
-                
+
             </div>
     </div>
 </body>
