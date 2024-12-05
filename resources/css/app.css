@@ -105,3 +105,19 @@ h1 {
     top: 300px;
 
 }
+
+.basket-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.basket-header .logo img {
+    width: 100px;
+    height: auto;
+}

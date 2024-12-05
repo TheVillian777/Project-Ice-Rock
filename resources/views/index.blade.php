@@ -28,9 +28,6 @@
     </div>
 
     <!-- Banner -->
-    <div class="navBar">
-        <p>PlaceHolder</p>
-    </div>
 
     <div class="navBar">
         <a class="active" href="index.html">Home</a>

@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/basket', function () {
+    return view('basket');
+});
+
 route::get('/saved' , function(){
     return view('saved');
 });
