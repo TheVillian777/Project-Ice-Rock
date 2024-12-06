@@ -34,11 +34,9 @@
     <!-- genre filters -->
         <h3>genre</h3>
         <ul>
-            <li><input type="checkbox" id="fiction"> <label for="fiction">fiction</label></li>
-            <li><input type="checkbox" id="non-fiction"> <label for="non-fiction">non fiction</label></li>
-            <li><input type="checkbox" id="fantasy"> <label for="fantasy">fantasy</label></li>
-            <li><input type="checkbox" id="science-fiction"> <label for="science-fiction">science fiction</label></li>
-            <li><input type="checkbox" id="mystery"> <label for="mystery">mystery</label></li>
+            @foreach ($categories as $category)
+            <li><input type="checkbox" id={{ $category->name }}> <label for={{ $category->name }}>{{ $category->name }}</label></li>
+            @endforeach
         </ul>
     </div>
 
