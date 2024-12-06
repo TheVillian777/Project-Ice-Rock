@@ -5,24 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Payment extends Model
 {
     use HasFactory;
 
-    protected $table = 'customer';
+    protected $table = 'payment';
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'email_address',
-        'phone_number',
-        'address',
+        'payment_date',
+        'payment_method',
+        'payment_amount'
     ];
 
     // Table Relationships
 
     public function order(){
-        return $this->hasMany(Order::class);
+        return $this->belongsTo(Order::class);
     }
-    
+
 }
