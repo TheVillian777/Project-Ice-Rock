@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.basket-Header {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px 0;
+    border-bottom: 2px solid #ddd;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.basket-Header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+.back-to-shopping {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 16px;
+    color: #000;
+    text-decoration: none;
+}
+
+.back-to-shopping:hover {
+    color: #007bff;
+}
+
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.delivery-options,
+.promotion-code,
+.your-order {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-options h2,
+.promotion-code h2,
+.your-order h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.delivery-form,
+.promo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.promo-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.promo-apply {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.promo-apply:hover {
+    background-color: #0056b3;
+}
+
+.your-order p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.your-order hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.total-to-pay {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+}

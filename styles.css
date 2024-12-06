@@ -1,0 +1,136 @@
+  /* adds the width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* adds a track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* adds a handle for the scrolltrack */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* handle colour on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+ /* NEW */
+
+
+ * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+    text-align: center;
+    
+}
+/* Title */
+.title {
+    text-align: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+    
+}
+
+/* Search bar */
+.search-box {
+    position: absolute;
+    right: 20px;
+    top: 150px;  
+    display: flex;
+    
+}
+
+.search-box input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    margin-right: 40px;
+}
+
+.search-box .search-icon {
+    position: absolute;
+    right: 60px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+/* Banner */
+.navBar u1{
+    list-style-type: none;
+    background-color: hs1(0,0%,25%);
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.navBar a{
+    padding: 15px;
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navBar a:hover{
+    background-color: hs1(0,0%,10%);
+}
+.navbar li{
+    float:left;
+}
+
+.aboutHeader {
+    top: 300px;
+
+}
+
+.basket-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.basket-header .logo img {
+    width: 100px;
+    height: auto;
+}
