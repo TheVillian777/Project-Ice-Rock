@@ -8,12 +8,13 @@ body {
 }
 
 .main-container {
-    width: 50%;
+    width: 65%;
     margin: auto;
     text-align: center;
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 .basket-container {
@@ -27,12 +28,81 @@ body {
 }
 
 .basket-card {
-    background-color:blue;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.basket-card book-cover {
-    text-align: left;
+/* Book cover */
+.book-cover {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.book-info {
+    flex: 4;
+}
+
+.book-info .title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.book-info .author {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 5px 0 0;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.price {
+    font-size: 1rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* Quantity controls */
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity .arrow {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.quantity .arrow:hover {
+    background-color: #eee;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
 }
 
 .checkout-container {
