@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('author', function (Blueprint $table) {
             $table->id();
-            $table->char('first_name', length:15);
-            $table->char('last_name', length:15);
-            $table->char('biography', length:100);
+            $table->char('first_name', length:40);
+            $table->char('last_name', length:40);
+            $table->char('biography', length:200);
             $table->date('date_of_birth');
         });
     }
