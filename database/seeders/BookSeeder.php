@@ -22,7 +22,7 @@ class BookSeeder extends Seeder
              'isbn' => '978150435',
              'book_price' => '6.95',
              'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
-             'published_date' => '1993/02/01'
+             'published_date' => '1993-02-01'
             ],
 
             [
@@ -32,7 +32,7 @@ class BookSeeder extends Seeder
                 'isbn' => '97814123',
                 'book_price' => '16.95',
                 'book_description' => 'A classic children"s novel in the late 19th century.',
-                'published_date' => '1993/02/01'
+                'published_date' => '1993-02-01'
             ],
 
             [
@@ -42,17 +42,17 @@ class BookSeeder extends Seeder
                 'isbn' => '9781223',
                 'book_price' => '9.99',
                 'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
-                'published_date' => '1993/02/01'
+                'published_date' => '1993-02-01'
             ],
 
             [
                 'author_id' => '4',
                 'category_id' => '4',
-                'book_name' => 'Strange Case of Dr Jekyll and Mr Hyde',
+                'book_name' => 'Sherlock Holmes',
                 'isbn' => '97814123',
                 'book_price' => '16.95',
                 'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
-                'published_date' => '1993/02/01'
+                'published_date' => '1993-02-01'
             ],
 
             [
@@ -62,7 +62,7 @@ class BookSeeder extends Seeder
                 'isbn' => '9780008',
                 'book_price' => '16.95',
                 'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
-                'published_date' => '1993/02/01'
+                'published_date' => '1993-02-01'
             ],
 
        

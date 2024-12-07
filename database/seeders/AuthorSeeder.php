@@ -15,33 +15,40 @@ class AuthorSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('author')->insert([
+        DB::table('authors')->insert([
             [
                 'first_name' => 'Lyman',
                 'last_name' => 'Frank Baum',
                 'biography' => 'Author and Novelist',
-                'date_of_birth' => '1856/05/15'
+                'date_of_birth' => '1856-05-15'
             ],
-            
+
             [
                 'first_name' => 'Robert',
                 'last_name' => 'Louis Stevenson',
                 'biography' => 'Author and Novelist',
-                'date_of_birth' => '1856/05/15'
+                'date_of_birth' => '1856-05-15'
             ],
 
             [
                 'first_name' => 'Agatha',
                 'last_name' => 'Christie',
                 'biography' => 'Author',
-                'date_of_birth' => '1890/09/15'
+                'date_of_birth' => '1890-09-15'
+            ],
+
+            [
+                'first_name' => 'Arthur ',
+                'last_name' => 'Conan Doyle',
+                'biography' => 'Author and Novelist',
+                'date_of_birth' => '1856-05-15'
             ],
 
             [
                 'first_name' => 'Boris',
                 'last_name' => 'Johnson',
                 'biography' => 'Author',
-                'date_of_birth' => '1964/06/19'
+                'date_of_birth' => '1964-06-19'
             ],
 
         ]);
