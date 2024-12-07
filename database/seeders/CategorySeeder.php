@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('category')->insert([
+        DB::table('categories')->insert([
             [
                 'name' => 'fantasy',
                 'description' => 'a genre of fiction that includes magical and supernatural things'
