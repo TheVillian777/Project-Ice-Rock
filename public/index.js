@@ -29,3 +29,46 @@ function updateSliderPosition() {
 // Attach event listeners to arrows so you have the option to moves the images either next slide or previous
 document.querySelector('.prev-arrow').addEventListener('click', moveToPrevSlide);
 document.querySelector('.next-arrow').addEventListener('click', moveToNextSlide);
+
+
+
+const bookSliderContainer = document.querySelector('.book-slider-container');
+const bookSlides = document.querySelectorAll('.book-slide');
+const totalBookSlides = bookSlides.length;
+let currentBookIndex = 0;
+
+document.querySelector('.book-next-arrow').addEventListener('click', () => {
+    currentBookIndex = (currentBookIndex + 1) % totalBookSlides;
+    updateBookSliderPosition();
+});
+
+document.querySelector('.book-prev-arrow').addEventListener('click', () => {
+    currentBookIndex = (currentBookIndex - 1 + totalBookSlides) % totalBookSlides;
+    updateBookSliderPosition();
+});
+
+function updateBookSliderPosition() {
+    const bookSlideWidth = bookSlides[0].clientWidth + 20; 
+    bookSliderContainer.style.transform = `translateX(-${currentBookIndex * bookSlideWidth}px)`;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+const bookslide = document.querySelectorAll('.book-slide');
+
+bookSlides.forEach((slide) => {
+    const popup = slide.querySelector('.hover-popup');
+    popup.addEventListener('click', () => {
+        alert(`${slide.querySelector('h3').innerText} added to basket!`);
+    });
+});

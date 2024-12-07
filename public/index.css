@@ -148,3 +148,104 @@ header {
 .prev-arrow:hover, .next-arrow:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+/* Book Slider */
+.book-slider {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.book-slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+}
+
+.book-slide {
+    flex: 0 0 20%; 
+    text-align: center;
+    position: relative; 
+}
+
+.book-slide img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.book-slide:hover img {
+    transform: scale(1.05); 
+}
+
+.book-slide h3 {
+    font-size: 16px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.book-slide p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Price */
+.book-slide .price {
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Hover Popup */
+.hover-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.book-slide:hover .hover-popup {
+    opacity: 1; 
+    pointer-events: auto;
+}
+
+.book-prev-arrow, .book-next-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+}
+/* Shows books next and previous */
+.book-prev-arrow {
+    left: 10px;
+}
+
+.book-next-arrow {
+    right: 10px;
+}
+
+.book-prev-arrow:hover, .book-next-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
