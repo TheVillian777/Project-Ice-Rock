@@ -23,6 +23,11 @@ Route::get('/basket', function () {
     return view('basket');
 });
 
+Route::get('/listing', function () {
+    return view('listing');
+});
+
+
 //To run locally you must go to gitbash, navigate to the project directory in
 //cd C:\xampp\htdocs\dashboard\'whateveryourfileiscalled'
 //start apache and mysql in xammp then in gitbash type php artisan serve
