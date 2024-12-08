@@ -22,6 +22,9 @@
         <div class="search-bar">
             <input type="test" placeholder="search for books..." id="search">
             <button type="button" id="search-button">search!</button>
+            <a href="basket">
+    <img src="basket.jpg" alt="cart" class="shopping-cart">
+</a>
         <div>
     </header>
     <main>
@@ -69,44 +72,38 @@
 
         <!-- defining a book card -->
         <div class="book-card">
-            <img src="images/book1.jpg" alt="book cover">
+            <img src="book1.jpg" alt="book cover">
             <h3>The Master and Margarita <i class="fas fa-bookmark save-bookmark" data-title="The Master and Margarita" data-author="Mikhail Bulgakov" data-image="book1.jpg"></i></h3>
             <p>Mikhail Bulgakov</p>
-            <p>£0.00<p>
         </div>
 
         <div class="book-card">
-            <img src="images/book2.jpg" alt="book cover">
+            <img src="book2.jpg" alt="book cover">
             <h3>Naked Lunch <i class="fas fa-bookmark save-bookmark" data-title="Naked Lunch" data-author="William S. Burroughs" data-image="book2.jpg"></i></h3>
             <p>William S. Burroughs</p>
-            <p>£8.00<p>
         </div>
         <div class="book-card">
-            <img src="images/book3.jpg" alt="book cover">
+            <img src="book3.jpg" alt="book cover">
             <h3>The Stranger <i class="fas fa-bookmark save-bookmark" data-title="The Stranger" data-author="Albert Camus" data-image="book3.jpg"></i></h3>
             <p>Albert Camus</p>
-            <p>£8.00<p>
         </div>
         <div class="book-card">
-            <img src="images/book4.jpg" alt="book cover">
+            <img src="book4.jpg" alt="book cover">
             <h3>The Origins of Totalitarianism <i class="fas fa-bookmark save-bookmark" data-title="The Origins of Totalitarianism" data-author="Hannah Arendt" data-image="book4.jpg"></i></h3>
             <p>Hannah Arendt</p>
-            <p>£8.00<p>
         </div>
         <div class="book-card">
-            <img src="images/book5.jpg" alt="book cover">
+            <img src="book5.jpg" alt="book cover">
             <h3>Food and Cooking <i class="fas fa-bookmark save-bookmark" data-title="Food and Cooking" data-author="Harold McGee" data-image="book5.jpg"></i></h3>
             <p>Harold McGee</p>
-            <p>sold out</p>
         </div>
         <div class="book-card">
-            <img src="images/book6.jpg" alt="book cover">
+            <img src="book6.jpg" alt="book cover">
             <h3>The Handmaid's Tale <i class="fas fa-bookmark save-bookmark" data-title="The Handmaid's Tale" data-author="Margaret Atwood" data-image="book6.jpg"></i></h3>
             <p>Margaret Atwood</p>
-            <p>£8.00</p>
         </div>
         </section>
-
+pp
 
         </main>
     </div>      
