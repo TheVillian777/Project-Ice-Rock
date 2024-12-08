@@ -58,6 +58,31 @@ header h1 {
     background-color: #438733;
 }
 
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px;
+    margin: 0;
+    list-style: none;
+}
+
+.navBar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.navBar a:hover {
+    color: #ccc;
+}
+
+.navBar a.active {
+    text-decoration: underline;
+}
+
 main {
     display: flex;
     gap: 20px;
