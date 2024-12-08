@@ -52,18 +52,7 @@ function updateBookSliderPosition() {
     bookSliderContainer.style.transform = `translateX(-${currentBookIndex * bookSlideWidth}px)`;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+//Add to basket function
 const bookslide = document.querySelectorAll('.book-slide');
 
 bookSlides.forEach((slide) => {
@@ -72,3 +61,8 @@ bookSlides.forEach((slide) => {
         alert(`${slide.querySelector('h3').innerText} added to basket!`);
     });
 });
+
+//takes user to the shop
+function navigateToShop(){
+    window.location.href = `shop`;
+}

@@ -61,6 +61,13 @@
 
 <!-- Book showcase -->
 <div class="book-slider">
+
+    <!-- Top right "See More" link-->
+    <div class="showcase-header">
+        <h2 class="showcase-title">Our Showcase</h2>
+        <a href="shop" class="see-more">See More</a>
+    </div>
+    
     <button class="book-prev-arrow">&#10094;</button>
     <div class="book-slider-container">
         <div class="book-slide">
@@ -118,6 +125,34 @@
     </div>
     <button class="book-next-arrow">&#10095;</button>
 </div>
+
+<!-- Genre Icons Section -->
+<div class="genre-icons">
+    <div class="genre-icon" onclick="navigateToShop('fiction')">
+        <img src="fiction.png" alt="Fiction">
+        <p>Fiction</p>
+    </div>
+    <div class="genre-icon" onclick="navigateToShop('non-fiction')">
+        <img src="non-fiction.png" alt="Non Fiction">
+        <p>Non Fiction</p>
+    </div>
+    <div class="genre-icon" onclick="navigateToShop('fantasy')">
+        <img src="fantasy.png" alt="Fantasy">
+        <p>Fantasy</p>
+    </div>
+    <div class="genre-icon" onclick="navigateToShop('science-fiction')">
+        <img src="science-fiction.png" alt="Science Fiction">
+        <p>Science Fiction</p>
+    </div>
+    <div class="genre-icon" onclick="navigateToShop('mystery')">
+        <img src="mystery.png" alt="Mystery">
+        <p>Mystery</p>
+    </div>
+</div>
+
+
+
+
 
 </body>
 </html>
