@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('book_price', total: 10, places: 2);
             $table->text('book_description');
             $table->date('published_date');
+            $table->string('img_url')->nullable();
         });
     }
 

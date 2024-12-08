@@ -13,8 +13,6 @@ route::get('/saved' , function(){
     return view('saved');
 });
 
-Route::get('/shop', [ShopController::class, 'gatherCategories'])->name('shop'); //allows login function in AuthController to redirect to shop once logged in
-
 Route::get('/login', function () {
     return view('login');
 });
@@ -36,3 +34,8 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::post('/contact', [ContactUsController::class, 'contactUs'])->name('contactUs');
+
+// Shop related Routes
+Route::get('/shop', [ShopController::class, 'gatherData'])->name('shop'); //allows login function in AuthController to redirect to shop once logged in
+Route::post('/shopSearch', [ShopController::class, 'searchShop'])->name('shopSearch');
+Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFilter');
