@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\Category;
 use App\Models\Book;
 
@@ -48,4 +49,36 @@ class ShopController extends Controller
         return view('shop',compact('categories','books'));
 
     }
-}
+
+    public function addToBasket(Request $request)
+    {
+        $bookId = Book::find($request->bookId);
+
+        $basket = Session::get('basket',[]);
+    
+
+        $bookAddedAlready = false;
+        // pass by value '&' allows direct array update to occur and quantity to be increased
+        foreach ($basket as &$product) {
+            if($product['book_ID'] == $bookId->id) {
+                $product['quantity'] += $request->quantity;
+                $bookAddedAlready = true;
+                break;
+            }
+
+        }
+
+        if (!$bookAddedAlready) {
+            $basket[] = [
+                'book_ID' => $bookId->id,
+                'book_name' => $bookId->book_name,
+                'price' => $bookId->book_price,
+                'quantity' => $request->quantity
+            ];
+        }
+
+        Session::put('basket',$basket);
+        
+        dd($basket);
+    }
+};

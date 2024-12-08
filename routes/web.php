@@ -54,5 +54,15 @@ Route::post('/contact', [ContactUsController::class, 'contactUs'])->name('contac
 
 // Shop related Routes
 Route::get('/shop', [ShopController::class, 'gatherData'])->name('shop'); //allows login function in AuthController to redirect to shop once logged in
+
 Route::post('/shopSearch', [ShopController::class, 'searchShop'])->name('shopSearch');
 Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFilter');
+
+//Ensures user is logged in and authenticated
+Route::middleware(['auth'])->group(function(){
+    Route::post ('/addToBasket', [ShopController::class, 'addToBasket'])->name('addToBasket');
+});
+
+
+// Basket Page Routes
+Route::get ('/Basket', [BasketController::class, 'Basket'])->name('basket');

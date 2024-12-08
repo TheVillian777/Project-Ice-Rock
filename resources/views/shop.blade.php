@@ -77,6 +77,24 @@
             <img src="{{ asset($book->img_url) }}" alt="book cover">
             <h3>{{ $book->book_name }} <i class="fas fa-bookmark save-bookmark" data-title="{{ $book->book_name }}" data-author='{{ $book->author->first_name . " " . $book->author->last_name }}' data-image="{{ asset($book->img_url) }}"></i></h3>
             <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p>
+            <div class="price">
+                <p>£{{ $book->book_price }}</p>
+            </div>
+            <div class="basket-container">
+                <form action="{{route('addToBasket') }}" method="POST">
+                    @csrf
+                    <div class="quantity">
+                        <input type="hidden" value="{{ $book->id }}" name="bookId">
+                        <input type="number" id="quantityOf_{{ $book->id }}" name="quantity" min="1" value="1" placeholder="1">
+                    </div>
+                    <br>
+                <div class="add-to-basket">
+                    <button class="add-to-cart-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
+                </div>
+                <br>
+                </form>
+                <br>
+            </div>
         </div>
         @endforeach
         </section>
