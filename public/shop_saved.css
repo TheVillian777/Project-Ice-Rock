@@ -59,14 +59,14 @@ header h1 {
 .search-bar button {
     padding: 10px 15px;
     border: none;
-    background-color: #366329;
+    background-color: #018749;
     color: white;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .search-bar button:hover {
-    background-color: #438733;
+    background-color: #006400;
 }
 
 main {
