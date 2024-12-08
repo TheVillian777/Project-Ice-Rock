@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shop</title>
-    <link rel="stylesheet" href="shop_saved.css" onerror="alert('CSS file not found!')">
+    <link rel="stylesheet" href="css/shop_saved.css" onerror="alert('CSS file not found!')">
     <script src="shop_saved.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
@@ -24,7 +24,10 @@
             <div class="search-bar">
                 <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
                 <button type="submit" id="search-button">search!</button>
-            <div>   
+                <a href="basket">
+                    <img src="basket.jpg" alt="cart" class="shopping-cart"> 
+                </a>
+            </div>   
         </form>
     </header>
     <main>
