@@ -17,9 +17,13 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/saved' , function(){
+route::get('/saved' , function(){
     return view('saved');
 });
+
+Route::get('/shop', function () {
+    return view('shop');
+})->name('shop'); //allows login function in AuthController to redirect to shop once logged in
 
 Route::get('/login', function () {
     return view('login');
