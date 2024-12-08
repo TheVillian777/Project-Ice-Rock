@@ -8,6 +8,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
 route::get('/saved' , function(){
     return view('saved');
 });
@@ -19,6 +23,7 @@ Route::get('/shop', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
 
 Route::get('/contact', function () {
     return view('contact');
