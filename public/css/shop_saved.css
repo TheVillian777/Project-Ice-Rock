@@ -16,9 +16,56 @@ body {
 .saved-container {
     width: 50%;
     margin: auto;
-    padding: 50px;
-    border: 3px #366329;
+    text-align: center;
+    padding: 20px;
+}
 
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.book-carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 25%;
+    gap: 10px;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.carousel-prev, .carousel-next {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.carousel-prev {
+    left: 0;
+}
+
+.carousel-next {
+    right: 0;
+}
+
+.shopping-cart {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    cursor: pointer; 
+}
+
+.shopping-cart:hover {
+    opacity: 0.8;
 }
 
 header {

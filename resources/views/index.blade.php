@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PageTurner</title>
-    <link rel="stylesheet" href="resources/css/app.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
 
     <h1>
         <div class="logo">
-            <img src="logo.jpg" alt="Logo">
+            <img src="logo.png" alt="Logo">
         </div>
     </h1>
 
@@ -28,18 +28,12 @@
     </div>
 
     <!-- Banner -->
-    <div class="navBar">
-        <p>PlaceHolder</p>
-    </div>
 
     <div class="navBar">
-        <a class="active" href="index.html">Home</a>
-        <a href="whatsnew.html">Whats new!</a>
-        <a href="shop.blade.php">Books</a>
-        <a href="aboutUs.html">About us</a>
+        <a class="active" href="{{ route('index') }}">Home</a>
+        <a href="{{ route('shop') }}">Books</a>
+        <a href="{{ route('aboutUs') }}">About us</a>
       </div>
-
-
 </body>
 </html>
 
