@@ -22,7 +22,8 @@ class BookSeeder extends Seeder
              'isbn' => '978150435',
              'book_price' => '6.95',
              'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
-             'published_date' => '1993-02-01'
+             'published_date' => '1993-02-01',
+             'img_url' => 'Wizard_of_Oz_Cover.jpg'
             ],
 
             [
@@ -32,7 +33,8 @@ class BookSeeder extends Seeder
                 'isbn' => '97814123',
                 'book_price' => '16.95',
                 'book_description' => 'A classic children"s novel in the late 19th century.',
-                'published_date' => '1993-02-01'
+                'published_date' => '1993-02-01',
+                'img_url' => 'Dr_JK_Cover.jpg'
             ],
 
             [
@@ -42,7 +44,8 @@ class BookSeeder extends Seeder
                 'isbn' => '9781223',
                 'book_price' => '9.99',
                 'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
-                'published_date' => '1993-02-01'
+                'published_date' => '1993-02-01',
+                'img_url' => 'Secret_of_Chimneys_Cover.jpg'
             ],
 
             [
@@ -52,7 +55,8 @@ class BookSeeder extends Seeder
                 'isbn' => '97814123',
                 'book_price' => '16.95',
                 'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
-                'published_date' => '1993-02-01'
+                'published_date' => '1993-02-01',
+                'img_url' => 'Sherlock_Holmes_Cover.jpg'
             ],
 
             [
@@ -62,7 +66,8 @@ class BookSeeder extends Seeder
                 'isbn' => '9780008',
                 'book_price' => '16.95',
                 'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
-                'published_date' => '1993-02-01'
+                'published_date' => '1993-02-01',
+                'img_url' => 'Unleashed_Cover.jpg'
             ],
 
        
