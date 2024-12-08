@@ -17,6 +17,7 @@ class Book extends Model
         'book_price',
         'book_description',
         'published_date',
+        'img_url'
     ];
 
     // Table Relationships
