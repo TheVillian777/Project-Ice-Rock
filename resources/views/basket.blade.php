@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">=
     <link rel="stylesheet" href="css/basket.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Basket</title>
@@ -115,15 +115,6 @@
                                 </label>
                             </form>
                         </div>
-
-                        <div class="promotion-code">
-                            <h2>Promotion Code (if available)</h2>
-                            <form class="promo-form">
-                                <input type="text" placeholder="Enter your code" class="promo-input">
-                                <button type="button" class="promo-apply">Apply</button>
-                            </form>
-                        </div>
-
                         <div class="your-order">
                             <h2>Your Order</h2>
                             <p>{{$totalItemsNo}} items</p>
