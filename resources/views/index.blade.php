@@ -72,7 +72,7 @@
     <!-- Top right "See More" link-->
     <div class="showcase-header">
         <h2 class="showcase-title">Our Showcase</h2>
-        <a href="shop" class="see-more">See More</a>
+        <a href="{{ route('shop') }}" class="see-more">See More</a>
     </div>
     
     <button class="book-prev-arrow">&#10094;</button>
@@ -136,47 +136,21 @@
 <div class="book-slider">
     <!-- Top right "See More" link-->
     <div class="showcase-header">
-        <h2 class="showcase-title">Our Best Non-Fiction Books</h2>
-        <a href="shop" class="see-more">See More</a>
+        <h2 class="showcase-title">Our Best <!--Non-Fiction--> Seller Books</h2>
+        <a href="{{ route('shop') }}" class="see-more">See More</a>
     </div>
 
     <button class="book-prev-arrow">&#10094;</button>
     <div class="book-slider-container">
+        @foreach ($books->take(5) as $book)
         <div class="book-slide">
-            <img src="book7.jpg" alt="Book 7">
-            <h3>PLACEHOLDER</h3>
-            <p>PLACEHOLDER</p>
-            <p class="price">PLACEHOLDER</p>
-            <div class="hover-popup">Add to Basket</div>
+            <img src="{{ asset($book->img_url)}} " alt="Book Cover">
+            <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
+            <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
+            <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
+            <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
         </div>
-        <div class="book-slide">
-            <img src="book8.jpg" alt="Book 8">
-            <h3>PLACEHOLDER</h3>
-            <p>PLACEHOLDER</p>
-            <p class="price">PLACEHOLDER</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="book9.jpg" alt="Book 9">
-            <h3>PLACEHOLDER</h3>
-            <p>PLACEHOLDER</p>
-            <p class="price">PLACEHOLDER</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="book10.jpg" alt="Book 10">
-            <h3>PLACEHOLDER</h3>
-            <p>PLACEHOLDER</p>
-            <p class="price">PLACEHOLDER</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="book11.jpg" alt="Book 11">
-            <h3>PLACEHOLDER</h3>
-            <p>PLACEHOLDER</p>
-            <p class="price">PLACEHOLDER</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
+        @endforeach
     </div>
     <button class="book-next-arrow">&#10095;</button>
 </div>
@@ -184,8 +158,9 @@
 <!-- Divider Line -->
 <div class="section-divider"></div>
 
+<?php /*
 <!-- Third Book Showcase -->
-<div class="book-slider">
+ <div class="book-slider">
     <!-- Top right "See More" link-->
     <div class="showcase-header">
         <h2 class="showcase-title">Staff Favorites</h2>
@@ -235,7 +210,7 @@
 
 <!-- Divider Line -->
 <div class="section-divider"></div>
-
+*/ ?>
 <!-- Banner Section -->
 <div class="banner-section">
     <img src="images/banner.png" alt="Promotional Banner">
