@@ -31,7 +31,7 @@ document.querySelector('.prev-arrow').addEventListener('click', moveToPrevSlide)
 document.querySelector('.next-arrow').addEventListener('click', moveToNextSlide);
 
 
-
+// Calculates how many spaces to move the books either forward or backwards
 const bookSliderContainer = document.querySelector('.book-slider-container');
 const bookSlides = document.querySelectorAll('.book-slide');
 const totalBookSlides = bookSlides.length;
