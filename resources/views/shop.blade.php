@@ -19,15 +19,6 @@
     <!-- header, search bar -->
     <header>
         <h1>browse our books...</h1>
-<<<<<<< HEAD
-        <div class="search-bar">
-            <input type="test" placeholder="search for books..." id="search">
-            <button type="button" id="search-button">search!</button>
-            <a href="basket">
-    <img src="basket.jpg" alt="cart" class="shopping-cart">
-</a>
-        <div>
-=======
         <form action="{{ route('shopSearch') }}" method="POST">
             @csrf
             <div class="search-bar">
@@ -38,7 +29,6 @@
                 </a>
             </div>   
         </form>
->>>>>>> 70676eb4a8c6d77c5c99f67f04c0a6e1647437c6
     </header>
     <main>
 
