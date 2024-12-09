@@ -38,6 +38,8 @@
         <a href="{{ route('index') }}">Home</a>
         <a class="active" href="{{ route('shop') }}">Books</a>
         <!--<a href="{{ route('saved') }}">Saved</a>-->
+        <a href="{{ route('basket') }}">Basket</a>
+        <a href="{{ route('login') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
     </div>
