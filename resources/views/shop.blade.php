@@ -18,7 +18,7 @@
 
     <!-- header, search bar -->
     <header>
-        <h1>browse our books...</h1>
+        <h1>Browse our books...</h1>
         <!-- Item added to basket confirmation message -->
         @if (session('message')) 
             <div class="alert"><p>{{session('message')}}</p></div> 
@@ -38,12 +38,12 @@
 
     <!-- side bar with filters -->
     <aside class="filters">
-    <h2>filters:</h2>
+    <h2>Filters:</h2>
     <form action = "{{ route('shopFilter') }}" method="POST">
         @csrf
         <div class="filter-section">
             <!-- genre filters -->
-             <h3>genre</h3>
+             <h3>Genre</h3>
              <ul>
                 @foreach ($categories as $category)
                 <li><input type="checkbox" value="{{ $category->id }}" name="options[]"> <label for="{{ $category->name }}"> {{ $category->name }}</label></li>

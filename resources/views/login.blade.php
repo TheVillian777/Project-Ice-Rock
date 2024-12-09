@@ -13,32 +13,32 @@
 <!-- login Section -->
 <div class="container">
     <div class="form-container" id="login-form">
-        <h2>login</h2>
+        <h2>Login</h2>
 
         <!-- login form -->
         <form action="{{ route('login') }}" method="post">
             @csrf
         <!-- input email -->
-            <label for="login-email">email:</label>
+            <label for="login-email">Email:</label>
             <input type="email" id="login-email" name="email" required>
 
         <!-- input password -->
-            <label for="login-password">password:</label>
+            <label for="login-password">Password:</label>
             <input type="password" id="login-password" name="password" required>
 
         <!-- submit -->
             <button type="submit">login</button>
 
         <!-- hyperlinks for forgotten password, register -->
-            <p>don't have an account? <a href="javascript:void(0);" onclick="showRegisterForm()">register</a></p>
-            <p><a href="javascript:void(0);" onclick="forgottenPassword()">forgotten your password?</a></p>
+            <p>don't have an account? <a href="javascript:void(0);" onclick="showRegisterForm()">Register</a></p>
+            <p><a href="javascript:void(0);" onclick="forgottenPassword()">Forgotten your password?</a></p>
 
         </form>
     </div>
 
     <!-- register Section -->
     <div class="form-container" id="register-form" style="display: none;">
-        <h2>register</h2>
+        <h2>Register</h2>
         <form action="{{ route('register') }}" method="post">
             @csrf
         <!-- input email -->
@@ -57,7 +57,7 @@
             <button type="submit">register</button>
 
         <!-- back to login -->    
-            <p>already have an account? <a href="javascript:void(0);" onclick="showLoginForm()">login</a></p>
+            <p>Already have an account? <a href="javascript:void(0);" onclick="showLoginForm()">Login</a></p>
         </form>
     </div>
 </div>
