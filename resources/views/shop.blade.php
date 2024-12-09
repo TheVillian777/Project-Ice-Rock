@@ -19,10 +19,16 @@
     <!-- header, search bar -->
     <header>
         <h1>browse our books...</h1>
-        <div class="search-bar">
-            <input type="test" placeholder="search for books..." id="search">
-            <button type="button" id="search-button">search!</button>
-        <div>
+        <form action="{{ route('shopSearch') }}" method="POST">
+            @csrf
+            <div class="search-bar">
+                <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
+                <button type="submit" id="search-button">search!</button>
+                <a href="basket">
+                    <img src="basket.jpg" alt="cart" class="shopping-cart"> 
+                </a>
+            </div>   
+        </form>
     </header>
     <div class="navBar">
         <a class="active" href="index">Home</a>
