@@ -24,9 +24,15 @@
 
     <!-- Search Bar -->
     <div class="search-box">
-
-        <input type="text" placeholder="Search for books..." id="search-bar">
-        <img src="magnifying-glass.png" alt="Search" class="search-icon">
+        <form action="{{ route('shopSearch') }}" method="POST">
+            @csrf
+            <div class="search-bar">
+                <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
+                <button type="submit"><img src="magnifying-glass.png" alt="Search" class="search-icon"></button>
+            </div>   
+        </form>
+        <!--<input type="text" placeholder="Search for books..." id="search-bar">
+        <img src="magnifying-glass.png" alt="Search" class="search-icon">-->
 
     </div>
 
