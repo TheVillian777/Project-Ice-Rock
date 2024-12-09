@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/', function () {
     return view('index');
@@ -56,6 +57,7 @@ Route::get('/listing', function () {
 // Authentication for users
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //ContactUs Storing
 Route::post('/contact', [ContactUsController::class, 'contactUs'])->name('contactUs');

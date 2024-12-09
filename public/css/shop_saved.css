@@ -122,6 +122,16 @@ header h1 {
     font-size: 16px;
 }
 
+.navBar button {
+    padding: 0;
+    border: none;
+    background: none;
+    color:white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
 .navBar a:hover {
     color: #ccc;
 }
