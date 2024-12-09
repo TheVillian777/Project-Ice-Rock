@@ -31,11 +31,11 @@
         </form>
     </header>
     <div class="navBar">
-        <a class="active" href="index">Home</a>
-        <a href="shop">Books</a>
-        <a href="saved">Saved</a>
-        <a href="aboutUs">About Us</a>
-        <a href="contact">Contact Us</a>
+        <a href="{{ route('index') }}">Home</a>
+        <a class="active" href="{{ route('shop') }}">Books</a>
+        <!--<a href="{{ route('saved') }}">Saved</a>-->
+        <a href="{{ route('aboutUs') }}">About Us</a>
+        <a href="{{ route('contact') }}">Contact Us</a>
     </div>
     <main>
 
@@ -81,41 +81,9 @@
         <!-- defining a book card -->
         @foreach ($books as $book)
         <div class="book-card">
-<<<<<<< HEAD
-            <img src="book1.jpg" alt="book cover">
-            <h3>The Master and Margarita <i class="fas fa-bookmark save-bookmark" data-title="The Master and Margarita" data-author="Mikhail Bulgakov" data-image="book1.jpg"></i></h3>
-            <p>Mikhail Bulgakov</p>
-        </div>
-
-        <div class="book-card">
-            <img src="book2.jpg" alt="book cover">
-            <h3>Naked Lunch <i class="fas fa-bookmark save-bookmark" data-title="Naked Lunch" data-author="William S. Burroughs" data-image="book2.jpg"></i></h3>
-            <p>William S. Burroughs</p>
-        </div>
-        <div class="book-card">
-            <img src="book3.jpg" alt="book cover">
-            <h3>The Stranger <i class="fas fa-bookmark save-bookmark" data-title="The Stranger" data-author="Albert Camus" data-image="book3.jpg"></i></h3>
-            <p>Albert Camus</p>
-        </div>
-        <div class="book-card">
-            <img src="book4.jpg" alt="book cover">
-            <h3>The Origins of Totalitarianism <i class="fas fa-bookmark save-bookmark" data-title="The Origins of Totalitarianism" data-author="Hannah Arendt" data-image="book4.jpg"></i></h3>
-            <p>Hannah Arendt</p>
-        </div>
-        <div class="book-card">
-            <img src="book5.jpg" alt="book cover">
-            <h3>Food and Cooking <i class="fas fa-bookmark save-bookmark" data-title="Food and Cooking" data-author="Harold McGee" data-image="book5.jpg"></i></h3>
-            <p>Harold McGee</p>
-        </div>
-        <div class="book-card">
-            <img src="book6.jpg" alt="book cover">
-            <h3>The Handmaid's Tale <i class="fas fa-bookmark save-bookmark" data-title="The Handmaid's Tale" data-author="Margaret Atwood" data-image="book6.jpg"></i></h3>
-            <p>Margaret Atwoods</p>
-=======
             <img src="{{ asset($book->img_url) }}" alt="book cover">
             <h3>{{ $book->book_name }} <i class="fas fa-bookmark save-bookmark" data-title="{{ $book->book_name }}" data-author='{{ $book->author->first_name . " " . $book->author->last_name }}' data-image="{{ asset($book->img_url) }}"></i></h3>
             <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p>
->>>>>>> parent of 78debf7 (Revert "merging")
         </div>
         @endforeach
         </section>
