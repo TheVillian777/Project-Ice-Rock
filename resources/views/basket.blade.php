@@ -8,7 +8,7 @@
     <title>Basket</title>
 </head>
 <body>
-    <h1>done shopping?</h1> 
+    <h1>Done shopping?</h1> 
     <div class="main-container">
             <div class="basket-container">
                 <h2>basket:</h2>
@@ -48,6 +48,11 @@
                                 <input type = "hidden" name="book_id" value ="{{ $book['book_ID'] }}">
                                 <input type = "hidden" name="quantity" value ="{{ $book['quantity'] + 1 }}">
                                 <button class="arrow up">+</button>
+                            </form>
+                            <form action="{{route('basketRemove') }}" method="POST">
+                            @csrf
+                                <input type = "hidden" name="book_id" value ="{{ $book['book_ID'] }}">
+                                <button class="add-to-basket-btn">Remove</button>
                             </form>
                         </div>
                     </div>

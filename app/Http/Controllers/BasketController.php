@@ -44,4 +44,23 @@ class BasketController extends Controller
         return redirect()->route('basket'); // returns basket view, passing basket data to it
 
     }
+    public function basketRemove(Request $request){
+
+        $basket = Session::get('basket',[]); //gets session basket data (items in basket within specific session )
+        
+        $quantityRemoved= false;
+        foreach ($basket as $product=>$Id) {// &allows original array to be altered
+            if($Id['book_ID'] == $request->book_id ) {
+                unset($basket['book_ID']);
+                $quantityRemoved= true;
+                break;
+            };
+
+        }
+
+        session()->put('basket',$basket);
+
+        return redirect()->route('basket'); // returns basket view, passing basket data to it
+
+    }
 };
