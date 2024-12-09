@@ -10,7 +10,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('index');
 })->name('index');
-
+Route::get('/', [HomeController::class, 'gatherData'])->name('index');
 
 Route::get('/index', function () {
     return view('index');
