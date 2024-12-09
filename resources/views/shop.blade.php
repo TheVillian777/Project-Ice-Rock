@@ -30,6 +30,16 @@
             </div>   
         </form>
     </header>
+
+    <div class="navBar">
+        <a class="active" href="index">Home</a>
+        <a href="shop">Books</a>
+        <a href="saved">Saved</a>
+        <a href="aboutUs">About Us</a>
+        <a href="contact">Contact Us</a>
+    </div>
+    <main>
+        
     <main>
 
     <!-- side bar with filters -->
