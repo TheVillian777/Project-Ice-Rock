@@ -8,12 +8,12 @@
     <title>Basket</title>
 </head>
 <body>
-    <h1>done shopping?</h1> 
+    <h1>Done Shopping?</h1> 
     <div class="main-container">
             <div class="basket-container">
-                <h2>basket:</h2>
-
-
+                <h2>Basket:</h2>
+                @if (empty($basket))
+                <p>The Basket is Currently Empty</p> 
                     <!-- basket card (book cover, title, author, quantity with arrows, price) -->
                      <!-- loops through basket array to display all items stored in session -->
                     @foreach ($basket as $book)
@@ -52,8 +52,9 @@
                     
 
             </div>
+            @endif
                 <div class="checkout-container">
-                     <h2>checkout:</h2>
+                     <h2>Checkout:</h2>
                      <div class="main-container">
                         <div class="main-content">
                         <div class="delivery-address">
