@@ -47,15 +47,12 @@ class BasketController extends Controller
     public function basketRemove(Request $request){
 
         $basket = Session::get('basket',[]); //gets session basket data (items in basket within specific session )
-        
-        $quantityRemoved= false;
-        foreach ($basket as $product=>$Id) {// &allows original array to be altered
-            if($Id['book_ID'] == $request->book_id ) {
-                unset($basket['book_ID']);
-                $quantityRemoved= true;
-                break;
-            };
+        $id = request()->input('book_id');
 
+        for ($i = 0; $i < count($basket); $i++){
+            if($basket[$i]['book_ID'] == $id){
+                unset($basket[$i]);
+            } 
         }
 
         session()->put('basket',$basket);

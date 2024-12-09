@@ -55,6 +55,30 @@ body {
     border-radius: 4px;
 }
 
+/* Navigation Bar */
+.navBar {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+.navBar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.navBar a.active {
+    text-decoration: underline;
+}
+
+.navBar a:hover {
+    color: #ccc;
+}
+
+
 .book-info {
     flex: 4;
     overflow: hidden;
@@ -126,16 +150,11 @@ body {
 
 .delivery-address,
 .bank-details {
+    width: 250px;
     background-color: #f0f0f0;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 label {
@@ -167,8 +186,9 @@ input {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-form.delivery-form,
-form.promo-form {
+.delivery-form,
+.promo-form {
+    width:100px;
     display: flex;
     flex-direction: column;
     gap: 10px;

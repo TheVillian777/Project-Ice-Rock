@@ -43,8 +43,16 @@
         <a class="active" href="{{ route('index') }}">Home</a>
         <a href="{{ route('shop') }}">Books</a>
         <!--<a href="{{ route('saved') }}">Saved</a>-->
-        <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
+        @if (Auth::check())
+        <form action="{{ route('logout')}}" method="POST">
+            @csrf
+        <button type="submit">Log Out</button>
+        </form>
+        @else 
+        <a href="{{ route('login') }}">Login</a>
+        </form>
+        @endif
     </div>
     <!-- Image placeholder -->
     <div class="image-slider">
