@@ -63,4 +63,5 @@ Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFil
 Route::middleware(['auth'])->group(function(){
     Route::post ('/addToBasket', [ShopController::class, 'addToBasket'])->name('addToBasket');
     Route::get ('/basket', [BasketController::class, 'viewBasket'])->name('basket');
+    Route::post ('/basket/basketUpdate', [BasketController::class, 'basketUpdate'])->name('basketUpdate');
 });

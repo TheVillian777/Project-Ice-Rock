@@ -84,6 +84,7 @@
             <div class="price">
                 <p>£{{ $book->book_price }}</p>
             </div>
+    
             <div class="basket-container">
                 <form action="{{route('addToBasket') }}" method="POST">
                     @csrf
@@ -92,9 +93,9 @@
                         <input type="number" id="quantityOf_{{ $book->id }}" name="quantity" min="1" value="1" placeholder="1">
                     </div>
                     <br>
-                <div class="add-to-basket">
-                    <button class="add-to-basket-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
-                </div>
+                    <div class="add-to-basket">
+                        <button class="add-to-basket-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
+                     </div>
                 <br>
                 </form>
                 <br>

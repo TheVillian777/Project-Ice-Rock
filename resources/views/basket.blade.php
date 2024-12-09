@@ -15,7 +15,7 @@
 
 
                     <!-- basket card (book cover, title, author, quantity with arrows, price) -->
-
+                    <!-- loops through basket array to display all items -->
                     @foreach ($basket as $book)  <!-- array of books selected stored in session displayed -->
                     <div class="basket-card">
                         <!-- cover -->
@@ -27,16 +27,28 @@
                         </div>
                         <div class="spacer"></div>
                         <!-- price -->
-                        <p class="price">£{{ $book['price'] }}</p>
+                        <p class="price">£({{ $book['price'] * $book['quantity']}})</p>
                         <!-- qty -->
                         <div class="quantity">
-                            <button class="arrow down">-</button>
-                            <input type="number" value= "{{$book['quantity']}}" min="1" class="quantity-input">
-                            <button class="arrow up">+</button>
-                        </div>
+                            <!-- form for quantity decrease per book -->
+                             <form action="{{route('basketUpdate') }}" method="POST">
+                            @csrf
+                                <input type = "hidden" name="book_id" value ="{{ $book['book_ID'] }}">
+                                <input type = "hidden" name="quantity" value ="{{ $book['quantity'] - 1 }}">
+                                <button class="arrow down">-</button>
+                            </form>
+                            <!-- quantity increase display -->
+                            <input type="number" value= "{{$book['quantity']}}" min="1" class="quantity-input" readonly="readonly">
+                            <!-- form for quantity increase per book -->
+                            <form action="{{route('basketUpdate') }}" method="POST">
+                            @csrf
+                                <input type = "hidden" name="book_id" value ="{{ $book['book_ID'] }}">
+                                <input type = "hidden" name="quantity" value ="{{ $book['quantity'] + 1 }}">
+                                <button class="arrow up">+</button>
+                            </form>
                     </div>
                     @endforeach
-
+                    
 
             </div>
                 <div class="checkout-container">
