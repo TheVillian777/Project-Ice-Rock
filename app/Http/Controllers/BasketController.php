@@ -11,10 +11,17 @@ class BasketController extends Controller
 
         $basket = Session::get('basket',[]); //gets session basket data (items in basket within specific session )
 
+        $total = 0;
+        $totalItemsNo=0;
+
+        foreach ($basket as &$product){ 
+            $total = $total + $product['price'] * $product['quantity'];
+            $totaltemsNo = $totalItemsNo + $product['quantity'];
+        }
 
 
-        return view('basket',compact('basket')); // returns basket view, passing basket data to it
 
+        return view('basket',compact('basket','total', 'totalItemsNo')); // returns basket view, passing to basket and total and totalItemsNo.
     }
 
     public function basketUpdate(Request $request){
@@ -22,10 +29,11 @@ class BasketController extends Controller
         $basket = Session::get('basket',[]); //gets session basket data (items in basket within specific session )
         
         $quantityUpdated= false;
-        foreach ($basket as &$product) {
+        foreach ($basket as &$product) { // &allows original array to be altered
             if($product['book_ID'] == $request->book_id && $request->quantity >0 ) {
                 $product['quantity'] = $request->quantity;
                 $quantityUpdated= true;
+
                 break;
             };
 

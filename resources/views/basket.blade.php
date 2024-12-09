@@ -8,12 +8,15 @@
     <title>Basket</title>
 </head>
 <body>
-    <h1>Done Shopping?</h1> 
+    <h1>done shopping?</h1> 
     <div class="main-container">
             <div class="basket-container">
-                <h2>Basket:</h2>
+                <h2>basket:</h2>
+                
+
                 @if (empty($basket))
-                <p>The Basket is Currently Empty</p> 
+                    <p>The Basket is Currently Empty</p> 
+                @else
                     <!-- basket card (book cover, title, author, quantity with arrows, price) -->
                      <!-- loops through basket array to display all items stored in session -->
                     @foreach ($basket as $book)
@@ -27,7 +30,7 @@
                         </div>
                         <div class="spacer"></div>
                         <!-- price -->
-                        <p class="price">£({{ $book['price'] * $book['quantity']}})</p>
+                        <p class="price">£{{ number_format($book['price'] * $book['quantity'],2)}}</p>
                         <!-- qty -->
                         <div class="quantity">
                             <!-- form for quantity decrease per book -->
@@ -49,17 +52,18 @@
                         </div>
                     </div>
                     @endforeach
+                @endif
                     
 
             </div>
-            @endif
                 <div class="checkout-container">
-                     <h2>Checkout:</h2>
+                     <h2>checkout:</h2>
                      <div class="main-container">
                         <div class="main-content">
                         <div class="delivery-address">
                         <h2>Delivery Address</h2>
                         <form>
+                            @csrf
                             <label for="full-name">Full Name:</label>
                             <input type="text" id="full-name" name="full-name" required>
                             <label for="address">Address:</label>
@@ -76,6 +80,7 @@
                         <div class="bank-details">
                         <h2>Bank Details</h2>
                         <form>
+                            @csrf
                             <label for="card-number">Card Number:</label>
                             <input type="text" id="card-number" name="card-number" required>
                             <label for="expiry-date">Expiry Date (MM/YY):</label>
@@ -90,6 +95,7 @@
                         <div class="delivery-options">
                             <h2>Delivery Options</h2>
                             <form class="delivery-form">
+                                @csrf
                                 <label>
                                     <input type="radio" name="delivery" value="next-day"> 
                                     Next Day (Orders before 6pm) - £5.99
@@ -99,7 +105,7 @@
                                     2/3 Days - £2.99
                                 </label>
                                 <label>
-                                    <input type="radio" name="delivery" value="free-delivery"> 
+                                    <input type="radio" name="delivery" value="free-delivery" required> 
                                     Free (5/7 Days)
                                 </label>
                             </form>
@@ -115,11 +121,10 @@
 
                         <div class="your-order">
                             <h2>Your Order</h2>
-                            <p>0 items</p>
+                            <p>{{$totalItemsNo}} items</p>
                             <p>Subtotal (inc VAT): £0.00</p>
                             <hr>
-                            <p class="total-to-pay">Total to Pay: £0.00</p>
-                            <p>Total VAT: £0.00</p>
+                            <p class="total-to-pay">Total to Pay:£{{ number_format($total,2)}}</p>
                             <a href="checkout" class="checkout-button">Checkout</a>
                         </div>
                     </div>
