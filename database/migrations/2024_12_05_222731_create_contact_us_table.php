@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('author', function (Blueprint $table) {
+        Schema::create('contact_us', function (Blueprint $table) {
             $table->id();
-            $table->char('first_name', length:15);
-            $table->char('last_name', length:15);
-            $table->char('biography', length:100);
-            $table->date('date_of_birth');
+            $table->char('first_name');
+            $table->char('last_name');
+            $table->char('email_address');
+            $table->string('phone_number'); //doesn't accept as an integer
+            $table->char('description');
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Author');
+        Schema::dropIfExists('contact_us');
     }
 };
