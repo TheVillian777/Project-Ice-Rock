@@ -19,7 +19,6 @@
     <!-- header, search bar -->
     <header>
         <h1>browse our books...</h1>
-<<<<<<< HEAD
         <form action="{{ route('shopSearch') }}" method="POST">
             @csrf
             <div class="search-bar">
@@ -30,15 +29,6 @@
                 </a>
             </div>   
         </form>
-=======
-        <div class="search-bar">
-            <input type="test" placeholder="search for books..." id="search">
-            <button type="button" id="search-button">search!</button>
-            <a href="basket">
-    <img src="basket.jpg" alt="cart" class="shopping-cart">
-</a>
-        <div>
->>>>>>> parent of 78debf7 (Revert "merging")
     </header>
     <div class="navBar">
         <a class="active" href="index">Home</a>

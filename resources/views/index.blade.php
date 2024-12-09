@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
     <script src="index.js" defer></script>
 </head>
 <body>
@@ -71,49 +71,49 @@
     <button class="book-prev-arrow">&#10094;</button>
     <div class="book-slider-container">
         <div class="book-slide">
-            <img src="book1.jpg" alt="Book 1">
+            <img src="images/book1.jpg" alt="Book 1">
             <h3>The Master and Margarita</h3> <!-- Book Name -->
             <p>Mikhail Bulgakov</p> <!-- Author Name -->
             <p class="price">£20.00</p> <!-- Price of book -->
             <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
         </div>
         <div class="book-slide">
-            <img src="book2.jpg" alt="Book 2">
+            <img src="images/book2.jpg" alt="Book 2">
             <h3>Naked Lunch</h3>
             <p>William S. Burroughs</p>
             <p class="price">£20.00</p>
             <div class="hover-popup">Add to Basket</div>
         </div>
         <div class="book-slide">
-            <img src="book3.jpg" alt="Book 3">
+            <img src="images/book3.jpg" alt="Book 3">
             <h3>The Stranger</h3>
             <p>Albert Camus</p>
             <p class="price">£20.00</p>
             <div class="hover-popup">Add to Basket</div>
         </div>
         <div class="book-slide">
-            <img src="book4.jpg" alt="Book 4">
+            <img src="images/book4.jpg" alt="Book 4">
             <h3>The Origins of Totalitarianism</h3>
             <p>Hannah Arendt</p>
             <p class="price">£20.00</p>
             <div class="hover-popup">Add to Basket</div>
         </div>
         <div class="book-slide">
-            <img src="book5.jpg" alt="Book 5">
+            <img src="images/book5.jpg" alt="Book 5">
             <h3>Food and Cooking</h3>
             <p>Harold McGee</p>
             <p class="price">£20.00</p>
             <div class="hover-popup">Add to Basket</div>
         </div>
         <div class="book-slide">
-            <img src="book6.jpg" alt="Book 6">
+            <img src="images/book6.jpg" alt="Book 6">
             <h3>The Handmaid's Tale</h3>
             <p>Margaret Atwood</p>
             <p class="price">£20.00</p>
             <div class="hover-popup">Add to Basket</div>
         </div>
         <div class="book-slide">
-            <img src="book4.jpg" alt="Book 4">
+            <img src="images/book4.jpg" alt="Book 4">
             <h3>The Origins of Totalitarianism</h3>
             <p>Hannah Arendt</p>
             <p class="price">£20.00</p>
@@ -133,23 +133,23 @@
 <!-- Genre Icons Section -->
 <div class="genre-icons">
     <div class="genre-icon" onclick="navigateToShop('fiction')"> <!-- Once the genre sort is done! -->
-        <img src="fiction.png" alt="Fiction">
+        <img src="images/fiction.png" alt="Fiction">
         <p>Fiction</p>
     </div>
     <div class="genre-icon" onclick="navigateToShop('non-fiction')">
-        <img src="non-fiction.png" alt="Non Fiction">
+        <img src="images/non-fiction.png" alt="Non Fiction">
         <p>Non Fiction</p>
     </div>
     <div class="genre-icon" onclick="navigateToShop('fantasy')">
-        <img src="fantasy.png" alt="Fantasy">
+        <img src="images/fantasy.png" alt="Fantasy">
         <p>Fantasy</p>
     </div>
     <div class="genre-icon" onclick="navigateToShop('science-fiction')">
-        <img src="science-fiction.png" alt="Science Fiction">
+        <img src="images/science-fiction.png" alt="Science Fiction">
         <p>Science Fiction</p>
     </div>
     <div class="genre-icon" onclick="navigateToShop('mystery')">
-        <img src="mystery.png" alt="Mystery">
+        <img src="images/mystery.png" alt="Mystery">
         <p>Mystery</p>
     </div>
 </div>
@@ -160,7 +160,7 @@
 
 <!-- Banner Section -->
 <div class="banner-section">
-    <img src="banner.png" alt="Promotional Banner">
+    <img src="images/banner.png" alt="Promotional Banner">
 </div>
 
 <!-- Divider Line -->
@@ -272,7 +272,7 @@
 
 <!-- Banner Section -->
 <div class="banner-section">
-    <img src="banner.png" alt="Promotional Banner">
+    <img src="images/banner.png" alt="Promotional Banner">
 </div>
 
 <!-- Divider Line -->
