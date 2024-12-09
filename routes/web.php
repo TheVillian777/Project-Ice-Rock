@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\BasketController;
 
 Route::get('/', function () {
     return view('index');
@@ -61,8 +62,5 @@ Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFil
 //Ensures user is logged in and authenticated
 Route::middleware(['auth'])->group(function(){
     Route::post ('/addToBasket', [ShopController::class, 'addToBasket'])->name('addToBasket');
+    Route::get ('/basket', [BasketController::class, 'viewBasket'])->name('basket');
 });
-
-
-// Basket Page Routes
-Route::get ('/Basket', [BasketController::class, 'Basket'])->name('basket');

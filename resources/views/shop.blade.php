@@ -19,6 +19,10 @@
     <!-- header, search bar -->
     <header>
         <h1>browse our books...</h1>
+        <!-- Item added to basket confirmation message -->
+        @if (session('message')) 
+            <div class="alert"><p>{{session('message')}}</p></div> 
+        @endif
         <form action="{{ route('shopSearch') }}" method="POST">
             @csrf
             <div class="search-bar">
@@ -89,7 +93,7 @@
                     </div>
                     <br>
                 <div class="add-to-basket">
-                    <button class="add-to-cart-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
+                    <button class="add-to-basket-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
                 </div>
                 <br>
                 </form>
@@ -99,6 +103,7 @@
         @endforeach
         </section>
         </main>
+        
     </div>      
 </body>
 </html>

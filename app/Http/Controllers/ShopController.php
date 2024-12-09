@@ -52,11 +52,11 @@ class ShopController extends Controller
 
     public function addToBasket(Request $request)
     {
-        $bookId = Book::find($request->bookId);
+        $bookId = Book::find($request->bookId); // gets brook from database using book id
 
-        $basket = Session::get('basket',[]);
+        $basket = Session::get('basket',[]);// gets current baskset session or leaves it as empty
     
-
+        //checks if book is already in basket, if so quanitity is increased.
         $bookAddedAlready = false;
         // pass by value '&' allows direct array update to occur and quantity to be increased
         foreach ($basket as &$product) {
@@ -68,17 +68,27 @@ class ShopController extends Controller
 
         }
 
+        //add book to basket
         if (!$bookAddedAlready) {
             $basket[] = [
                 'book_ID' => $bookId->id,
                 'book_name' => $bookId->book_name,
+                'first_name' => $bookId->author->first_name,
+                'last_name' => $bookId->author->last_name,
                 'price' => $bookId->book_price,
-                'quantity' => $request->quantity
+                'img_url' => $bookId->img_url,
+                'published_date' => $bookId->published_date,
+                'quantity' => $request->quantity,
+ 
             ];
         }
 
-        Session::put('basket',$basket);
+        //saves basket to session
+        session()->put('basket',$basket);
+        //dd($basket);
         
-        dd($basket);
+        return redirect()->route('shop')->with('message','Item has been successfully added to basket!'); // redirects user to homepage and sends a confirmation messaage
+
+
     }
 };
