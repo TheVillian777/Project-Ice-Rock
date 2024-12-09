@@ -23,7 +23,7 @@
             <input type="test" placeholder="search for books..." id="search">
             <button type="button" id="search-button">search!</button>
             <a href="basket">
-    <img src="images/basket.jpg" alt="cart" class="shopping-cart">
+    <img src="images/basket.jpg" alt="cart" class="shopping-basket">
 </a>
         <div>
     </header>
