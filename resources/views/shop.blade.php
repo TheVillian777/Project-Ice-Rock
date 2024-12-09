@@ -104,7 +104,7 @@
         <div class="book-card">
             <img src="book6.jpg" alt="book cover">
             <h3>The Handmaid's Tale <i class="fas fa-bookmark save-bookmark" data-title="The Handmaid's Tale" data-author="Margaret Atwood" data-image="book6.jpg"></i></h3>
-            <p>Margaret Atwood</p>
+            <p>Margaret Atwoods</p>
         </div>
         </section>
 
