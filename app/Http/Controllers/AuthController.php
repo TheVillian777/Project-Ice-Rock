@@ -41,4 +41,12 @@ class AuthController extends Controller
     }
     return redirect()->back()->withErrors(['Incorrect login details']);
   }
+
+  
+public function logout()
+{
+    Auth::logout();  // Log the user out
+    
+    return redirect()->route('index');  // Redirect to the home page
+}
 }
