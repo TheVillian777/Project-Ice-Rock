@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-
+                <a href="shop" class="back-to-shopping"> < Back to Shopping</a>
                 </div>
                 <div class="checkout-container">
                      <h2>checkout:</h2>
