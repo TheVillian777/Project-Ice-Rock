@@ -44,17 +44,37 @@
         <h1>We are here to help!</h1>
         <p>Let us know how we can best help you. Use the contact form below to email us. It's an honor to support you.</p>
 
-        <form class="contact-form">
-
-            <input type="text" name="first-name" placeholder="First Name" required>
-            <input type="text" name="last-name" placeholder="Last Name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="tel" name="phone" placeholder="Phone Number" required>
-            <textarea name="message" rows="5" placeholder="Description"></textarea>
+        <form class="contact-form" action="{{ route('contactUs') }}" method="post">
+            @csrf
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="email" name="email_address" placeholder="Email" required>
+            <input type="tel" name="phone_number" placeholder="Phone Number" required>
+            <textarea name="description" rows="5" placeholder="Description"></textarea>
             <button type="submit">Send Message</button>
 
+            @if(session()->has('success'))
+                <p id="sucess" style="color:gold; font-weight: bold;">
+                {{ session('success') }}
+                </p>
+            @endif
         </form>
     </div>
+
+
+<script>
+    //if the success message appears this shows the user for 4 seconds then routes back to shop
+    @if(session()->has('success'))
+        const displayMessageTime = 4000;
+        setTimeout(function() {
+            const successMessage = document.getElementById('success')
+            if (successMessage) {
+                successMessage.style.display = 'none'
+            }
+            window.location.href = "{{ route('shop') }}"
+        }, displayMessageTime);
+    @endif
+</script>
 
 </body>
 </html>
