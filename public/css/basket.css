@@ -37,7 +37,7 @@ body {
     padding: 15px;
 }
 
-.basket-card {
+.basket-cardDetails {
     display: flex;
     align-items: center;
     gap: 15px;

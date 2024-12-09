@@ -15,7 +15,7 @@
                 <h2>basket:</h2>
 
                 <!-- basket card (book cover, title, author, quantity with arrows, price) -->
-                <div class="basket-card">
+                <div class="basket-cardDetails">
                     <!-- cover -->
                     <img src="images/book1.jpg" alt="Book Cover" class="book-cover">
                     <!-- title, author -->
