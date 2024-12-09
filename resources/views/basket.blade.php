@@ -15,8 +15,8 @@
 
 
                     <!-- basket card (book cover, title, author, quantity with arrows, price) -->
-                    <!-- loops through basket array to display all items -->
-                    @foreach ($basket as $book)  <!-- array of books selected stored in session displayed -->
+                     <!-- loops through basket array to display all items stored in session -->
+                    @foreach ($basket as $book)
                     <div class="basket-card">
                         <!-- cover -->
                         <img src="{{ asset($book['img_url']) }}" alt="Book Cover" class="book-cover">
@@ -46,6 +46,7 @@
                                 <input type = "hidden" name="quantity" value ="{{ $book['quantity'] + 1 }}">
                                 <button class="arrow up">+</button>
                             </form>
+                        </div>
                     </div>
                     @endforeach
                     
