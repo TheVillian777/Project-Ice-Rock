@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 image: icon.getAttribute('data-image')
             };
 
-            // check if the book is already saved
+            // Check if the book is already saved
             if (!savedBooks.some(savedBook => savedBook.title === book.title)) {
                 savedBooks.push(book); // add to saved books array
                 localStorage.setItem('saved-books', JSON.stringify(savedBooks)); // store in local storage
@@ -45,31 +45,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert(`${book.title} is already in your saved books.`);
             }
         });
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const carousel = document.querySelector('.book-carousel');
-    const prevButton = document.querySelector('.carousel-prev');
-    const nextButton = document.querySelector('.carousel-next');
-    const cardWidth = document.querySelector('.book-card').offsetWidth;
-
-    let scrollPosition = 0;
-
-    //scroll by one when the user clicks, if it reaches the end then go back to 0
-    nextButton.addEventListener('click', () => {
-        scrollPosition += cardWidth * 1;
-        if (scrollPosition >= carousel.scrollWidth) { 
-            scrollPosition = 0;
-        }
-        carousel.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-    });
-
-    prevButton.addEventListener('click', () => {
-        scrollPosition -= cardWidth * 1;
-        if (scrollPosition < 0) {
-            scrollPosition = carousel.scrollWidth - cardWidth * 4;
-        }
-        carousel.scrollTo({ left: scrollPosition, behavior: 'smooth' });
     });
 });
