@@ -50,13 +50,13 @@
     <div class="image-slider">
     <div class="slider-container">
         <div class="slide">
-            <img src="test1.jpg" alt="Slide 1">
+            <img src="images/image-slide1.png" alt="Slide 1">
         </div>
         <div class="slide">
-            <img src="test2.jpg" alt="Slide 2">
+            <img src="images/image-slide2.png" alt="Slide 2">
         </div>
         <div class="slide">
-            <img src="test3.jpg" alt="Slide 3">
+            <img src="images/image-slide3.png" alt="Slide 3">
         </div>
     </div>
     <!-- Arrows for manual scrolling -->
