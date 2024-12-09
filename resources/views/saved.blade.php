@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shop</title>
+    <title>Shop</title>
     <link rel="stylesheet" href="css/shop_saved.css" onerror="alert('CSS file not found!')">
     <script src="shop_saved.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -13,7 +13,7 @@
 
 <body>
     <div class="saved-container">
-        <h1>your wishlist:</h1>
+        <h1>Your Wishlist:</h1>
 
         <div class="carousel-container">
             <button class="carousel-prev">&lt;</button>

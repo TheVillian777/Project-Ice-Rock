@@ -18,7 +18,11 @@
 
     <!-- header, search bar -->
     <header>
-        <h1>browse our books...</h1>
+        <h1>Browse our books...</h1>
+        <!-- Item added to basket confirmation message -->
+        @if (session('message')) 
+            <div class="alert"><p>{{session('message')}}</p></div> 
+        @endif
         <form action="{{ route('shopSearch') }}" method="POST">
             @csrf
             <div class="search-bar">
@@ -41,12 +45,12 @@
 
     <!-- side bar with filters -->
     <aside class="filters">
-    <h2>filters:</h2>
+    <h2>Filters:</h2>
     <form action = "{{ route('shopFilter') }}" method="POST">
         @csrf
         <div class="filter-section">
             <!-- genre filters -->
-             <h3>genre</h3>
+             <h3>Genre</h3>
              <ul>
                 @foreach ($categories as $category)
                 <li><input type="checkbox" value="{{ $category->id }}" name="options[]"> <label for="{{ $category->name }}"> {{ $category->name }}</label></li>
@@ -84,10 +88,30 @@
             <img src="{{ asset($book->img_url) }}" alt="book cover">
             <h3>{{ $book->book_name }} <i class="fas fa-bookmark save-bookmark" data-title="{{ $book->book_name }}" data-author='{{ $book->author->first_name . " " . $book->author->last_name }}' data-image="{{ asset($book->img_url) }}"></i></h3>
             <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p>
+            <div class="price">
+                <p>£{{ $book->book_price }}</p>
+            </div>
+    
+            <div class="basket-container">
+                <form action="{{route('addToBasket') }}" method="POST">
+                    @csrf
+                    <div class="quantity">
+                        <input type="hidden" value="{{ $book->id }}" name="bookId">
+                        <input type="number" id="quantityOf_{{ $book->id }}" name="quantity" min="1" value="1" placeholder="1">
+                    </div>
+                    <br>
+                    <div class="add-to-basket">
+                        <button class="add-to-basket-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
+                     </div>
+                <br>
+                </form>
+                <br>
+            </div>
         </div>
         @endforeach
         </section>
         </main>
+        
     </div>      
 </body>
 </html>

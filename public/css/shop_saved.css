@@ -246,6 +246,60 @@ input[type="range"] {
     margin: 5px 0;
     color: #6c757d;
 }
+.basket-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.basket-container .price p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.basket-container .quantity {
+    display: flex;
+    justify-content: center;
+    align-items: right;
+}
+
+.basket-container .quantity label {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.basket-container .quantity input {
+    width: 50px;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.basket-container .add-to-basket .add-to-basket-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.basket-container .add-to-basket .add-to-basket-btn:hover {
+    background-color: #0056b3;
+}
+
+.basket-container .add-to-basket .add-to-basket-btn i {
+    margin-right: 10px;
+}
 
 /* making it resposnive */
 @media (max-width: 768px) {

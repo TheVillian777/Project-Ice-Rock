@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
@@ -61,5 +62,14 @@ Route::post('/contact', [ContactUsController::class, 'contactUs'])->name('contac
 
 // Shop related Routes
 Route::get('/shop', [ShopController::class, 'gatherData'])->name('shop'); //allows login function in AuthController to redirect to shop once logged in
+
 Route::post('/shopSearch', [ShopController::class, 'searchShop'])->name('shopSearch');
 Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFilter');
+
+//Ensures user is logged in and authenticated
+Route::middleware(['auth'])->group(function(){
+    Route::post ('/addToBasket', [ShopController::class, 'addToBasket'])->name('addToBasket');
+    Route::get ('/basket', [BasketController::class, 'viewBasket'])->name('basket');
+    Route::post ('/basket/basketUpdate', [BasketController::class, 'basketUpdate'])->name('basketUpdate');
+    Route::post ('/basket/basketRemove', [BasketController::class, 'basketRemove'])->name('basketRemove');
+});
