@@ -30,16 +30,13 @@
             </div>   
         </form>
     </header>
-
     <div class="navBar">
-        <a class="active" href="index">Home</a>
-        <a href="shop">Books</a>
-        <a href="saved">Saved</a>
-        <a href="aboutUs">About Us</a>
-        <a href="contact">Contact Us</a>
+        <a href="{{ route('index') }}">Home</a>
+        <a class="active" href="{{ route('shop') }}">Books</a>
+        <!--<a href="{{ route('saved') }}">Saved</a>-->
+        <a href="{{ route('aboutUs') }}">About Us</a>
+        <a href="{{ route('contact') }}">Contact Us</a>
     </div>
-    <main>
-        
     <main>
 
     <!-- side bar with filters -->

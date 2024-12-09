@@ -24,20 +24,27 @@
     </header>
 
     <!-- Search Bar -->
+     
     <div class="search-box">
-
-        <input type="text" placeholder="Search for books..." id="search-bar">
-        <img src="magnifying-glass.png" alt="Search" class="search-icon">
+        <form action="{{ route('shopSearch') }}" method="POST">
+            @csrf
+            <div class="search-bar">
+                <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
+                <button type="submit"><img src="magnifying-glass.png" alt="Search" class="search-icon"></button>
+            </div>   
+        </form>
+        <!--<input type="text" placeholder="Search for books..." id="search-bar">
+        <img src="magnifying-glass.png" alt="Search" class="search-icon">-->
 
     </div>
 
     <!-- Navigation Bar -->
     <div class="navBar">
-        <a class="active" href="index">Home</a>
-        <a href="shop">Books</a>
-        <a href="saved">Saved</a>
-        <a href="aboutUs">About Us</a>
-        <a href="contact">Contact Us</a>
+        <a class="active" href="{{ route('index') }}">Home</a>
+        <a href="{{ route('shop') }}">Books</a>
+        <!--<a href="{{ route('saved') }}">Saved</a>-->
+        <a href="{{ route('aboutUs') }}">About Us</a>
+        <a href="{{ route('contact') }}">Contact Us</a>
     </div>
     <!-- Image placeholder -->
     <div class="image-slider">
@@ -70,56 +77,15 @@
     
     <button class="book-prev-arrow">&#10094;</button>
     <div class="book-slider-container">
+        @foreach ($books as $book)
         <div class="book-slide">
-            <img src="images/book1.jpg" alt="Book 1">
-            <h3>The Master and Margarita</h3> <!-- Book Name -->
-            <p>Mikhail Bulgakov</p> <!-- Author Name -->
-            <p class="price">£20.00</p> <!-- Price of book -->
+            <img src="{{ asset($book->img_url)}} " alt="Book Cover">
+            <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
+            <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
+            <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
             <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
         </div>
-        <div class="book-slide">
-            <img src="images/book2.jpg" alt="Book 2">
-            <h3>Naked Lunch</h3>
-            <p>William S. Burroughs</p>
-            <p class="price">£20.00</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="images/book3.jpg" alt="Book 3">
-            <h3>The Stranger</h3>
-            <p>Albert Camus</p>
-            <p class="price">£20.00</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="images/book4.jpg" alt="Book 4">
-            <h3>The Origins of Totalitarianism</h3>
-            <p>Hannah Arendt</p>
-            <p class="price">£20.00</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="images/book5.jpg" alt="Book 5">
-            <h3>Food and Cooking</h3>
-            <p>Harold McGee</p>
-            <p class="price">£20.00</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="images/book6.jpg" alt="Book 6">
-            <h3>The Handmaid's Tale</h3>
-            <p>Margaret Atwood</p>
-            <p class="price">£20.00</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="images/book4.jpg" alt="Book 4">
-            <h3>The Origins of Totalitarianism</h3>
-            <p>Hannah Arendt</p>
-            <p class="price">£20.00</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-
+        @endforeach
 
 <!-- Arrows for the book showcase -->   
     </div>
