@@ -12,21 +12,21 @@
     <div class="main-container">
         <div class="cover-container">
             <div class="book-cover">
-                <img src="images/book1.jpg" alt="Book Cover">
+                <img src="{{ asset($book->img_url)}}" alt="Book Cover">
             </div>
 
             <div class="genre-text">
-                genre
+                {{ $book->category->name}}
             </div>
         </div>
 
         <div class="info-container">
             <div class="book-title">
-                <h2>TITLE</h2>
+                <h2>{{ $book->book_name }}</h2>
             </div>
 
             <div class="author">
-                <p>AUTHOR</p>
+                <p>{{ $book->author->first_name . " " . $book->author->last_name}}</p>
             </div>
 
             <div class="publish-date">
@@ -34,25 +34,30 @@
             </div>
 
             <div class="book-description">
-                <p>BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION BOOK DESCRIPTION </p>
+                <p> {{ $book->book_description}} </p>
             </div>
 
         </div>
 
         <div class="basket-container">
-            <div class="price">
-                <p>£PRICE</p>
+        <div class="price">
+                <p>£{{$book->book_price}}</p>
             </div>
-
-            <div class="quantity">
-                <label for="quantity">quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <form action="{{route('addToBasket') }}" method="POST">
+                    @csrf
+                    <div class="quantity">
+                        <input type="hidden" value="{{ $book->id }}" name="bookId">
+                        <input type="number" id="quantityOf_{{ $book->id }}" name="quantity" min="1" value="1" placeholder="1">
+                    </div>
+                    <br>
+                    <div class="add-to-basket">
+                        <button class="add-to-cart-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
+                     </div>
+                </form>
+                <div class="add-to-basket">
+                        <button class="add-to-cart-btn" onclick="window.location.href='{{ route('shop') }}'"><i onclick="{{ route('shop')}}"></i> Back to shop </button>
+                    </div>
             </div>
-            
-            <div class="add-to-basket">
-                <button class="add-to-cart-btn"><i class="fa-sharp fa-solid fa-basket-shopping"></i> add to basket</button>
-            </div>
-        </div>
     </div>
 </body>
 </html>

@@ -114,7 +114,14 @@
                     <div class="add-to-basket">
                         <button class="add-to-basket-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
                      </div>
-                <br>
+                </form>
+                <form action="{{route('listing') }}" method="POST">
+                    @csrf
+                    <br>
+                    <div class="add-to-basket">
+                        <input type="hidden" name="book_id" value="{{ $book->id }}">
+                        <button class="add-to-basket-btn"> Book Details </button>
+                     </div>
                 </form>
                 <br>
             </div>

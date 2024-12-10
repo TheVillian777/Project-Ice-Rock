@@ -14,7 +14,8 @@ class Payment extends Model
     protected $fillable = [
         'payment_date',
         'payment_method',
-        'payment_amount'
+        'payment_amount',
+        'order_id',
     ];
 
     // Table Relationships

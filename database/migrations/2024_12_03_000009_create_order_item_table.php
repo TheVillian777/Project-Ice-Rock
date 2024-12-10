@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('book_price', total: 10, places: 2);
             $table->decimal('subtotal_price', total: 10, places: 2);
+            $table->timestamps();
         });
     }
 

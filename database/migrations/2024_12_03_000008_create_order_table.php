@@ -19,6 +19,7 @@ return new class extends Migration
             $table->char('order_status', length:15);
             $table->text('order_address');
             $table->decimal('order_total_price', total: 10, places: 2);
+            $table->timestamps();
         });
     }
 

@@ -67,6 +67,7 @@ Route::get('/shop', [ShopController::class, 'gatherData'])->name('shop'); //allo
 
 Route::post('/shopSearch', [ShopController::class, 'searchShop'])->name('shopSearch');
 Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFilter');
+Route::post('/listing', [ShopController::class, 'listBook'])->name('listing');
 
 //Ensures user is logged in and authenticated
 Route::middleware(['auth'])->group(function(){
@@ -75,3 +76,6 @@ Route::middleware(['auth'])->group(function(){
     Route::post ('/basket/basketUpdate', [BasketController::class, 'basketUpdate'])->name('basketUpdate');
     Route::post ('/basket/basketRemove', [BasketController::class, 'basketRemove'])->name('basketRemove');
 });
+
+Route::post('confirmBasket', [CheckoutController::class, 'validateBasket'])->name('confirmBasket');
+

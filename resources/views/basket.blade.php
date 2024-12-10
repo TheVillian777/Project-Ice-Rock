@@ -68,21 +68,23 @@
 
         <div class="checkout-container">
             <h2>checkout:</h2>
-            <form action="checkout" method="POST" class="main-checkout-form"> <!-- the whole checkout bit should be contained in this form now :) -->
+            <form action="{{ route('confirmBasket')}}" method="POST" class="main-checkout-form"> <!-- the whole checkout bit should be contained in this form now :) -->
                 @csrf
                 <div class="main-content">
                     <div class="delivery-address">
                         <h2>Delivery Address</h2>
-                        <label for="full-name">Full Name:</label>
-                        <input type="text" id="full-name" name="full-name" required>
+                        <label for="first-name">First Name:</label>
+                        <input type="text" id="first-name" name="first-name" required>
+                        <label for="last-name">Last Name:</label>
+                        <input type="text" id="last-name" name="last-name" required>
                         <label for="address">Address:</label>
                         <input type="text" id="address" name="address" required>
                         <label for="city">City:</label>
-                        <input type="text" id="city" name="city" required>
+                        <input type="text" id="city" name="city">
                         <label for="postcode">Postcode:</label>
-                        <input type="text" id="postcode" name="postcode" required>
+                        <input type="text" id="postcode" name="postcode">
                         <label for="country">Country:</label>
-                        <input type="text" id="country" name="country" required>
+                        <input type="text" id="country" name="country">
                     </div>
 
                     <div class="bank-details">
@@ -118,6 +120,7 @@
                         <p>Subtotal (inc VAT): £0.00</p>
                         <hr>
                         <p class="total-to-pay">Total to Pay: £{{ number_format($total,2) }}</p>
+                        <input type="hidden" name="total_price" value="{{ number_format($total,2)}}">
                         <button type="submit" class="checkout-button">Checkout</button>
                     </div>
                 </div>

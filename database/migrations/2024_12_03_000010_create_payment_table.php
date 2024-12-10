@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained('order')->onDelete('cascade');
             $table->date('payment_date');
             $table->char('payment_method', length: 15);
-            $table->decimal('payment_amount',total: 10 , places: 2);            
+            $table->decimal('payment_amount',total: 10 , places: 2);
+            $table->timestamps();            
         });
     }
 

@@ -91,4 +91,14 @@ class ShopController extends Controller
 
 
     }
+
+    public function listBook(Request $request){
+
+        $id = request()->input('book_id');
+
+        $book = Book::find($id);
+
+        return view('listing',compact('book'));
+
+    }
 };

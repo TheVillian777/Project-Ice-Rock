@@ -57,9 +57,12 @@ body {
 
 .navBar {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     background-color: #333;
     padding: 10px;
+    margin: 0;
+    list-style: none;
 }
 
 .navBar a {
@@ -69,12 +72,22 @@ body {
     font-size: 16px;
 }
 
-.navBar a.active {
-    text-decoration: underline;
+.navBar button {
+    padding: 0;
+    border: none;
+    background: none;
+    color:white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
 }
 
 .navBar a:hover {
     color: #ccc;
+}
+
+.navBar a.active {
+    text-decoration: underline;
 }
 
 
