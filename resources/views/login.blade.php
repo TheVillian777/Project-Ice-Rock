@@ -10,6 +10,12 @@
 </head>
 <body>
 
+<!-- nav bar  -->
+<div class="navBar">
+        <a href="{{ route('index') }}">Home</a>
+</div>
+
+
 <!-- login Section -->
 <div class="container">
     <div class="form-container" id="login-form">
