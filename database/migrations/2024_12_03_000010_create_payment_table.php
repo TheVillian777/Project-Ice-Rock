@@ -14,10 +14,11 @@ return new class extends Migration
     {
         Schema::create('payment', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Order::class)->index();
+            $table->foreignId('order_id')->constrained('order')->onDelete('cascade');
             $table->date('payment_date');
-            $table->char('payment_method',15);
-            $table->decimal('payment_amount',10,2);            
+            $table->char('payment_method', length: 15);
+            $table->decimal('payment_amount',total: 10 , places: 2);
+            $table->timestamps();            
         });
     }
 

@@ -18,6 +18,7 @@
 
     <!-- header, search bar -->
     <header>
+<<<<<<< HEAD
         <h1>browse our books...</h1>
         <div class="search-bar">
             <input type="test" placeholder="search for books..." id="search">
@@ -26,34 +27,66 @@
     <img src="images/basket.jpg" alt="cart" class="shopping-basket">
 </a>
         <div>
+=======
+        <h1>Browse our books...</h1>
+        <!-- Item added to basket confirmation message -->
+        @if (session('message')) 
+            <div class="alert"><p>{{session('message')}}</p></div> 
+        @endif
+        <form action="{{ route('shopSearch') }}" method="POST">
+            @csrf
+            <div class="search-bar">
+                <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
+                <button type="submit" id="search-button">search!</button>
+                <a href="basket">
+                    <img src="basket.jpg" alt="cart" class="shopping-cart"> 
+                </a>
+            </div>   
+        </form>
+>>>>>>> main
     </header>
+    <div class="navBar">
+        <a href="{{ route('index') }}">Home</a>
+        <a class="active" href="{{ route('shop') }}">Books</a>
+        <!--<a href="{{ route('saved') }}">Saved</a>-->
+        <a href="{{ route('basket') }}">Basket</a>
+        <a href="{{ route('login') }}">Profile</a>
+        <a href="{{ route('aboutUs') }}">About Us</a>
+        <a href="{{ route('contact') }}">Contact Us</a>
+        @if (Auth::check())
+        <form action="{{ route('logout')}}" method="POST">
+            @csrf
+        <button type="submit">Log Out</button>
+        </form>
+        @else 
+        <a href="{{ route('login') }}">Login</a>
+        </form>
+        @endif
+    </div>
     <main>
 
     <!-- side bar with filters -->
     <aside class="filters">
-    <h2>filters:</h2>
-    <div class="filter-section">
-
-    <!-- genre filters -->
-        <h3>genre</h3>
-        <ul>
-            <li><input type="checkbox" id="fiction"> <label for="fiction">fiction</label></li>
-            <li><input type="checkbox" id="non-fiction"> <label for="non-fiction">non fiction</label></li>
-            <li><input type="checkbox" id="fantasy"> <label for="fantasy">fantasy</label></li>
-            <li><input type="checkbox" id="science-fiction"> <label for="science-fiction">science fiction</label></li>
-            <li><input type="checkbox" id="mystery"> <label for="mystery">mystery</label></li>
-        </ul>
-    </div>
-
-    <!-- price filter (sliding range) -->
-    <div class="filter">
-        <label for="priceRange">Max Price:</label>
-        <input type="range" id="priceRange" min="0" max="100" value="50">
-        <span id="priceValue">£50</span>
-    </div>
-
-    <!-- filter by rating -->
+    <h2>Filters:</h2>
+    <form action = "{{ route('shopFilter') }}" method="POST">
+        @csrf
         <div class="filter-section">
+            <!-- genre filters -->
+             <h3>Genre</h3>
+             <ul>
+                @foreach ($categories as $category)
+                <li><input type="checkbox" value="{{ $category->id }}" name="options[]"> <label for="{{ $category->name }}"> {{ $category->name }}</label></li>
+                @endforeach
+            </ul>
+        </div>
+        <!-- price filter (sliding range) -->
+         <div class="filter">
+            <label for="priceRange">Max Price:</label>
+            <input type="range" id="priceRange" name="priceRange" min="0" max="25" value="{{ request()->input('priceRange', 0) }}">
+            <span id="priceValue">£0</span>
+        </div>
+        <!-- filter by rating -->
+         <div class="filter-section">
             <h3>ratings</h3>
             <div class="star-rating">
                 <span class="star" data-value="1">★</span>
@@ -62,8 +95,9 @@
                 <span class="star" data-value="4">★</span>
                 <span class="star" data-value="5">★</span>
             </div>
-
         </div>
+        <div class='search-bar'><button type="submit" id="filter-button">filter!</button></div>
+    </form>
     </aside>
 
 
@@ -71,41 +105,46 @@
         <section class="book-grid">
 
         <!-- defining a book card -->
+        @foreach ($books as $book)
         <div class="book-card">
-            <img src="images/book1.jpg" alt="book cover">
-            <h3>The Master and Margarita <i class="fas fa-bookmark save-bookmark" data-title="The Master and Margarita" data-author="Mikhail Bulgakov" data-image="book1.jpg"></i></h3>
-            <p>Mikhail Bulgakov</p>
+            <img src="{{ asset($book->img_url) }}" alt="book cover">
+            <h3>{{ $book->book_name }} <i class="fas fa-bookmark save-bookmark" data-title="{{ $book->book_name }}" data-author='{{ $book->author->first_name . " " . $book->author->last_name }}' data-image="{{ asset($book->img_url) }}"></i></h3>
+            <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p>
+            <div class="price">
+                <p>£{{ $book->book_price }}</p>
+            </div>
+    
+            <div class="basket-container">
+                <form action="{{route('addToBasket') }}" method="POST">
+                    @csrf
+                    <div class="quantity">
+                        <input type="hidden" value="{{ $book->id }}" name="bookId">
+                        <input type="number" id="quantityOf_{{ $book->id }}" name="quantity" min="1" value="1" placeholder="1">
+                    </div>
+                    <br>
+                    <div class="add-to-basket">
+                        <button class="add-to-basket-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
+                     </div>
+                </form>
+                <form action="{{route('listing') }}" method="POST">
+                    @csrf
+                    <br>
+                    <div class="add-to-basket">
+                        <input type="hidden" name="book_id" value="{{ $book->id }}">
+                        <button class="add-to-basket-btn"> Book Details </button>
+                     </div>
+                </form>
+                <br>
+            </div>
         </div>
-
-        <div class="book-card">
-            <img src="images/book2.jpg" alt="book cover">
-            <h3>Naked Lunch <i class="fas fa-bookmark save-bookmark" data-title="Naked Lunch" data-author="William S. Burroughs" data-image="book2.jpg"></i></h3>
-            <p>William S. Burroughs</p>
-        </div>
-        <div class="book-card">
-            <img src="images/book3.jpg" alt="book cover">
-            <h3>The Stranger <i class="fas fa-bookmark save-bookmark" data-title="The Stranger" data-author="Albert Camus" data-image="book3.jpg"></i></h3>
-            <p>Albert Camus</p>
-        </div>
-        <div class="book-card">
-            <img src="images/book4.jpg" alt="book cover">
-            <h3>The Origins of Totalitarianism <i class="fas fa-bookmark save-bookmark" data-title="The Origins of Totalitarianism" data-author="Hannah Arendt" data-image="book4.jpg"></i></h3>
-            <p>Hannah Arendt</p>
-        </div>
-        <div class="book-card">
-            <img src="images/book5.jpg" alt="book cover">
-            <h3>Food and Cooking <i class="fas fa-bookmark save-bookmark" data-title="Food and Cooking" data-author="Harold McGee" data-image="book5.jpg"></i></h3>
-            <p>Harold McGee</p>
-        </div>
-        <div class="book-card">
-            <img src="images/book6.jpg" alt="book cover">
-            <h3>The Handmaid's Tale <i class="fas fa-bookmark save-bookmark" data-title="The Handmaid's Tale" data-author="Margaret Atwood" data-image="book6.jpg"></i></h3>
-            <p>Margaret Atwood</p>
-        </div>
+        @endforeach
         </section>
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
         </main>
+        
     </div>      
 </body>
-
 </html>
