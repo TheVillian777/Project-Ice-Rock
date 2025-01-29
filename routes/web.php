@@ -69,6 +69,8 @@ Route::post('/shopSearch', [ShopController::class, 'searchShop'])->name('shopSea
 Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFilter');
 Route::post('/listing', [ShopController::class, 'listBook'])->name('listing');
 
+Route::post('/navigateShop', [ShopController::class, 'navShop'])->name('navigateShop');
+
 //Ensures user is logged in and authenticated
 Route::middleware(['auth'])->group(function(){
     Route::post ('/addToBasket', [ShopController::class, 'addToBasket'])->name('addToBasket');

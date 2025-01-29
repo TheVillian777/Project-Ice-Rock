@@ -109,28 +109,19 @@
 
 <!-- Genre Icons Section -->
 <div class="genre-icons">
-    <div class="genre-icon" onclick="navigateToShop('fiction')"> <!-- Once the genre sort is done! -->
-        <img src="images/fiction.png" alt="Fiction">
-        <p>Fiction</p>
-    </div>
-    <div class="genre-icon" onclick="navigateToShop('non-fiction')">
-        <img src="images/non-fiction.png" alt="Non Fiction">
-        <p>Non Fiction</p>
-    </div>
-    <div class="genre-icon" onclick="navigateToShop('fantasy')">
-        <img src="images/fantasy.png" alt="Fantasy">
-        <p>Fantasy</p>
-    </div>
-    <div class="genre-icon" onclick="navigateToShop('science-fiction')">
-        <img src="images/science-fiction.png" alt="Science Fiction">
-        <p>Science Fiction</p>
-    </div>
-    <div class="genre-icon" onclick="navigateToShop('mystery')">
-        <img src="images/mystery.png" alt="Mystery">
-        <p>Mystery</p>
-    </div>
+    @foreach ($categories as $category)
+    <form action="{{ route('navigateShop') }}" method="POST">
+        @csrf
+        <div class="genre-icon">
+            <input type="hidden" value="{{ $category->id }}" name="genre-select">
+            <button type="submit">
+                <img src="images/{{ $category->img_url }}" alt="{{ $category->name }}">
+                <p>{{$category->name}}</p>
+            </button>
+        </div>
+    </form>
+    @endforeach
 </div>
-
 
 <!-- Divider Line -->
 <div class="section-divider"></div>
