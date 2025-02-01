@@ -3,49 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PageTurner</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Contact</title>
+    <link rel="stylesheet" href="about us.css">
+    <script src="contact.js" defer></script>
 </head>
 <body>
-
-    <!-- Logo -->
+    <!-- Header -->
     <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+
         <div class="title">
+
             <h1>PageTurner</h1>
+
         </div>
     </header>
 
-    <h1>
-        <div class="logo">
-            <img src="LogoTester.jpg" alt="Logo">
-        </div>
-    </h1>
-
-    <!-- Search bar -->
+    <!-- Search Bar -->
     <div class="search-box">
-        <input type="text" placeholder="Search for books..." id="search-bar">
-        <img src="magnifying-glass.png" alt="Search" class="search-icon">
+        <form action="{{ route('shopSearch') }}" method="POST">
+            @csrf
+            <div class="search-bar">
+                <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
+                <button type="submit"><img src="magnifying-glass.png" alt="Search" class="search-icon"></button>
+            </div>   
+        </form>
+        <!--<input type="text" placeholder="Search for books..." id="search-bar">
+        <img src="magnifying-glass.png" alt="Search" class="search-icon">-->
+
     </div>
 
-    <!-- Banner -->
+    <!-- Navigation Bar -->
     <div class="navBar">
-        <p>PlaceHolder</p>
-    </div>
+        <a href="{{ route('index') }}">Home</a>
+        <a href="{{ route('shop') }}">Books</a>
+        <!--<a href="{{ route('saved') }}">Saved</a>-->
+        <a href="{{ route('basket') }}">Basket</a>
+        <a href="{{ route('login') }}">Profile</a>
+        <a href="{{ route('aboutUs') }}">About Us</a>
+        <a  class="active" href="{{ route('contact') }}">Contact Us</a>
+        @if (Auth::check())
+        <form action="{{ route('logout')}}" method="POST">
+            @csrf
+        <button type="submit">Log Out</button>
+        </form>
+        @else 
+        <a href="{{ route('login') }}">Login</a>
+        </form>
+        @endif
+    </div><!D
 
-    <div class="navBar">
-        <a class="active" href="index.html">Home</a>
-        <a href="New page">Whats new!</a>
-        <a href="books page">Books</a>
-
-        <a href="aboutUs.html">About us</a>
-      </div>
-<div Class="aboutHeader">
-    <h2>
-        About us
-      </h2>
-</div>
-
-</body>
-</html>
+    <!-- about us  Section -->
+    <div class="about-section">
+    <h1>About Us</h1>
 
 
