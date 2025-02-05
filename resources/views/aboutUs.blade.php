@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>AboutUs</title>
     <link rel="stylesheet" href="about us.css">
-    <script src="contact.js" defer></script>
+    <script src="aboutus.js" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -54,10 +54,11 @@
         <a href="{{ route('login') }}">Login</a>
         </form>
         @endif
-    </div><!D
+    </div>
 
     <!-- about us  Section -->
     <div class="about-section">
     <h1>About Us</h1>
-
-
+    </div>
+</body>
+</html>
