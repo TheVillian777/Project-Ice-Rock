@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AboutUs</title>
-    <link rel="stylesheet" href="about us.css">
-    <script src="aboutus.js" defer></script>
+    <link rel="stylesheet" href="aboutUs.css">
+    <script src="aboutUs.js" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -43,8 +43,9 @@
         <!--<a href="{{ route('saved') }}">Saved</a>-->
         <a href="{{ route('basket') }}">Basket</a>
         <a href="{{ route('login') }}">Profile</a>
-        <a href="{{ route('aboutUs') }}">About Us</a>
-        <a  class="active" href="{{ route('contact') }}">Contact Us</a>
+        <a href="{{ route('contact') }}">contactUs</a>
+        <a class="active" href="{{ route('aboutUs') }}">About Us</a>
+
         @if (Auth::check())
         <form action="{{ route('logout')}}" method="POST">
             @csrf
@@ -57,8 +58,11 @@
     </div>
 
     <!-- about us  Section -->
-    <div class="about-section">
+    <div class="aboutUs-section">
     <h1>About Us</h1>
+    <p>Welcome to PageTurner, your go-to platform for finding and purchasing books of all genres.</p>
+    <p>We are committed to providing an extensive collection of books while ensuring a seamless user experience.</p>
+    
     </div>
 </body>
 </html>
