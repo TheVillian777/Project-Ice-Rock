@@ -43,10 +43,27 @@ class AuthController extends Controller
   }
 
   
-public function logout()
-{
-    Auth::logout();  // Log the user out
+  public function logout()
+  {
+      Auth::logout();  // Log the user out
     
-    return redirect()->route('index');  // Redirect to the home page
-}
+      return redirect()->route('index');  // Redirect to the home page
+  }
+
+  public function forgottenPassword(Request $user)
+  {
+    //validate forgotten details
+    $user->validate([
+      'email' => 'required',
+      'security-answer' => 'required',
+    ]);
+
+    //retrieve the forgotten user using the details provided
+    $forgottenUser = User::where('email', $user->email)
+    ->where('security-answer', $user->securityanswer)->get();
+
+    if (!$forgottenUser){
+      return redirect()->back()->withErrors(['No matching details']);
+    }
+  }
 }
