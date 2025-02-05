@@ -66,24 +66,6 @@
             <p>Already have an account? <a href="javascript:void(0);" onclick="showLoginForm()">Login</a></p>
         </form>
     </div>
-
-    <!-- forgotten password Section -->
-     <div class="form-container" id="forgottenPassword-form" style="display: none;">
-        <h2>Forgotten Password</h2>
-        <form action="{{ route('forgottenPassword') }}" method="post">
-            @csrf
-        <!-- enter email -->
-            <label for="forgotten-email">email:</label>
-            <input type="email" id="forgotten-email" name="email" required>
-        
-        <!-- security question answer -->
-            <label for="forgotten-security-question">security question answer:</label>
-            <input type="security-answer" id="forgotten-security-question" name="security-answer" placeholder="What's the name of your first pet?" required>
-        
-        <!-- submit -->
-            <button type="submit">Confirm</button>
-        
-        </form>
 </div>
 
 <!-- defining functions -->
@@ -99,9 +81,7 @@
     }
  
     function forgottenPassword() {
-        document.getElementById('login-form').style.display = 'none';
-        document.getElementById('register-form').style.display = 'none';
-        document.getElementById('forgottenPassword-form').style.display = 'block';
+            alert("write it down!")
     }
 
 </script>
