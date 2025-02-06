@@ -14,13 +14,19 @@ class AuthController extends Controller
   {
     //validate registration details
     $user->validate([
+        'first_name' => 'required',
+        'last_name' => 'required',
         'email' => 'required',
         'password' => 'required',
     ]);
 
     //save registration to Users table
     User::create([
+        'first_name' => $user->first_name,
+        'last_name' => $user->last_name,
         'email' => $user->email,
+        'phone' => $user->phone,
+        'isadmin' => false,
         'password' => Hash::make($user->password), //Hash for security with built in method
     ]);
 

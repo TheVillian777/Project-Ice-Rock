@@ -47,6 +47,18 @@
         <h2>Register</h2>
         <form action="{{ route('register') }}" method="post">
             @csrf
+        <!-- input first name -->
+            <label for="register-first">first name:</label>
+            <input type="text" id="register-first" name="first_name" required>
+            
+        <!-- input last name -->
+            <label for="register-last">last name:</label>
+            <input type="text" id="register-last" name="last_name" required> 
+
+        <!-- input phone number -->
+            <label for="register-phone">phone number:</label>
+            <input type="tel" id="register-phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"> 
+
         <!-- input email -->
             <label for="register-email">email:</label>
             <input type="email" id="register-email" name="email" required>
