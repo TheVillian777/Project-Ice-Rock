@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PageTurner</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" onerror="alert('CSS file not found!')">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
 
     <h1>
         <div class="logo">
-            <img src="LogoTester.jpg" alt="Logo">
+            <img src="images/logo.png" alt="Logo">
         </div>
     </h1>
 
