@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('last_name', length: 15);
             $table->char('email', length: 30)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->boolean('isadmin');
             $table->string('password');
             $table->rememberToken();
