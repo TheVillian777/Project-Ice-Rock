@@ -12,7 +12,7 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <img src="images/logo.png" alt="Logo">
+            <img src="images/main-logo.png" alt="Logo">
         </div>
 
 
