@@ -7,7 +7,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('index');
@@ -38,7 +38,7 @@ route::get('/saved' , function(){
 
 Route::get('/shop', function () {
     return view('shop');
-})->name('shop'); //allows login function in AuthController to redirect to shop once logged in
+})->name('shop');
 
 Route::get('/login', function () {
     return view('login');
@@ -75,6 +75,8 @@ Route::post('/shopSearch', [ShopController::class, 'searchShop'])->name('shopSea
 Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFilter');
 Route::post('/listing', [ShopController::class, 'listBook'])->name('listing');
 
+Route::post('/navigateShop', [ShopController::class, 'navShop'])->name('navigateShop');
+
 //Ensures user is logged in and authenticated
 Route::middleware(['auth'])->group(function(){
     Route::post ('/addToBasket', [ShopController::class, 'addToBasket'])->name('addToBasket');
@@ -84,4 +86,7 @@ Route::middleware(['auth'])->group(function(){
 });
 
 Route::post('confirmBasket', [CheckoutController::class, 'validateBasket'])->name('confirmBasket');
+
+//When calling profile ensure user is logged in first
+Route::get('/profile', [ProfileController::class, 'directToProfile'])->name('profile');
 

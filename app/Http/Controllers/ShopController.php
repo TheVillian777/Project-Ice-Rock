@@ -28,6 +28,17 @@ class ShopController extends Controller
         $books = Book::with('author')->where('book_name','like','%' . $search . '%')->get();
 
         return view('shop', compact('categories','books'));
+    }
+
+    public function navShop(Request $request){
+        
+        $filterOption = $request->input('genre-select');
+        
+        //Fetch all categories
+        $categories = Category::all();
+        $books = Book::with('author')->where('category_id', $filterOption)->get();
+
+        return view('shop',compact('categories','books'));
 
     }
 
