@@ -7,6 +7,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('index');
@@ -25,6 +26,11 @@ Route::get('/login', function () {
 Route::get('/basket', function () {
     return view('basket');
 });
+
+Route::get('/admin', function () {
+    return view('admin');
+})->name('admin');
+Route::get('/', [HomeController::class, 'gatherData'])->name('admin');
 
 route::get('/saved' , function(){
     return view('saved');

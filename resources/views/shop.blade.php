@@ -18,16 +18,6 @@
 
     <!-- header, search bar -->
     <header>
-<<<<<<< HEAD
-        <h1>browse our books...</h1>
-        <div class="search-bar">
-            <input type="test" placeholder="search for books..." id="search">
-            <button type="button" id="search-button">search!</button>
-            <a href="basket">
-    <img src="images/basket.jpg" alt="cart" class="shopping-basket">
-</a>
-        <div>
-=======
         <h1>Browse our books...</h1>
         <!-- Item added to basket confirmation message -->
         @if (session('message')) 
@@ -43,7 +33,6 @@
                 </a>
             </div>   
         </form>
->>>>>>> main
     </header>
     <div class="navBar">
         <a href="{{ route('index') }}">Home</a>
@@ -105,15 +94,16 @@
         <section class="book-grid">
 
         <!-- defining a book card -->
+
         @foreach ($books as $book)
         <div class="book-card">
-            <img src="{{ asset($book->img_url) }}" alt="book cover">
-            <h3>{{ $book->book_name }} <i class="fas fa-bookmark save-bookmark" data-title="{{ $book->book_name }}" data-author='{{ $book->author->first_name . " " . $book->author->last_name }}' data-image="{{ asset($book->img_url) }}"></i></h3>
+            <img src="{{ asset('images/' . $book->img_url) }}" alt="book cover">
+            <h3>{{ $book->book_name }} <i class="fas fa-bookmark save-bookmark" data-title="{{ $book->book_name }}" data-author='{{ $book->author->first_name . " " . $book->author->last_name }}' data-image="{{ asset('images/' . $book->img_url) }}"></i></h3>
             <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p>
             <div class="price">
                 <p>£{{ $book->book_price }}</p>
             </div>
-    
+
             <div class="basket-container">
                 <form action="{{route('addToBasket') }}" method="POST">
                     @csrf
@@ -124,7 +114,7 @@
                     <br>
                     <div class="add-to-basket">
                         <button class="add-to-basket-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
-                     </div>
+                    </div>
                 </form>
                 <form action="{{route('listing') }}" method="POST">
                     @csrf
@@ -132,7 +122,7 @@
                     <div class="add-to-basket">
                         <input type="hidden" name="book_id" value="{{ $book->id }}">
                         <button class="add-to-basket-btn"> Book Details </button>
-                     </div>
+                    </div>
                 </form>
                 <br>
             </div>
