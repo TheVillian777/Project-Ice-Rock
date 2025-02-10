@@ -129,10 +129,6 @@
         </div>
         @endforeach
         </section>
-<<<<<<< HEAD
-
-=======
->>>>>>> main
         </main>
         
     </div>      
