@@ -47,6 +47,7 @@
         <a href="{{ route('login') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
+        <a href="{{ route('profile') }}">Profile</a>
         @if (Auth::check())
         <form action="{{ route('logout')}}" method="POST">
             @csrf

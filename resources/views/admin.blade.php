@@ -6,6 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="css/admin.css">
     <script src="index.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
