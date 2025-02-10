@@ -12,7 +12,7 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="images/logo.png" alt="Logo">
         </div>
 
 
@@ -47,6 +47,7 @@
         <a href="{{ route('profile') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
+        <a href="{{ route('profile') }}">Profile</a>
         @if (Auth::check())
         <form action="{{ route('logout')}}" method="POST">
             @csrf
@@ -90,7 +91,7 @@
     <div class="book-slider-container">
         @foreach ($books as $book)
         <div class="book-slide">
-            <img src="{{ asset($book->img_url)}} " alt="Book Cover">
+            <img src="{{ asset('images/' . $book->img_url)}} " alt="Book Cover">
             <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
             <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
             <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
@@ -146,7 +147,7 @@
     <div class="book-slider-container">
         @foreach ($books->take(5) as $book)
         <div class="book-slide">
-            <img src="{{ asset($book->img_url)}} " alt="Book Cover">
+            <img src="{{ asset('images/' . $book->img_url)}} " alt="Book Cover">
             <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
             <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
             <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
