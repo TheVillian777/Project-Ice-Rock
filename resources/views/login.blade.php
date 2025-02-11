@@ -86,6 +86,11 @@
     <!-- forgotten password Section -->
      <div class="form-container" id="forgottenPassword-form" style="display: none;">
         <h2>Forgotten Password</h2>
+
+        @if ($errors->any())
+                <p style="color: red;">{{ $errors }}</p>
+        @endif
+        
         <form action="{{ route('forgottenPassword') }}" method="post">
             @csrf
         <!-- enter email -->
@@ -106,8 +111,8 @@
         
         <!-- submit -->
             <button type="submit">Confirm</button>
-        
         </form>
+    </div>
 </div>
 
 <!-- defining functions -->
@@ -127,6 +132,12 @@
         document.getElementById('register-form').style.display = 'none';
         document.getElementById('forgottenPassword-form').style.display = 'block';
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        @if ($errors->any())
+            forgottenPassword();
+        @endif
+    });
 
 </script>
 
