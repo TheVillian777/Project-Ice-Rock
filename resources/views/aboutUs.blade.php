@@ -44,7 +44,7 @@
         <!--<a href="{{ route('saved') }}">Saved</a>-->
         <a href="{{ route('basket') }}">Basket</a>
         <a href="{{ route('login') }}">Profile</a>
-        <a href="{{ route('contact') }}">contactUs</a>
+        <a href="{{ route('contact') }}">Contact Us</a>
         <a class="active" href="{{ route('aboutUs') }}">About Us</a>
 
         @if (Auth::check())
