@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Register</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/login.css" onerror="alert('CSS file not found!')">
 </head>
 <body>
 
@@ -36,7 +36,7 @@
             <button type="submit">login</button>
 
         <!-- hyperlinks for forgotten password, register -->
-            <p>don't have an account? <a href="javascript:void(0);" onclick="showRegisterForm()">Register</a></p>
+            <p>Don't have an account? <a href="javascript:void(0);" onclick="showRegisterForm()">Register</a></p>
             <p><a href="javascript:void(0);" onclick="forgottenPassword()">Forgotten your password?</a></p>
 
         </form>
@@ -48,27 +48,29 @@
         <form action="{{ route('register') }}" method="post">
             @csrf
         <!-- input first name -->
-            <label for="register-first">first name:</label>
+            <label for="register-first">First Name:</label>
             <input type="text" id="register-first" name="first_name" required>
             
         <!-- input last name -->
-            <label for="register-last">last name:</label>
+            <label for="register-last">Last Name:</label>
             <input type="text" id="register-last" name="last_name" required> 
 
         <!-- input phone number -->
             <label for="register-phone">phone number:</label>
             <input type="tel" id="register-phone" name="phone" pattern="[0-9]{11}"> 
 
+            <br></br>
+
         <!-- input email -->
-            <label for="register-email">email:</label>
+            <label for="register-email">Email:</label>
             <input type="email" id="register-email" name="email" required>
 
         <!-- input password -->    
-            <label for="register-password">password:</label>
+            <label for="register-password">Password:</label>
             <input type="password" id="register-password" name="password" required>
 
         <!-- confirm passw -->    
-            <label for="register-confirm-password">confirm password:</label>
+            <label for="register-confirm-password">Confirm Password:</label>
             <input type="password" id="register-confirm-password" name="confirm-password" required>
 
         <!-- security question -->
@@ -76,7 +78,7 @@
             <input type="text" id="register-security-answer" name="security_answer" placeholder="What's the name of your first pet?" required>
 
         <!-- submit -->
-            <button type="submit">register</button>
+            <button type="submit">Register</button>
 
         <!-- back to login -->    
             <p>Already have an account? <a href="javascript:void(0);" onclick="showLoginForm()">Login</a></p>

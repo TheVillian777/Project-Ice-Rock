@@ -27,6 +27,11 @@ Route::get('/basket', function () {
     return view('basket');
 });
 
+Route::get('/admin', function () {
+    return view('admin');
+})->name('admin');
+Route::get('/', [HomeController::class, 'gatherData'])->name('admin');
+
 route::get('/saved' , function(){
     return view('saved');
 })->name('saved');

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/basket.css">
+    <link rel="stylesheet" href="css/basket.css" onerror="alert('CSS file not found!')">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Basket</title>
 </head>
@@ -66,12 +66,22 @@
             @endif
         </div>
 
+<<<<<<< HEAD
+                <a href="shop" class="back-to-shopping"> < Back to Shopping</a>
+                </div>
+                <div class="checkout-container">
+                     <h2>checkout:</h2>
+                     <div class="main-container">
+                        <div class="main-content">
+                        <div class="delivery-address">
+=======
         <div class="checkout-container">
             <h2>checkout:</h2>
             <form action="{{ route('confirmBasket')}}" method="POST" class="main-checkout-form"> <!-- the whole checkout bit should be contained in this form now :) -->
                 @csrf
                 <div class="main-content">
                     <div class="delivery-address">
+>>>>>>> main
                         <h2>Delivery Address</h2>
                         <label for="first-name">First Name:</label>
                         <input type="text" id="first-name" name="first-name" required>

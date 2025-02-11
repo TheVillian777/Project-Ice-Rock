@@ -17,6 +17,19 @@ body {
     background-color: #f8f9fa;
 }
 
+.back-to-shopping {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 16px;
+    color: #000;
+    text-decoration: none;
+}
+
+.back-to-shopping:hover {
+    color: #0e98ed;
+}
+
 .main-container {
     width: 75%;
     margin: auto;
@@ -37,7 +50,7 @@ body {
     padding: 15px;
 }
 
-.basket-card {
+.basket-cardDetails {
     display: flex;
     align-items: center;
     gap: 15px;
