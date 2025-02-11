@@ -47,7 +47,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="security-question"] {
+input[type="security-answer"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -103,7 +103,7 @@ a:hover {
     input[type="text"],
     input[type="email"],
     input[type="password"],
-    input[type="security-question"] {
+    input[type="security-answer"] {
         padding: 12px;
         font-size: 14px;
     }

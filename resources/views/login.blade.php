@@ -57,7 +57,7 @@
 
         <!-- input phone number -->
             <label for="register-phone">phone number:</label>
-            <input type="tel" id="register-phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"> 
+            <input type="tel" id="register-phone" name="phone" pattern="[0-9]{11}"> 
 
         <!-- input email -->
             <label for="register-email">email:</label>
@@ -70,6 +70,10 @@
         <!-- confirm passw -->    
             <label for="register-confirm-password">confirm password:</label>
             <input type="password" id="register-confirm-password" name="confirm-password" required>
+
+        <!-- security question -->
+            <label for="register-security-answer">enter your security answer:</label>
+            <input type="text" id="register-security-answer" name="security_answer" placeholder="What's the name of your first pet?" required>
 
         <!-- submit -->
             <button type="submit">register</button>
@@ -90,7 +94,15 @@
         
         <!-- security question answer -->
             <label for="forgotten-security-question">security question answer:</label>
-            <input type="security-answer" id="forgotten-security-question" name="security-answer" placeholder="What's the name of your first pet?" required>
+            <input type="security-answer" id="forgotten-security-question" name="security_answer" placeholder="What's the name of your first pet?" required>
+
+        <!-- input password -->    
+            <label for="register-password">password:</label>
+            <input type="password" id="register-password" name="password" required>
+
+        <!-- confirm password -->    
+            <label for="register-confirm-password">confirm password:</label>
+            <input type="password" id="register-confirm-password" name="confirm-password" required>
         
         <!-- submit -->
             <button type="submit">Confirm</button>

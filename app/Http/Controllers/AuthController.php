@@ -18,6 +18,7 @@ class AuthController extends Controller
         'last_name' => 'required',
         'email' => 'required',
         'password' => 'required',
+        'security_answer' => 'required',
     ]);
 
     //save registration to Users table
@@ -27,6 +28,7 @@ class AuthController extends Controller
         'email' => $user->email,
         'phone' => $user->phone,
         'isadmin' => false,
+        'security_answer' => $user->security_answer,
         'password' => Hash::make($user->password), //Hash for security with built in method
     ]);
 
@@ -61,15 +63,26 @@ class AuthController extends Controller
     //validate forgotten details
     $user->validate([
       'email' => 'required',
-      'security-answer' => 'required',
+      'security_answer' => 'required',
+      'password' => 'required',
+      'confirm-password' => 'required'
     ]);
 
     //retrieve the forgotten user using the details provided
     $forgottenUser = User::where('email', $user->email)
-    ->where('security-answer', $user->securityanswer)->get();
+    ->where('security_answer', $user->security_answer)->first();
 
     if (!$forgottenUser){
       return redirect()->back()->withErrors(['No matching details']);
     }
-  }
+
+    if ($user->password !== $user->input('confirm-password')) {
+      return redirect()->back()->withErrors(['Password does not match']);
+    }
+
+    $forgottenUser->update(['password' => Hash::make($user->password)]);
+
+    return redirect()->route('login');
+
+    }
 }
