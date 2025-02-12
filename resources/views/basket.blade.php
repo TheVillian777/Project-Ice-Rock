@@ -24,13 +24,9 @@
                 <p>The Basket is Currently Empty</p> 
             @else
                 <!-- basket card (book cover, title, author, quantity with arrows, price) -->
-<<<<<<< HEAD
-                <div class="basket-cardDetails">
-=======
                 <!-- loops through basket array to display all items stored in session -->
                 @foreach ($basket as $book)
                 <div class="basket-card">
->>>>>>> main
                     <!-- cover -->
                     <img src="{{ asset($book['img_url']) }}" alt="Book Cover" class="book-cover">
                     <!-- title, author -->
@@ -70,22 +66,12 @@
             @endif
         </div>
 
-<<<<<<< HEAD
-                <a href="shop" class="back-to-shopping"> < Back to Shopping</a>
-                </div>
-                <div class="checkout-container">
-                     <h2>checkout:</h2>
-                     <div class="main-container">
-                        <div class="main-content">
-                        <div class="delivery-address">
-=======
         <div class="checkout-container">
             <h2>checkout:</h2>
             <form action="{{ route('confirmBasket')}}" method="POST" class="main-checkout-form"> <!-- the whole checkout bit should be contained in this form now :) -->
                 @csrf
                 <div class="main-content">
                     <div class="delivery-address">
->>>>>>> main
                         <h2>Delivery Address</h2>
                         <label for="first-name">First Name:</label>
                         <input type="text" id="first-name" name="first-name" required>
