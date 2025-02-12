@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css" onerror="alert('CSS file not found!')">
     <script src="index.js" defer></script>
 </head>
 <body>
@@ -14,29 +14,25 @@
         <div class="logo">
             <img src="images/logo.png" alt="Logo">
         </div>
-
-
         <div class="title">
-
             <h1>PageTurner</h1>
-
         </div>
+        
     </header>
 
     <!-- Search Bar -->
      
     <div class="search-box">
-        <form action="{{ route('shopSearch') }}" method="POST">
-            @csrf
-            <div class="search-bar">
-                <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
-                <button type="submit"><img src="magnifying-glass.png" alt="Search" class="search-icon"></button>
-            </div>   
-        </form>
-        <!--<input type="text" placeholder="Search for books..." id="search-bar">
-        <img src="magnifying-glass.png" alt="Search" class="search-icon">-->
-
-    </div>
+    <form action="{{ route('shopSearch') }}" method="POST">
+        @csrf
+        <div class="search-bar">
+            <input type="text" name='search' placeholder="Search for books..." id="search" value="{{ request()->input('search') }}">
+            <button type="submit" class="search-icon">
+                <img src="search.png" alt="Search">
+            </button>
+        </div>   
+    </form>
+</div>
 
     <!-- Navigation Bar -->
     <div class="navBar">
@@ -110,13 +106,14 @@
 
 <!-- Genre Icons Section -->
 <div class="genre-icons">
-    @foreach ($categories as $category)
+    @foreach ($categories->unique('name') as $category)
     <form action="{{ route('navigateShop') }}" method="POST">
         @csrf
         <div class="genre-icon">
             <input type="hidden" value="{{ $category->id }}" name="genre-select">
             <button type="submit">
-                <img src="images/{{ $category->img_url }}" alt="{{ $category->name }}">
+                <!-- Ensure correct genre images are displayed -->
+                <img src="images/{{ strtolower(str_replace(' ', '-', $category->name)) }}.png" alt="{{ $category->name }}">
                 <p>{{$category->name}}</p>
             </button>
         </div>

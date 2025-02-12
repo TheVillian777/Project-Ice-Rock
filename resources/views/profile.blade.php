@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="contact.css" onerror="alert('CSS file not found!')">
     <script src="contact.js" defer></script>
 </head>
 <body>

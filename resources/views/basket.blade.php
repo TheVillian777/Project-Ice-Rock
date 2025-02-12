@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/basket.css">
+    <link rel="stylesheet" href="css/basket.css" onerror="alert('CSS file not found!')">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Basket</title>
 </head>
@@ -24,13 +24,9 @@
                 <p>The Basket is Currently Empty</p> 
             @else
                 <!-- basket card (book cover, title, author, quantity with arrows, price) -->
-<<<<<<< HEAD
-                <div class="basket-cardDetails">
-=======
                 <!-- loops through basket array to display all items stored in session -->
                 @foreach ($basket as $book)
                 <div class="basket-card">
->>>>>>> main
                     <!-- cover -->
                     <img src="{{ asset($book['img_url']) }}" alt="Book Cover" class="book-cover">
                     <!-- title, author -->
