@@ -64,6 +64,7 @@ Route::get('/listing', function () {
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/forgottenPassword', [AuthController::class, 'forgottenPassword'])->name('forgottenPassword');
 
 //ContactUs Storing
 Route::post('/contact', [ContactUsController::class, 'contactUs'])->name('contactUs');

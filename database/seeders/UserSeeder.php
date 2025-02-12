@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
             'email' => 'notjackfryer@gmail.com',
             'phone' => 123456789,
             'isadmin' => false,
-            'password' => 'password'
+            'password' => 'password',
+            'security_answer' => 'brian'
         ]);
     }
 }
