@@ -20,7 +20,9 @@
 <div class="container">
     <div class="form-container" id="login-form">
         <h2>Login</h2>
-
+        @if (session('message'))
+            <p style="color: red;">{{ session('message') }}</p>
+        @endif
         <!-- login form -->
         <form action="{{ route('login') }}" method="post">
             @csrf

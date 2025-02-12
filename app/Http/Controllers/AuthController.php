@@ -47,7 +47,7 @@ class AuthController extends Controller
     if (Auth::attempt($user->only('email', 'password'))) {
         return redirect()->route('shop'); // Redirect to the shop page
     }
-    return redirect()->back()->withErrors(['Incorrect login details']);
+    return redirect()->route('login')->with('message', 'Incorrect Password');
   }
 
   
