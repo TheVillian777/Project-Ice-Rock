@@ -18,7 +18,7 @@
     </div>
     <div class="main-container">
         <div class="basket-container">
-            <h2>basket:</h2>
+            <h2>Basket:</h2>
 
             @if (empty($basket))
                 <p>The Basket is Currently Empty</p> 
@@ -67,7 +67,7 @@
         </div>
 
         <div class="checkout-container">
-            <h2>checkout:</h2>
+            <h2>Checkout:</h2>
             <form action="{{ route('confirmBasket')}}" method="POST" class="main-checkout-form"> <!-- the whole checkout bit should be contained in this form now :) -->
                 @csrf
                 <div class="main-content">
