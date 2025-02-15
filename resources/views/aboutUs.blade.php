@@ -32,9 +32,7 @@
                 <button type="submit"><img src="magnifying-glass.png" alt="Search" class="search-icon"></button>
             </div>   
         </form>
-        <!--<input type="text" placeholder="Search for books..." id="search-bar">
-        <img src="magnifying-glass.png" alt="Search" class="search-icon">-->
-
+    
     </div>
 
     <!-- Navigation Bar -->
@@ -72,17 +70,15 @@
      <button id="readMoreBtn" class="read-more-btn">Read More</button>
      
      <!-- Hidden Content -->
-      <div id="moreContent" style="display: none;">
+     <div id="moreContent">
 
      <h2>Why Choose Us?</h2>
-     <p>we have vast collection – From bestsellers to hidden gems, we have something for everyone.</p>
+     <p>we have vast collection - From bestsellers to hidden gems, we have something for everyone.</p>
      <p>we are easy & secure - A hassle-free experience with safe payment options.</p>
 
      <h2>Our Commitment</h2>
      <p>At PageTurner, we are committed to promoting the joy of reading and supporting authors and publishers worldwide. Our goal is to make literature accessible and enjoyable for all.</p>
-     <!--new change -->
-     <button id="readLessBtn" class="read-more-btn">Read Less</button>
-     
+
     </div>
 
 
