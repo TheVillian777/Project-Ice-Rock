@@ -138,13 +138,11 @@ header {
     margin: 10px 0 20px;
 }
 
-
-/* CHANGES END */
 #moreContent {
-    display: none; /* Initially hide the extra content */
+    display: none; /* Initially hidden */
 }
 
-/* Read More Button */
+/* Read More/Less Button */
 .read-more-btn {
     background-color: #333;
     color: white;
@@ -154,6 +152,9 @@ header {
     font-size: 16px;
     cursor: pointer;
     margin-top: 10px;
+    display: block; /* Ensures it stays centered */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .read-more-btn:hover {
