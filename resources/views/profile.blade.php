@@ -52,5 +52,9 @@
          5. Maybe past reviews?
     -->
 
+
+    <div class = "sideBar">
+        
+    </div>
 </body>
 </html>
