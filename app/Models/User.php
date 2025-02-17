@@ -23,7 +23,8 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
-        'isadmin'
+        'isadmin',
+        'security_answer'
     ];
 
     /**
@@ -48,9 +49,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function order(){
-        return $this->hasMany(Order::class);
-    }
-
 }
