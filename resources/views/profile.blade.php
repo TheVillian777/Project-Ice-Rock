@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="profile.css" onerror="alert('CSS file not found!')">
+    <link rel="stylesheet" href="css/profile.css" onerror="alert('CSS file not found!')">
     <script src="contact.js" defer></script>
 </head>
 <body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <div class="title">
+            <h1>PageTurner</h1>
+        </div>
+        
+    </header>
 
 <div class="search-box">
         <form action="{{ route('shopSearch') }}" method="POST">
@@ -28,7 +39,6 @@
         <a href="{{ route('shop') }}">Books</a>
         <!--<a href="{{ route('saved') }}">Saved</a>-->
         <a href="{{ route('basket') }}">Basket</a>
-        <a href="{{ route('profile') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
         <a href="{{ route('profile') }}">Profile</a>
@@ -54,7 +64,15 @@
 
 
     <div class = "sideBar">
-        
+    <h2>Account information</h2>
+    <ul>
+        <li><a href="{{ route('profile') }}">Your profile</a></li>
+        <li><a href="#">Past orders</a></li>
+        <li><a href="#">Favourites</a></li>
+        <li><a href="#">Payment options</a></li>
+        <li><a href="#">Your address</a></li>
+    </ul>
+
     </div>
 </body>
 </html>
