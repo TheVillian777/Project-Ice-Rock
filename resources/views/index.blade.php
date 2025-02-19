@@ -8,7 +8,7 @@
     <script src="index.js" defer></script>
 </head>
 <body>
-
+    
     <!-- Header -->
     <header>
         <div class="logo">
@@ -20,40 +20,99 @@
         
     </header>
 
-    <!-- Search Bar -->
+
+       <!-- Account Dropdown backend can you route this to the correct pages --> 
+       <div class="account-dropdown">
+        <a href="#" class="account-button"> ACCOUNT <img src="images/account-icon.png" alt="Account Icon"></a>
+        <div class="account-dropdown-content">
+            <form action="{{ route('shop') }}" method="post">
+                @csrf
+                <button type="submit">Sign In</button>
+            </form>
+            <div class="dropdown-divider"></div>
+            <form action="{{ route('shop') }}" method="post">
+                @csrf
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+          <!-- Search Bar -->
      
     <div class="search-box">
-    <form action="{{ route('shopSearch') }}" method="POST">
-        @csrf
-        <div class="search-bar">
-            <input type="text" name='search' placeholder="Search for books..." id="search" value="{{ request()->input('search') }}">
-            <button type="submit" class="search-icon">
-                <img src="search.png" alt="Search">
-            </button>
-        </div>   
-    </form>
-</div>
+        <form action="{{ route('shopSearch') }}" method="POST">
+            @csrf
+            <div class="search-bar">
+                <input type="text" name='search' placeholder="Search for books..." id="search" value="{{ request()->input('search') }}">
+                <button type="submit" class="search-icon">
+                    <img src="images/search.png" alt="Search">
+                </button>
+            </div>   
+        </form>
+        <!-- Basket Button -->
+        <div class="basket-button-container"> 
+            <a href="{{ route('basket') }}" class="basket-button">
+                <img src="images/basket-icon.png" alt="Basket">
+            </a>
+        </div>
+    </div>
+
+    
+    <!-- Wishlist Button -->
+    <div class="wishlist-button">
+            <a href="{{ route('saved')}}">
+                WISHLIST <img src="images/heart.png" alt="Wishlist Icon">
+            </a>
+    </div>
+
+    
 
     <!-- Navigation Bar -->
-    <div class="navBar">
-        <a class="active" href="{{ route('index') }}">Home</a>
+<div class="navBar">
+    <a class="active" href="{{ route('index') }}">Home</a>
+    
+    <!-- Dropdown for Books -->
+    <div class="dropdown">
         <a href="{{ route('shop') }}">Books</a>
-        <!--<a href="{{ route('saved') }}">Saved</a>-->
-        <a href="{{ route('basket') }}">Basket</a>
-        <a href="{{ route('profile') }}">Profile</a>
-        <a href="{{ route('aboutUs') }}">About Us</a>
-        <a href="{{ route('contact') }}">Contact Us</a>
-        <a href="{{ route('profile') }}">Profile</a>
-        @if (Auth::check())
-        <form action="{{ route('logout')}}" method="POST">
-            @csrf
-        <button type="submit">Log Out</button>
-        </form>
-        @else 
-        <a href="{{ route('login') }}">Login</a>
-        </form>
-        @endif
+        <div class="dropdown-content">
+            <form action="{{ route('navigateShop') }}" method="POST">
+                @csrf
+                <input type="hidden" value="1" name="genre-select">
+                <button type="submit">Fantasy</button>
+            </form>
+            <form action="{{ route('navigateShop') }}" method="POST">
+                @csrf
+                <input type="hidden" value="2" name="genre-select">
+                <button type="submit">Horror</button>
+            </form>
+            <form action="{{ route('navigateShop') }}" method="POST">
+                @csrf
+                <input type="hidden" value="3" name="genre-select">
+                <button type="submit">Mystery</button>
+            </form>
+            <form action="{{ route('navigateShop') }}" method="POST">
+                @csrf
+                <input type="hidden" value="4" name="genre-select">
+                <button type="submit">Crime</button>
+            </form>
+            <form action="{{ route('navigateShop') }}" method="POST">
+                @csrf
+                <input type="hidden" value="5" name="genre-select">
+                <button type="submit">Biography</button>
+            </form>
+        </div>
     </div>
+    <a href="{{ route('aboutUs') }}">About Us</a>
+    <a href="{{ route('contact') }}">Contact Us</a>
+    @if (Auth::check())
+    <form action="{{ route('logout')}}" method="POST">
+        @csrf
+        <button type="submit">Log Out</button>
+    </form>
+    @else 
+    @endif
+</div>
+
     <!-- Image placeholder -->
     <div class="image-slider">
     <div class="slider-container">
