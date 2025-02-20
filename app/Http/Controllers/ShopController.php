@@ -105,10 +105,44 @@ class ShopController extends Controller
 
     public function listBook(Request $request){
 
-        $id = request()->input('book_id');
+        $viewed = Session::get('recentView',[]);
 
+        $id = request()->input('book_id');
         $book = Book::find($id);
 
+        foreach ($viewed as &$books) {
+            if($books['book_ID'] == $book->id) {
+                return view('listing',compact('book'));
+            }
+        }
+
+        if(count($viewed) < 4) {
+            $viewed[] = [
+                'book_ID' => $book->id,
+                'book_name' => $book->book_name,
+                'first_name' => $book->author->first_name,
+                'last_name' => $book->author->last_name,
+                'price' => $book->book_price,
+                'img_url' => $book->img_url,
+                'published_date' => $book->published_date,
+            ];
+        } else {
+            array_pop($viewed);
+            $newViewed = [
+                'book_ID' => $book->id,
+                'book_name' => $book->book_name,
+                'first_name' => $book->author->first_name,
+                'last_name' => $book->author->last_name,
+                'price' => $book->book_price,
+                'img_url' => $book->img_url,
+                'published_date' => $book->published_date,
+            ];
+            array_unshift($viewed,$newViewed);
+        }
+
+        session()->put('recentView',$viewed);
+        //$request->session()->forget('recentView');
+        
         return view('listing',compact('book'));
 
     }

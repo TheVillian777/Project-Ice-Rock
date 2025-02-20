@@ -216,6 +216,34 @@
     <img src="images/banner.png" alt="Promotional Banner">
 </div>
 
+@if (Auth::check() and !empty($viewed))
+<!-- Book showcase -->
+<div class="book-slider">
+
+    <!-- Top right "See More" link-->
+    <div class="showcase-header">
+        <h2 class="showcase-title">Recently Viewed</h2>
+        <a href="{{ route('shop') }}" class="see-more">See More</a>
+    </div>
+    
+    <button class="book-prev-arrow">&#10094;</button>
+    <div class="book-slider-container">
+        @foreach ($viewed as $book)
+        <div class="book-slide">
+            <img src="{{ 'images/' . $book['img_url']}} " alt="Book Cover">
+            <h3>{{ $book['book_name']}}</h3> <!-- Book Name -->
+            <p>{{ $book['first_name'] . " " . $book['last_name'] }}</p> <!-- Author Name -->
+            <p class="price">£{{ $book['price']}}</p> <!-- Price of book -->
+            <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
+        </div>
+        @endforeach
+
+<!-- Arrows for the book showcase -->   
+    </div>
+    <button class="book-next-arrow">&#10095;</button>
+</div>
+@endif
+
 <!-- Divider Line -->
 <div class="section-divider"></div>
 
