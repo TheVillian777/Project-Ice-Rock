@@ -133,3 +133,71 @@ body {
     padding-top: 60px; /* navbar height */
 }
 
+.profileInfo {
+    padding: 20px;
+    margin-left: 50px;
+}
+
+.profileInfo h2 {
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profileInfo h3 {
+    text-align: left;
+    font-size: 16px;
+    font-weight: normal;
+    color: #555; 
+    margin-bottom: 20px;
+}
+
+.profileInfo label {
+    font-size: 26px;
+    font-weight: bold;
+    display: block;
+    margin-top: 20px;
+}
+
+.changePassword {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.profileInfo select,
+.profileInfo input[type="text"],
+.profileInfo input[type="tel"],
+.profileInfo input[type="email"],
+.profileInfo input[type="password"] {
+    width: 250px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    display: block
+}
+
+.name-input {
+    margin-top: 20px; 
+}
+
+.confirm-button {
+    width: 270px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #183e1a; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.confirm-button:hover {
+    background-color: #1e391f;
+}

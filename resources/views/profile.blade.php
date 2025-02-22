@@ -67,12 +67,73 @@
     <h2>Account information</h2>
     <ul>
         <li><a href="{{ route('profile') }}">Your profile</a></li>
-        <li><a href="#">Past orders</a></li>
-        <li><a href="#">Favourites</a></li>
-        <li><a href="#">Payment options</a></li>
-        <li><a href="#">Your address</a></li>
+        <li><a href="">Past orders</a></li>
+        <li><a href="">Favourites</a></li>
+        <li><a href="">Payment options</a></li>
+        <li><a href="">Your address</a></li>
     </ul>
 
     </div>
+
+    <div class = "profileInfo">
+        <h2>Your profile</h2>
+        <h3>Start your journey here! Share your information for faster checkouts and amend it anytime!</h3>
+
+    <form action="#" method="POST">
+        <label for="title">Title:</label>
+        <select id="title" name="title">
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Miss">Miss</option>
+            <option value="Ms">Ms</option>
+            <option value="Dr">Dr</option>
+            <option value="Prof">Prof</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <div class="name-input">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
+        </div>
+
+        <div class="name-input">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+        </div>
+
+        <div class="name-input">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number">
+        </div>
+
+        <div class="name-input">
+            <label for="email">Current Email Address:</label>
+            <input type="text" id="email" name="email" placeholder="PageTurner@gmail.com">
+        </div>
+
+        <div class="changePassword">
+            <p>Would you like to change your password?</p>
+        </div>
+
+        <div class="name-input">
+            <label for="currentPassword">Current Password:</label>
+            <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter your current password">
+        </div>
+
+        <div class="name-input">
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" placeholder="Enter your new password">
+        </div>
+
+        <div class="name-input">
+            <label for="confirmPassword">Confirm New Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your new password">
+        </div>
+
+        <button type="submit" class="confirm-button">Confirm</button>
+
+    </form>
+    </div>
+
 </body>
 </html>
