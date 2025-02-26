@@ -22,7 +22,7 @@
                 <div class="search-bar">
                     <input type="text" name='search' placeholder="Search for books..." id="search" value="{{ request()->input('search') }}">
                     <button type="submit" class="search-icon">
-                        <i class="search"></i>
+                        <i class="fa fa-search"></i>
                     </button>
                 </div>
             </form>
