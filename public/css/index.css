@@ -23,67 +23,165 @@ body {
     background: #555;
 }
 
-/* Header Section */
-header {
-    text-align: center;
-    padding: 20px;
-}
-
-/* Logo */
-.logo img {
-    width: 10%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-.title h1 {
-    font-size: 36px;
-    color: #333;
-    margin-top: 10px;
-}
-
-/* Search bar */
-.search-box {
-    position: absolute;
-    right: 200px;
-    top: 200px;
+/* New Header Styles */
+.new-header {
+    background-color: #333; 
+    color: white;
+    padding: 10px 20px;
     display: flex;
-
+    align-items: center;
+    justify-content: space-between;
 }
 
-.search-box input[type="text"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    width: 300px;
-    margin-right: 40px;
+.new-header a {
+    color: white;
+    text-decoration: none;
 }
 
-.search-box button {
-    position: absolute;
-    right: 90px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    cursor: pointer;
+/* Logo and Title */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 80px; 
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 24px; 
+    margin: 0;
+}
+
+/* Search Box */
+.search-box {
+    flex-grow: 1; 
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
     padding: 5px;
 }
 
-.search-box button img {
-    width: 20px;
-    height: 20px;
+.search-bar input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    flex-grow: 1; 
+    border-radius: 5px 0 0 5px;
 }
 
+.search-bar input[type="text"]:focus {
+    outline: none;
+}
+
+.search-icon {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #555;
+}
+
+/*Account/Basket*/
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.account-dropdown {
+    position: relative;
+    margin-right: 20px;
+}
+
+.account-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.account-button i {
+    margin-right: 5px; 
+}
+
+.account-dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    display: none; 
+}
+
+.account-dropdown:hover .account-dropdown-content {
+    display: block; 
+}
+
+.account-dropdown-content form {
+    padding: 10px;
+    text-align: center;
+}
+
+.account-dropdown-content button {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #ccc;
+    margin: 5px 0;
+}
+
+.basket-button-container a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.basket-button-container i {
+    margin-right: 5px;
+}
+
+/* Wishlist */
+.wishlist-button {
+    display: flex;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    align-items: center;
+    margin-right: 20px;
+}
 
 /* Navigation Bar */
 .navBar {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: #333;
+    background-color: #3f3f3f;
     padding: 10px;
     margin: 0;
     list-style: none;
@@ -374,27 +472,26 @@ header {
 
 /* Separation Line */
 .section-divider {
-    width: 80%; 
-    max-width: 1200px; 
-    margin: 20px auto; 
-    border-bottom: 2px solid #ccc; 
-    opacity: 0.8; 
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-bottom: 1px solid #ccc;
 }
 
 
 /* Banner Section */
 .banner-section {
-    max-width: 1420px;
-    margin: 20px auto; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
 }
 
 .banner-section img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Dropdown box */
@@ -404,163 +501,43 @@ header {
 }
 
 .dropdown a {
+    display: block;
     color: white;
     text-decoration: none;
-    margin: 0 15px;
+    padding: 10px 15px;
     font-size: 16px;
-    padding: 10px;
 }
 
-/* Dropdown Content */
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #333;
+    background-color: #f9f9f9;
     min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
 .dropdown-content form {
+    display: block;
+    padding: 0;
     margin: 0;
 }
 
 .dropdown-content button {
-    color: white;
-    background-color: #333;
-    border: none;
-    text-align: left;
-    padding: 10px 20px;
+    color: black;
+    padding: 12px 16px;
     text-decoration: none;
     display: block;
+    border: none;
+    background: none;
     width: 100%;
-    font-size: 16px;
+    text-align: left;
 }
 
 .dropdown-content button:hover {
-    background-color: #575757;
-    text-decoration: underline;
+    background-color: #ddd;
 }
 
-/*dropdown on hover*/
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.dropdown:hover a {
-    background-color: #444;
-}
-
-/* Basket Button */
-.basket-button-container {
-    position: relative;
-   
-}
-
-/* Basket Button */
-.basket-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-}
-
-.basket-button img {
-    width: 40px;
-    height: 40px;
-   
-}
-
-
-/* Account Dropdown */
-.account-dropdown {
-    position: absolute;
-    left: 80px;
-    top: 240px; 
-    display: inline-block;
-}
-
-.account-button {
-    background-color: transparent;
-    color: #333;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center; 
-    text-decoration: none;
-}
-
-.account-button img {
-    width: 20px; 
-    height: 20px;
-    margin-left: 5px; 
-}
-
-.account-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.account-dropdown-content form {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.account-dropdown-content button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-.account-dropdown-content button:hover {
-    text-decoration: underline;
-}
-
-.account-dropdown:hover .account-dropdown-content {
-    display: block;
-}
-
-.dropdown-divider {
-    border-bottom: 1px solid #ccc;
-    margin: 5px 0;
-}
-
-/* Wishlist Button */
-.wishlist-button {
-    position: absolute;
-    left: 200px; 
-    top: 240px; 
-    display: inline-block;
-    color: #333;
-    padding: 10px 15px;
-    font-size: 16px;
-}
-
-.wishlist-button a {
-    display: flex;
-    align-items: center;
-    color: #333; 
-    text-decoration: none;
-}
-
-.wishlist-button img {
-    width: 20px; 
-    height: 20px;
-    margin-left: 5px; 
 }
