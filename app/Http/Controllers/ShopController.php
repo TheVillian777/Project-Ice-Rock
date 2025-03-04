@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Category;
 use App\Models\Book;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -64,8 +65,7 @@ class ShopController extends Controller
     public function addToBasket(Request $request)
     {
         $bookId = Book::find($request->bookId); // gets brook from database using book id
-
-        $basket = Session::get('basket',[]);// gets current baskset session or leaves it as empty
+        $basket = Session::get('basket'.Auth::id(),[]);// gets current baskset session or leaves it as empty
     
         //checks if book is already in basket, if so quanitity is increased.
         $bookAddedAlready = false;
@@ -95,7 +95,7 @@ class ShopController extends Controller
         }
 
         //saves basket to session
-        session()->put('basket',$basket);
+        session()->put('basket'.Auth::id(),$basket);
         //dd($basket);
         
         return redirect()->route('shop')->with('message','Item has been successfully added to basket!'); // redirects user to homepage and sends a confirmation messaage
@@ -105,7 +105,7 @@ class ShopController extends Controller
 
     public function listBook(Request $request){
 
-        $viewed = Session::get('recentView',[]);
+        $viewed = Session::get('recentView'.Auth::id(),[]);
 
         $id = request()->input('book_id');
         $book = Book::find($id);
@@ -140,7 +140,7 @@ class ShopController extends Controller
             array_unshift($viewed,$newViewed);
         }
 
-        session()->put('recentView',$viewed);
+        session()->put('recentView'.Auth::id(),$viewed);
         //$request->session()->forget('recentView');
         
         return view('listing',compact('book'));
