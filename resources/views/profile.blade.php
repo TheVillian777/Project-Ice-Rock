@@ -20,14 +20,7 @@
     </script>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo">
-        </div>
-        <div class="title">
-            <h1>PageTurner</h1>
-        </div>
-    </header>
+    <!-- header goes here -->
 
     <div class="navBar">
         <a class="active" href="{{ route('index') }}">Home</a>

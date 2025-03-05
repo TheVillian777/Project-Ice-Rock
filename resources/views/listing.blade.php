@@ -9,6 +9,8 @@
     <title>Product Listing</title>
 </head>
 <body>
+<!-- header goes here -->
+
 
 <div class="navBar">
         <a href="{{ route('index') }}">Home</a>
