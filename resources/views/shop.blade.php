@@ -19,7 +19,7 @@
     <!-- header, search bar -->
     <header>
         <h1>Browse our books...</h1>
-        <!-- Item added to basket confirmation message -->
+        <!-- item added to basket confirmation message -->
         @if (session('message')) 
             <div class="alert"><p>{{session('message')}}</p></div> 
         @endif
@@ -37,7 +37,7 @@
     <div class="navBar">
         <a href="{{ route('index') }}">Home</a>
         <a class="active" href="{{ route('shop') }}">Books</a>
-        <!--<a href="{{ route('saved') }}">Saved</a>-->
+        <a href="{{ route('saved') }}">Saved</a>
         <a href="{{ route('basket') }}">Basket</a>
         <a href="{{ route('profile') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
@@ -96,37 +96,31 @@
         <!-- defining a book card -->
 
         @foreach ($books as $book)
-        <div class="book-card">
+        <div class="book-card" onclick="window.location='{{ route('listing', ['book_id' => $book->id]) }}'">
             <img src="{{ asset('images/' . $book->img_url) }}" alt="book cover">
-            <h3>{{ $book->book_name }} <i class="fas fa-bookmark save-bookmark" data-title="{{ $book->book_name }}" data-author='{{ $book->author->first_name . " " . $book->author->last_name }}' data-image="{{ asset('images/' . $book->img_url) }}"></i></h3>
+            <h3>{{ $book->book_name }} 
+                <i class="fas fa-bookmark save-bookmark" 
+                data-title="{{ $book->book_name }}" 
+                data-author="{{ $book->author->first_name . ' ' . $book->author->last_name }}" 
+                data-image="{{ asset('images/' . $book->img_url) }}">
+                </i>
+            </h3>
             <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p>
             <div class="price">
                 <p>£{{ $book->book_price }}</p>
             </div>
-
             <div class="basket-container">
-                <form action="{{route('addToBasket') }}" method="POST">
+                <form action="{{ route('addToBasket') }}" method="POST" class="basket-form">
                     @csrf
-                    <div class="quantity">
-                        <input type="hidden" value="{{ $book->id }}" name="bookId">
-                        <input type="number" id="quantityOf_{{ $book->id }}" name="quantity" min="1" value="1" placeholder="1">
-                    </div>
-                    <br>
-                    <div class="add-to-basket">
-                        <button class="add-to-basket-btn"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i> Add to basket</button>
-                    </div>
+                    <input type="hidden" name="bookId" value="{{ $book->id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="basket-icon-btn">
+                        <i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i>
+                    </button>
                 </form>
-                <form action="{{route('listing') }}" method="POST">
-                    @csrf
-                    <br>
-                    <div class="add-to-basket">
-                        <input type="hidden" name="book_id" value="{{ $book->id }}">
-                        <button class="add-to-basket-btn"> Book Details </button>
-                    </div>
-                </form>
-                <br>
             </div>
         </div>
+
         @endforeach
         </section>
         </main>
