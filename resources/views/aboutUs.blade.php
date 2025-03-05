@@ -76,7 +76,7 @@
      <p>we have vast collection - From bestsellers to hidden gems, we have something for everyone.</p>
      <p>we are easy & secure - A hassle-free experience with safe payment options.</p>
 
-     <h2>Our Commitment</h2>
+     <h2>Our Commitment -test</h2>
      <p>At PageTurner, we are committed to promoting the joy of reading and supporting authors and publishers worldwide. Our goal is to make literature accessible and enjoyable for all.</p>
 
     </div>
