@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->char('name', length:20);
             $table->char('description', length:100);
+            $table->string('img_url')->nullable();
         });
     }
 

@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AboutUs</title>
     <link rel="stylesheet" href="css/aboutUs.css">
     <script src="{{ asset('js/aboutus.js') }}" defer></script>
+
+    <title>PageTurner</title>
+    <link rel="stylesheet" href="css/styles.css" onerror="alert('CSS file not found!')">
+
 </head>
 
 <body>
@@ -24,6 +29,13 @@
     </header>
 
     <!-- Search Bar -->
+    <h1>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+    </h1>
+
+    <!-- Search bar -->
     <div class="search-box">
         <form action="{{ route('shopSearch') }}" method="POST">
             @csrf

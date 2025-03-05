@@ -17,23 +17,28 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'name' => 'fantasy',
-                'description' => 'a genre of fiction that includes magical and supernatural things'
+                'description' => 'a genre of fiction that includes magical and supernatural things',
+                'img_url' => 'fantasy.png'
             ],
             [
-                'name' => 'horror',
-                'description' => 'a genre designed to fear into the reader'
+                'name' => 'non-fiction',
+                'description' => '',
+                'img_url' => 'non-fiction.png'
             ],
             [
                 'name' => 'mystery',
-                'description' => 'a genre of fiction where a central character often solves a crime'
+                'description' => 'a genre of fiction where a central character often solves a crime',
+                'img_url' => 'mystery.png'
             ],
             [
-                'name' => 'crime',
-                'description' => 'a genre of fiction/non fiction that involves an act of crime'
+                'name' => 'fiction',
+                'description' => 'a genre of fiction/non fiction that involves an act of crime',
+                'img_url' => 'fiction.png'
             ],
             [
-                'name' => 'biography',
-                'description' => 'a genre of non-fiction about the life story of a real person'
+                'name' => 'science-fiction',
+                'description' => 'a genre of non-fiction about the life story of a real person',
+                'img_url' => 'science-fiction.png'
             ],
         ]);
     }

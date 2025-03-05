@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Category;
 use App\Models\Book;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -28,6 +29,17 @@ class ShopController extends Controller
         $books = Book::with('author')->where('book_name','like','%' . $search . '%')->get();
 
         return view('shop', compact('categories','books'));
+    }
+
+    public function navShop(Request $request){
+        
+        $filterOption = $request->input('genre-select');
+        
+        //Fetch all categories
+        $categories = Category::all();
+        $books = Book::with('author')->where('category_id', $filterOption)->get();
+
+        return view('shop',compact('categories','books'));
 
     }
 
@@ -53,8 +65,7 @@ class ShopController extends Controller
     public function addToBasket(Request $request)
     {
         $bookId = Book::find($request->bookId); // gets brook from database using book id
-
-        $basket = Session::get('basket',[]);// gets current baskset session or leaves it as empty
+        $basket = Session::get('basket'.Auth::id(),[]);// gets current baskset session or leaves it as empty
     
         //checks if book is already in basket, if so quanitity is increased.
         $bookAddedAlready = false;
@@ -84,7 +95,7 @@ class ShopController extends Controller
         }
 
         //saves basket to session
-        session()->put('basket',$basket);
+        session()->put('basket'.Auth::id(),$basket);
         //dd($basket);
         
         return redirect()->route('shop')->with('message','Item has been successfully added to basket!'); // redirects user to homepage and sends a confirmation messaage
@@ -94,10 +105,44 @@ class ShopController extends Controller
 
     public function listBook(Request $request){
 
-        $id = request()->input('book_id');
+        $viewed = Session::get('recentView'.Auth::id(),[]);
 
+        $id = request()->input('book_id');
         $book = Book::find($id);
 
+        foreach ($viewed as &$books) {
+            if($books['book_ID'] == $book->id) {
+                return view('listing',compact('book'));
+            }
+        }
+
+        if(count($viewed) < 4) {
+            $viewed[] = [
+                'book_ID' => $book->id,
+                'book_name' => $book->book_name,
+                'first_name' => $book->author->first_name,
+                'last_name' => $book->author->last_name,
+                'price' => $book->book_price,
+                'img_url' => $book->img_url,
+                'published_date' => $book->published_date,
+            ];
+        } else {
+            array_pop($viewed);
+            $newViewed = [
+                'book_ID' => $book->id,
+                'book_name' => $book->book_name,
+                'first_name' => $book->author->first_name,
+                'last_name' => $book->author->last_name,
+                'price' => $book->book_price,
+                'img_url' => $book->img_url,
+                'published_date' => $book->published_date,
+            ];
+            array_unshift($viewed,$newViewed);
+        }
+
+        session()->put('recentView'.Auth::id(),$viewed);
+        //$request->session()->forget('recentView');
+        
         return view('listing',compact('book'));
 
     }

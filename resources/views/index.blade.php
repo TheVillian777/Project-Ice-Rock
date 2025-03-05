@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css" onerror="alert('CSS file not found!')">
     <script src="index.js" defer></script>
 </head>
 <body>
@@ -12,31 +12,27 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="images/logo.png" alt="Logo">
         </div>
-
-
         <div class="title">
-
             <h1>PageTurner</h1>
-
         </div>
+        
     </header>
 
     <!-- Search Bar -->
      
     <div class="search-box">
-        <form action="{{ route('shopSearch') }}" method="POST">
-            @csrf
-            <div class="search-bar">
-                <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
-                <button type="submit"><img src="magnifying-glass.png" alt="Search" class="search-icon"></button>
-            </div>   
-        </form>
-        <!--<input type="text" placeholder="Search for books..." id="search-bar">
-        <img src="magnifying-glass.png" alt="Search" class="search-icon">-->
-
-    </div>
+    <form action="{{ route('shopSearch') }}" method="POST">
+        @csrf
+        <div class="search-bar">
+            <input type="text" name='search' placeholder="Search for books..." id="search" value="{{ request()->input('search') }}">
+            <button type="submit" class="search-icon">
+                <img src="search.png" alt="Search">
+            </button>
+        </div>   
+    </form>
+</div>
 
     <!-- Navigation Bar -->
     <div class="navBar">
@@ -44,9 +40,10 @@
         <a href="{{ route('shop') }}">Books</a>
         <!--<a href="{{ route('saved') }}">Saved</a>-->
         <a href="{{ route('basket') }}">Basket</a>
-        <a href="{{ route('login') }}">Profile</a>
+        <a href="{{ route('profile') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
+        <a href="{{ route('profile') }}">Profile</a>
         @if (Auth::check())
         <form action="{{ route('logout')}}" method="POST">
             @csrf
@@ -90,7 +87,7 @@
     <div class="book-slider-container">
         @foreach ($books as $book)
         <div class="book-slide">
-            <img src="{{ asset($book->img_url)}} " alt="Book Cover">
+            <img src="{{ asset('images/' . $book->img_url)}} " alt="Book Cover">
             <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
             <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
             <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
@@ -109,28 +106,20 @@
 
 <!-- Genre Icons Section -->
 <div class="genre-icons">
-    <div class="genre-icon" onclick="navigateToShop('fiction')"> <!-- Once the genre sort is done! -->
-        <img src="images/fiction.png" alt="Fiction">
-        <p>Fiction</p>
-    </div>
-    <div class="genre-icon" onclick="navigateToShop('non-fiction')">
-        <img src="images/non-fiction.png" alt="Non Fiction">
-        <p>Non Fiction</p>
-    </div>
-    <div class="genre-icon" onclick="navigateToShop('fantasy')">
-        <img src="images/fantasy.png" alt="Fantasy">
-        <p>Fantasy</p>
-    </div>
-    <div class="genre-icon" onclick="navigateToShop('science-fiction')">
-        <img src="images/science-fiction.png" alt="Science Fiction">
-        <p>Science Fiction</p>
-    </div>
-    <div class="genre-icon" onclick="navigateToShop('mystery')">
-        <img src="images/mystery.png" alt="Mystery">
-        <p>Mystery</p>
-    </div>
+    @foreach ($categories->unique('name') as $category)
+    <form action="{{ route('navigateShop') }}" method="POST">
+        @csrf
+        <div class="genre-icon">
+            <input type="hidden" value="{{ $category->id }}" name="genre-select">
+            <button type="submit">
+                <!-- Ensure correct genre images are displayed -->
+                <img src="images/{{ strtolower(str_replace(' ', '-', $category->name)) }}.png" alt="{{ $category->name }}">
+                <p>{{$category->name}}</p>
+            </button>
+        </div>
+    </form>
+    @endforeach
 </div>
-
 
 <!-- Divider Line -->
 <div class="section-divider"></div>
@@ -155,7 +144,7 @@
     <div class="book-slider-container">
         @foreach ($books->take(5) as $book)
         <div class="book-slide">
-            <img src="{{ asset($book->img_url)}} " alt="Book Cover">
+            <img src="{{ asset('images/' . $book->img_url)}} " alt="Book Cover">
             <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
             <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
             <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
@@ -226,6 +215,34 @@
 <div class="banner-section">
     <img src="images/banner.png" alt="Promotional Banner">
 </div>
+
+@if (Auth::check() and !empty($viewed))
+<!-- Book showcase -->
+<div class="book-slider">
+
+    <!-- Top right "See More" link-->
+    <div class="showcase-header">
+        <h2 class="showcase-title">Recently Viewed</h2>
+        <a href="{{ route('shop') }}" class="see-more">See More</a>
+    </div>
+    
+    <button class="book-prev-arrow">&#10094;</button>
+    <div class="book-slider-container">
+        @foreach ($viewed as $book)
+        <div class="book-slide">
+            <img src="{{ 'images/' . $book['img_url']}} " alt="Book Cover">
+            <h3>{{ $book['book_name']}}</h3> <!-- Book Name -->
+            <p>{{ $book['first_name'] . " " . $book['last_name'] }}</p> <!-- Author Name -->
+            <p class="price">£{{ $book['price']}}</p> <!-- Price of book -->
+            <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
+        </div>
+        @endforeach
+
+<!-- Arrows for the book showcase -->   
+    </div>
+    <button class="book-next-arrow">&#10095;</button>
+</div>
+@endif
 
 <!-- Divider Line -->
 <div class="section-divider"></div>

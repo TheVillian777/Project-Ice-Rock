@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/basket.css">
+    <link rel="stylesheet" href="css/basket.css" onerror="alert('CSS file not found!')">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Basket</title>
 </head>
@@ -18,7 +18,7 @@
     </div>
     <div class="main-container">
         <div class="basket-container">
-            <h2>basket:</h2>
+            <h2>Basket:</h2>
 
             @if (empty($basket))
                 <p>The Basket is Currently Empty</p> 
@@ -28,7 +28,7 @@
                 @foreach ($basket as $book)
                 <div class="basket-card">
                     <!-- cover -->
-                    <img src="{{ asset($book['img_url']) }}" alt="Book Cover" class="book-cover">
+                    <img src="{{ asset('images/'.$book['img_url']) }}" alt="Book Cover" class="book-cover">
                     <!-- title, author -->
                     <div class="book-info">
                         <p class="title">{{ $book['book_name'] }}</p>
@@ -67,7 +67,7 @@
         </div>
 
         <div class="checkout-container">
-            <h2>checkout:</h2>
+            <h2>Checkout:</h2>
             <form action="{{ route('confirmBasket')}}" method="POST" class="main-checkout-form"> <!-- the whole checkout bit should be contained in this form now :) -->
                 @csrf
                 <div class="main-content">

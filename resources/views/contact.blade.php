@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
-    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="css/contact.css" onerror="alert('CSS file not found!')">
     <script src="contact.js" defer></script>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="images/logo.png" alt="Logo">
         </div>
 
 
