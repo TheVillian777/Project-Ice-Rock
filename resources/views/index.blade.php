@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css" onerror="alert('CSS file not found!')">
     <script src="index.js" defer></script>
 </head>
 <body>
@@ -14,13 +14,10 @@
         <div class="logo">
             <img src="images/logo.png" alt="Logo">
         </div>
-
-
         <div class="title">
-
             <h1>PageTurner</h1>
-
         </div>
+        
     </header>
 
     <!-- Search Bar -->

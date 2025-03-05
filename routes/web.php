@@ -36,6 +36,11 @@ route::get('/saved' , function(){
     return view('saved');
 })->name('saved');
 
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+Route::get('/', [HomeController::class, 'gatherData'])->name('index');
+
 Route::get('/shop', function () {
     return view('shop');
 })->name('shop');
