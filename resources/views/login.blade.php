@@ -20,7 +20,9 @@
 <div class="container">
     <div class="form-container" id="login-form">
         <h2>Login</h2>
-
+        @if (session('message'))
+            <p style="color: red;">{{ session('message') }}</p>
+        @endif
         <!-- login form -->
         <form action="{{ route('login') }}" method="post">
             @csrf
@@ -56,8 +58,8 @@
             <input type="text" id="register-last" name="last_name" required> 
 
         <!-- input phone number -->
-            <label for="register-phone">Phone Number:</label>
-            <input type="tel" id="register-phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"> 
+            <label for="register-phone">phone number:</label>
+            <input type="tel" id="register-phone" name="phone" pattern="[0-9]{11}"> 
 
             <br></br>
 
@@ -73,11 +75,46 @@
             <label for="register-confirm-password">Confirm Password:</label>
             <input type="password" id="register-confirm-password" name="confirm-password" required>
 
+        <!-- security question -->
+            <label for="register-security-answer">enter your security answer:</label>
+            <input type="text" id="register-security-answer" name="security_answer" placeholder="What's the name of your first pet?" required>
+
         <!-- submit -->
             <button type="submit">Register</button>
 
         <!-- back to login -->    
             <p>Already have an account? <a href="javascript:void(0);" onclick="showLoginForm()">Login</a></p>
+        </form>
+    </div>
+
+    <!-- forgotten password Section -->
+     <div class="form-container" id="forgottenPassword-form" style="display: none;">
+        <h2>Forgotten Password</h2>
+
+        @if ($errors->any())
+                <p style="color: red;">{{ $errors }}</p>
+        @endif
+        
+        <form action="{{ route('forgottenPassword') }}" method="post">
+            @csrf
+        <!-- enter email -->
+            <label for="forgotten-email">email:</label>
+            <input type="email" id="forgotten-email" name="email" required>
+        
+        <!-- security question answer -->
+            <label for="forgotten-security-question">security question answer:</label>
+            <input type="security-answer" id="forgotten-security-question" name="security_answer" placeholder="What's the name of your first pet?" required>
+
+        <!-- input password -->    
+            <label for="register-password">password:</label>
+            <input type="password" id="register-password" name="password" required>
+
+        <!-- confirm password -->    
+            <label for="register-confirm-password">confirm password:</label>
+            <input type="password" id="register-confirm-password" name="confirm-password" required>
+        
+        <!-- submit -->
+            <button type="submit">Confirm</button>
         </form>
     </div>
 </div>
@@ -95,8 +132,16 @@
     }
  
     function forgottenPassword() {
-            alert("write it down!")
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('register-form').style.display = 'none';
+        document.getElementById('forgottenPassword-form').style.display = 'block';
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        @if ($errors->any())
+            forgottenPassword();
+        @endif
+    });
 
 </script>
 
