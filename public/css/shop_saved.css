@@ -13,6 +13,61 @@ body {
     padding: 20px;
 }
 
+.saved-container {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.book-carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 25%;
+    gap: 10px;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.carousel-prev, .carousel-next {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.carousel-prev {
+    left: 0;
+}
+
+.carousel-next {
+    right: 0;
+}
+
+.shopping-cart {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    cursor: pointer; 
+}
+
+.shopping-cart:hover {
+    opacity: 0.8;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -40,14 +95,49 @@ header h1 {
 .search-bar button {
     padding: 10px 15px;
     border: none;
-    background-color: #366329;
+    background-color: #018749;
     color: white;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .search-bar button:hover {
-    background-color: #438733;
+    background-color: #006400;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px;
+    margin: 0;
+    list-style: none;
+}
+
+.navBar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.navBar button {
+    padding: 0;
+    border: none;
+    background: none;
+    color:white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.navBar a:hover {
+    color: #ccc;
+}
+
+.navBar a.active {
+    text-decoration: underline;
 }
 
 main {
@@ -149,8 +239,6 @@ input[type="range"] {
     color: #366329;
 }
 
-
-
 .book-card:hover {
     transform: scale(1.15);
     z-index: 1;
@@ -168,8 +256,60 @@ input[type="range"] {
     margin: 5px 0;
     color: #6c757d;
 }
+.basket-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 15px;
+}
 
+.basket-container .price p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
 
+.basket-container .quantity {
+    display: flex;
+    justify-content: center;
+    align-items: right;
+}
+
+.basket-container .quantity label {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.basket-container .quantity input {
+    width: 50px;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.basket-container .add-to-basket .add-to-basket-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.basket-container .add-to-basket .add-to-basket-btn:hover {
+    background-color: #0056b3;
+}
+
+.basket-container .add-to-basket .add-to-basket-btn i {
+    margin-right: 10px;
+}
 
 /* making it resposnive */
 @media (max-width: 768px) {

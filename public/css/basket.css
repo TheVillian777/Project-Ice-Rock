@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Prociono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    font-family: "PT Serif", serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.back-to-shopping {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 16px;
+    color: #000;
+    text-decoration: none;
+}
+
+.back-to-shopping:hover {
+    color: #0e98ed;
+}
+
+.main-container {
+    width: 75%;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.basket-container {
+    grid-template-columns: 1fr;
+    row-gap: 2px;
+    column-width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.basket-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.book-cover {
+    width: 60px;
+    height: 90px;
+    border-radius: 4px;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px;
+    margin: 0;
+    list-style: none;
+}
+
+.navBar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.navBar button {
+    padding: 0;
+    border: none;
+    background: none;
+    color:white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.navBar a:hover {
+    color: #ccc;
+}
+
+.navBar a.active {
+    text-decoration: underline;
+}
+
+
+.book-info {
+    flex: 4;
+    overflow: hidden;
+}
+
+.book-info .title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-info .author {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 5px 0 0;
+}
+
+.price {
+    font-size: 1rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity .arrow {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.checkout-container {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main-checkout-form { /* and this is the css for the form, most of the boxes below this ascertain to the forms elemenst */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main-content,
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.delivery-address,
+.bank-details,
+.delivery-options,
+.your-order {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+    text-align: left;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.promo-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.promo-apply {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.promo-apply:hover {
+    background-color: #218838;
+}
+
+.your-order p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.your-order hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.total-to-pay {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+}
+
+.checkout-button {
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.checkout-button:hover {
+    background-color: #218838;
+}
+
+@media screen and (max-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+
+    .basket-container,
+    .checkout-container {
+        width: 100%;
+    }
+}
