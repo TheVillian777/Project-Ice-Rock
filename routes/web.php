@@ -36,13 +36,18 @@ route::get('/saved' , function(){
     return view('saved');
 })->name('saved');
 
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+Route::get('/', [HomeController::class, 'gatherData'])->name('index');
+
 Route::get('/shop', function () {
     return view('shop');
 })->name('shop');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
 
 Route::get('/contact', function () {
     return view('contact');

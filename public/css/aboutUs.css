@@ -1,11 +1,22 @@
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(231, 231, 231);
+    background: url('../images/aboutus.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: -2; 
+}
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
     width: 10px;
@@ -351,149 +362,6 @@ body {
     opacity: 1;
     pointer-events: auto;
 }
-
-.book-prev-arrow,
-.book-next-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    color: #585757;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    z-index: 10;
-}
-
-/* Shows books next and previous */
-.book-prev-arrow {
-    left: 10px;
-}
-
-.book-next-arrow {
-    right: 10px;
-}
-
-.book-prev-arrow:hover,
-.book-next-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.showcase-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 10;
-}
-
-.showcase-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-}
-
-.see-more {
-    font-size: 14px;
-    font-weight: bold;
-    color: #007BFF;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.see-more:hover {
-    color: #0056b3;
-}
-
-/* Genre Icons */
-.genre-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin: 20px auto;
-    width: 80%;
-    max-width: 1200px;
-    padding: 20px 0;
-    background-color: transparent;
-}
-
-.genre-icon {
-    text-align: center;
-    width: 120px;
-    height: auto; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.genre-icon button {
-    background-color: rgb(209, 209, 209);
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.genre-icon img {
-    width: 30%;
-    height: 30%;
-    object-fit: contain;
-}
-
-.genre-icon p {
-    font-size: 14px;
-    color: #333;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.genre-icon:hover button {
-    transform: scale(1.1);
-}
-
-.genre-icon:hover {
-    transform: scale(1.05);
-}
-
-
-/* Separation Line */
-.section-divider {
-    width: 80%;
-    max-width: 1200px;
-    margin: 20px auto;
-    border-bottom: 1px solid #ccc;
-}
-
-
-/* Banner Section */
-.banner-section {
-    width: 80%;
-    max-width: 1200px;
-    margin: 20px auto;
-    text-align: center;
-}
-
-.banner-section img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 /* Dropdown box */
 .dropdown {
     position: relative;
@@ -540,4 +408,49 @@ body {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+/* About Us Section */
+.aboutUs-section {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.2); /* Light transparent background */
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    backdrop-filter: blur(5px); 
+}
+
+.aboutUs-section h1 {
+    font-size: 24px;
+    color: white;
+}
+
+.aboutUs-section p {
+    color: white;
+    font-size: 16px;
+    margin: 10px 0 20px;
+}
+
+#moreContent {
+    display: none; /* Initially hidden */
+}
+
+/* Read More/Less Button */
+.read-more-btn {
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block; /* Ensures it stays centered */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.read-more-btn:hover {
+    background-color: #555;
 }
