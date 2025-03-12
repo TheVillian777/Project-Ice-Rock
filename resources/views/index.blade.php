@@ -151,6 +151,32 @@
     </div>
 
 
+    <!-- Book PopUp -->
+    <div id="bookPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <div class="popup-cover">
+            <img id="popup-book-cover" src="" alt="Book Cover">
+        </div>
+        <div class="popup-info">
+            <h2 id="popup-book-title"></h2>
+                <p id="popup-book-author"></p>
+                <p id="popup-book-genre"></p>
+                <p id="popup-book-description"></p>
+                <p id="popup-book-price" class="popup-price"></p>
+                <form action="{{ route('addToBasket') }}" method="POST"></form>
+        </div>
+        <div class="popup-basket">
+            <input type="number" name="quantity" min="1" value="1">
+            <button type="submit" class="add-to-basket-btn">Add to Basket</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
     <!-- Divider Line -->
     <div class="section-divider"></div>
 
