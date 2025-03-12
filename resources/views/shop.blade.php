@@ -37,7 +37,7 @@
 
         <!-- price filter (sliding range) -->
          <div class="filter">
-            <label for="priceRange">Max Price:</label>
+            <label for="priceRange">Min Price:</label>
             <input type="range" id="priceRange" name="priceRange" min="0" max="25" value="{{ request()->input('priceRange', 0) }}">
             <span id="priceValue">£0</span>
         </div>
