@@ -5,15 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shop</title>
+    <title>Shop</title>
     <link rel="stylesheet" href="css/shop_saved.css" onerror="alert('CSS file not found!')">
     <script src="shop_saved.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
+<!-- header goes here -->
+
 <body>
     <div class="saved-container">
-        <h1>your wishlist:</h1>
+        <h1>Your Wishlist:</h1>
 
         <div class="carousel-container">
             <button class="carousel-prev">&lt;</button>
@@ -89,6 +91,26 @@
         </div>
     </div>
 </body>
+
+<footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@icerock.com</p>
+                <p>Phone: +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
 
 </html>

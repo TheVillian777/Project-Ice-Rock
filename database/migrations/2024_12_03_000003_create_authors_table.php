@@ -17,6 +17,7 @@ return new class extends Migration
             $table->char('last_name', length:40);
             $table->text('biography');
             $table->date('date_of_birth');
+            $table->timestamps();
         });
     }
 

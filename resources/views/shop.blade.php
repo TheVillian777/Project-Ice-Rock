@@ -6,62 +6,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shop</title>
-    <link rel="stylesheet" href="css/shop_saved.css" onerror="alert('CSS file not found!')">
+    <link rel="stylesheet" href="css/shop.css" onerror="alert('CSS file not found!')">
     <script src="shop_saved.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- header, search bar -->
+@include('header')
+
 <!-- holds all content -->
 <div class="store-container">
 
-    <!-- header, search bar -->
-    <header>
-        <h1>browse our books...</h1>
-<<<<<<< HEAD
-        <div class="search-bar">
-            <input type="test" placeholder="search for books..." id="search">
-            <button type="button" id="search-button">search!</button>
-            <a href="basket">
-    <img src="basket.jpg" alt="cart" class="shopping-cart">
-</a>
-        <div>
-=======
-        <form action="{{ route('shopSearch') }}" method="POST">
-            @csrf
-            <div class="search-bar">
-                <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
-                <button type="submit" id="search-button">search!</button>
-                <a href="basket">
-                    <img src="basket.jpg" alt="cart" class="shopping-cart"> 
-                </a>
-            </div>   
-        </form>
->>>>>>> 70676eb4a8c6d77c5c99f67f04c0a6e1647437c6
-    </header>
-    <main>
-
     <!-- side bar with filters -->
     <aside class="filters">
-    <h2>filters:</h2>
+    <h2>Filters:</h2>
     <form action = "{{ route('shopFilter') }}" method="POST">
         @csrf
         <div class="filter-section">
+
             <!-- genre filters -->
-             <h3>genre</h3>
+             <h3>Genre</h3>
              <ul>
                 @foreach ($categories as $category)
                 <li><input type="checkbox" value="{{ $category->id }}" name="options[]"> <label for="{{ $category->name }}"> {{ $category->name }}</label></li>
                 @endforeach
             </ul>
         </div>
+
         <!-- price filter (sliding range) -->
          <div class="filter">
-            <label for="priceRange">Max Price:</label>
+            <label for="priceRange">Min Price:</label>
             <input type="range" id="priceRange" name="priceRange" min="0" max="25" value="{{ request()->input('priceRange', 0) }}">
             <span id="priceValue">£0</span>
         </div>
+
         <!-- filter by rating -->
          <div class="filter-section">
             <h3>ratings</h3>
@@ -73,24 +53,39 @@
                 <span class="star" data-value="5">★</span>
             </div>
         </div>
-        <div class='search-bar'><button type="submit" id="filter-button">filter!</button></div>
+        <div class="filter-section">
+            <button type="submit" class="button">Submit</button>
+        </div>
     </form>
     </aside>
-
 
         <!-- main content (book grid) -->
         <section class="book-grid">
 
-        <!-- defining a book card -->
-        @foreach ($books as $book)
-        <div class="book-card">
-            <img src="{{ asset($book->img_url) }}" alt="book cover">
-            <h3>{{ $book->book_name }} <i class="fas fa-bookmark save-bookmark" data-title="{{ $book->book_name }}" data-author='{{ $book->author->first_name . " " . $book->author->last_name }}' data-image="{{ asset($book->img_url) }}"></i></h3>
-            <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p>
-        </div>
-        @endforeach
+        @include('book_card')
+
         </section>
-        </main>
-    </div>      
+        
+    </div>
 </body>
+<footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <p>&copy; 2025 Ice rock. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@icerock.com</p>
+                <p>Phone: +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </html>
+ 
