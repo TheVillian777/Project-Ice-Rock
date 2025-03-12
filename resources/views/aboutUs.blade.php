@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<!-- header goes here -->
+
     <!-- Logo -->
     <header>
         <div class="title">

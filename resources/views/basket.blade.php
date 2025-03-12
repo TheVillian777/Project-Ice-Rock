@@ -8,7 +8,9 @@
     <title>Basket</title>
 </head>
 <body>
-    <h1>Done shopping?</h1> 
+    <!-- header goes here -->
+
+
     <!-- Navigation Bar -->
     <div class="navBar">
         <a class="active" href="{{ route('index') }}">Home</a>
