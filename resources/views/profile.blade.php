@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="css/profile.css" onerror="alert('CSS file not found!')">
-
+    
     <script>
         function showSection(sectionId) {
             document.querySelectorAll('.content-section').forEach(section => {
@@ -18,136 +18,126 @@
             showSection('profileInfo'); // profile should show by default
         });
     </script>
-    
 </head>
 <body>
     <!-- header goes here -->
+    @include('header')
 
-    <div class="navBar">
-        <a class="active" href="{{ route('index') }}">Home</a>
-        <a href="{{ route('shop') }}">Books</a>
-        <a href="{{ route('basket') }}">Basket</a>
-        <a href="{{ route('aboutUs') }}">About Us</a>
-        <a href="{{ route('contact') }}">Contact Us</a>
-        <a href="{{ route('profile') }}">Profile</a>
-        @if (Auth::check())
-        <form action="{{ route('logout')}}" method="POST">
-            @csrf
-            <button type="submit">Log Out</button>
-        </form>
-        @else 
-        <a href="{{ route('login') }}">Login</a>
-        @endif
-    </div>
+    <!-- Wrap everything in the container -->
+    <div class="container">
+        <!-- Sidebar with links to different sections of the profile page -->
+        <div class="sideBar">
+            <h2>Account information</h2>
+            <ul>
+                <li><a href="#" onclick="showSection('profileInfo')">Your profile</a></li>
+                <li><a href="#" onclick="showSection('pastOrders')">Past orders</a></li>
+                <li><a href="#" onclick="showSection('favourites')">Favourites</a></li>
+                <li><a href="#" onclick="showSection('paymentOptions')">Payment options</a></li>
+                <li><a href="#" onclick="showSection('yourAddress')">Your address</a></li>
+            </ul>
+        </div>
 
-    <div class="sideBar"> <!-- side bar with links to different sections of the profile page -->
-        <h2>Account information</h2>
-        <ul>
-            <li><a href="#" onclick="showSection('profileInfo')">Your profile</a></li>
-            <li><a href="#" onclick="showSection('pastOrders')">Past orders</a></li>
-            <li><a href="#" onclick="showSection('favourites')">Favourites</a></li>
-            <li><a href="#" onclick="showSection('paymentOptions')">Payment options</a></li>
-            <li><a href="#" onclick="showSection('yourAddress')">Your address</a></li>
-        </ul>
-    </div>
+        <!-- Content sections -->
+        <div class="content-area">
+            <div id="profileInfo" class="content-section">
+                <h2>Your profile</h2>
+                <h3>Start your journey here! Share your information for faster checkouts and amend it anytime!</h3>
+                <form action="#" method="POST">
+                    <label for="title">Title:</label>
+                    <select id="title" name="title">
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Ms">Ms</option>
+                        <option value="Dr">Dr</option>
+                        <option value="Prof">Prof</option>
+                        <option value="Other">Other</option>
+                    </select>
 
-    <div id="profileInfo" class="content-section"> <!-- profile information section -->
-        <h2>Your profile</h2>
-        <h3>Start your journey here! Share your information for faster checkouts and amend it anytime!</h3>
-        <form action="#" method="POST">
-            <label for="title">Title:</label>
-            <select id="title" name="title">
-                <option value="Mr">Mr</option>
-                <option value="Mrs">Mrs</option>
-                <option value="Miss">Miss</option>
-                <option value="Ms">Ms</option>
-                <option value="Dr">Dr</option>
-                <option value="Prof">Prof</option>
-                <option value="Other">Other</option>
-            </select>
+                    <div class="name-input">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
+                    </div>
 
-            <div class="name-input">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
+                    <div class="name-input">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+                    </div>
+
+                    <div class="name-input">
+                        <label for="phoneNumber">Phone Number:</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number">
+                    </div>
+
+                    <div class="name-input">
+                        <label for="email">Current Email Address:</label>
+                        <input type="text" id="email" name="email" placeholder="PageTurner@gmail.com">
+                    </div>
+
+                    <div class="changePassword">
+                        <p>Would you like to change your password?</p>
+                    </div>
+
+                    <div class="name-input">
+                        <label for="currentPassword">Current Password:</label>
+                        <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter your current password">
+                    </div>
+
+                    <div class="name-input">
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" id="newPassword" name="newPassword" placeholder="Enter your new password">
+                    </div>
+
+                    <div class="name-input">
+                        <label for="confirmPassword">Confirm New Password:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your new password">
+                    </div>
+
+                    <button type="submit" class="confirm-button">Confirm</button>
+                </form>
             </div>
 
-            <div class="name-input">
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+            <div id="pastOrders" class="content-section" style="display:none;">
+                <h2>Past Orders</h2>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Book Title</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div class="name-input">
-                <label for="phoneNumber">Phone Number:</label>
-                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number">
+            <div id="favourites" class="content-section" style="display:none;">
+                <h2>Favourites</h2>
+                <p>View and manage your favorite books here.</p>
             </div>
 
-            <div class="name-input">
-                <label for="email">Current Email Address:</label>
-                <input type="text" id="email" name="email" placeholder="PageTurner@gmail.com">
+            <div id="paymentOptions" class="content-section" style="display:none;">
+                <h2>Payment Options</h2>
+                <p>Manage your saved payment methods.</p>
             </div>
 
-            <div class="changePassword">
-                <p>Would you like to change your password?</p>
+            <div id="yourAddress" class="content-section" style="display:none;">
+                <h2>Your Address</h2>
+                <p>Manage your shipping and billing addresses.</p>
             </div>
-
-            <div class="name-input">
-                <label for="currentPassword">Current Password:</label>
-                <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter your current password">
-            </div>
-
-            <div class="name-input">
-                <label for="newPassword">New Password:</label>
-                <input type="password" id="newPassword" name="newPassword" placeholder="Enter your new password">
-            </div>
-
-            <div class="name-input">
-                <label for="confirmPassword">Confirm New Password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your new password">
-            </div>
-
-            <button type="submit" class="confirm-button">Confirm</button>
-        </form>
-    </div>
-
-    <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
-        <h2>Past Orders</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Date</th>
-                    <th>Book Title</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td> <!-- order ID -->
-                    <td></td> <!-- date -->
-                    <td></td> <!-- book title -->
-                    <td></td> <!-- quantity -->
-                    <td></td> <!-- total price -->
-                    <td></td> <!-- status -->
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div id="favourites" class="content-section" style="display:none;"> <!-- favourites section -->
-        <h2>Favourites</h2>
-        <p>View and manage your favorite books here.</p>
-    </div>
-
-    <div id="paymentOptions" class="content-section" style="display:none;"> <!-- payment options section -->
-        <h2>Payment Options</h2>
-        <p>Manage your saved payment methods.</p>
-    </div>
-
-    <div id="yourAddress" class="content-section" style="display:none;"> <!-- address section -->
-        <h2>Your Address</h2>
-        <p>Manage your shipping and billing addresses.</p>
+        </div>
     </div>
 </body>
 </html>
