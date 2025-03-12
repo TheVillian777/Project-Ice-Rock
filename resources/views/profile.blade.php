@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="css/profile.css" onerror="alert('CSS file not found!')">
-    <script src="contact.js" defer></script>
+
     <script>
         function showSection(sectionId) {
             document.querySelectorAll('.content-section').forEach(section => {
@@ -18,6 +18,7 @@
             showSection('profileInfo'); // profile should show by default
         });
     </script>
+    
 </head>
 <body>
     <!-- header goes here -->

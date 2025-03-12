@@ -1,0 +1,66 @@
+.book-card {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    cursor: pointer;
+}
+
+.book-card h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #495057;
+}
+
+.book-card .fa-bookmark {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.8em;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.book-card .fa-bookmark:hover {
+    color: #366329;
+}
+
+.book-card .fa-basket-shopping {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8em;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.book-card .fa-basket-shopping:hover {
+    color: #366329;
+}
+
+.book-card:hover {
+    transform: scale(1.15);
+    z-index: 1;
+}
+
+.book-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.book-card p {
+    font-size: 0.9em;
+    margin: 5px 0;
+    color: #6c757d;
+}
+
+.price {
+    font-weight: bold;
+    color: #333;
+    margin-top: 5px;
+}
