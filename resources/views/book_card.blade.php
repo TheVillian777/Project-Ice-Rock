@@ -13,10 +13,22 @@
 
 <!-- defining a book card -->
 @foreach ($books as $book)
-        <div class="book-card" onclick="window.location='{{ route('listing', ['book_id' => $book->id]) }}'">
+        <div class="book-card">
+            <p> {{$book->id}} </p>
+
+            <div>
+            <form action="{{ route('listing') }}" method="POST" class="basket-form">
+                @csrf
+                <button>
+                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                <input type="hidden" name="quantity" value="1">
+                <i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i>
+                </button>
+            </form>
+            </div>
             <!-- book cover image -->
             <img src="{{ asset('images/' . $book->img_url) }}" alt="book cover">
-            
+
             <!-- book title and bookmark icon -->
             <h3>
             {{ $book->book_name }} 
@@ -29,7 +41,7 @@
             
             <!-- book author -->
             <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p>
-            
+
             <!-- book price -->
             <div class="price">
             <p>£{{ $book->book_price }}</p>
@@ -39,6 +51,7 @@
             <div class="basket-icon">
             <form action="{{ route('addToBasket') }}" method="POST" class="basket-form">
                 @csrf
+                <button>
                 <input type="hidden" name="bookId" value="{{ $book->id }}">
                 <input type="hidden" name="quantity" value="1">
                 <i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i>
