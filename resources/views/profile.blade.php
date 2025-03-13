@@ -111,6 +111,10 @@
 
     <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
         <h2>Past Orders</h2>
+
+        @if ($orderitems->isEmpty())
+            <p>You have no orders!</p>
+        @else
         <table border="1">
             <thead>
                 <tr>
@@ -123,16 +127,19 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($orderitems as $orderitem)
                 <tr>
-                    <td></td> <!-- order ID -->
-                    <td></td> <!-- date -->
-                    <td></td> <!-- book title -->
-                    <td></td> <!-- quantity -->
-                    <td></td> <!-- total price -->
-                    <td></td> <!-- status -->
+                    <td>{{ $orderitem->purchase->id }}</td> <!-- order ID -->
+                    <td>{{ $orderitem->created_at }}</td> <!-- date -->
+                    <td>{{ $orderitem->book->book_name }}</td> <!-- book title -->
+                    <td>{{ $orderitem->quantity }}</td> <!-- quantity -->
+                    <td>£{{ $orderitem->subtotal_price }}</td> <!-- total price -->
+                    <td>{{ $orderitem->purchase->order_status }}</td> <!-- status -->
                 </tr>
+                @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 
     <div id="favourites" class="content-section" style="display:none;"> <!-- favourites section -->
