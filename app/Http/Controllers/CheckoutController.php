@@ -39,7 +39,7 @@ class CheckoutController extends Controller
             'user_id' => Auth::id(),
             'order_address' => request()->input('address'),
             'order_date' => now()->toDateString(),
-            'order_status' => 'Yes',
+            'order_status' => 'Delivered',
             'order_total_price' => request()->input('total_price'),
             'payment_method' => 'card',
             'payment_details' => substr(request()->input('card-number'), -4)
