@@ -16,7 +16,7 @@ class ProfileController extends Controller
             return redirect()->route('login');
         }
 
-        return view('profile'); 
+        return $this->showPastBooks(); 
     }
 
     public function showPastBooks()
@@ -26,7 +26,10 @@ class ProfileController extends Controller
         //match users and take just the purchase ids
         $purchase_ids = Purchase::where('user_id', $user_id)->pluck('id');
 
-        //get book ids from order item based off purchase id
-        $book_ids = OrderItem::whereIn('purchase_id', $purchase_ids)->pluck('book_id');
+        //get item based off purchase id
+        $orderitems = OrderItem::whereIn('purchase_id', $purchase_ids)
+        ->with(['book', 'purchase'])->get(); //loads book and purchase tables alongside to display book title and order ID (purchase ID)
+
+        return view('profile',compact('orderitems')); //view required data
     }
 }
