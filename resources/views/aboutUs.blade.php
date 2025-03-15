@@ -137,7 +137,7 @@
     <div class="join-us-container">
         <h2>Become a Part of PageTurner!</h2>
         <p>Join our community of book lovers and get access to an extensive collection of books.</p>
-        <a href="{{ route('register') }}" class="join-us-btn">Join Us</a>
+        <a href="{{ route('login') }}" class="join-us-btn">Join Us</a>
     </div>
 </div>
 
