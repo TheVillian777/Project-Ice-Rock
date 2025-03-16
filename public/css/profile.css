@@ -201,3 +201,52 @@ body {
 .confirm-button:hover {
     background-color: #1e391f;
 }
+
+
+.profileInfo select,
+.profileInfo input[type="text"],
+.profileInfo input[type="tel"],
+.profileInfo input[type="email"],
+.profileInfo input[type="password"] {
+    width: 250px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    display: block
+}
+
+.name-input {
+    margin-top: 20px; 
+}
+
+.confirm-button {
+    width: 270px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #183e1a; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.confirm-button:hover {
+    background-color: #1e391f;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
