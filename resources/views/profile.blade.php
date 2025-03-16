@@ -97,47 +97,52 @@
                 </form>
             </div>
 
-            <div id="pastOrders" class="content-section" style="display:none;">
-                <h2>Past Orders</h2>
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Date</th>
-                            <th>Book Title</th>
-                            <th>Quantity</th>
-                            <th>Total Price</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
+        <h2>Past Orders</h2>
 
-            <div id="favourites" class="content-section" style="display:none;">
-                <h2>Favourites</h2>
-                <p>View and manage your favorite books here.</p>
-            </div>
+        @if ($orderitems->isEmpty())
+            <p>You have no orders!</p>
+        @else
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Book Title</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($orderitems as $orderitem)
+                <tr>
+                    <td>{{ $orderitem->purchase->id }}</td> <!-- order ID -->
+                    <td>{{ $orderitem->created_at }}</td> <!-- date -->
+                    <td>{{ $orderitem->book->book_name }}</td> <!-- book title -->
+                    <td>{{ $orderitem->quantity }}</td> <!-- quantity -->
+                    <td>£{{ $orderitem->subtotal_price }}</td> <!-- total price -->
+                    <td>{{ $orderitem->purchase->order_status }}</td> <!-- status -->
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        @endif
+    </div>
 
-            <div id="paymentOptions" class="content-section" style="display:none;">
-                <h2>Payment Options</h2>
-                <p>Manage your saved payment methods.</p>
-            </div>
+    <div id="favourites" class="content-section" style="display:none;"> <!-- favourites section -->
+        <h2>Favourites</h2>
+        <p>View and manage your favorite books here.</p>
+    </div>
 
-            <div id="yourAddress" class="content-section" style="display:none;">
-                <h2>Your Address</h2>
-                <p>Manage your shipping and billing addresses.</p>
-            </div>
-        </div>
+    <div id="paymentOptions" class="content-section" style="display:none;"> <!-- payment options section -->
+        <h2>Payment Options</h2>
+        <p>Manage your saved payment methods.</p>
+    </div>
+
+    <div id="yourAddress" class="content-section" style="display:none;"> <!-- address section -->
+        <h2>Your Address</h2>
+        <p>Manage your shipping and billing addresses.</p>
     </div>
 </body>
 <footer>
