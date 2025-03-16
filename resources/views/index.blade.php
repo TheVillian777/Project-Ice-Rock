@@ -262,10 +262,10 @@
 <!-- Divider Line -->
 <div class="section-divider"></div>
 */ ?>
-    <!-- Banner Section -->
-    <div class="banner-section">
-        <img src="images/banner.png" alt="Promotional Banner">
-    </div>
+<!-- Banner Section -->
+<div class="banner-section">
+    <img src="images/banner.png" alt="Promotional Banner">
+</div>
 
 @if (Auth::check() and !empty($viewed))
 <!-- Book showcase -->
@@ -295,8 +295,13 @@
 </div>
 @endif
 
+<<<<<<< HEAD
 <!-- Divider Line -->
 <div class="section-divider"></div>
+=======
+    <!-- Divider Line -->
+    <div class="section-divider"></div>
+>>>>>>> main
 
 </body>
 
