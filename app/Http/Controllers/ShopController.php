@@ -54,7 +54,7 @@ class ShopController extends Controller
         if (!empty($filterOptions)){
             $books = Book::with('author')->whereIn('category_id', $filterOptions)->where('book_price', '>', $priceRange)->get();
         } else {
-            $books = Book::with('author')->where('book_price', '>', $priceRange)->get();
+            $books = Book::with('author')->where('book_price', '<=', $priceRange)->get();
         }
 
         //Pass categories to the shop listing view
