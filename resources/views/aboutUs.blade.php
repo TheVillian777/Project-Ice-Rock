@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<<<<<<< HEAD
     <title>AboutUs</title>
     <link rel="stylesheet" href="css/aboutUs.css">
     <script src="{{ asset('js/aboutus.js') }}" defer></script>
@@ -16,6 +17,13 @@
 <header class="new-header">
         <div class="logo">
             <img src="images/logo.png" alt="Logo">
+=======
+<!-- header goes here -->
+
+    <!-- Logo -->
+    <header>
+        <div class="title">
+>>>>>>> main
             <h1>PageTurner</h1>
         </div>
 
