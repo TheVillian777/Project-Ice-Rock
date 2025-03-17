@@ -23,6 +23,10 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::get('/wishlist1', function () {
+    return view('wishlist1');
+});
+
 Route::get('/basket', function () {
     return view('basket');
 });

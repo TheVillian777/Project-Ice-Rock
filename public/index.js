@@ -66,23 +66,3 @@ bookSlides.forEach((slide) => {
 function navigateToShop(){
     window.location.href = `shop`;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const popup = document.getElementById("bookPopup");
-    const closeBtn = document.querySelector(".close-btn");
-    const bookSlides = document.querySelectorAll(".book-slide");
-
-    bookSlides.forEach(book => {
-        book.addEventListener("click", () => {
-            document.getElementById("popup-book-cover").src = book.querySelector("img").src;
-            document.getElementById("popup-book-title").innerText = book.querySelector("h3").innerText;
-            document.getElementById("popup-book-author").innerText = book.querySelector("p").innerText;
-            document.getElementById("popup-book-price").innerText = book.querySelector(".price").innerText;
-            popup.style.display = "flex";
-        });
-    });
-
-    closeBtn.addEventListener("click", () => {
-        popup.style.display = "none";
-    });
-});
