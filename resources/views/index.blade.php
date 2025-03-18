@@ -200,13 +200,8 @@
 </div>
 @endif
 
-<<<<<<< HEAD
 <!-- Divider Line -->
 <div class="section-divider"></div>
-=======
-    <!-- Divider Line -->
-    <div class="section-divider"></div>
->>>>>>> main
 
 </body>
 
