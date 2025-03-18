@@ -7,18 +7,58 @@
     <link rel="stylesheet" href="css/profile.css" onerror="alert('CSS file not found!')">
     
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
-        }
-        
-        document.addEventListener("DOMContentLoaded", function () {
-            showSection('profileInfo'); // profile should show by default
-        });
+        // Function to show only Payment Options when clicked
+function showSection(sectionId) {
+    console.log("Switching to section:", sectionId);
+
+    // Hide all content sections
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // Show only the selected section
+    let selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+        selectedSection.style.display = 'block';
+        console.log("Successfully displayed:", sectionId);
+    } else {
+        console.error("❌ Error: Section not found ->", sectionId);
+    }
+}
+
+// Function to Show Update Payment Form
+function showUpdatePaymentForm() {
+    console.log("Opening Update Payment Form...");
+    document.getElementById('savedPaymentDetails').style.display = 'none';
+    document.getElementById('updatePaymentForm').style.display = 'block';
+}
+
+// Function to Save Payment Method and Update UI
+function saveUpdatedPayment(event) {
+    event.preventDefault(); // Prevents page reload
+
+    let newCardType = document.getElementById('newCardType').value;
+    let newCardNumber = document.getElementById('newCardNumber').value;
+    let newExpiryDate = document.getElementById('newExpiryDate').value;
+    let lastFourDigits = newCardNumber.slice(-4); // Get last 4 digits
+
+    // Update displayed values
+    document.getElementById('savedCardType').innerText = newCardType;
+    document.getElementById('savedLastFourDigits').innerText = lastFourDigits;
+    document.getElementById('savedExpiryDate').innerText = newExpiryDate;
+
+    // Hide form, show saved details
+    document.getElementById('updatePaymentForm').style.display = 'none';
+    document.getElementById('savedPaymentDetails').style.display = 'block';
+
+    alert("Payment details updated successfully!");
+}
+
+
     </script>
+
 </head>
+
 <body>
     <!-- header goes here -->
     @include('header')
@@ -32,7 +72,7 @@
                 <li><a href="#" onclick="showSection('profileInfo')">Your profile</a></li>
                 <li><a href="#" onclick="showSection('pastOrders')">Past orders</a></li>
                 <li><a href="#" onclick="showSection('favourites')">Favourites</a></li>
-                <li><a href="#" onclick="showSection('paymentOptions')">Payment options</a></li>
+                <li><a href="#" onclick="showSection('paymentOptionsSection')">Payment options</a></li>
                 <li><a href="#" onclick="showSection('yourAddress')">Your address</a></li>
             </ul>
         </div>
@@ -128,10 +168,42 @@
                 <p>View and manage your favorite books here.</p>
             </div>
 
-            <div id="paymentOptions" class="content-section" style="display:none;">
+            <div id="paymentOptionsSection" class="content-section" style="display:none;">
                 <h2>Payment Options</h2>
                 <p>Manage your saved payment methods.</p>
-            </div>
+                
+
+             <!-- Payment Options Section -->
+    <div id="savedPaymentDetails" class="saved-payment-details">
+        <h3>Saved Payment Method</h3>
+        <div class="card-details">
+            <p><strong>Card Number:</strong> **** **** **** <span id="savedLastFourDigits">1234</span></p>
+            <p><strong>Expiry Date:</strong> <span id="savedExpiryDate">06/24</span></p>
+        </div>
+        <button class="update-payment" onclick="showUpdatePaymentForm()">Update Payment Method</button>
+    </div>
+
+    
+    <div id="updatePaymentForm" class="update-payment-form" style="display:none;">
+        <h3>Update Payment Method</h3>
+        <form onsubmit="saveUpdatedPayment(event)">
+            
+
+            <label for="newCardNumber">Card Number:</label>
+            <input type="text" id="newCardNumber" name="newCardNumber" placeholder="Enter new card number" required>
+
+            <label for="newExpiryDate">Expiry Date:</label>
+            <input type="text" id="newExpiryDate" name="newExpiryDate" placeholder="MM/YY" required>
+
+            <label for="newCvv">CVV:</label>
+            <input type="text" id="newCvv" name="newCvv" placeholder="Enter CVV" required>
+
+            <button type="submit">Save Payment Method</button>
+        </form>
+    </div>
+</div>
+
+    
 
             <div id="yourAddress" class="content-section" style="display:none;">
                 <h2>Your Address</h2>
