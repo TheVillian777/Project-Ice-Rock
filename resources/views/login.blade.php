@@ -49,6 +49,19 @@
         <h2>Register</h2>
         <form action="{{ route('register') }}" method="post">
             @csrf
+
+        <!-- input title -->
+            <label for="register-title">Title:</label>
+            <select id="register-title" name="title" required>
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+                <option value="Ms">Ms</option>
+                <option value="Dr">Dr</option>
+                <option value="Prof">Prof</option>
+                <option value="Other">Other</option>
+            </select>
+
         <!-- input first name -->
             <label for="register-first">First Name:</label>
             <input type="text" id="register-first" name="first_name" required>

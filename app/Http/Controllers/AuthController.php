@@ -14,6 +14,7 @@ class AuthController extends Controller
   {
     //validate registration details
     $user = $request->validate([
+        'title' => 'required',
         'first_name' => 'required',
         'last_name' => 'required',
         'email' => 'required',
@@ -24,6 +25,7 @@ class AuthController extends Controller
 
     //save registration to Users table
     User::create([
+        'title' => $user['title'],
         'first_name' => $user['first_name'],
         'last_name' => $user['last_name'],
         'email' => $user['email'],

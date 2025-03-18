@@ -42,9 +42,10 @@
             <div id="profileInfo" class="content-section">
                 <h2>Your profile</h2>
                 <h3>Start your journey here! Share your information for faster checkouts and amend it anytime!</h3>
-                <form action="#" method="POST">
+                <form action="{{ route('updateInfo') }}" method="post">
+                @csrf
                     <label for="title">Title:</label>
-                    <select id="title" name="title">
+                    <select id="title" name="title" value="{{ $showDetails->title }}">
                         <option value="Mr">Mr</option>
                         <option value="Mrs">Mrs</option>
                         <option value="Miss">Miss</option>
@@ -56,41 +57,22 @@
 
                     <div class="name-input">
                         <label for="firstName">First Name:</label>
-                        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
+                        <input type="text" id="firstName" name="firstName" value="{{ $showDetails->first_name }}">
                     </div>
 
                     <div class="name-input">
                         <label for="lastName">Last Name:</label>
-                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+                        <input type="text" id="lastName" name="lastName" value="{{ $showDetails->last_name }}">
                     </div>
 
                     <div class="name-input">
                         <label for="phoneNumber">Phone Number:</label>
-                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number">
+                        <input type="tel" id="phoneNumber" name="phoneNumber" value="{{ $showDetails->phone }}">
                     </div>
 
                     <div class="name-input">
                         <label for="email">Current Email Address:</label>
-                        <input type="text" id="email" name="email" placeholder="PageTurner@gmail.com">
-                    </div>
-
-                    <div class="changePassword">
-                        <p>Would you like to change your password?</p>
-                    </div>
-
-                    <div class="name-input">
-                        <label for="currentPassword">Current Password:</label>
-                        <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter your current password">
-                    </div>
-
-                    <div class="name-input">
-                        <label for="newPassword">New Password:</label>
-                        <input type="password" id="newPassword" name="newPassword" placeholder="Enter your new password">
-                    </div>
-
-                    <div class="name-input">
-                        <label for="confirmPassword">Confirm New Password:</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your new password">
+                        <span>{{ $showDetails->email }}</span> <!-- changing email is not allowed -->
                     </div>
 
                     <button type="submit" class="confirm-button">Confirm</button>

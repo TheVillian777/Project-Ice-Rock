@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Purchase;
 use App\Models\OrderItem;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -16,7 +17,10 @@ class ProfileController extends Controller
             return redirect()->route('login');
         }
 
-        return $this->showPastBooks(); 
+        $orderitems = $this->showPastBooks(); 
+        $showDetails = $this->showUserDetails();
+
+        return view('profile', compact('orderitems', 'showDetails'));
     }
 
     public function showPastBooks()
@@ -30,6 +34,42 @@ class ProfileController extends Controller
         $orderitems = OrderItem::whereIn('purchase_id', $purchase_ids)
         ->with(['book', 'purchase'])->get(); //loads book and purchase tables alongside to display book title and order ID (purchase ID)
 
-        return view('profile',compact('orderitems')); //view required data
+        return $orderitems; //return required data
+    }
+
+    public function showUserDetails()
+    {
+        $user_id = Auth::id();
+
+        $user_details = User::where('id', $user_id)->first(); //match user ids
+
+        return $user_details; //return all user details from user table
+    }
+
+    public function updateInfo(Request $request){
+
+        $user_id = Auth::id();
+        $user = User::where('id', $user_id)->first(); //match user ids
+
+        $request->validate([
+            'title' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'phoneNumber' => 'nullable',
+        ]);
+
+        if($user){
+            $user->title = $request['title'];
+            $user->first_name = $request['firstName'];
+            $user->last_name = $request['lastName'];
+            $user->phone = $request['phoneNumber'];
+        
+
+        $user->save(); //save changes to editted user details
+        return redirect()->route('profile')->with('message', 'Profile updated!');
+
+        } else {
+            return redirect()->route('profile')->with('message', 'Error!');
+        }     
     }
 }
