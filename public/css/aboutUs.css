@@ -5,6 +5,9 @@ body {
     background: url('../images/aboutus.jpg') no-repeat center center fixed;
     background-size: cover;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
 }
 
 body::before {
@@ -411,14 +414,15 @@ body::before {
 }
 /* About Us Section */
 .aboutUs-section {
+    flex: 1; 
+    padding-bottom: 40px;
+    background: #333; 
+    color: white;
+    border-radius: 10px;
     max-width: 800px;
     margin: 100px auto;
     padding: 50px;
-    background: rgba(255, 255, 255, 0.2); /* Light transparent background */
-    color: white;
     text-align: center;
-    border-radius: 10px;
-    backdrop-filter: blur(5px); 
 }
 
 .aboutUs-section h1 {
@@ -446,11 +450,47 @@ body::before {
     font-size: 16px;
     cursor: pointer;
     margin-top: 10px;
-    display: block; /* Ensures it stays centered */
+    display: block; 
     margin-left: auto;
     margin-right: auto;
 }
 
 .read-more-btn:hover {
     background-color: #555;
+}
+/* join us button */
+.join-us-container {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    color: white; 
+}
+
+.join-us-container h2 {
+    font-size: 24px;
+    color: white; 
+}
+
+.join-us-container p {
+    font-size: 18px;
+    color: #ccc; 
+    margin-bottom: 20px;
+}
+
+.join-us-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+    border: none;
+}
+
+.join-us-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
 }
