@@ -95,6 +95,11 @@
                 </ul>
             </div>
         </div>
-    </footer>
+        @endforeach
+        </section>
+        </main>
+        
+    </div>      
+</body>
+@include('footer')
 </html>
- 

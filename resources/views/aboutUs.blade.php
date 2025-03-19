@@ -163,4 +163,6 @@
     </footer>
 
 </body>
+
+@include('footer')
 </html>
