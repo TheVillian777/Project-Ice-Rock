@@ -8,6 +8,7 @@
     <title>shop</title>
     <link rel="stylesheet" href="css/book_card.css" onerror="alert('CSS file not found!')">
     <script src="shop_saved.js" defer></script>
+    <script type="text/javascript" src="darkmode.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
