@@ -61,9 +61,8 @@ Route::get('/basket', function () {
     return view('basket');
 })->name('basket');
 
-Route::get('/listing', function () {
-    return view('listing');
-})->name('listing');
+Route::get('/listing', [ShopController::class, 'listBook'])->name('listing');
+
 
 // Authentication for users
 Route::post('/register', [AuthController::class, 'register'])->name('register');

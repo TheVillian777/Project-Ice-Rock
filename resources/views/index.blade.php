@@ -43,12 +43,8 @@
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
             @foreach ($books as $book)
-            <div class="book-slide">
-                <img src="{{ asset('images/' . $book->img_url)}} " alt="Book Cover">
-                <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
-                <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
-                <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
-                <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
+            <div class="book-slider-container">
+                @include('book_card')
             </div>
             @endforeach
         </div>
@@ -87,94 +83,29 @@
     <!-- Divider Line -->
     <div class="section-divider"></div>
 
-    <!-- Second Book Showcase -->
+    <!-- Book showcase -->
     <div class="book-slider">
+
         <!-- Top right "See More" link-->
         <div class="showcase-header">
-            <h2 class="showcase-title">Our Best
-                <!--Non-Fiction--> Seller Books</h2>
+            <h2 class="showcase-title">Our Showcase</h2>
             <a href="{{ route('shop') }}" class="see-more">See More</a>
         </div>
 
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
-            @foreach ($books->take(5) as $book)
-            <div class="book-slide">
-                <img src="{{ asset('images/' . $book->img_url)}} " alt="Book Cover">
-                <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
-                <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
-                <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
-                <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
+            @foreach ($books as $book)
+            <div class="book-slider-container">
+                @include('book_card')
             </div>
             @endforeach
         </div>
         <button class="book-next-arrow">&#10095;</button>
     </div>
 
-    <!-- Divider Line -->
-    <div class="section-divider"></div>
-
-    <?php /*
-<!-- Third Book Showcase -->
- <div class="book-slider">
-    <!-- Top right "See More" link-->
-    <div class="showcase-header">
-        <h2 class="showcase-title">Staff Favorites</h2>
-        <a href="shop" class="see-more">See More</a>
-    </div>
-
-    <button class="book-prev-arrow">&#10094;</button>
-    <div class="book-slider-container">
-        <div class="book-slide">
-            <img src="book12.jpg" alt="Book 12">
-            <h3>PLACEHOLDER</h3>
-            <p>PLACEHOLDER</p>
-            <p class="price">PLACEHOLDER</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="book13.jpg" alt="Book 13">
-            <h3>PLACEHOLDER</h3>
-            <p>PLACEHOLDER</p>
-            <p class="price">PLACEHOLDER</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="book14.jpg" alt="Book 14">
-            <h3>PLACEHOLDER</h3>
-            <p>PLACEHOLDER</p>
-            <p class="price">PLACEHOLDER</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="book15.jpg" alt="Book 15">
-            <h3>PLACEHOLDER</h3>
-            <p>PLACEHOLDER</p>
-            <p class="price">PLACEHOLDER</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-        <div class="book-slide">
-            <img src="book16.jpg" alt="Book 16">
-            <h3>PLACEHOLDER</h3>
-            <p>PLACEHOLDER</p>
-            <p class="price">PLACEHOLDER</p>
-            <div class="hover-popup">Add to Basket</div>
-        </div>
-    </div>
-    <button class="book-next-arrow">&#10095;</button>
-</div>
-
-<!-- Divider Line -->
-<div class="section-divider"></div>
-*/ ?>
-    <!-- Banner Section -->
-    <div class="banner-section">
-        <img src="images/banner.png" alt="Promotional Banner">
-    </div>
-
-    <!-- Divider Line -->
-    <div class="section-divider"></div>
 
 </body>
 </html>
+
+
 

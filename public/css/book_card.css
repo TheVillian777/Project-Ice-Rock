@@ -2,69 +2,75 @@
 
 .book-card {
     background-color: var(--base-variant);
-    border: 1px solid var(base-colour);
+    border: 1px solid var(--base-colour);
     border-radius: 4px;
     padding: 15px;
     text-align: center;
     transition: transform 0.3s ease-in-out;
     position: relative;
     cursor: pointer;
-    height: 370px;
+    height: 380px;
+}
+.book-card:hover {
+    transform: scale(1.05);
 }
 
-.book-card h3 {
-    font-size: 1.2em;
-    margin: 10px 0;
-    color: var(text-colour);
+.book-cover {
+    width: 100%;
+    height: 250px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    overflow: hidden;
 }
 
-.book-card .fa-bookmark {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    font-size: 0.8em;
-    color: var(primary-colour);
-    cursor: pointer;
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 4px;
 }
 
-.book-card .fa-bookmark:hover {
-    color: var(accent-colour);
+.book-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-colour);
+    margin-bottom: 3px;
 }
 
-.book-card .fa-basket-shopping {
+.book-author {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--alt-text-colour);
+    margin-bottom: 2px;
+}
+
+.book-price {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--alt-text-colour-colour);
+    margin-bottom: 2px;
+}
+
+.basket-icon {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    font-size: 0.8em;
-    color: var(primary-colour);
-    cursor: pointer;
+    color: var(--primary-colour);
+    width: 20px;
+    height: 20px;
+}
+.basket-icon:hover {
+    color: var(--accent-colour);
 }
 
-.book-card .fa-basket-shopping:hover {
-    color: var(accent-colour);
+.bookmark-icon {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: var(--primary-colour);
+    width: 20px;
+    height: 20px;
 }
-
-.book-card:hover {
-    transform: scale(1.15);
-    z-index: 1;
-}
-
-.book-card img {
-    max-height: 250px;
-    width: 100%;
-    object-fit:cover;
-    border-radius: 4px;
-    margin-bottom: 10px;
-}
-
-.book-card p {
-    font-size: 0.9em;
-    margin: 5px 0;
-    color: var(text-colour);
-}
-
-.price {
-    font-weight: bold;
-    color: var(text-colour);
-    margin-top: 5px;
+.bookmark-icon:hover {
+    color: var(--accent-colour);
 }
