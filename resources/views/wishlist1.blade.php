@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Whishlist</title>
     <link rel="stylesheet" href="css/profile.css" onerror="alert('CSS file not found!')">
     <script src="contact.js" defer></script>
 </head>
@@ -53,29 +53,57 @@
         @endif
     </div>
 
+    <!-- Possible features of Profile Page -->
+
+    <!-- 1. Username
+         2. Change Password
+         3. Shipping Address
+         4. Past books purchased
+         5. Maybe past reviews?
+    -->
+
+
     <div class = "sideBar">
     <h2>Account information</h2>
     <ul>
         <li><a href="{{ route('profile') }}">Your profile</a></li>
         <li><a href="">Past orders</a></li>
-        <li><a href="saved">Wishlist</a></li>
+        <li><a href="saved">Favourites</a></li>
         <li><a href="">Payment options</a></li>
         <li><a href="">Your address</a></li>
     </ul>
 
     </div>
 
-<div class="favourites-section">
-    <h2>My Wish List</h2>
-    <div class="favourites-list compact-view">
-        <img src="images/book1.jpg" alt="Book Cover" class="book-cover">
-        <img src="images/book1.jpg" alt="Book Cover" class="book-cover">
-        <img src="images/book1.jpg" alt="Book Cover" class="book-cover">
-        <img src="images/book1.jpg" alt="Book Cover" class="book-cover">
-        <img src="images/book1.jpg" alt="Book Cover" class="book-cover">
-    </div>
-    <a href="wishlist1" class="see-all">SEE ALL</a>
-</div>
+    <div class="wishlist-section">
+        <h2><em>My Wish List</em> - 2 books</h2>
+        <div class="wishlist-list">
+            <div class="wish-item">
+                <div class="wish-cover">
+                    <img src="images/book1.jpg" alt="PlaceHolder">
+                </div>
+                <div class="wish-details">
+                    <h3>PlaceHolder</h3>  <!-- Placeholder for book title -->
+                    <p class="author">PlaceHolder</p> <!-- Placeholder for author -->
+                    <p class="price">&pound;9.99</p>
+                    <a href="#" class="remove">Remove</a>
+                </div>
+            </div>
 
-</body> 
+            <div class="wish-item">
+                <div class="wish-cover">
+                    <img src="images/book1.jpg" alt="PlaceHolder">
+                </div>
+                <div class="wish-details">
+                    <h3>PlaceHolder</h3>
+                    <p class="author">PlaceHolder</p>
+                    <p class="price">&pound;9.99</p>
+                    <a href="#" class="remove">Remove</a>
+                </div>
+            </div>
+        </div>
+
+
+
+</body>
 </html>
