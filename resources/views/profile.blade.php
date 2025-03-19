@@ -7,53 +7,58 @@
     <link rel="stylesheet" href="css/profile.css" onerror="alert('CSS file not found!')">
     
     <script>
-        <script>
-        // Function to display the selected section
-        function displaySection(sectionId) {
-            console.log("Displaying section:", sectionId);
-            
-            // Hide all sections first
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.style.display = 'none';
-            });
-            
-            // Show the chosen section
-            let sectionToShow = document.getElementById(sectionId);
-            if (sectionToShow) {
-                sectionToShow.style.display = 'block';
-            } else {
-                console.error("Error: Could not locate section:", sectionId);
-            }
-        }
-        
-        // Display form for updating payment details
-        function togglePaymentUpdate() {
-            console.log("Switching to update payment form...");
-            document.getElementById('savedPaymentDetails').style.display = 'none';
-            document.getElementById('paymentUpdateForm').style.display = 'block';
-        }
-        
-        // Save new payment details
-        function savePaymentDetails(event) {
-            event.preventDefault();
-            
-            let cardNumber = document.getElementById('cardNumber').value;
-            let expiryDate = document.getElementById('expiryDate').value;
-            let lastFourDigits = cardNumber.slice(-4);
-            
-            // Update UI with new card details
-            document.getElementById('displayLastFour').innerText = lastFourDigits;
-            document.getElementById('displayExpiry').innerText = expiryDate;
-            
-            
-            document.getElementById('paymentUpdateForm').style.display = 'none';
-            document.getElementById('savedPaymentDetails').style.display = 'block';
-            
-            alert("Payment method successfully updated!");
-        }
+        // Function to show only Payment Options when clicked
+function showSection(sectionId) {
+    console.log("Switching to section:", sectionId);
+
+    // Hide all content sections
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // Show only the selected section
+    let selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+        selectedSection.style.display = 'block';
+        console.log("Successfully displayed:", sectionId);
+    } else {
+        console.error("❌ Error: Section not found ->", sectionId);
+    }
+}
+
+// Function to Show Update Payment Form
+function showUpdatePaymentForm() {
+    console.log("Opening Update Payment Form...");
+    document.getElementById('savedPaymentDetails').style.display = 'none';
+    document.getElementById('updatePaymentForm').style.display = 'block';
+}
+
+// Function to Save Payment Method and Update UI
+function saveUpdatedPayment(event) {
+    event.preventDefault(); // Prevents page reload
+
+    let newCardType = document.getElementById('newCardType').value;
+    let newCardNumber = document.getElementById('newCardNumber').value;
+    let newExpiryDate = document.getElementById('newExpiryDate').value;
+    let lastFourDigits = newCardNumber.slice(-4); // Get last 4 digits
+
+    // Update displayed values
+    document.getElementById('savedCardType').innerText = newCardType;
+    document.getElementById('savedLastFourDigits').innerText = lastFourDigits;
+    document.getElementById('savedExpiryDate').innerText = newExpiryDate;
+
+    // Hide form, show saved details
+    document.getElementById('updatePaymentForm').style.display = 'none';
+    document.getElementById('savedPaymentDetails').style.display = 'block';
+
+    alert("Payment details updated successfully!");
+}
+
+
     </script>
-    </script>
+
 </head>
+
 <body>
     <!-- header goes here -->
     @include('header')
@@ -67,7 +72,8 @@
                 <li><a href="#" onclick="showSection('profileInfo')">Your profile</a></li>
                 <li><a href="#" onclick="showSection('pastOrders')">Past orders</a></li>
                 <li><a href="#" onclick="showSection('favourites')">Favourites</a></li>
-                <li><a href="#" onclick="showSection('paymentOptions')">Payment options</a></li>
+                <li><a href="#" onclick="showSection('paymentOptionsSection')">Payment options</a></li>
+                <li><a href="#" onclick="showSection('yourAddress')">Your address</a></li>
             </ul>
         </div>
 
@@ -118,69 +124,79 @@
                 </form>
             </div>
 
-    <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
-        <h2>Past Orders</h2>
+            <div id="pastOrders" class="content-section" style="display:none;">
+                <h2>Past Orders</h2>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Book Title</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        @if ($orderitems->isEmpty())
-            <p>You have no orders!</p>
-        @else
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Date</th>
-                    <th>Book Title</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($orderitems as $orderitem)
-                <tr>
-                    <td>{{ $orderitem->purchase->id }}</td> <!-- order ID -->
-                    <td>{{ $orderitem->created_at }}</td> <!-- date -->
-                    <td>{{ $orderitem->book->book_name }}</td> <!-- book title -->
-                    <td>{{ $orderitem->quantity }}</td> <!-- quantity -->
-                    <td>£{{ $orderitem->subtotal_price }}</td> <!-- total price -->
-                    <td>{{ $orderitem->purchase->order_status }}</td> <!-- status -->
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        @endif
-    </div>
+            <div id="favourites" class="content-section" style="display:none;">
+                <h2>Favourites</h2>
+                <p>View and manage your favorite books here.</p>
+            </div>
 
-    <div id="favourites" class="content-section" style="display:none;"> <!-- favourites section -->
-        <h2>Favourites</h2>
-        <p>View and manage your favorite books here.</p>
-    </div>
-
-    <section id="paymentMethods" class="content-section" style="display:none;">
-                <h2>Payment Methods</h2>
-                <div id="savedPaymentDetails">
-                    <p><strong>Card:</strong> **** **** **** <span id="displayLastFour">1234</span></p>
-                    <p><strong>Expires:</strong> <span id="displayExpiry">06/24</span></p>
-                    <button onclick="togglePaymentUpdate()">Update Payment</button>
-                </div>
+            <div id="paymentOptionsSection" class="content-section" style="display:none;">
+                <h2>Payment Options</h2>
+                <p>Manage your saved payment methods.</p>
                 
-                <div id="paymentUpdateForm" style="display:none;">
-                    <h3>Update Payment Information</h3>
-                    <form onsubmit="savePaymentDetails(event)">
-                        <label for="cardNumber">Card Number:</label>
-                        <input type="text" id="cardNumber" placeholder="Enter new card number" required>
-                        
-                        <label for="expiryDate">Expiry Date:</label>
-                        <input type="text" id="expiryDate" placeholder="MM/YY" required>
-                        
-                        <button type="submit">Save</button>
-                    </form>
-                </div>
-            </section>
 
-    <div id="yourAddress" class="content-section" style="display:none;"> <!-- address section -->
-        <h2>Your Address</h2>
-        <p>Manage your shipping and billing addresses.</p>
+             <!-- Payment Options Section -->
+    <div id="savedPaymentDetails" class="saved-payment-details">
+        <h3>Saved Payment Method</h3>
+        <div class="card-details">
+            <p><strong>Card Number:</strong> **** **** **** <span id="savedLastFourDigits">1234</span></p>
+            <p><strong>Expiry Date:</strong> <span id="savedExpiryDate">06/24</span></p>
+        </div>
+        <button class="update-payment" onclick="showUpdatePaymentForm()">Update Payment Method</button>
+    </div>
+
+    
+    <div id="updatePaymentForm" class="update-payment-form" style="display:none;">
+        <h3>Update Payment Method</h3>
+        <form onsubmit="saveUpdatedPayment(event)">
+            
+
+            <label for="newCardNumber">Card Number:</label>
+            <input type="text" id="newCardNumber" name="newCardNumber" placeholder="Enter new card number" required>
+
+            <label for="newExpiryDate">Expiry Date:</label>
+            <input type="text" id="newExpiryDate" name="newExpiryDate" placeholder="MM/YY" required>
+
+            <label for="newCvv">CVV:</label>
+            <input type="text" id="newCvv" name="newCvv" placeholder="Enter CVV" required>
+
+            <button type="submit">Save Payment Method</button>
+        </form>
+    </div>
+</div>
+
+    
+
+            <div id="yourAddress" class="content-section" style="display:none;">
+                <h2>Your Address</h2>
+                <p>Manage your shipping and billing addresses.</p>
+            </div>
+        </div>
     </div>
 </body>
 <footer>
