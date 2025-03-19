@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 20px;
-    flex-wrap: wrap; /* ✅ Helps elements fit on small screens */
+    flex-wrap: wrap; 
 }
 
 /* Sidebar styles */
@@ -63,7 +63,7 @@ body {
 
 /* Ensure Payment Options is displayed when selected */
 #paymentOptions {
-    display: block !important;
+    display: block ;
     visibility: visible;
     opacity: 1;
     
