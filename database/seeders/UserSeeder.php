@@ -21,7 +21,8 @@ class UserSeeder extends Seeder
             'phone' => 123456789,
             'isadmin' => false,
             'password' => 'password',
-            'security_answer' => 'brian'
+            'security_answer' => 'brian',
+            'address' => '5 team3 lane'
         ]);
     }
 }

@@ -80,6 +80,10 @@
             <label for="register-email">Email:</label>
             <input type="email" id="register-email" name="email" required>
 
+        <!-- input address -->
+            <label for="register-address">Address:</label>
+            <input type="address" id="register-address" name="address" required>
+
         <!-- input password -->    
             <label for="register-password">Password:</label>
             <input type="password" id="register-password" name="password" required>

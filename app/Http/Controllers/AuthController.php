@@ -20,6 +20,7 @@ class AuthController extends Controller
         'email' => 'required',
         'phone' => 'nullable',
         'password' => 'required',
+        'address' => 'required',
         'security_answer' => 'required',
     ]);
 
@@ -31,6 +32,7 @@ class AuthController extends Controller
         'email' => $user['email'],
         'phone' => $user['phone'],
         'isadmin' => false,
+        'address' => $user['address'],
         'security_answer' => $user['security_answer'],
         'password' => Hash::make($user['password']), //Hash for security with built in method
     ]);

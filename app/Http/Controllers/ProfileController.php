@@ -41,7 +41,7 @@ class ProfileController extends Controller
     {
         $user_id = Auth::id();
 
-        $user_details = User::where('id', $user_id)->first(); //match user ids
+        $user_details = User::where('id', $user_id)->first(); //match user ids and add customer to add address
 
         return $user_details; //return all user details from user table
     }
@@ -56,6 +56,7 @@ class ProfileController extends Controller
             'firstName' => 'required',
             'lastName' => 'required',
             'phoneNumber' => 'nullable',
+            'address' => 'required'
         ]);
 
         if($user){
@@ -63,7 +64,7 @@ class ProfileController extends Controller
             $user->first_name = $request['firstName'];
             $user->last_name = $request['lastName'];
             $user->phone = $request['phoneNumber'];
-        
+            $user->address = $request["address"];
 
         $user->save(); //save changes to editted user details
         return redirect()->route('profile')->with('message', 'Profile updated!');

@@ -33,7 +33,6 @@
                 <li><a href="#" onclick="showSection('pastOrders')">Past orders</a></li>
                 <li><a href="#" onclick="showSection('favourites')">Favourites</a></li>
                 <li><a href="#" onclick="showSection('paymentOptions')">Payment options</a></li>
-                <li><a href="#" onclick="showSection('yourAddress')">Your address</a></li>
             </ul>
         </div>
 
@@ -70,6 +69,11 @@
                         <input type="tel" id="phoneNumber" name="phoneNumber" value="{{ $showDetails->phone }}">
                     </div>
 
+                    <div class="name-input">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" value="{{ $showDetails->address }}">
+                    </div>
+                    
                     <div class="name-input">
                         <label for="email">Current Email Address:</label>
                         <span>{{ $showDetails->email }}</span> <!-- changing email is not allowed -->

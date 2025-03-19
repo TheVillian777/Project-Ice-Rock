@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('isadmin');
             $table->string('password');
             $table->char('security_answer', length: 15);
+            $table->char('address', length: 20);
             $table->rememberToken();
             $table->timestamps();
         });
