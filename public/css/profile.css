@@ -42,13 +42,7 @@ body {
 
 .sideBar ul li a {
     text-decoration: none;
-<<<<<<< HEAD
     padding: 10px 20px;
-=======
-    color: #333;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
->>>>>>> main
 }
 
 .sideBar ul li a:hover {

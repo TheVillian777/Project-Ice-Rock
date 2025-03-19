@@ -86,7 +86,6 @@
                 </ul>
             </div>
         </div>
-<<<<<<< HEAD
         @endforeach
         </section>
         </main>
@@ -95,8 +94,3 @@
 </body>
 @include('footer')
 </html>
-=======
-    </footer>
-</html>
- 
->>>>>>> main
