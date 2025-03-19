@@ -220,5 +220,5 @@
 <div class="section-divider"></div>
 
 </body>
+@include('footer')
 </html>
-
