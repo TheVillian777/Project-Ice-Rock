@@ -8,14 +8,9 @@
     <title>Basket</title>
 </head>
 <body>
-    <h1>Done shopping?</h1> 
-    <!-- Navigation Bar -->
-    <div class="navBar">
-        <a class="active" href="{{ route('index') }}">Home</a>
-        <a href="{{ route('shop') }}">Books</a>
-        <!--<a href="{{ route('saved') }}">Saved</a>-->
-        <a href="{{ route('contact') }}">Contact Us</a>
-    </div>
+
+@include('header')
+
     <div class="main-container">
         <div class="basket-container">
             <h2>Basket:</h2>
