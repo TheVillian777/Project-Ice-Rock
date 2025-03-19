@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AboutUs</title>
-    <link rel="stylesheet" href="css/aboutUs.css">
-    <script src="{{ asset('js/aboutus.js') }}" defer></script>
-
-    <title>PageTurner</title>
-
+    <title>Contact</title>
+    <link rel="stylesheet" href="css/header.css" onerror="alert('CSS file not found!')">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
-<header class="new-header">
+    <header class="new-header">
         <div class="logo">
             <img src="images/logo.png" alt="Logo">
             <h1>PageTurner</h1>
@@ -48,6 +43,7 @@
                     </form>
                 </div>
             </div>
+
             <!-- Wishlist Button -->
             <div class="wishlist-button">
                 <a href="{{ route('saved')}}">
@@ -99,8 +95,10 @@
                 </form>
             </div>
         </div>
+        <a href="{{ route('profile') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
+        
         @if (Auth::check())
         <form action="{{ route('logout')}}" method="POST">
             @csrf
@@ -109,53 +107,3 @@
         @else
         @endif
     </div>
-
-    <!-- about us  Section -->
-    <div class="aboutUs-section">
-     <h1>About Us</h1>
-     <p>Welcome to PageTurner, your go-to platform for finding and purchasing books of all genres.</p>
-     <p>We are committed to providing an extensive collection of books while ensuring a seamless user experience.</p>
-   
-     <h2>Our Story</h2>
-     <p>Founded with a passion for literature, PageTurner started as a small bookshop and grew into an online hub for book enthusiasts. We believe that books have the power to inspire, educate, and transport readers to new worlds.</p>
-      
-     <!-- Read More Button -->
-     <button id="readMoreBtn" class="read-more-btn">Read More</button>
-     
-     <!-- Hidden Content -->
-     <div id="moreContent">
-
-     <h2>Why Choose Us?</h2>
-     <p>we have vast collection - From bestsellers to hidden gems, we have something for everyone.</p>
-     <p>we are easy & secure - A hassle-free experience with safe payment options.</p>
-
-     <h2>Our Commitment</h2>
-     <p>At PageTurner, we are committed to promoting the joy of reading and supporting authors and publishers worldwide. Our goal is to make literature accessible and enjoyable for all.</p>
-
-    </div>
-
-
-<footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: contact@icerock.com</p>
-                <p>Phone: +1 234 567 890</p>
-            </div>
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-@include('footer')
-</html>

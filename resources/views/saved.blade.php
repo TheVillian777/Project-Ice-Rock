@@ -11,6 +11,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
+<!-- header goes here -->
+
 <body>
     <div class="saved-container">
         <h1>Your Wishlist:</h1>
@@ -90,5 +92,30 @@
     </div>
 </body>
 
+<<<<<<< HEAD
 @include('footer')
 </html>
+=======
+<footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@icerock.com</p>
+                <p>Phone: +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+</html>
+>>>>>>> main

@@ -10,23 +10,7 @@
 </head>
 <body>
 
-<div class="navBar">
-        <a href="{{ route('index') }}">Home</a>
-        <a class="active" href="{{ route('shop') }}">Books</a>
-        <!--<a href="{{ route('saved') }}">Saved</a>-->
-        <a href="{{ route('basket') }}">Basket</a>
-        <a href="{{ route('contact') }}">Contact Us</a>
-        @if (Auth::check())
-        <form action="{{ route('logout')}}" method="POST">
-            @csrf
-        <button type="submit">Log Out</button>
-        </form>
-        @else 
-        <a href="{{ route('login') }}">Login</a>
-        </form>
-        @endif
-    </div>
-
+@include('header')
 
     <div class="main-container">
         <div class="cover-container">
@@ -78,5 +62,25 @@
                     </div>
             </div>
     </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@icerock.com</p>
+                <p>Phone: +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

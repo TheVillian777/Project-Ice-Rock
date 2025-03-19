@@ -1,0 +1,106 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.store-container {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Sidebar (Filters) */
+.filters {
+    width: 250px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+.filters h2 {
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.filter-section {
+    margin-bottom: 15px;
+}
+
+.filter-section h3 {
+    margin-bottom: 5px;
+}
+
+.filter-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.filter-section li {
+    margin-bottom: 5px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #d4edda; /* Pale green */
+    border-color: #c3e6cb;
+}
+
+.star-rating {
+    display: flex;
+    cursor: pointer;
+}
+
+.star {
+    color: #ddd;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.star:hover,
+.star:hover ~ .star {
+    color: gold;
+}
+
+/* Book Grid */
+.book-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-left: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .store-container {
+        flex-direction: column;
+    }
+
+    .filters {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .book-grid {
+        margin-left: 0;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}

@@ -6,55 +6,12 @@
     <title>Home</title>
     <link rel="stylesheet" href="css/index.css" onerror="alert('CSS file not found!')">
     <script src="index.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo">
-        </div>
-        <div class="title">
-            <h1>PageTurner</h1>
-        </div>
-        
-    </header>
+    @include('header')
 
-    <!-- Search Bar -->
-     
-    <div class="search-box">
-        <form action="{{ route('shopSearch') }}" method="POST">
-            @csrf
-            <div class="search-bar">
-                <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
-                <button type="submit"><img src="magnifying-glass.png" alt="Search" class="search-icon"></button>
-            </div>   
-        </form>
-        <!--<input type="text" placeholder="Search for books..." id="search-bar">
-        <img src="magnifying-glass.png" alt="Search" class="search-icon">-->
-
-    </div>
-
-    <!-- Navigation Bar -->
-    <div class="navBar">
-        <a class="active" href="{{ route('index') }}">Home</a>
-        <a href="{{ route('shop') }}">Books</a>
-        <!--<a href="{{ route('saved') }}">Saved</a>-->
-        <a href="{{ route('basket') }}">Basket</a>
-        <a href="{{ route('profile') }}">Profile</a>
-        <a href="{{ route('aboutUs') }}">About Us</a>
-        <a href="{{ route('contact') }}">Contact Us</a>
-        <a href="{{ route('profile') }}">Profile</a>
-        @if (Auth::check())
-        <form action="{{ route('logout')}}" method="POST">
-            @csrf
-        <button type="submit">Log Out</button>
-        </form>
-        @else 
-        <a href="{{ route('login') }}">Login</a>
-        </form>
-        @endif
-    </div>
     <!-- Image placeholder -->
     <div class="image-slider">
     <div class="slider-container">
@@ -68,97 +25,96 @@
             <img src="images/image-slide3.png" alt="Slide 3">
         </div>
     </div>
+
     <!-- Arrows for manual scrolling -->
     <button class="prev-arrow">&#10094;</button>
     <button class="next-arrow">&#10095;</button>
-</div>
-
-
-
-<!-- Book showcase -->
-<div class="book-slider">
-
-    <!-- Top right "See More" link-->
-    <div class="showcase-header">
-        <h2 class="showcase-title">Our Showcase</h2>
-        <a href="{{ route('shop') }}" class="see-more">See More</a>
-    </div>
-    
-    <button class="book-prev-arrow">&#10094;</button>
-    <div class="book-slider-container">
-        @foreach ($books as $book)
-        <div class="book-slide">
-            <img src="{{ asset('images/' . $book->img_url)}} " alt="Book Cover">
-            <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
-            <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
-            <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
-            <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
-        </div>
-        @endforeach
-
-<!-- Arrows for the book showcase -->   
-    </div>
-    <button class="book-next-arrow">&#10095;</button>
-</div>
-
-
-<!-- Divider Line -->
-<div class="section-divider"></div>
-
-<!-- Genre Icons Section -->
-<div class="genre-icons">
-    @foreach ($categories as $category)
-    <form action="{{ route('navigateShop') }}" method="POST">
-        @csrf
-        <div class="genre-icon">
-            <input type="hidden" value="{{ $category->id }}" name="genre-select">
-            <button type="submit">
-                <img src="images/{{ $category->img_url }}" alt="{{ $category->name }}">
-                <p>{{$category->name}}</p>
-            </button>
-        </div>
-    </form>
-    @endforeach
-</div>
-
-<!-- Divider Line -->
-<div class="section-divider"></div>
-
-<!-- Banner Section -->
-<div class="banner-section">
-    <img src="images/banner.png" alt="Promotional Banner">
-</div>
-
-<!-- Divider Line -->
-<div class="section-divider"></div>
-
-<!-- Second Book Showcase -->
-<div class="book-slider">
-    <!-- Top right "See More" link-->
-    <div class="showcase-header">
-        <h2 class="showcase-title">Our Best <!--Non-Fiction--> Seller Books</h2>
-        <a href="{{ route('shop') }}" class="see-more">See More</a>
     </div>
 
-    <button class="book-prev-arrow">&#10094;</button>
-    <div class="book-slider-container">
-        @foreach ($books->take(5) as $book)
-        <div class="book-slide">
-            <img src="{{ asset('images/' . $book->img_url)}} " alt="Book Cover">
-            <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
-            <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
-            <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
-            <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
+    <!-- Book showcase -->
+    <div class="book-slider">
+
+        <!-- Top right "See More" link-->
+        <div class="showcase-header">
+            <h2 class="showcase-title">Our Showcase</h2>
+            <a href="{{ route('shop') }}" class="see-more">See More</a>
         </div>
+
+        <button class="book-prev-arrow">&#10094;</button>
+        <div class="book-slider-container">
+            @foreach ($books as $book)
+            <div class="book-slide">
+                <img src="{{ asset('images/' . $book->img_url)}} " alt="Book Cover">
+                <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
+                <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
+                <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
+                <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
+            </div>
+            @endforeach
+        </div>
+        <button class="book-next-arrow">&#10095;</button>
+    </div>
+
+
+    <!-- Divider Line -->
+    <div class="section-divider"></div>
+
+    <!-- Genre Icons Section -->
+    <div class="genre-icons">
+        @foreach ($categories->unique('name') as $category)
+        <form action="{{ route('navigateShop') }}" method="POST">
+            @csrf
+            <div class="genre-icon">
+                <input type="hidden" value="{{ $category->id }}" name="genre-select">
+                <button type="submit">
+                    <!-- Ensure correct genre images are displayed -->
+                    <img src="images/{{ strtolower(str_replace(' ', '-', $category->name)) }}.png" alt="{{ $category->name }}">
+                    <p>{{$category->name}}</p>
+                </button>
+            </div>
+        </form>
         @endforeach
     </div>
-    <button class="book-next-arrow">&#10095;</button>
-</div>
 
-<!-- Divider Line -->
-<div class="section-divider"></div>
+    <!-- Divider Line -->
+    <div class="section-divider"></div>
 
-<?php /*
+    <!-- Banner Section -->
+    <div class="banner-section">
+        <img src="images/banner.png" alt="Promotional Banner">
+    </div>
+
+    <!-- Divider Line -->
+    <div class="section-divider"></div>
+
+    <!-- Second Book Showcase -->
+    <div class="book-slider">
+        <!-- Top right "See More" link-->
+        <div class="showcase-header">
+            <h2 class="showcase-title">Our Best
+                <!--Non-Fiction--> Seller Books</h2>
+            <a href="{{ route('shop') }}" class="see-more">See More</a>
+        </div>
+
+        <button class="book-prev-arrow">&#10094;</button>
+        <div class="book-slider-container">
+            @foreach ($books->take(5) as $book)
+            <div class="book-slide">
+                <img src="{{ asset('images/' . $book->img_url)}} " alt="Book Cover">
+                <h3>{{ $book->book_name}}</h3> <!-- Book Name -->
+                <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p> <!-- Author Name -->
+                <p class="price">£{{ $book->book_price}}</p> <!-- Price of book -->
+                <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
+            </div>
+            @endforeach
+        </div>
+        <button class="book-next-arrow">&#10095;</button>
+    </div>
+
+    <!-- Divider Line -->
+    <div class="section-divider"></div>
+
+    <?php /*
 <!-- Third Book Showcase -->
  <div class="book-slider">
     <!-- Top right "See More" link-->
@@ -216,9 +172,62 @@
     <img src="images/banner.png" alt="Promotional Banner">
 </div>
 
+@if (Auth::check() and !empty($viewed))
+<!-- Book showcase -->
+<div class="book-slider">
+
+    <!-- Top right "See More" link-->
+    <div class="showcase-header">
+        <h2 class="showcase-title">Recently Viewed</h2>
+        <a href="{{ route('shop') }}" class="see-more">See More</a>
+    </div>
+    
+    <button class="book-prev-arrow">&#10094;</button>
+    <div class="book-slider-container">
+        @foreach ($viewed as $book)
+        <div class="book-slide">
+            <img src="{{ 'images/' . $book['img_url']}} " alt="Book Cover">
+            <h3>{{ $book['book_name']}}</h3> <!-- Book Name -->
+            <p>{{ $book['first_name'] . " " . $book['last_name'] }}</p> <!-- Author Name -->
+            <p class="price">£{{ $book['price']}}</p> <!-- Price of book -->
+            <div class="hover-popup">Add to Basket</div> <!-- Add to basket popup -->
+        </div>
+        @endforeach
+
+<!-- Arrows for the book showcase -->   
+    </div>
+    <button class="book-next-arrow">&#10095;</button>
+</div>
+@endif
+
 <!-- Divider Line -->
 <div class="section-divider"></div>
 
 </body>
+<<<<<<< HEAD
 @include('footer')
 </html>
+=======
+
+<footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@icerock.com</p>
+                <p>Phone: +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</html>
+
+>>>>>>> main

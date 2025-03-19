@@ -8,17 +8,12 @@
     <title>Basket</title>
 </head>
 <body>
-    <h1>Done shopping?</h1> 
-    <!-- Navigation Bar -->
-    <div class="navBar">
-        <a class="active" href="{{ route('index') }}">Home</a>
-        <a href="{{ route('shop') }}">Books</a>
-        <!--<a href="{{ route('saved') }}">Saved</a>-->
-        <a href="{{ route('contact') }}">Contact Us</a>
-    </div>
+
+@include('header')
+
     <div class="main-container">
         <div class="basket-container">
-            <h2>basket:</h2>
+            <h2>Basket:</h2>
 
             @if (empty($basket))
                 <p>The Basket is Currently Empty</p> 
@@ -28,7 +23,7 @@
                 @foreach ($basket as $book)
                 <div class="basket-card">
                     <!-- cover -->
-                    <img src="{{ asset($book['img_url']) }}" alt="Book Cover" class="book-cover">
+                    <img src="{{ asset('images/'.$book['img_url']) }}" alt="Book Cover" class="book-cover">
                     <!-- title, author -->
                     <div class="book-info">
                         <p class="title">{{ $book['book_name'] }}</p>
@@ -66,22 +61,12 @@
             @endif
         </div>
 
-<<<<<<< HEAD
-                <a href="shop" class="back-to-shopping"> < Back to Shopping</a>
-                </div>
-                <div class="checkout-container">
-                     <h2>checkout:</h2>
-                     <div class="main-container">
-                        <div class="main-content">
-                        <div class="delivery-address">
-=======
         <div class="checkout-container">
-            <h2>checkout:</h2>
+            <h2>Checkout:</h2>
             <form action="{{ route('confirmBasket')}}" method="POST" class="main-checkout-form"> <!-- the whole checkout bit should be contained in this form now :) -->
                 @csrf
                 <div class="main-content">
                     <div class="delivery-address">
->>>>>>> main
                         <h2>Delivery Address</h2>
                         <label for="first-name">First Name:</label>
                         <input type="text" id="first-name" name="first-name" required>
@@ -137,6 +122,25 @@
             </form>
         </div>
     </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@icerock.com</p>
+                <p>Phone: +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 
 @include('footer')

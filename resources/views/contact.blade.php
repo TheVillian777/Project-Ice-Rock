@@ -4,57 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
+    <link rel="stylesheet" href="css/header.css" onerror="alert('CSS file not found!')">
     <link rel="stylesheet" href="css/contact.css" onerror="alert('CSS file not found!')">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="contact.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo">
-        </div>
 
-
-        <div class="title">
-
-            <h1>PageTurner</h1>
-
-        </div>
-    </header>
-
-    <!-- Search Bar -->
-    <div class="search-box">
-        <form action="{{ route('shopSearch') }}" method="POST">
-            @csrf
-            <div class="search-bar">
-                <input type="text" name='search' placeholder="search for books..." id="search" value="{{ request()->input('search') }}">
-                <button type="submit"><img src="magnifying-glass.png" alt="Search" class="search-icon"></button>
-            </div>   
-        </form>
-        <!--<input type="text" placeholder="Search for books..." id="search-bar">
-        <img src="magnifying-glass.png" alt="Search" class="search-icon">-->
-
-    </div>
-
-    <!-- Navigation Bar -->
-    <div class="navBar">
-        <a href="{{ route('index') }}">Home</a>
-        <a href="{{ route('shop') }}">Books</a>
-        <!--<a href="{{ route('saved') }}">Saved</a>-->
-        <a href="{{ route('basket') }}">Basket</a>
-        <a href="{{ route('login') }}">Profile</a>
-        <a href="{{ route('aboutUs') }}">About Us</a>
-        <a  class="active" href="{{ route('contact') }}">Contact Us</a>
-        @if (Auth::check())
-        <form action="{{ route('logout')}}" method="POST">
-            @csrf
-        <button type="submit">Log Out</button>
-        </form>
-        @else 
-        <a href="{{ route('login') }}">Login</a>
-        </form>
-        @endif
-    </div>
+@include('header')
 
     <!-- Contact Section -->
     <div class="contact-section">
@@ -93,6 +50,26 @@
         }, displayMessageTime);
     @endif
 </script>
+
+<footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@icerock.com</p>
+                <p>Phone: +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

@@ -36,13 +36,18 @@ route::get('/saved' , function(){
     return view('saved');
 })->name('saved');
 
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+Route::get('/', [HomeController::class, 'gatherData'])->name('index');
+
 Route::get('/shop', function () {
     return view('shop');
 })->name('shop');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -64,6 +69,7 @@ Route::get('/listing', function () {
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/forgottenPassword', [AuthController::class, 'forgottenPassword'])->name('forgottenPassword');
 
 //ContactUs Storing
 Route::post('/contact', [ContactUsController::class, 'contactUs'])->name('contactUs');
