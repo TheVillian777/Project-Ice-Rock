@@ -110,8 +110,8 @@
         @endif
     </div>
 
-    <!-- about us  Section -->
-    <div class="aboutUs-section">
+      <!-- about us  Section -->
+<div class="aboutUs-section">
      <h1>About Us</h1>
      <p>Welcome to PageTurner, your go-to platform for finding and purchasing books of all genres.</p>
      <p>We are committed to providing an extensive collection of books while ensuring a seamless user experience.</p>
@@ -131,8 +131,15 @@
 
      <h2>Our Commitment</h2>
      <p>At PageTurner, we are committed to promoting the joy of reading and supporting authors and publishers worldwide. Our goal is to make literature accessible and enjoyable for all.</p>
-
+     
+     <!--join us button-->
     </div>
+    <div class="join-us-container">
+        <h2>Become a Part of PageTurner!</h2>
+        <p>Join our community of book lovers and get access to an extensive collection of books.</p>
+        <a href="{{ route('login') }}" class="join-us-btn">Join Us</a>
+    </div>
+</div>
 
 
 <footer>
