@@ -7,16 +7,51 @@
     <link rel="stylesheet" href="css/profile.css" onerror="alert('CSS file not found!')">
     
     <script>
-        function showSection(sectionId) {
+        <script>
+        // Function to display the selected section
+        function displaySection(sectionId) {
+            console.log("Displaying section:", sectionId);
+            
+            // Hide all sections first
             document.querySelectorAll('.content-section').forEach(section => {
                 section.style.display = 'none';
             });
-            document.getElementById(sectionId).style.display = 'block';
+            
+            // Show the chosen section
+            let sectionToShow = document.getElementById(sectionId);
+            if (sectionToShow) {
+                sectionToShow.style.display = 'block';
+            } else {
+                console.error("Error: Could not locate section:", sectionId);
+            }
         }
         
-        document.addEventListener("DOMContentLoaded", function () {
-            showSection('profileInfo'); // profile should show by default
-        });
+        // Display form for updating payment details
+        function togglePaymentUpdate() {
+            console.log("Switching to update payment form...");
+            document.getElementById('savedPaymentDetails').style.display = 'none';
+            document.getElementById('paymentUpdateForm').style.display = 'block';
+        }
+        
+        // Save new payment details
+        function savePaymentDetails(event) {
+            event.preventDefault();
+            
+            let cardNumber = document.getElementById('cardNumber').value;
+            let expiryDate = document.getElementById('expiryDate').value;
+            let lastFourDigits = cardNumber.slice(-4);
+            
+            // Update UI with new card details
+            document.getElementById('displayLastFour').innerText = lastFourDigits;
+            document.getElementById('displayExpiry').innerText = expiryDate;
+            
+            
+            document.getElementById('paymentUpdateForm').style.display = 'none';
+            document.getElementById('savedPaymentDetails').style.display = 'block';
+            
+            alert("Payment method successfully updated!");
+        }
+    </script>
     </script>
 </head>
 <body>
@@ -121,10 +156,27 @@
         <p>View and manage your favorite books here.</p>
     </div>
 
-    <div id="paymentOptions" class="content-section" style="display:none;"> <!-- payment options section -->
-        <h2>Payment Options</h2>
-        <p>Manage your saved payment methods.</p>
-    </div>
+    <section id="paymentMethods" class="content-section" style="display:none;">
+                <h2>Payment Methods</h2>
+                <div id="savedPaymentDetails">
+                    <p><strong>Card:</strong> **** **** **** <span id="displayLastFour">1234</span></p>
+                    <p><strong>Expires:</strong> <span id="displayExpiry">06/24</span></p>
+                    <button onclick="togglePaymentUpdate()">Update Payment</button>
+                </div>
+                
+                <div id="paymentUpdateForm" style="display:none;">
+                    <h3>Update Payment Information</h3>
+                    <form onsubmit="savePaymentDetails(event)">
+                        <label for="cardNumber">Card Number:</label>
+                        <input type="text" id="cardNumber" placeholder="Enter new card number" required>
+                        
+                        <label for="expiryDate">Expiry Date:</label>
+                        <input type="text" id="expiryDate" placeholder="MM/YY" required>
+                        
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </section>
 
     <div id="yourAddress" class="content-section" style="display:none;"> <!-- address section -->
         <h2>Your Address</h2>
