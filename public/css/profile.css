@@ -16,6 +16,7 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 20px;
+    flex-wrap: wrap; 
 }
 
 /* Sidebar styles */
@@ -58,6 +59,14 @@ body {
 
 .content-section {
     display: none;
+}
+
+/* Ensure Payment Options is displayed when selected */
+#paymentOptions {
+    display: block ;
+    visibility: visible;
+    opacity: 1;
+    
 }
 
 h2 {
@@ -167,3 +176,89 @@ table tbody tr:hover {
         width: 100%;
     }
 }
+
+/*CSS Styles for Payment Options */
+.saved-payment-details {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+.card-details p {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.update-payment {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.update-payment:hover {
+    background-color: #0056b3;
+}
+
+/*changees*/
+
+.update-payment-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.update-payment-form h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.update-payment-form label {
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.update-payment-form input,
+.update-payment-form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.update-payment-form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.update-payment-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.update-payment-form button:hover {
+    background-color: #0056b3;
+}
+

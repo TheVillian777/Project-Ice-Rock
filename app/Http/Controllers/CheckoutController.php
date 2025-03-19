@@ -21,7 +21,7 @@ class CheckoutController extends Controller
             'last-name' => 'required',
             'address' => 'required',
             'card-number' => 'required|numeric|digits:16',
-            'expiry-date' => 'required',
+            'expiry-date' => 'required|date_format:m/y|after:today',
             'cvv' => 'required|numeric|digits:3',
         ]);
 
@@ -31,7 +31,7 @@ class CheckoutController extends Controller
 
     public function storeDetails(Request $request){
 
-        $basket = Session::get('basket'.Auth::id(),[]);
+        $basket = Session::get('basket',[]);
 
         //dd(Auth::id());
         
@@ -39,20 +39,20 @@ class CheckoutController extends Controller
             'user_id' => Auth::id(),
             'order_address' => request()->input('address'),
             'order_date' => now()->toDateString(),
-            'order_status' => 'Delivered',
+            'order_status' => 'Yes',
             'order_total_price' => request()->input('total_price'),
             'payment_method' => 'card',
             'payment_details' => substr(request()->input('card-number'), -4)
         ]);
 
-        
-        foreach ($basket as $order){
+
+        for ($i = 0; $i < count($basket); $i++){
             OrderItem::create([
                 'purchase_id' => $purchase->id,
-                'book_id' => $order['book_ID'],
-                'quantity' => $order['quantity'],
-                'book_price' => $order['price'],
-                'subtotal_price' => number_format($order['price'] * $order['quantity'],2),
+                'book_id' => $basket[$i]['book_ID'],
+                'quantity' => $basket[$i]['quantity'],
+                'book_price' => $basket[$i]['price'],
+                'subtotal_price' => number_format($basket[$i]['price'] * $basket[$i]['quantity'],2),
             ]);
         }
 
