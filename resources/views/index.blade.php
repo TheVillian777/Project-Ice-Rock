@@ -203,6 +203,24 @@
 <!-- Divider Line -->
 <div class="section-divider"></div>
 
+<!-- join mailing -->
+<div class="bookstore-newsletter">
+        <h2> Join Our Book Lover's Club!</h2>
+        <p>Be the first to know about new arrivals, exclusive editions, author signings, and special discounts.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe Now</button>
+        </form>
+        <div class="checkbox-container">
+            <input type="checkbox" id="agree" required>
+            <label for="agree">I agree to the <a href="#">Privacy Policy</a> and can unsubscribe anytime.</label>
+        </div>
+    </div>
+
+    <!-- Divider Line -->
+<div class="section-divider"></div>
+
+
 </body>
 
 <footer>
