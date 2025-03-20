@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="css/profile.css" onerror="alert('CSS file not found!')">
     
     <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            showSection('profileInfo'); // profile should show by default
+        });
+        
         // Function to show only Payment Options when clicked
 function showSection(sectionId) {
     console.log("Switching to section:", sectionId);
@@ -124,31 +135,38 @@ function saveUpdatedPayment(event) {
                 </form>
             </div>
 
-            <div id="pastOrders" class="content-section" style="display:none;">
-                <h2>Past Orders</h2>
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Date</th>
-                            <th>Book Title</th>
-                            <th>Quantity</th>
-                            <th>Total Price</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
+        <h2>Past Orders</h2>
+
+        @if ($orderitems->isEmpty())
+            <p>You have no orders!</p>
+        @else
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Book Title</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($orderitems as $orderitem)
+                <tr>
+                    <td>{{ $orderitem->purchase->id }}</td> <!-- order ID -->
+                    <td>{{ $orderitem->created_at }}</td> <!-- date -->
+                    <td>{{ $orderitem->book->book_name }}</td> <!-- book title -->
+                    <td>{{ $orderitem->quantity }}</td> <!-- quantity -->
+                    <td>£{{ $orderitem->subtotal_price }}</td> <!-- total price -->
+                    <td>{{ $orderitem->purchase->order_status }}</td> <!-- status -->
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        @endif
+    </div>
 
             <div id="favourites" class="content-section" style="display:none;">
                 <h2>Favourites</h2>
