@@ -414,15 +414,14 @@ body::before {
 }
 /* About Us Section */
 .aboutUs-section {
-    flex: 1; 
-    padding-bottom: 40px;
-    background: #333; 
-    color: white;
     border-radius: 10px;
     max-width: 800px;
     margin: 100px auto;
-    padding: 50px;
+    background: rgba(255, 255, 255, 0.2); /* Light transparent background */
+    color: white;
     text-align: center;
+    padding: 50px;
+    backdrop-filter: blur(5px); 
 }
 
 .aboutUs-section h1 {
