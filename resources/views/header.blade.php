@@ -27,27 +27,21 @@
         </div>
 
         <div class="header-right">
-            <div class="account-dropdown">
-                <a href="#" class="account-button">
-                    <i class="fa fa-user"></i> ACCOUNT
-                </a>
-                <div class="account-dropdown-content">
-                    <form action="{{ route('login') }}" method="GET">
-                        @csrf
-                        <button type="submit">Sign In</button>
-                    </form>
-                    <div class="dropdown-divider"></div>
-                    <form action="{{ route('register') }}" method="GET">
-                        @csrf
-                        <button type="submit">Register</button>
-                    </form>
-                </div>
+            <div class="account-button">
+                @if (Auth::check())
+                    <a href="{{ route('profile') }}">
+                        <i class="fa fa-user"></i> PROFILE
+                    </a>
+                @else
+                    <a href="{{ route('login') }}">
+                        <i class="fa fa-user"></i> LOGIN 
+                @endif
             </div>
 
-            <!-- Wishlist Button -->
+            <!-- wishlist -->
             <div class="wishlist-button">
-                <a href="{{ route('saved')}}">
-                   <i class="fa fa-heart"></i>  WISHLIST
+                <a href="{{ route('saved') }}">
+                   <i class="fa fa-heart"></i> WISHLIST
                 </a>
             </div>
 @php
@@ -69,15 +63,13 @@
                     <i class="fa fa-shopping-basket"></i> £ {{ number_format($total,2) }}
                 </a>
             </div>
-
         </div>
     </header>
 
-    <!-- Navigation Bar -->
+    <!-- nav -->
     <div class="navBar">
         <a class="active" href="{{ route('index') }}">Home</a>
 
-        <!-- Account Dropdown backend can you route this to the correct pages --> 
         <div class="dropdown">
             <a href="{{ route('shop') }}">Books</a>
             <div class="dropdown-content">
@@ -113,10 +105,9 @@
         <a href="{{ route('contact') }}">Contact Us</a>
         
         @if (Auth::check())
-        <form action="{{ route('logout')}}" method="POST">
+        <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit">Log Out</button>
         </form>
-        @else
         @endif
     </div>
