@@ -20,7 +20,9 @@
             showSection('profileInfo'); // profile should show by default
         });
     </script>
+
 </head>
+
 <body>
 
     <!-- header goes here -->
@@ -90,7 +92,7 @@
                     <button type="submit" class="confirm-button">Confirm</button>
                 </form>
             </div>
-
+            
     <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
         <h2>Past Orders</h2>
         @if ($orderitems->isEmpty())
@@ -156,35 +158,77 @@
             <h2><em>My Wish List</em> - 2 books</h2>
             <div class="wishlist-list">
                 <div class="wish-item">
-                    <div class="wish-cover">
-                        <img src="images/book1.jpg" alt="PlaceHolder">
+                        <div class="wish-cover">
+                            <img src="images/book1.jpg" alt="PlaceHolder">
+                        </div>
+                        <div class="wish-details">
+                            <h3>PlaceHolder</h3>  <!-- Placeholder for book title -->
+                            <p class="author">PlaceHolder</p> <!-- Placeholder for author -->
+                            <p class="price">&pound;9.99</p>
+                            <a href="#" class="remove">Remove</a>
+                        </div>
                     </div>
-                    <div class="wish-details">
-                        <h3>PlaceHolder</h3>  <!-- Placeholder for book title -->
-                        <p class="author">PlaceHolder</p> <!-- Placeholder for author -->
-                        <p class="price">&pound;9.99</p>
-                        <a href="#" class="remove">Remove</a>
-                    </div>
-                </div>
 
-                <div class="wish-item">
-                    <div class="wish-cover">
-                        <img src="images/book1.jpg" alt="PlaceHolder">
-                    </div>
-                    <div class="wish-details">
-                        <h3>PlaceHolder</h3>
-                        <p class="author">PlaceHolder</p>
-                        <p class="price">&pound;9.99</p>
-                        <a href="#" class="remove">Remove</a>
+                    <div class="wish-item">
+                        <div class="wish-cover">
+                            <img src="images/book1.jpg" alt="PlaceHolder">
+                        </div>
+                        <div class="wish-details">
+                            <h3>PlaceHolder</h3>
+                            <p class="author">PlaceHolder</p>
+                            <p class="price">&pound;9.99</p>
+                            <a href="#" class="remove">Remove</a>
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
 
-    <div id="paymentOptions" class="content-section" style="display:none;"> <!-- payment options section -->
-        <h2>Payment Options</h2>
-        <p>Manage your saved payment methods.</p>
-    </div>
+        <div id="paymentOptions" class="content-section" style="display:none;">
+            <h2>Saved Payment Method</h2>
+
+            @if($showPaymentDetails)
+                <div class="card-details">
+                    <p>Card Number: ****{{ $showPaymentDetails->card_number }}</p>
+                    <p>Expiry Date: {{ $showPaymentDetails->expiry_date }}</p>
+                </div>
+            @else
+                <p>No saved payment Details</p>
+            @endif
+            
+            <button type="submit" class="confirm-button" onclick="showUpdatePaymentDetailsForm()">Update Card Details?</button>
+        </div>
+
+        <div id="updatePaymentDetails" class="content-section" style="display:none;">
+            <h2>Update Payment Method</h2>
+            <form action="{{route ('updatePaymentDetails') }}" method="post">
+            @csrf
+            <div class="new-card-details">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter new card number" required>
+
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="Enter CVV" required>
+            </div>
+
+            <button type="submit" class="confirm-button" onclick="showPaymentDetailsForm()">Save Payment Method</button>
+            </form>
+        </div>
+</div>
+
+<script>
+    function showUpdatePaymentDetailsForm(){
+        document.getElementById('updatePaymentDetails').style.display = 'block';
+        document.getElementById('paymentOptions').style.display = 'none';
+    }
+
+    function showPaymentDetailsForm(){
+        document.getElementById('updatePaymentDetails').style.display = 'none';
+        document.getElementById('paymentOptions').style.display = 'block';
+    }
+</script>
 
 @include('footer')
 

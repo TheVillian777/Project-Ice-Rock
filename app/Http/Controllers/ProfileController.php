@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Purchase;
 use App\Models\OrderItem;
 use App\Models\User;
+use App\Models\Payment;
 
 class ProfileController extends Controller
 {
@@ -21,8 +22,9 @@ class ProfileController extends Controller
 
         $orderitems = $this->showPastBooks(); 
         $showDetails = $this->showUserDetails();
+        $showPaymentDetails = Payment::find(Payment::max('id'));
 
-        return view('profile', compact('orderitems', 'showDetails','purchases'));
+        return view('profile', compact('orderitems', 'showDetails', 'showPaymentDetails', 'purchases'));
     }
 
     public function showPastBooks()
@@ -76,6 +78,24 @@ class ProfileController extends Controller
         }     
     }
 
+    public function updatePaymentDetails(Request $request){
+
+        $newDetails = $request->validate([
+            'cardNumber' => 'required',
+            'expiryDate' => 'required',
+            'cvv' => 'required',
+        ]);
+
+        $payment = Payment::create([
+            'user_id' => Auth::id(),
+            'card_number' => substr(request()->input('cardNumber'), -4),
+            'expiry_date' => request()->input('expiryDate'),
+            'security_code' => request()->input('cvv')
+        ]);
+
+        return redirect()->route('profile')->with('message', 'payment details updated!');
+    }
+
     public function returnItem(Request $request){
 
         $purchase_id = request('purchaseID');
@@ -114,28 +134,5 @@ class ProfileController extends Controller
         $orderitems = OrderItem::where('purchase_id', $purchase_id)->get();
 
         return view('reciepts', compact('orderitems','user_id','purchase_id'));
-
-    }
-
-    public function returnItem(Request $request){
-
-        $purchase_id = request(['purchaseID']);
-        $book_id = request(['bookID']);
-
-        $user_id = Auth::id();
-
-        Purchase::where('purchase_id', $purchase_id)->where('book_id', $book_id)->limit(1)->update(['item_status' => 'returned']);
-
-    }
-
-    public function returnItem(Request $request){
-
-        $purchase_id = request(['purchaseID']);
-        $book_id = request(['bookID']);
-
-        $user_id = Auth::id();
-
-        Purchase::where('purchase_id', $purchase_id)->where('book_id', $book_id)->limit(1)->update(['item_status' => 'returned']);
-
     }
 }

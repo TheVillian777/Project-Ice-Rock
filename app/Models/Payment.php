@@ -5,30 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Purchase extends Model
+class Payment extends Model
 {
     use HasFactory;
 
-    protected $table = 'purchase';
+    protected $table = 'payment';
 
     protected $fillable = [
         'user_id',
-        'order_address',
-        'order_date',
-        'order_status',
-        'order_total_price',
-        'payment_method',
-        'payment_id',
+        'card_number',
+        'expiry_date',
+        'security_code',
     ];
 
     // Table Relationships
+    //a payment id can be used for many purchases
+    public function purchase(){
+        return $this->hasMany(Purchase::class);
+    }
 
     public function user(){
         return $this->belongsTo(User::class); 
-    }
-
-    public function payment()
-    {
-        return $this->belongsTo(Payment::class);
     }
 }
