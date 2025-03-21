@@ -15,7 +15,6 @@
 <!-- defining a book card -->
 @foreach ($books as $book)
         <div class="book-card">
-            <p> {{$book->id}} </p>
 
             <div>
             <form action="{{ route('listing') }}" method="POST" class="basket-form">

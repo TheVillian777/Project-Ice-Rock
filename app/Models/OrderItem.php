@@ -17,7 +17,8 @@ class OrderItem extends Model
         'book_price',
         'quantity',
         'book_price',
-        'subtotal_price'
+        'subtotal_price',
+        'item_status'
     ];
 
     // Table Relationships
