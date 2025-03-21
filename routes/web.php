@@ -27,6 +27,10 @@ Route::get('/wishlist1', function () {
     return view('wishlist1');
 });
 
+Route::get('/reviews', function () {
+    return view('reviews');
+});
+
 Route::get('/basket', function () {
     return view('basket');
 });
