@@ -35,3 +35,6 @@
         </form>
     </div>
 </div>
+
+<!-- footer -->
+@include('footer')

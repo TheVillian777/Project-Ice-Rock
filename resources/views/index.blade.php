@@ -110,6 +110,7 @@
         <button class="book-next-arrow">&#10095;</button>
     </div>
 
+    @include('footer')
 
 </body>
 </html>
