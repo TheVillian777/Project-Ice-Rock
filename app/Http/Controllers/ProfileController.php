@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Purchase;
 use App\Models\OrderItem;
 use App\Models\User;
+use App\Models\Payment;
 
 class ProfileController extends Controller
 {
@@ -19,8 +20,9 @@ class ProfileController extends Controller
 
         $orderitems = $this->showPastBooks(); 
         $showDetails = $this->showUserDetails();
+        $showPaymentDetails = Payment::find(Payment::max('id'));
 
-        return view('profile', compact('orderitems', 'showDetails'));
+        return view('profile', compact('orderitems', 'showDetails', 'showPaymentDetails'));
     }
 
     public function showPastBooks()
@@ -72,5 +74,23 @@ class ProfileController extends Controller
         } else {
             return redirect()->route('profile')->with('message', 'Error!');
         }     
+    }
+
+    public function updatePaymentDetails(Request $request){
+
+        $newDetails = $request->validate([
+            'cardNumber' => 'required',
+            'expiryDate' => 'required',
+            'cvv' => 'required',
+        ]);
+
+        $payment = Payment::create([
+            'user_id' => Auth::id(),
+            'card_number' => substr(request()->input('cardNumber'), -4),
+            'expiry_date' => request()->input('expiryDate'),
+            'security_code' => request()->input('cvv')
+        ]);
+
+        return redirect()->route('profile')->with('message', 'payment details updated!');
     }
 }

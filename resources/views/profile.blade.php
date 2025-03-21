@@ -17,55 +17,6 @@
         document.addEventListener("DOMContentLoaded", function () {
             showSection('profileInfo'); // profile should show by default
         });
-        
-        // Function to show only Payment Options when clicked
-function showSection(sectionId) {
-    console.log("Switching to section:", sectionId);
-
-    // Hide all content sections
-    document.querySelectorAll('.content-section').forEach(section => {
-        section.style.display = 'none';
-    });
-
-    // Show only the selected section
-    let selectedSection = document.getElementById(sectionId);
-    if (selectedSection) {
-        selectedSection.style.display = 'block';
-        console.log("Successfully displayed:", sectionId);
-    } else {
-        console.error("❌ Error: Section not found ->", sectionId);
-    }
-}
-
-// Function to Show Update Payment Form
-function showUpdatePaymentForm() {
-    console.log("Opening Update Payment Form...");
-    document.getElementById('savedPaymentDetails').style.display = 'none';
-    document.getElementById('updatePaymentForm').style.display = 'block';
-}
-
-// Function to Save Payment Method and Update UI
-function saveUpdatedPayment(event) {
-    event.preventDefault(); // Prevents page reload
-
-    let newCardType = document.getElementById('newCardType').value;
-    let newCardNumber = document.getElementById('newCardNumber').value;
-    let newExpiryDate = document.getElementById('newExpiryDate').value;
-    let lastFourDigits = newCardNumber.slice(-4); // Get last 4 digits
-
-    // Update displayed values
-    document.getElementById('savedCardType').innerText = newCardType;
-    document.getElementById('savedLastFourDigits').innerText = lastFourDigits;
-    document.getElementById('savedExpiryDate').innerText = newExpiryDate;
-
-    // Hide form, show saved details
-    document.getElementById('updatePaymentForm').style.display = 'none';
-    document.getElementById('savedPaymentDetails').style.display = 'block';
-
-    alert("Payment details updated successfully!");
-}
-
-
     </script>
 
 </head>
@@ -84,7 +35,6 @@ function saveUpdatedPayment(event) {
                 <li><a href="#" onclick="showSection('pastOrders')">Past orders</a></li>
                 <li><a href="#" onclick="showSection('favourites')">Favourites</a></li>
                 <li><a href="#" onclick="showSection('paymentOptions')">Payment options</a></li>
-                <li><a href="#" onclick="showSection('yourAddress')">Your address</a></li>
             </ul>
         </div>
 
@@ -136,87 +86,89 @@ function saveUpdatedPayment(event) {
             </div>
 
             <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
-        <h2>Past Orders</h2>
+            <h2>Past Orders</h2>
 
-        @if ($orderitems->isEmpty())
-            <p>You have no orders!</p>
-        @else
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Date</th>
-                    <th>Book Title</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($orderitems as $orderitem)
-                <tr>
-                    <td>{{ $orderitem->purchase->id }}</td> <!-- order ID -->
-                    <td>{{ $orderitem->created_at }}</td> <!-- date -->
-                    <td>{{ $orderitem->book->book_name }}</td> <!-- book title -->
-                    <td>{{ $orderitem->quantity }}</td> <!-- quantity -->
-                    <td>£{{ $orderitem->subtotal_price }}</td> <!-- total price -->
-                    <td>{{ $orderitem->purchase->order_status }}</td> <!-- status -->
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        @endif
-    </div>
-
-            <div id="favourites" class="content-section" style="display:none;">
-                <h2>Favourites</h2>
-                <p>View and manage your favorite books here.</p>
+            @if ($orderitems->isEmpty())
+                <p>You have no orders!</p>
+            @else
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Book Title</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($orderitems as $orderitem)
+                    <tr>
+                        <td>{{ $orderitem->purchase->id }}</td> <!-- order ID -->
+                        <td>{{ $orderitem->created_at }}</td> <!-- date -->
+                        <td>{{ $orderitem->book->book_name }}</td> <!-- book title -->
+                        <td>{{ $orderitem->quantity }}</td> <!-- quantity -->
+                        <td>£{{ $orderitem->subtotal_price }}</td> <!-- total price -->
+                        <td>{{ $orderitem->purchase->order_status }}</td> <!-- status -->
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            @endif
             </div>
 
-            <div id="paymentOptionsSection" class="content-section" style="display:none;">
-                <h2>Payment Options</h2>
-                <p>Manage your saved payment methods.</p>
-                
-
-             <!-- Payment Options Section -->
-    <div id="savedPaymentDetails" class="saved-payment-details">
-        <h3>Saved Payment Method</h3>
-        <div class="card-details">
-            <p><strong>Card Number:</strong> **** **** **** <span id="savedLastFourDigits">1234</span></p>
-            <p><strong>Expiry Date:</strong> <span id="savedExpiryDate">06/24</span></p>
+        <div id="favourites" class="content-section" style="display:none;">
+            <h2>Favourites</h2>
+            <p>View and manage your favorite books here.</p>
         </div>
-        <button class="update-payment" onclick="showUpdatePaymentForm()">Update Payment Method</button>
-    </div>
 
-    
-    <div id="updatePaymentForm" class="update-payment-form" style="display:none;">
-        <h3>Update Payment Method</h3>
-        <form onsubmit="saveUpdatedPayment(event)">
+        <div id="paymentOptions" class="content-section" style="display:none;">
+            <h2>Saved Payment Method</h2>
+
+            @if($showPaymentDetails)
+                <div class="card-details">
+                    <p>Card Number: ****{{ $showPaymentDetails->card_number }}</p>
+                    <p>Expiry Date: {{ $showPaymentDetails->expiry_date }}</p>
+                </div>
+            @else
+                <p>No saved payment Details</p>
+            @endif
             
+            <button type="submit" class="confirm-button" onclick="showUpdatePaymentDetailsForm()">Update Card Details?</button>
+        </div>
 
-            <label for="newCardNumber">Card Number:</label>
-            <input type="text" id="newCardNumber" name="newCardNumber" placeholder="Enter new card number" required>
+        <div id="updatePaymentDetails" class="content-section" style="display:none;">
+            <h2>Update Payment Method</h2>
+            <form action="{{route ('updatePaymentDetails') }}" method="post">
+            @csrf
+            <div class="new-card-details">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter new card number" required>
 
-            <label for="newExpiryDate">Expiry Date:</label>
-            <input type="text" id="newExpiryDate" name="newExpiryDate" placeholder="MM/YY" required>
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
 
-            <label for="newCvv">CVV:</label>
-            <input type="text" id="newCvv" name="newCvv" placeholder="Enter CVV" required>
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="Enter CVV" required>
+            </div>
 
-            <button type="submit">Save Payment Method</button>
-        </form>
-    </div>
+            <button type="submit" class="confirm-button" onclick="showPaymentDetailsForm()">Save Payment Method</button>
+            </form>
+        </div>
 </div>
 
-    
+<script>
+    function showUpdatePaymentDetailsForm(){
+        document.getElementById('updatePaymentDetails').style.display = 'block';
+        document.getElementById('paymentOptions').style.display = 'none';
+    }
 
-            <div id="yourAddress" class="content-section" style="display:none;">
-                <h2>Your Address</h2>
-                <p>Manage your shipping and billing addresses.</p>
-            </div>
-        </div>
-    </div>
-</body>
+    function showPaymentDetailsForm(){
+        document.getElementById('updatePaymentDetails').style.display = 'none';
+        document.getElementById('paymentOptions').style.display = 'block';
+    }
+</script>
 <footer>
         <div class="footer-container">
             <div class="footer-section">
@@ -236,4 +188,5 @@ function saveUpdatedPayment(event) {
             </div>
         </div>
     </footer>
+</body>
 </html>
