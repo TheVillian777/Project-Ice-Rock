@@ -127,4 +127,15 @@ class ProfileController extends Controller
         Purchase::where('purchase_id', $purchase_id)->where('book_id', $book_id)->limit(1)->update(['item_status' => 'returned']);
 
     }
+
+    public function returnItem(Request $request){
+
+        $purchase_id = request(['purchaseID']);
+        $book_id = request(['bookID']);
+
+        $user_id = Auth::id();
+
+        Purchase::where('purchase_id', $purchase_id)->where('book_id', $book_id)->limit(1)->update(['item_status' => 'returned']);
+
+    }
 }
