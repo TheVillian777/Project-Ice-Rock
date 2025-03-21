@@ -27,11 +27,15 @@
         </div>
 
         <div class="header-right">
-            <!-- account, can we add validation that changes 'LOGIN' to profile when logged in? -->
             <div class="account-button">
-                <a href="{{ route('login') }}">
-                    <i class="fa fa-user"></i> LOGIN
-                </a>
+                @if (Auth::check())
+                    <a href="{{ route('profile') }}">
+                        <i class="fa fa-user"></i> PROFILE
+                    </a>
+                @else
+                    <a href="{{ route('login') }}">
+                        <i class="fa fa-user"></i> LOGIN 
+                @endif
             </div>
 
             <!-- wishlist -->
