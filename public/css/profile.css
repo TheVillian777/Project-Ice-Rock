@@ -152,6 +152,34 @@ img {
     border-radius: 5px;
 }
 
+.wishlist-section, .favourites-section {
+    margin: 20px;
+    padding: 20px;
+    background: var(--base-variant);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-section h2, .favourites-section h2 {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 15px;
+    color: var(--text-colour);
+}
+
+.favourites-list, .wishlist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.book-cover img, .wish-cover img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
 .wish-item {
     display: flex;
     align-items: center;
