@@ -123,7 +123,7 @@
         @endif
     </div>
 
-    <div class="wishlist-section" class="content-section" style="display:none;">
+    <div id="wishlist-section" class="content-section" style="display:none;">
             <h2><em>My Wish List</em> - 2 books</h2>
             <div class="wishlist-list">
                 <div class="wish-item">
