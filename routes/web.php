@@ -96,3 +96,4 @@ Route::post('confirmBasket', [CheckoutController::class, 'validateBasket'])->nam
 //When calling profile ensure user is logged in first
 Route::get('/profile', [ProfileController::class, 'directToProfile'])->name('profile');
 
+Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
