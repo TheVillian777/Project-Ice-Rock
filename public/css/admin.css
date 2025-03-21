@@ -1,3 +1,5 @@
+@import "theme.css";
+
 /* Sidebar Styling */
 .sidebar {
     min-height: 100vh;
@@ -51,4 +53,77 @@ button.bg-blue-500:hover {
 
 button.bg-red-500:hover {
     background-color: #dc2626;
+}
+/* Search Box */
+.search-box {
+    flex-grow: 1; 
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    flex-grow: 1; 
+    border-radius: 5px 0 0 5px;
+}
+
+.search-bar input[type="text"]:focus {
+    outline: none;
+}
+
+.search-icon {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #555;
+}
+
+/* User Grid */
+.user-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+.user-card {
+    background-color: var(--base-variant);
+    border: 1px solid var(--base-colour);
+    border-radius: 16px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    cursor: pointer;
+    height: 100px;
+}
+
+.user-card h4 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: var(text-colour);
+}
+
+.user-card:hover {
+    transform: scale(1.15);
+    z-index: 1;
+}
+
+.user-card p {
+    font-size: 0.9em;
+    margin: 5px 0;
+    color: var(text-colour);
 }

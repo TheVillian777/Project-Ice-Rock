@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BasketController;
@@ -97,3 +98,12 @@ Route::post('confirmBasket', [CheckoutController::class, 'validateBasket'])->nam
 Route::get('/profile', [ProfileController::class, 'directToProfile'])->name('profile');
 
 Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
+
+//Admin Panel routes
+//Route::middleware(['auth'])->group(function(){
+Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('admin/users', [AdminController::class, 'gatherUsers'])->name('adminUsers');
+Route::get('admin/users/search', [AdminController::class, 'searchUser'])->name('searchUser');
+Route::get('admin/users/view', [AdminController::class, 'usersView'])->name('adminUserView');
+Route::get('admin/stock', [AdminController::class, 'stock'])->name('adminStock');
+
