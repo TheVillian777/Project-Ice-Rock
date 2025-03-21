@@ -92,43 +92,71 @@
                     <button type="submit" class="confirm-button">Confirm</button>
                 </form>
             </div>
+            
+    <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
+        <h2>Past Orders</h2>
+        @if ($orderitems->isEmpty())
+            <p>You have no orders!</p>
+        @else
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date Ordered</th>
+                    <th>Items</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($purchases as $purchase)
+                <tr>
+                    <td>{{ $purchase->id }}</td> <!-- order ID -->
+                    <td>{{ $purchase->created_at }}</td> <!-- date -->
+                    @php $RepeatedItem = []; @endphp
+                    <td>@foreach ($orderitems as $items)
+                        @if ($items->purchase_id == $purchase->id)
+                        @if (!in_array($items->book->book_name, $RepeatedItem))
+                        <img src="{{ 'images/' . $items->book->img_url}} " alt="$items->book->book_name">
+                        @endif
+                        @php $RepeatedItem[] = $items->book->book_name; @endphp
+                        <div></div>
+                        @endif
+                        @endforeach 
+                    </td> <!-- book title -->
+                        @php
+                        $total = 0;
+                        foreach ($orderitems as $items){
+                        if ($items->purchase_id == $purchase->id){
+                        $total = $total + $items->quantity;
+                        }
+                        }
+                        @endphp
+                    <td>
+                        {{$total}}
+                    </td> <!-- quantity -->
+                    <td>£{{ $purchase->order_total_price }}</td> <!-- total price -->
+                    <td>{{ $purchase->order_status }}</td> <!-- status -->
+                    <td>
+                        <form action=" {{ route('viewOrder') }}" method="post">
+                        @csrf
+                            <input type="hidden" value="{{ $orderitems }}" name="orderItems">
+                            <input type="hidden" value="{{ $purchase->id }}" name="purchaseID">
+                            <button type="submit" class="confirm-button">View</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        @endif
+    </div>
 
-            <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
-            <h2>Past Orders</h2>
-
-            @if ($orderitems->isEmpty())
-                <p>You have no orders!</p>
-            @else
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Date</th>
-                        <th>Book Title</th>
-                        <th>Quantity</th>
-                        <th>Total Price</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($orderitems as $orderitem)
-                    <tr>
-                        <td>{{ $orderitem->purchase->id }}</td> <!-- order ID -->
-                        <td>{{ $orderitem->created_at }}</td> <!-- date -->
-                        <td>{{ $orderitem->book->book_name }}</td> <!-- book title -->
-                        <td>{{ $orderitem->quantity }}</td> <!-- quantity -->
-                        <td>£{{ $orderitem->subtotal_price }}</td> <!-- total price -->
-                        <td>{{ $orderitem->purchase->order_status }}</td> <!-- status -->
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            @endif
-            </div>
-
-            <div id="wishlist-section" class="content-section" style="display:none;">
-                <h2><em>My Wish List</em> - 2 books</h2>
-                <div class="wishlist-list">
+    <div id="wishlist-section" class="content-section" style="display:none;">
+            <h2><em>My Wish List</em> - 2 books</h2>
+            <div class="wishlist-list">
                 <div class="wish-item">
                         <div class="wish-cover">
                             <img src="images/book1.jpg" alt="PlaceHolder">
@@ -205,4 +233,25 @@
 @include('footer')
 
 </body>
+<!--
+<footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@icerock.com</p>
+                <p>Phone: +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </html>
+    -->

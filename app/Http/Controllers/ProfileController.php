@@ -13,6 +13,8 @@ class ProfileController extends Controller
 {
     public function directToProfile()
     {
+        $purchases = Purchase::All();
+
         //checks if user is logged in before going to profile page
         if (!Auth::check()){
             return redirect()->route('login');
@@ -22,7 +24,7 @@ class ProfileController extends Controller
         $showDetails = $this->showUserDetails();
         $showPaymentDetails = Payment::find(Payment::max('id'));
 
-        return view('profile', compact('orderitems', 'showDetails', 'showPaymentDetails'));
+        return view('profile', compact('orderitems', 'showDetails', 'showPaymentDetails', 'purchases'));
     }
 
     public function showPastBooks()
@@ -92,5 +94,45 @@ class ProfileController extends Controller
         ]);
 
         return redirect()->route('profile')->with('message', 'payment details updated!');
+    }
+
+    public function returnItem(Request $request){
+
+        $purchase_id = request('purchaseID');
+        $book_id = request('bookID');
+
+        $user_id = Auth::id();
+
+        $orderitems = OrderItem::where('purchase_id', $purchase_id)->where('book_id', $book_id)->limit(1)->first();
+
+        if ($orderitems->quantity > 1){
+            $orderitems->update(['subtotal_price' => number_format($orderitems->book_price * $orderitems->quantity,2)]);
+            $orderitems->update(['quantity' => $orderitems->quantity - 1]);
+            
+            OrderItem::create([
+                'purchase_id' => $purchase_id,
+                'book_id' => $orderitems->book_id,
+                'quantity' => $orderitems->quantity,
+                'book_price' => $orderitems->book_price,
+                'item_status' => 'Returned',
+                'subtotal_price' => number_format($orderitems->book_price),
+            ]);
+        } else {
+            $orderitems->update(['item_status' => 'Returned']);
+        }
+        
+
+        return redirect()->route('profile');
+    }
+
+    public function viewOrder(Request $request){
+
+        $orderitems = request('orderItems');
+
+        $user_id = Auth::id();
+        $purchase_id = request('purchaseID');
+        $orderitems = OrderItem::where('purchase_id', $purchase_id)->get();
+
+        return view('reciepts', compact('orderitems','user_id','purchase_id'));
     }
 }

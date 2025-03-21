@@ -65,11 +65,12 @@ class CheckoutController extends Controller
                 'book_id' => $order['book_ID'],
                 'quantity' => $order['quantity'],
                 'book_price' => $order['price'],
+                'item_status' => 'Delivered',
                 'subtotal_price' => number_format($order['price'] * $order['quantity'],2),
             ]);
         }
 
-        Session::put('basket', []);
+        Session::put('basket'.Auth::id(), []);
 
         return redirect()->route('shop')->with('message','Checkout was successful!');
 

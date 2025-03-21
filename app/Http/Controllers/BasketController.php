@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
     public function viewBasket(){ //displays items in basket
 
+        $user_id = Auth::id();
+        $user = User::where('id', $user_id)->first(); //match user ids
+        
         $basket = Session::get('basket'.Auth::id(),[]); //gets session basket data (items in basket within specific session )
 
         $total = 0;
@@ -19,7 +23,7 @@ class BasketController extends Controller
             $totaltemsNo = $totalItemsNo + $product['quantity'];
         }
 
-        return view('basket',compact('basket','total', 'totalItemsNo')); // returns basket view, passing to basket and total and totalItemsNo.
+        return view('basket',compact('user','basket','total', 'totalItemsNo')); // returns basket view, passing to basket and total and totalItemsNo.
     }
 
     public function basketUpdate(Request $request){
