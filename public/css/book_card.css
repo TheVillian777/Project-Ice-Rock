@@ -1,5 +1,9 @@
 @import "theme.css";
 
+p, h3 {
+    font-family: Winky Sans, sans-serif;
+}
+
 .book-card {
     background-color: var(--base-variant);
     border: 1px solid var(--base-colour);
