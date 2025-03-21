@@ -145,6 +145,12 @@ table tbody tr:hover {
     background-color: var(--accent-colour);
 }
 
+img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
 /* Wishlist Section */
 .wishlist-section, .favourites-section {
     margin: 20px;

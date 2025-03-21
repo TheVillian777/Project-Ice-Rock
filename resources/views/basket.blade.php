@@ -75,11 +75,11 @@
                     <div class="delivery-address">
                         <h2>Delivery Address</h2>
                         <label for="first-name">First Name:</label>
-                        <input type="text" id="first-name" name="first-name" required>
+                        <input type="text" id="first-name" name="first-name" value="{{ $user->first_name }}" required>
                         <label for="last-name">Last Name:</label>
-                        <input type="text" id="last-name" name="last-name" required>
+                        <input type="text" id="last-name" name="last-name" value="{{ $user->last_name }}" required>
                         <label for="address">Address:</label>
-                        <input type="text" id="address" name="address" required>
+                        <input type="text" id="address" name="address" value="{{ $user->address }}" required>
                         <label for="city">City:</label>
                         <input type="text" id="city" name="city">
                         <label for="postcode">Postcode:</label>

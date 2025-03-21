@@ -39,6 +39,8 @@ route::get('/saved' , function(){
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
+
+
 Route::get('/', [HomeController::class, 'gatherData'])->name('index');
 
 Route::get('/shop', function () {
@@ -96,3 +98,5 @@ Route::post('confirmBasket', [CheckoutController::class, 'validateBasket'])->nam
 Route::get('/profile', [ProfileController::class, 'directToProfile'])->name('profile');
 
 Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
+Route::post('/returnItem', [ProfileController::class, 'returnItem'])->name('returnItem');
+Route::post('/viewOrder', [ProfileController::class, 'viewOrder'])->name('viewOrder');
