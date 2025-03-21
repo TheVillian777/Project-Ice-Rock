@@ -56,6 +56,19 @@
         <h2>Register</h2>
         <form action="{{ route('register') }}" method="post">
             @csrf
+
+        <!-- input title -->
+            <label for="register-title">Title:</label>
+            <select id="register-title" name="title" required>
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+                <option value="Ms">Ms</option>
+                <option value="Dr">Dr</option>
+                <option value="Prof">Prof</option>
+                <option value="Other">Other</option>
+            </select>
+
         <!-- input first name -->
             <label for="register-first">First Name:</label>
             <input type="text" id="register-first" name="first_name" required>
@@ -73,6 +86,10 @@
         <!-- input email -->
             <label for="register-email">Email:</label>
             <input type="email" id="register-email" name="email" required>
+
+        <!-- input address -->
+            <label for="register-address">Address:</label>
+            <input type="address" id="register-address" name="address" required>
 
         <!-- input password -->    
             <label for="register-password">Password:</label>
@@ -151,6 +168,24 @@
     });
 
 </script>
-
+<footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@icerock.com</p>
+                <p>Phone: +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

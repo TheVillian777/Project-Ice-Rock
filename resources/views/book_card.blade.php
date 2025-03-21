@@ -44,11 +44,11 @@
             </i>
         </div>
 
-
         <!-- basket icon -->
         <div class="basket-icon">
             <form action="{{ route('addToBasket') }}" method="POST" class="basket-form">
                 @csrf
+                <button>
                 <input type="hidden" name="bookId" value="{{ $book->id }}">
                 <input type="hidden" name="quantity" value="1">
                 <i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i>

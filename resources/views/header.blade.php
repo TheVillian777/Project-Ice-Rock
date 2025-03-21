@@ -44,10 +44,23 @@
                    <i class="fa fa-heart"></i> WISHLIST
                 </a>
             </div>
+@php
+        $basket = Session::get('basket'.Auth::id(),[]);
+
+        $total = 0;
+        $totalItemsNo=0;
+
+        foreach ($basket as &$product){ 
+            $total = $total + $product['price'] * $product['quantity'];
+            $totaltemsNo = $totalItemsNo + $product['quantity'];
+        }
+@endphp   <!-- due to header being it's own view its very difficult to do it
+               without copying and pasting the controller code straight into the file
+               however it works -->
 
             <div class="basket-button-container">
                 <a href="{{ route('basket') }}" class="basket-button">
-                    <i class="fa fa-shopping-basket"></i> £0.00
+                    <i class="fa fa-shopping-basket"></i> £ {{ number_format($total,2) }}
                 </a>
             </div>
         </div>
@@ -87,6 +100,7 @@
                 </form>
             </div>
         </div>
+        <a href="{{ route('profile') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
         
