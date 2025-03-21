@@ -17,9 +17,18 @@ class AdminController extends Controller
         return view('adminUsers');
     }
 
-    public function usersView()
+    public function usersView($user_id)
     {
-        return view('adminUsersView');
+        $users = User::find($user_id);
+        $showDetails = $this->showUserDetails($user_id);
+        return view('adminUsersView',compact('showDetails'));
+    }
+
+    public function showUserDetails($user_id)
+    {
+        $user_details = User::where('id', $user_id)->first(); //match user ids and add customer to add address
+
+        return $user_details; //return all user details from user table
     }
 
     public function stock()
@@ -42,13 +51,41 @@ class AdminController extends Controller
         $search = $request->input('search');
         $users = User::where('first_name','like','%' . $search . '%')
         ->orWhere('last_name','like','%' . $search . '%')
+        ->orWhere('email','like','%' . $search . '%')
         ->get();
 
         return view('adminUsers', compact('users'));
     }
 
-    
 
+    public function updateInfo(Request $request,$user_id){
+        $user = User::where('id', $user_id)->first(); //match user ids
 
+        $request->validate([
+            'title' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'phoneNumber' => 'nullable',
+            'address' => 'required'
+        ]);
+
+        if($user){
+            $user->title = $request['title'];
+            $user->first_name = $request['firstName'];
+            $user->last_name = $request['lastName'];
+            $user->phone = $request['phoneNumber'];
+            $user->address = $request["address"];
+            $user->email = $request["email"];
+
+        $user->save(); //save changes to editted user details
+        return redirect()->route('profile')->with('message', 'Profile updated!');
+
+        } else {
+            return redirect()->route('profile')->with('message', 'Error!');
+        }     
+    }
 
 }
+
+
+

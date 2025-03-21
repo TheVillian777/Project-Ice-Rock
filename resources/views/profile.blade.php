@@ -75,8 +75,8 @@
                     </div>
                     
                     <div class="name-input">
-                        <label for="email">Current Email Address:</label>
-                        <span>{{ $showDetails->email }}</span> <!-- changing email is not allowed -->
+                        <label for="email">Email Address:</label>
+                        <input type="text" id="email" name="email" value="{{ $showDetails->email }}">
                     </div>
 
                     <button type="submit" class="confirm-button">Confirm</button>

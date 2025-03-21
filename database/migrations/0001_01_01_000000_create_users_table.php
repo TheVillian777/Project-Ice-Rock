@@ -19,7 +19,7 @@ return new class extends Migration
             $table->char('email', length: 30)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->unsignedBigInteger('phone')->nullable();
-            $table->boolean('isadmin');
+            $table->enum ('security_level', ['Customer', 'Admin', 'Senior-Admin'])->default('Customer');
             $table->string('password');
             $table->char('security_answer', length: 15);
             $table->char('address', length: 20);

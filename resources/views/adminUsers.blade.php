@@ -43,6 +43,7 @@
             <div class="user-card" onclick="window.location='{{ route('adminUserView', ['user_id' => $user->id]) }}'">
                 <div class="user-info">
                         <h4 class="userName">{{ $user->first_name }} {{ $user->last_name }} </h4>
+                        <h5 class="securityLevel">{{ $user->security_level}}</h5>
                         <p class="userEmail">{{ $user->email}}</p>
                 </div>
             </div>

@@ -108,11 +108,16 @@ button.bg-red-500:hover {
     transition: transform 0.3s ease-in-out;
     position: relative;
     cursor: pointer;
-    height: 100px;
+    height: 150px;
 }
 
 .user-card h4 {
     font-size: 1.2em;
+    margin: 10px 0;
+    color: var(text-colour);
+}
+.user-card h5 {
+    font-size: 1.1em;
     margin: 10px 0;
     color: var(text-colour);
 }

@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
             'last_name' => 'Fryer',
             'email' => 'notjackfryer@gmail.com',
             'phone' => 123456789,
-            'isadmin' => false,
             'password' => 'password',
             'security_answer' => 'brian',
             'address' => '5 team3 lane'

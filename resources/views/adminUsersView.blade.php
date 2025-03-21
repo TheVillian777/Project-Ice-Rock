@@ -3,62 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="css/admin.css"> 
-    <script src="index.js" defer></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/profile.css">
+    
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            showSection('profileInfo'); // profile should show by default
+        });
+    </script>
 </head>
 <body>
+ <!-- Wrap everything in the container -->
+ <div class="container">
+        <!-- Sidebar with links to different sections of the profile page -->
+        <div class="sideBar">
+            <h2>Account information</h2>
+            <ul>
+                <li><a href="#" onclick="showSection('profileInfo')">Your profile</a></li>
+                <li><a href="#" onclick="showSection('pastOrders')">Past orders</a></li>
+                <li><a href="#" onclick="showSection('paymentOptions')">Payment options</a></li>
+            </ul>
+        </div>
 
-<div class="flex min-h-screen bg-gray-100">
-    <!-- Sidebar -->
-    <aside class="w-64 bg-white shadow-md p-5">
-        <h2 class="text-xl font-semibold mb-4">Admin Panel</h2>
-        <ul>
-            <li class="mb-2"><a href="{{ route('admin') }}" class="text-gray-700 hover:text-blue-600">Dashboard</a></li>
-            <li class="mb-2"><a href="{{ route('adminUsers') }}" class="text-gray-700 hover:text-blue-600">Users</a></li>
-            <li class="mb-2"><a href="{{ route('adminStock') }}" class="text-gray-700 hover:text-blue-600">Stock</a></li>
-        </ul>
-    </aside>
-
-    <!-- Main Content -->
-    <div class="flex-1 p-6">
-        <h1 class="text-2xl font-bold mb-6">User Management</h1>
-        <!-- User Search Bar -->
-        <div class="search-box">
-            <form action="{{ route('adminUsers') }}" method="GET">
+        <!-- Content sections -->
+        <div class="content-area">
+            <div id="profileInfo" class="content-section">
+                <form action="{{ route('updateInfo') }}" method="post">
                 @csrf
-                <div class="search-bar">
-                    <input type="text" name='search' placeholder="Search for users..." id="search" value="{{ request()->input('search') }}">
-                    <button type="submit" class="search-icon">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
+                    <label for="title">Title:</label>
+                    <select id="title" name="title" value="{{ $showDetails->title }}">
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Ms">Ms</option>
+                        <option value="Dr">Dr</option>
+                        <option value="Prof">Prof</option>
+                        <option value="Other">Other</option>
+                    </select>
 
-       
+                    <div class="name-input">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" value="{{ $showDetails->first_name }}">
+                    </div>
 
+                    <div class="name-input">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" value="{{ $showDetails->last_name }}">
+                    </div>
 
-    </div>
-</div>
+                    <div class="name-input">
+                        <label for="phoneNumber">Phone Number:</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" value="{{ $showDetails->phone }}">
+                    </div>
 
-<footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
+                    <div class="name-input">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" value="{{ $showDetails->address }}">
+                    </div>
+                    
+                    <div class="name-input">
+                        <label for="email">Email Address:</label>
+                        <input type="text" id="email" name="email" value="{{ $showDetails->email }}">
+                    </div>
+
+                    <button type="submit" class="confirm-button">Confirm</button>
+                </form>
             </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: contact@icerock.com</p>
-                <p>Phone: +1 234 567 890</p>
-            </div>
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+
+
+</body>
