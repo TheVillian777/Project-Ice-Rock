@@ -126,10 +126,34 @@
             @endif
             </div>
 
-        <div id="favourites" class="content-section" style="display:none;">
-            <h2>Favourites</h2>
-            <p>View and manage your favorite books here.</p>
-        </div>
+            <div id="wishlist-section" class="content-section" style="display:none;">
+                <h2><em>My Wish List</em> - 2 books</h2>
+                <div class="wishlist-list">
+                <div class="wish-item">
+                        <div class="wish-cover">
+                            <img src="images/book1.jpg" alt="PlaceHolder">
+                        </div>
+                        <div class="wish-details">
+                            <h3>PlaceHolder</h3>  <!-- Placeholder for book title -->
+                            <p class="author">PlaceHolder</p> <!-- Placeholder for author -->
+                            <p class="price">&pound;9.99</p>
+                            <a href="#" class="remove">Remove</a>
+                        </div>
+                    </div>
+
+                    <div class="wish-item">
+                        <div class="wish-cover">
+                            <img src="images/book1.jpg" alt="PlaceHolder">
+                        </div>
+                        <div class="wish-details">
+                            <h3>PlaceHolder</h3>
+                            <p class="author">PlaceHolder</p>
+                            <p class="price">&pound;9.99</p>
+                            <a href="#" class="remove">Remove</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <div id="paymentOptions" class="content-section" style="display:none;">
             <h2>Saved Payment Method</h2>
