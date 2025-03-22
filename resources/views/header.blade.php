@@ -100,7 +100,6 @@
                 </form>
             </div>
         </div>
-        <a href="{{ route('profile') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
         
