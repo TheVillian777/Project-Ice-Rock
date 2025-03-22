@@ -191,6 +191,7 @@ body {
     font-size: 16px;
 }
 
+
 .navBar button {
     padding: 0;
     border: none;
@@ -201,12 +202,15 @@ body {
     font-size: 16px;
 }
 
+
 .navBar a:hover {
     color: var(--alt-text-colour);
 }
 
 .navBar a.active {
     text-decoration: underline;
+    background-color: var(--primary-colour);
+    
 }
 
 /* Dropdown under Books */
@@ -219,7 +223,6 @@ body {
     display: block;
     color: var(--interface-colour);
     text-decoration: none;
-    padding: 10px 15px;
     font-size: 16px;
 }
 
