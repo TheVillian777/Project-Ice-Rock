@@ -188,7 +188,7 @@
 
             @if($showPaymentDetails)
                 <div class="card-details">
-                    <p>Card Number: ****{{ $showPaymentDetails->card_number }}</p>
+                    <p>Card Number: ****{{ substr($showPaymentDetails->card_number, -4) }}</p>
                     <p>Expiry Date: {{ $showPaymentDetails->expiry_date }}</p>
                 </div>
             @else

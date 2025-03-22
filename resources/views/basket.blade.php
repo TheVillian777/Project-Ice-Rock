@@ -88,14 +88,15 @@
                         <input type="text" id="country" name="country">
                     </div>
 
+                    <!--checks if there is a payment. if no payment display nothing-->
                     <div class="bank-details">
                         <h2>Bank Details</h2>
                         <label for="card-number">Card Number:</label>
-                        <input type="text" id="card-number" name="card-number" required>
+                        <input type="text" id="card-number" name="card-number" value="{{ $payment ? $payment->card_number: '' }}" required>
                         <label for="expiry-date">Expiry Date (MM/YY):</label>
-                        <input type="text" id="expiry-date" name="expiry-date" required>
+                        <input type="text" id="expiry-date" name="expiry-date" value="{{ $payment ? $payment->expiry_date: '' }}" required>
                         <label for="cvv">CVV:</label>
-                        <input type="text" id="cvv" name="cvv" required>
+                        <input type="text" id="cvv" name="cvv" value="{{ $payment? $payment->security_code: '' }}" required>
                     </div>
                 </div>
 
