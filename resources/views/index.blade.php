@@ -45,7 +45,6 @@
 
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
-            @foreach ($books as $book)
             <div class="container-slide">
                 @include('book_card')
             </div>
@@ -85,7 +84,6 @@
     <!-- Divider Line -->
     <div class="section-divider"></div>
 
-    
     <!-- Book showcase -->
     <div class="book-slider">
 
@@ -97,7 +95,6 @@
 
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
-            @foreach ($books as $book)
             <div class="container-slide">
                 @include('book_card')
             </div>
@@ -117,7 +114,7 @@
 
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
-            <div class="book-slider-container">
+            <div class="container-slide">
                 @include('viewed_card')
             </div>
         </div>
@@ -129,6 +126,10 @@
 
 </body>
 </html>
+
+
+
+
 
 
 
