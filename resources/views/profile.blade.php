@@ -218,6 +218,8 @@
         </div>
 </div>
 
+
+
 <script>
     function showUpdatePaymentDetailsForm(){
         document.getElementById('updatePaymentDetails').style.display = 'block';
@@ -230,6 +232,10 @@
     }
 </script>
 
-@include('footer')
+
 
 </body>
+
+@include('footer')
+
+</html>

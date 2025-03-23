@@ -1,0 +1,81 @@
+@import"theme.css";
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: var(--base-colour);
+    color: var(--text-colour);
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--base-colour);
+    align-items: center;
+    justify-content: center;
+
+}
+
+.listing {
+    width: 90%;
+    max-width: 1050px;
+    display: flex;
+    border:1px var(--accent-colour);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cover {
+    flex-basis: 47%;
+    background-color: var(--base-variant);
+}
+
+.cover img {
+    width: 100%;
+    display: block;
+}
+
+.product-info {
+    flex-basis: 53%;
+    background-color: var(--base-variant);
+    padding: 40px;
+    padding-left: 60px;
+    box-shadow: -10px 5px 10px 10px rgba(0, 0, 0, 0.1);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.product-info h1 {
+    font-size: 35px;
+    color: var(--text-colour);
+}
+
+.product-info h2 {
+    font-size: 30px;
+    color: var(--text-colour);
+    font-weight: 600;
+}
+
+.product-info h3 {
+    font-size: 20px;
+    color: var(--text-colour);
+    margin-bottom: 20px;    
+}
+
+.basket-button {
+	background-color:var(--primary-colour);
+	border-radius:10px;
+	border:1px var(--accent-colour);
+	cursor: pointer;
+	color:var(--interface-colour);
+	padding: 13px 40px;
+}
+.basket-button:hover {
+	background-color:var(--accent-colour);
+}
+.basket-button:active {
+	position:relative;
+	top:1px;
+}
