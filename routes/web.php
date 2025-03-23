@@ -9,6 +9,7 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', function () {
     return view('index');
@@ -110,3 +111,6 @@ Route::post('/updatePaymentDetails', [ProfileController::class, 'updatePaymentDe
 Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
 Route::post('/returnItem', [ProfileController::class, 'returnItem'])->name('returnItem');
 Route::post('/viewOrder', [ProfileController::class, 'viewOrder'])->name('viewOrder');
+
+//Review Submission
+Route::post('/listing/reviewBook', [ReviewController::class, 'reviewSubmit'])->name('reviewSubmit');

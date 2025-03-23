@@ -43,26 +43,29 @@
     </div>
     <div class="leave-review-container">
     <h2>Write Your Review</h2>
-    <form action="     " method="POST">
+    <form action="{{ route('reviewSubmit') }}" method="POST">
+        @csrf
+        <input type="hidden" name="book_id" value="{{ $book->id }}">
+
         <div class="rating-section">
-            <label for="rating">Rate this book:</label>
+            <label for="review_rating">Rate this book:</label>
             <div class="stars">
-                <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
-                <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
-                <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
-                <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
-                <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+                <input type="radio" id="star5" name="review_rating" value="5" ><label for="star5" title="5 stars">★</label>
+                <input type="radio" id="star4" name="review_rating" value="4" ><label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="review_rating" value="3"><label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="review_rating" value="2"><label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="review_rating" value="1"><label for="star1" title="1 star">★</label>
             </div>
         </div>
         <div class="form-group">
-            <label for="review-title">Add a title for your review:</label>
-            <input type="text" id="review-title" name="review_title" required>
+            <label for="review_title">Add a title for your review:</label>
+            <input type="text" id="review_title" name="review_title" required>
         </div>
         <div class="form-group">
             <label for="review-text">Write your review:</label>
-            <textarea id="review-text" name="review_text" maxlength="2000000000000000000000000000000000000000000000000000000000000000000000000000000" required></textarea>
+            <textarea id="review_text" name="review_text" maxlength="2000" required></textarea>
         </div>
-        <button type="submits">Submit Review</button>
+        <button type="submit">Submit Review</button>
     </form>
 
 </div>
