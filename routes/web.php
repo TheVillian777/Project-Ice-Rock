@@ -112,5 +112,7 @@ Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('upda
 Route::post('/returnItem', [ProfileController::class, 'returnItem'])->name('returnItem');
 Route::post('/viewOrder', [ProfileController::class, 'viewOrder'])->name('viewOrder');
 
-//Review Submission
-Route::post('/listing/reviewBook', [ReviewController::class, 'reviewSubmit'])->name('reviewSubmit');
+//Ensures user is logged in and authenticated
+Route::middleware(['auth'])->group(function(){
+    Route::post('/listing/reviewBook', [ReviewController::class, 'reviewSubmit'])->name('reviewSubmit');
+});
