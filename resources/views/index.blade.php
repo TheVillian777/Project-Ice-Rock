@@ -49,7 +49,6 @@
             <div class="container-slide">
                 @include('book_card')
             </div>
-            @endforeach
         </div>
         <button class="book-next-arrow">&#10095;</button>
     </div>
@@ -102,10 +101,29 @@
             <div class="container-slide">
                 @include('book_card')
             </div>
-            @endforeach
         </div>
         <button class="book-next-arrow">&#10095;</button>
     </div>
+
+    @if ($viewed)
+    <!-- Recently viewed showcase -->
+    <div class="book-slider">
+
+        <!-- Top right "See More" link-->
+        <div class="showcase-header">
+            <h2 class="showcase-title">Recently Viewed</h2>
+            <a href="{{ route('shop') }}" class="see-more">See More</a>
+        </div>
+
+        <button class="book-prev-arrow">&#10094;</button>
+        <div class="book-slider-container">
+            <div class="book-slider-container">
+                @include('viewed_card')
+            </div>
+        </div>
+        <button class="book-next-arrow">&#10095;</button>
+    </div>
+    @endif
 
     @include('footer')
 

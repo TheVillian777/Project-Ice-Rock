@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Payment;
+use Illuminate\Support\Facades\Crypt;
 
 class BasketController extends Controller
 {
@@ -12,18 +14,27 @@ class BasketController extends Controller
 
         $user_id = Auth::id();
         $user = User::where('id', $user_id)->first(); //match user ids
+        $payment = Payment::find(Payment::where('user_id', $user_id)->max('id')); //retrieves most recent payment details
         
+        if($payment) {
+            $payment->card_number = Crypt::decryptString($payment->card_number);
+            $payment->expiry_date = Crypt::decryptString($payment->expiry_date);
+            $payment->security_code = Crypt::decryptString($payment->security_code);
+        } else {
+            $payment = null;
+        }
+
         $basket = Session::get('basket'.Auth::id(),[]); //gets session basket data (items in basket within specific session )
 
         $total = 0;
         $totalItemsNo=0;
 
         foreach ($basket as &$product){ 
-            $total = $total + $product['price'] * $product['quantity'];
+            $total = $total + $product['book_price'] * $product['quantity'];
             $totaltemsNo = $totalItemsNo + $product['quantity'];
         }
 
-        return view('basket',compact('user','basket','total', 'totalItemsNo')); // returns basket view, passing to basket and total and totalItemsNo.
+        return view('basket',compact('user','basket','total', 'totalItemsNo', 'payment')); // returns basket view, passing to basket and total and totalItemsNo.
     }
 
     public function basketUpdate(Request $request){

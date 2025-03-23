@@ -155,32 +155,27 @@
     </div>
 
     <div id="wishlist-section" class="content-section" style="display:none;">
-            <h2><em>My Wish List</em> - 2 books</h2>
+            <h2><em>My Wish List</em> - {{count($wishlist)}} books</h2>
             <div class="wishlist-list">
+                @if (!$wishlist)
+                <p> There is no wishlist </p>
+                @else
+                @foreach ($wishlist as $book)
                 <div class="wish-item">
                         <div class="wish-cover">
-                            <img src="images/book1.jpg" alt="PlaceHolder">
+                            <img src="{{ asset('images/' . $book['img_url']) }}" alt="Book Cover">
                         </div>
                         <div class="wish-details">
-                            <h3>PlaceHolder</h3>  <!-- Placeholder for book title -->
-                            <p class="author">PlaceHolder</p> <!-- Placeholder for author -->
-                            <p class="price">&pound;9.99</p>
-                            <a href="#" class="remove">Remove</a>
-                        </div>
-                    </div>
-
-                    <div class="wish-item">
-                        <div class="wish-cover">
-                            <img src="images/book1.jpg" alt="PlaceHolder">
-                        </div>
-                        <div class="wish-details">
-                            <h3>PlaceHolder</h3>
-                            <p class="author">PlaceHolder</p>
-                            <p class="price">&pound;9.99</p>
-                            <a href="#" class="remove">Remove</a>
+                            <h3>{{$book['book_name']}}</h3>
+                            <p class="author">{{$book['first_name'] . " ". $book['last_name']}}</p>
+                            <p class="price">&pound;{{$book['book_price']}}</p>
+                            <a href="{{ route('listing', ['book_id' => $book['book_ID']]) }}" class="remove">View</a>
+                            <a href="{{ route('unwishing', ['book_id' => $book['book_ID']]) }}" class="remove">Remove</a>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                @endif
             </div>
 
         <div id="paymentOptions" class="content-section" style="display:none;">
@@ -188,7 +183,7 @@
 
             @if($showPaymentDetails)
                 <div class="card-details">
-                    <p>Card Number: ****{{ $showPaymentDetails->card_number }}</p>
+                    <p>Card Number: ****{{ substr($showPaymentDetails->card_number, -4) }}</p>
                     <p>Expiry Date: {{ $showPaymentDetails->expiry_date }}</p>
                 </div>
             @else
