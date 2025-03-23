@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Contact</title>
-=======
     <title>Footer</title>
->>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31
     <link rel="stylesheet" href="css/footer.css" onerror="alert('CSS file not found!')">
 </head>
 
@@ -29,8 +25,4 @@
                 
             </div>
         </div>
-<<<<<<< HEAD
-    </footer>
-=======
 </footer>
->>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31

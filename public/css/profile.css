@@ -38,13 +38,9 @@ body {
 
 .sideBar ul li a {
     text-decoration: none;
-<<<<<<< HEAD
-    padding: 10px 20px;
-=======
     color: var(--link-colour);
     font-size: 1.1rem;
     transition: color 0.3s ease;
->>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31
 }
 
 .sideBar ul li a:hover {
@@ -199,4 +195,3 @@ footer {
     bottom: 0;
     background-color: #f8f8f8; /* Adjust as needed */
 }
-

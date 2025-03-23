@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-footer {
-    background-color: #3f3f3f;
-    color: white;
-=======
 @import "theme.css";
 
 footer {
     background-color: var(--base-colour);
     color: var(--text-colour);
->>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31
     padding: 20px 0;
     text-align: center;
     margin-top: 20px;
@@ -20,9 +14,5 @@ footer {
     margin-top: 10px;
 }
 .footer-links a:hover {
-<<<<<<< HEAD
-    color: #8034eb;
-=======
     color: var(--link-colour);
->>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31
 }

@@ -129,19 +129,8 @@
             </form>
         </div>
     </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
-=======
 
 @include('footer')
 
->>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31
 </body>
->>>>>>> parent of 26bef1a (merge)
->>>>>>> Stashed changes
-
-@include('footer')
 </html>

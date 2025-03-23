@@ -41,7 +41,6 @@
         </form>
     </div>
 
-    @include('footer')
 
 <script>
     //if the success message appears this shows the user for 4 seconds then routes back to shop
@@ -57,10 +56,7 @@
     @endif
 </script>
 
-<<<<<<< HEAD
-=======
 @include('footer')
 
->>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31
 </body>
 </html>

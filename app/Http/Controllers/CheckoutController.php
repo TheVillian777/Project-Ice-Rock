@@ -69,9 +69,9 @@ class CheckoutController extends Controller
                 'purchase_id' => $purchase->id,
                 'book_id' => $order['book_ID'],
                 'quantity' => $order['quantity'],
-                'book_price' => $order['price'],
+                'book_price' => $order['book_price'],
                 'item_status' => 'Delivered',
-                'subtotal_price' => number_format($order['price'] * $order['quantity'],2),
+                'subtotal_price' => number_format($order['book_price'] * $order['quantity'],2),
             ]);
         }
 

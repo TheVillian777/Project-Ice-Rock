@@ -41,10 +41,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-=======
 </div>
->>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31
 </body>
 <!-- footer -->
 @include('footer')

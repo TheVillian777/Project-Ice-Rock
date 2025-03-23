@@ -4,27 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-use App\Models\Purchase;
-use App\Models\OrderItem;
-use App\Models\User;
-=======
-<<<<<<< HEAD
-use App\Models\Purchase;
-use App\Models\OrderItem;
-use App\Models\User;
-=======
->>>>>>> parent of 26bef1a (merge)
->>>>>>> Stashed changes
-=======
 use Illuminate\Support\Facades\Session;
 use App\Models\Purchase;
 use App\Models\OrderItem;
 use App\Models\User;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Crypt;
->>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31
 
 class ProfileController extends Controller
 {
@@ -37,16 +22,9 @@ class ProfileController extends Controller
             return redirect()->route('login');
         }
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
         $wishlist = Session::get('wishlist'.Auth::id(),[]);
         $basket = Session::get('basket'.Auth::id(),[]);
 
->>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31
         $orderitems = $this->showPastBooks(); 
         $showDetails = $this->showUserDetails();
         $showPaymentDetails = Payment::find(Payment::max('id'));
@@ -111,12 +89,6 @@ class ProfileController extends Controller
         } else {
             return redirect()->route('profile')->with('message', 'Error!');
         }     
-<<<<<<< Updated upstream
-=======
-=======
-        return view('profile'); 
->>>>>>> parent of 26bef1a (merge)
->>>>>>> Stashed changes
     }
 
     public function updatePaymentDetails(Request $request){
