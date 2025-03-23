@@ -1,22 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const bookSliderContainer = document.querySelector('.book-slider-container');
-    const bookPrevArrow = document.querySelector('.book-prev-arrow');
-    const bookNextArrow = document.querySelector('.book-next-arrow');
- 
-    const scrollAmount = 300; // Adjust this value to control how much to scroll
- 
-    bookPrevArrow.addEventListener('click', () => {
-        bookSliderContainer.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-        });
-    });
- 
-    bookNextArrow.addEventListener('click', () => {
-        bookSliderContainer.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
+    document.querySelectorAll('.book-slider').forEach(slider => {
+        const bookSliderContainer = slider.querySelector('.book-slider-container');
+        const bookPrevArrow = slider.querySelector('.book-prev-arrow');
+        const bookNextArrow = slider.querySelector('.book-next-arrow');
+
+        const scrollAmount = 300; // Adjust this value to control how much to scroll
+
+        if (bookPrevArrow && bookNextArrow && bookSliderContainer) {
+            bookPrevArrow.addEventListener('click', () => {
+                bookSliderContainer.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            bookNextArrow.addEventListener('click', () => {
+                bookSliderContainer.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+        }
     });
 });
  
