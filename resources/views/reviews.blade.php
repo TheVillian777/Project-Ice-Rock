@@ -111,76 +111,57 @@
 
 
 <!-- Reviews Section -->
-<div class="reviews-section">
-    <div class="reviews-header">
-        <h2>Reviews for "PlaceHolder"</h2>
+<div class="reviews-container">
+    <div class="reviews-section">
+        <div class="reviews-header">
+            <h2>Reviews for "PlaceHolder"</h2>
+        </div>
+        <div class="review-item">
+            <p class="review-title">"Title Placeholder"</p>
+            <p class="review-author">by Placeholder Name</p>
+            <p class="review-text">PlaceHolder Description</p>
+            <div class="review-rating">★★★★★</div>
+        </div>
     </div>
 
-    <!-- Review Item -->
-    <div class="review-item">
-        <p class="review-title">"Title Placeholder"</p>
-        <p class="review-author">by Placeholder Name</p>
-        <p class="review-text">PlaceHolder Description</p>
-        <div class="review-rating">★★★★★ dont know how to do a review system</div>
-    </div>
-
-    
-    <div class="review-item">
-        <p class="review-title">"Title Placeholder"</p>
-        <p class="review-author">by Placeholder Name</p>
-        <p class="review-text">PlaceHolder Description</p>
-        <div class="review-rating">★★★★★ dont know how to do a review system</div>
-    </div>
-
-    
-    <div class="review-item">
-        <p class="review-title">"Title Placeholder"</p>
-        <p class="review-author">by Placeholder Name</p>
-        <p class="review-text">PlaceHolder Description</p>
-        <div class="review-rating">★★★★★ dont know how to do a review system</div>
-    </div>
-
-</div>
-
-<!-- Book Display  -->
-<div class="book-container">
-    <!-- Book Image and Details -->
-    <div class="book-details">
-        <img src="images/book1.jpg" alt="Book Cover" class="book-image">
-        <h2 class="book-title">Title Placeholder</h2>
-        <p class="book-genre">Genre</p>
-        <p class="book-author">Author</p>
-        <p class="book-price">Price</p>
-        <div class="review-rating">★★★★★ dont know how to do a review system</div>
-    </div>
-
-    <!-- Purchase -->
-    <div class="purchase-container">
-        <button class="add-to-basket">Add to Basket</button>
-        <button class="add-to-wishlist">Add to Wishlist</button>
+    <!-- Book Display and Purchase -->
+    <div class="book-container">
+        <div class="book-details">
+            <img src="images/book1.jpg" alt="Book Cover" class="book-image">
+            <h2 class="book-title">Title Placeholder</h2>
+            <p class="book-genre">Genre</p>
+            <p class="book-author">Author</p>
+            <p class="book-price">Price</p>
+            <div class="review-rating">★★★★★</div>
+        </div>
+        <div class="purchase-container">
+            <button class="add-to-basket">Add to Basket</button>
+            <button class="add-to-wishlist">Add to Wishlist</button>
+        </div>
     </div>
 </div>
-<!-- Ratings -->
+
+<!-- Review Form -->
 <div class="leave-review-container">
     <h2>Write Your Review</h2>
-    <form action="     " method="POST">
+    <form>
         <div class="rating-section">
             <label for="rating">Rate this book:</label>
             <div class="stars">
-                <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
-                <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
-                <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
-                <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
-                <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
             </div>
         </div>
         <div class="form-group">
-            <label for="review-title">Add a title for your review:</label>
+            <label for="review-title">Title:</label>
             <input type="text" id="review-title" name="review_title" required>
         </div>
         <div class="form-group">
-            <label for="review-text">Write your review:</label>
-            <textarea id="review-text" name="review_text" maxlength="2000000000000000000000000000000000000000000000000000000000000000000000000000000" required></textarea>
+            <label for="review-text">Review:</label>
+            <textarea id="review-text" name="review_text" required></textarea>
         </div>
         <button type="submits">Submit Review</button>
     </form>
