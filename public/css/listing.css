@@ -15,6 +15,8 @@ body {
     background-color: var(--base-colour);
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
 
 }
 
@@ -112,4 +114,104 @@ body {
 
 .basket-button i {
     font-size: 18px;
+}
+
+
+/* Leave Review Section */
+.leave-review-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 60px auto;
+    width: 800px;
+    clear: both;
+}
+
+.leave-review-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.rating-section {
+    margin-bottom: 15px;
+}
+
+.rating-section label {
+    font-size: 16px;
+    color: #555;
+}
+
+.stars {
+    display: flex;
+    direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.stars input[type='radio'] {
+    display: none;
+}
+
+.stars label {
+    font-size: 24px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.stars input[type='radio']:checked ~ label {
+    color: #FFD700; 
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input[type='text'],
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+button[type='submits'] {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button[type='submits']:hover {
+    background-color: #45a049; /
+}
+
+.star-rating {
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 2rem;
+    color: grey;
+    transition: color 0.2s ease-in-out;
+}
+
+.star.highlighted {
+    color: gold;
 }
