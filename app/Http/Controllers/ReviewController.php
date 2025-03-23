@@ -48,4 +48,14 @@ class ReviewController extends Controller
         }
         
     }
+
+    public function seeReviews($book_id)
+    {
+        //gets all reviews for book
+        $book = Book::find($book_id);
+        $reviews = Review::where('book_id', $book_id)->get();
+        return view('reviews', compact('book','reviews'));
+    }
+
+
 }

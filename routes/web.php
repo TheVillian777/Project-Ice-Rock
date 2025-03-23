@@ -92,6 +92,9 @@ Route::get('/shop', [ShopController::class, 'gatherData'])->name('shop'); //allo
 Route::post('/shopSearch', [ShopController::class, 'searchShop'])->name('shopSearch');
 Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFilter');
 Route::post('/listing', [ShopController::class, 'listBook'])->name('listing');
+Route::get('/listing/{book_id}/reviews', [ReviewController::class, 'seeReviews'])->name('seeReviews');
+
+
 
 Route::post('/navigateShop', [ShopController::class, 'navShop'])->name('navigateShop');
 

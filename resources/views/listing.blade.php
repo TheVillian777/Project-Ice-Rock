@@ -42,6 +42,10 @@
                 </button>
             </form>
             </div>
+            <div class="See-Reviews">
+                <a href="{{ route('seeReviews', ['book_id' => $book->id]) }}">See Reviews</a>
+            </div>
+            
 
         </div>
     </div>

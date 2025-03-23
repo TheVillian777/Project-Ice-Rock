@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/reviews.css" onerror="alert('CSS file not found!')">
+    <link rel="stylesheet" href="/css/reviews.css">
     <script src="js/reviews.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -147,7 +147,7 @@
     <!-- Book Image and Details -->
     <div class="book-details">
         <img src="images/book1.jpg" alt="Book Cover" class="book-image">
-        <h2 class="book-title">Title Placeholder</h2>
+        <h2 class="book-title">{{ $book->book_name }}</h2>
         <p class="book-genre">Genre</p>
         <p class="book-author">Author</p>
         <p class="book-price">Price</p>
