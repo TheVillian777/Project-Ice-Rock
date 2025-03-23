@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
  
 //Add to basket function
-const bookslide = document.querySelectorAll('.book-card');
+const bookSlides = document.querySelectorAll('.book-card');
  
 bookSlides.forEach((slide) => {
     const popup = slide.querySelector('.hover-popup');
