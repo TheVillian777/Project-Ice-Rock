@@ -46,6 +46,8 @@
 .star-rating {
     display: flex;
     cursor: pointer;
+    flex-direction: row-reverse;
+    justify-content: left;
 }
 
 .star {
