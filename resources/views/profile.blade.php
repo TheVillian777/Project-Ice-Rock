@@ -20,7 +20,9 @@
             showSection('profileInfo'); // profile should show by default
         });
     </script>
+
 </head>
+
 <body>
 
     <!-- header goes here -->
@@ -90,7 +92,7 @@
                     <button type="submit" class="confirm-button">Confirm</button>
                 </form>
             </div>
-
+            
     <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
         <h2>Past Orders</h2>
         @if ($orderitems->isEmpty())
@@ -100,22 +102,51 @@
             <thead>
                 <tr>
                     <th>Order ID</th>
-                    <th>Date</th>
-                    <th>Book Title</th>
+                    <th>Date Ordered</th>
+                    <th>Items</th>
                     <th>Quantity</th>
                     <th>Total Price</th>
                     <th>Status</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($orderitems as $orderitem)
+                @foreach ($purchases as $purchase)
                 <tr>
-                    <td>{{ $orderitem->purchase->id }}</td> <!-- order ID -->
-                    <td>{{ $orderitem->created_at }}</td> <!-- date -->
-                    <td>{{ $orderitem->book->book_name }}</td> <!-- book title -->
-                    <td>{{ $orderitem->quantity }}</td> <!-- quantity -->
-                    <td>£{{ $orderitem->subtotal_price }}</td> <!-- total price -->
-                    <td>{{ $orderitem->purchase->order_status }}</td> <!-- status -->
+                    <td>{{ $purchase->id }}</td> <!-- order ID -->
+                    <td>{{ $purchase->created_at }}</td> <!-- date -->
+                    @php $RepeatedItem = []; @endphp
+                    <td>@foreach ($orderitems as $items)
+                        @if ($items->purchase_id == $purchase->id)
+                        @if (!in_array($items->book->book_name, $RepeatedItem))
+                        <img src="{{ 'images/' . $items->book->img_url}} " alt="$items->book->book_name">
+                        @endif
+                        @php $RepeatedItem[] = $items->book->book_name; @endphp
+                        <div></div>
+                        @endif
+                        @endforeach 
+                    </td> <!-- book title -->
+                        @php
+                        $total = 0;
+                        foreach ($orderitems as $items){
+                        if ($items->purchase_id == $purchase->id){
+                        $total = $total + $items->quantity;
+                        }
+                        }
+                        @endphp
+                    <td>
+                        {{$total}}
+                    </td> <!-- quantity -->
+                    <td>£{{ $purchase->order_total_price }}</td> <!-- total price -->
+                    <td>{{ $purchase->order_status }}</td> <!-- status -->
+                    <td>
+                        <form action=" {{ route('viewOrder') }}" method="post">
+                        @csrf
+                            <input type="hidden" value="{{ $orderitems }}" name="orderItems">
+                            <input type="hidden" value="{{ $purchase->id }}" name="purchaseID">
+                            <button type="submit" class="confirm-button">View</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -124,40 +155,82 @@
     </div>
 
     <div id="wishlist-section" class="content-section" style="display:none;">
-            <h2><em>My Wish List</em> - 2 books</h2>
+            <h2><em>My Wish List</em> - {{count($wishlist)}} books</h2>
             <div class="wishlist-list">
+                @if (!$wishlist)
+                <p> There is no wishlist </p>
+                @else
+                @foreach ($wishlist as $book)
                 <div class="wish-item">
-                    <div class="wish-cover">
-                        <img src="images/book1.jpg" alt="PlaceHolder">
-                    </div>
-                    <div class="wish-details">
-                        <h3>PlaceHolder</h3>  <!-- Placeholder for book title -->
-                        <p class="author">PlaceHolder</p> <!-- Placeholder for author -->
-                        <p class="price">&pound;9.99</p>
-                        <a href="#" class="remove">Remove</a>
+                        <div class="wish-cover">
+                            <img src="{{ asset('images/' . $book['img_url']) }}" alt="Book Cover">
+                        </div>
+                        <div class="wish-details">
+                            <h3>{{$book['book_name']}}</h3>
+                            <p class="author">{{$book['first_name'] . " ". $book['last_name']}}</p>
+                            <p class="price">&pound;{{$book['book_price']}}</p>
+                            <a href="{{ route('listing', ['book_id' => $book['book_ID']]) }}" class="remove">View</a>
+                            <a href="{{ route('unwishing', ['book_id' => $book['book_ID']]) }}" class="remove">Remove</a>
+                        </div>
                     </div>
                 </div>
-
-                <div class="wish-item">
-                    <div class="wish-cover">
-                        <img src="images/book1.jpg" alt="PlaceHolder">
-                    </div>
-                    <div class="wish-details">
-                        <h3>PlaceHolder</h3>
-                        <p class="author">PlaceHolder</p>
-                        <p class="price">&pound;9.99</p>
-                        <a href="#" class="remove">Remove</a>
-                    </div>
-                </div>
+                @endforeach
+                @endif
             </div>
-    </div>
 
-    <div id="paymentOptions" class="content-section" style="display:none;"> <!-- payment options section -->
-        <h2>Payment Options</h2>
-        <p>Manage your saved payment methods.</p>
-    </div>
+        <div id="paymentOptions" class="content-section" style="display:none;">
+            <h2>Saved Payment Method</h2>
+
+            @if($showPaymentDetails)
+                <div class="card-details">
+                    <p>Card Number: ****{{ substr($showPaymentDetails->card_number, -4) }}</p>
+                    <p>Expiry Date: {{ $showPaymentDetails->expiry_date }}</p>
+                </div>
+            @else
+                <p>No saved payment Details</p>
+            @endif
+            
+            <button type="submit" class="confirm-button" onclick="showUpdatePaymentDetailsForm()">Update Card Details?</button>
+        </div>
+
+        <div id="updatePaymentDetails" class="content-section" style="display:none;">
+            <h2>Update Payment Method</h2>
+            <form action="{{route ('updatePaymentDetails') }}" method="post">
+            @csrf
+            <div class="new-card-details">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter new card number" required>
+
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="Enter CVV" required>
+            </div>
+
+            <button type="submit" class="confirm-button" onclick="showPaymentDetailsForm()">Save Payment Method</button>
+            </form>
+        </div>
+</div>
+
+
+
+<script>
+    function showUpdatePaymentDetailsForm(){
+        document.getElementById('updatePaymentDetails').style.display = 'block';
+        document.getElementById('paymentOptions').style.display = 'none';
+    }
+
+    function showPaymentDetailsForm(){
+        document.getElementById('updatePaymentDetails').style.display = 'none';
+        document.getElementById('paymentOptions').style.display = 'block';
+    }
+</script>
+
+
+
+</body>
 
 @include('footer')
 
-</body>
 </html>

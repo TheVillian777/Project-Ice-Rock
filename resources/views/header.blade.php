@@ -6,6 +6,20 @@
     <title>Contact</title>
     <link rel="stylesheet" href="css/header.css" onerror="alert('CSS file not found!')">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+<script>
+    $(function(){
+        $('a').each(function(){
+            if ($(this).prop('href') == window.location.href) {
+                $(this).addClass('active');
+            }
+        });
+    });
+</script>
+
+
 </head>
 
     <header class="new-header">
@@ -51,7 +65,7 @@
         $totalItemsNo=0;
 
         foreach ($basket as &$product){ 
-            $total = $total + $product['price'] * $product['quantity'];
+            $total = $total + $product['book_price'] * $product['quantity'];
             $totaltemsNo = $totalItemsNo + $product['quantity'];
         }
 @endphp   <!-- due to header being it's own view its very difficult to do it
@@ -68,8 +82,7 @@
 
     <!-- nav -->
     <div class="navBar">
-        <a class="active" href="{{ route('index') }}">Home</a>
-
+        <a href="{{ route('index') }}">Home</a>
         <div class="dropdown">
             <a href="{{ route('shop') }}">Books</a>
             <div class="dropdown-content">

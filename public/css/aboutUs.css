@@ -12,6 +12,7 @@ body {
 
 /* About Us Section */
 .aboutUs-section {
+    border-radius: 10px;
     max-width: 800px;
     margin: 100px auto;
     padding: 50px;
@@ -46,7 +47,7 @@ body {
     font-size: 16px;
     cursor: pointer;
     margin-top: 10px;
-    display: block; /* Ensures it stays centered */
+    display: block; 
     margin-left: auto;
     margin-right: auto;
 }
@@ -57,4 +58,51 @@ body {
 
 .join-us-btn {
     color: var(--link-colour)
+}
+/* join us button */
+.join-us-container {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    color: white; 
+}
+
+.join-us-container h2 {
+    font-size: 24px;
+    color: white; 
+}
+
+.join-us-container p {
+    font-size: 18px;
+    color: #ccc; 
+    margin-bottom: 20px;
+}
+
+.join-us-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+    border: none;
+}
+
+.join-us-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #333; 
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    margin-top: auto; 
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; 
 }

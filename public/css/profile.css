@@ -1,13 +1,5 @@
 @import "theme.css";
 
-/* General styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Winky Sans', sans-serif;
-}
-
 body {
     background-color: var(--base-colour);
     color: var(--text-colour);
@@ -91,10 +83,9 @@ form label {
 form input, form select {
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid var(--alt-text-colour);
+    border: 1px solid var(--text-colour);
     border-radius: 5px;
     background: var(--interface-colour);
-    color: var(--text-colour);
 }
 
 form input:focus, form select:focus {
@@ -129,11 +120,11 @@ table {
 table th, table td {
     padding: 12px;
     text-align: center;
-    border: 1px solid var(--alt-text-colour);
+    border: 1px solid var(--text-colour);
 }
 
 table th {
-    background-color: var(--interface-colour);
+    background-color: var(--base-colour);
     font-weight: bold;
 }
 
@@ -141,10 +132,12 @@ table tbody tr:nth-child(even) {
     background-color: var(--base-colour);
 }
 
-table tbody tr:hover {
-    background-color: var(--accent-colour);
+img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
 }
-
 /* Wishlist Section */
 .wishlist-section, .favourites-section {
     margin: 20px;
@@ -194,51 +187,11 @@ table tbody tr:hover {
     text-decoration: underline;
 }
 
-/* Theme Switch */
-#theme-switch {
-    height: 50px;
-    width: 50px;
-    padding: 0;
-    border-radius: 50%;
-    background-color: var(--base-variant);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    cursor: pointer;
-}
-
-#theme-switch svg {
-    fill: var(--text-colour);
-}
-
-#theme-switch svg:last-child {
-    display: none;
-}
-
-.darkmode #theme-switch svg:first-child {
-    display: none;
-}
-
-.darkmode #theme-switch svg:last-child {
-    display: block;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .sideBar {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .content-area {
-        width: 100%;
-    }
+footer {
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    background-color: #f8f8f8; /* Adjust as needed */
 }

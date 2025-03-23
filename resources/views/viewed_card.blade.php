@@ -11,47 +11,49 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
-@foreach ($books as $book)
+@foreach ($viewed as $book)
     <div class="book-card">
         
         <!-- cover -->
         <div class="book-cover">
-            <a href="{{ route('listing', ['book_id' => $book->id]) }}">
-                <img src="{{ asset('images/' . $book->img_url) }}" alt="Book Cover">
+            <a href="{{ route('listing', ['book_id' => $book['book_ID']]) }}">
+                <img src="{{ asset('images/' . $book['img_url']) }}" alt="Book Cover">
             </a>
         </div>
 
         <!-- title -->
         <div class="book-title">
-            <h3>{{ $book->book_name }}</h3>
+            <h3>{{ $book['book_name'] }}</h3>
         </div>
 
         <!-- author -->
         <div class="book-author">
-            <p>{{ $book->author->first_name . " " . $book->author->last_name }}</p>
+            <p>{{ $book['first_name'] . " " . $book['last_name'] }}</p>
         </div>
 
         <!-- price -->
         <div class="book-price">
-            <p>£{{ $book->book_price }}</p>
+            <p>£{{ $book['book_price'] }}</p>
         </div>
 
         <!-- bookmark icon (backend would you add a route after you've made a working wishlist? -->
         <div class="bookmark-icon">
-            <button class="bookmark" onclick="location.href='{{ route('wishing', ['book_id' => $book->id]) }}';">
+            
+        
+               <button class="bookmark" onclick="location.href='{{ route('wishing', ['book_id' => $book['book_ID']]) }}';">
                 <i class="fas fa-bookmark save-bookmark" 
-                -author="{{ $book->author->first_name . ' ' . $book->author->last_name }}" 
-                data-image="{{ asset('images/' . $book->img_url) }}">
-                </i>
-            </button>
+
+               -author="{{ $book['first_name'] . ' ' . $book['last_name'] }}" 
+               data-image="{{ asset('images/' . $book['img_url']) }}">
+            </i>
         </div>
 
         <!-- basket icon -->
         <div class="basket-icon">
             <form action="{{ route('addToBasket') }}" method="POST" class="basket-form">
                 @csrf
-                <button class="basket"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i>
-                <input type="hidden" name="bookId" value="{{ $book->id }}">
+                <button class="basket"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book['book_ID'] }}"></i>
+                <input type="hidden" name="bookId" value="{{ $book['book_ID'] }}">
                 <input type="hidden" name="quantity" value="1">
             </form>
         </div>

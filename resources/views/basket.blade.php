@@ -37,7 +37,7 @@
                     </div>
                     <div class="spacer"></div>
                     <!-- price -->
-                    <p class="price">£{{ number_format($book['price'] * $book['quantity'],2)}}</p>
+                    <p class="price">£{{ number_format($book['book_price'] * $book['quantity'],2)}}</p>
                     <!-- qty -->
                     <div class="quantity">
                         <!-- form for quantity decrease per book -->
@@ -75,11 +75,11 @@
                     <div class="delivery-address">
                         <h2>Delivery Address</h2>
                         <label for="first-name">First Name:</label>
-                        <input type="text" id="first-name" name="first-name" required>
+                        <input type="text" id="first-name" name="first-name" value="{{ $user->first_name }}" required>
                         <label for="last-name">Last Name:</label>
-                        <input type="text" id="last-name" name="last-name" required>
+                        <input type="text" id="last-name" name="last-name" value="{{ $user->last_name }}" required>
                         <label for="address">Address:</label>
-                        <input type="text" id="address" name="address" required>
+                        <input type="text" id="address" name="address" value="{{ $user->address }}" required>
                         <label for="city">City:</label>
                         <input type="text" id="city" name="city">
                         <label for="postcode">Postcode:</label>
@@ -88,14 +88,15 @@
                         <input type="text" id="country" name="country">
                     </div>
 
+                    <!--checks if there is a payment. if no payment display nothing-->
                     <div class="bank-details">
                         <h2>Bank Details</h2>
                         <label for="card-number">Card Number:</label>
-                        <input type="text" id="card-number" name="card-number" required>
+                        <input type="text" id="card-number" name="card-number" value="{{ $payment ? $payment->card_number: '' }}" required>
                         <label for="expiry-date">Expiry Date (MM/YY):</label>
-                        <input type="text" id="expiry-date" name="expiry-date" required>
+                        <input type="text" id="expiry-date" name="expiry-date" value="{{ $payment ? $payment->expiry_date: '' }}" required>
                         <label for="cvv">CVV:</label>
-                        <input type="text" id="cvv" name="cvv" required>
+                        <input type="text" id="cvv" name="cvv" value="{{ $payment? $payment->security_code: '' }}" required>
                     </div>
                 </div>
 
