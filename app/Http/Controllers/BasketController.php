@@ -31,7 +31,7 @@ class BasketController extends Controller
 
         foreach ($basket as &$product){ 
             $total = $total + $product['book_price'] * $product['quantity'];
-            $totaltemsNo = $totalItemsNo + $product['quantity'];
+            $totalItemsNo = $totalItemsNo + $product['quantity'];
         }
 
         return view('basket',compact('user','basket','total', 'totalItemsNo', 'payment')); // returns basket view, passing to basket and total and totalItemsNo.
