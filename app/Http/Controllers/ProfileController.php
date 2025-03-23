@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Models\Purchase;
 use App\Models\OrderItem;
 use App\Models\User;
@@ -21,6 +22,9 @@ class ProfileController extends Controller
             return redirect()->route('login');
         }
 
+        $wishlist = Session::get('wishlist'.Auth::id(),[]);
+        $basket = Session::get('basket'.Auth::id(),[]);
+
         $orderitems = $this->showPastBooks(); 
         $showDetails = $this->showUserDetails();
         $showPaymentDetails = Payment::find(Payment::max('id'));
@@ -33,7 +37,7 @@ class ProfileController extends Controller
         }
         
 
-        return view('profile', compact('orderitems', 'showDetails', 'showPaymentDetails', 'purchases'));
+        return view('profile', compact('basket', 'wishlist' , 'orderitems', 'showDetails', 'showPaymentDetails', 'purchases'));
     }
 
     public function showPastBooks()
