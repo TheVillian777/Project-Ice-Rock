@@ -49,7 +49,10 @@
 
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
+<<<<<<< HEAD
             @foreach ($books as $book)
+=======
+>>>>>>> parent of 576ad4f (Merge branch 'main' of https://github.com/TheVillian777/Project-Ice-Rock)
             <div class="book-slider-container">
                 @include('book_card')
             </div>
@@ -100,7 +103,10 @@
 
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
+<<<<<<< HEAD
             @foreach ($books as $book)
+=======
+>>>>>>> parent of 576ad4f (Merge branch 'main' of https://github.com/TheVillian777/Project-Ice-Rock)
             <div class="book-slider-container">
                 @include('book_card')
             </div>
