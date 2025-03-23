@@ -45,11 +45,9 @@
 
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
-            @foreach ($books as $book)
             <div class="container-slide">
                 @include('book_card')
             </div>
-            @endforeach
         </div>
         <button class="book-next-arrow">&#10095;</button>
     </div>
@@ -97,11 +95,9 @@
 
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
-            @foreach ($books as $book)
             <div class="container-slide">
                 @include('book_card')
             </div>
-            @endforeach
         </div>
         <button class="book-next-arrow">&#10095;</button>
     </div>
