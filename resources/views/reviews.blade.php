@@ -112,26 +112,35 @@
 
 <!-- Reviews Section -->
 <div class="reviews-container">
-    <div class="reviews-section">
-        <div class="reviews-header">
-            <h2>Reviews for "PlaceHolder"</h2>
+    @if ($reviews->isEmpty())
+        <div class="review-title">
+            <H2>Be the First to leave a review!</h2> 
         </div>
-        <div class="review-item">
-            <p class="review-title">"Title Placeholder"</p>
-            <p class="review-author">by Placeholder Name</p>
-            <p class="review-text">PlaceHolder Description</p>
-            <div class="review-rating">★★★★★</div>
-        </div>
+    @else
+    <div class="reviews-header">
+        <h2>Reviews for "{{ $book->book_name }}"</h2>
     </div>
+        @foreach ($reviews as $review)
+        <div class="reviews-section">
+            <div class="review-item">
+                <p class="review-title">"{{ $review->review_title }}"</p>
+                <p class="review-author">by {{ $review->user->name }}</p>
+                <div class="review-rating">★★★★★</div>
+                <p class="review-text">{{ $review->review_text }}</p>
+            </div>
+        </div>
+        @endforeach
+    @endif
+</div>
+
 
     <!-- Book Display and Purchase -->
     <div class="book-container">
         <div class="book-details">
-            <img src="images/book1.jpg" alt="Book Cover" class="book-image">
-            <h2 class="book-title">Title Placeholder</h2>
-            <p class="book-genre">Genre</p>
-            <p class="book-author">Author</p>
-            <p class="book-price">Price</p>
+            <img src="{{ asset('images/' . $book->img_url) }}" alt="Book Cover" class="book-image">
+            <h2 class="book-title">{{ $book->book_name }}</h2>
+            <p class="book-author">{{ $book->author->first_name . " " . $book->author->last_name }}</p>
+            <p class="book-price">£{{ $book->book_price }}</p>
             <div class="review-rating">★★★★★</div>
         </div>
         <div class="purchase-container">
@@ -144,28 +153,32 @@
 <!-- Review Form -->
 <div class="leave-review-container">
     <h2>Write Your Review</h2>
-    <form>
+    <form action="{{ route('reviewSubmit') }}" method="POST">
+        @csrf
+        <input type="hidden" name="book_id" value="{{ $book->id }}">
+
         <div class="rating-section">
-            <label for="rating">Rate this book:</label>
+            <label for="review_rating">Rate this book:</label>
             <div class="stars">
-                <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
-                <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
-                <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
-                <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
-                <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                <input type="radio" id="star5" name="review_rating" value="5" ><label for="star5" title="5 stars">★</label>
+                <input type="radio" id="star4" name="review_rating" value="4" ><label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="review_rating" value="3"><label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="review_rating" value="2"><label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="review_rating" value="1"><label for="star1" title="1 star">★</label>
             </div>
         </div>
         <div class="form-group">
-            <label for="review-title">Title:</label>
-            <input type="text" id="review-title" name="review_title" required>
+            <label for="review_title">Add a title for your review:</label>
+            <input type="text" id="review_title" name="review_title" required>
         </div>
         <div class="form-group">
-            <label for="review-text">Review:</label>
-            <textarea id="review-text" name="review_text" required></textarea>
+            <label for="review-text">Write your review:</label>
+            <textarea id="review_text" name="review_text" maxlength="2000" required></textarea>
         </div>
-        <button type="submits">Submit Review</button>
+        <button type="submit">Submit Review</button>
     </form>
-</div>
+
+    </div>
 
     
 
