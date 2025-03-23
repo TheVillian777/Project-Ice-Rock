@@ -13,64 +13,33 @@ class AuthController extends Controller
   public function register(Request $request)
   {
     //validate registration details
-<<<<<<< Updated upstream
     $user = $request->validate([
         'title' => 'required',
-=======
-<<<<<<< HEAD
-    $user = $request->validate([
-        'title' => 'required',
-=======
-    $user->validate([
->>>>>>> parent of 26bef1a (merge)
->>>>>>> Stashed changes
         'first_name' => 'required',
         'last_name' => 'required',
         'email' => 'required',
         'phone' => 'nullable',
         'password' => 'required',
-<<<<<<< Updated upstream
         'address' => 'required',
         'security_answer' => 'required',
-=======
-<<<<<<< HEAD
-        'address' => 'required',
-        'security_answer' => 'required',
-=======
->>>>>>> parent of 26bef1a (merge)
->>>>>>> Stashed changes
+        'confirm-password' =>  'required'
     ]);
+
+    if ($user['password'] !== $request->input('confirm-password')) {
+      return redirect()->back()->withErrors('Password does not match');
+    }
 
     //save registration to Users table
     User::create([
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
->>>>>>> Stashed changes
         'title' => $user['title'],
         'first_name' => $user['first_name'],
         'last_name' => $user['last_name'],
         'email' => $user['email'],
         'phone' => $user['phone'],
-<<<<<<< Updated upstream
         'isadmin' => false,
         'address' => $user['address'],
         'security_answer' => $user['security_answer'],
         'password' => Hash::make($user['password']), //Hash for security with built in method
-=======
-        'isadmin' => false,
-        'address' => $user['address'],
-        'security_answer' => $user['security_answer'],
-        'password' => Hash::make($user['password']), //Hash for security with built in method
-=======
-        'first_name' => $user->first_name,
-        'last_name' => $user->last_name,
-        'email' => $user->email,
-        'phone' => $user->phone,
-        'isadmin' => false,
-        'password' => Hash::make($user->password), //Hash for security with built in method
->>>>>>> parent of 26bef1a (merge)
->>>>>>> Stashed changes
     ]);
 
     return redirect()->back()->with('Registration successful!');
@@ -118,14 +87,11 @@ class AuthController extends Controller
     ->where('security_answer', $user['security_answer'])->first();
 
     if (!$forgottenUser){
-      return redirect()->back()->withErrors([
-        'security_answer' => 'Security question is incorrect.'
-    ]);    }
+      return redirect()->back()->withErrors('No matching details');
+    }
 
     if ($user['password'] !== $request->input('confirm-password')) {
-      return redirect()->back()->withErrors([
-        'confirm-password' => 'Passwords do not match.'
-    ]);
+      return redirect()->back()->withErrors('Password does not match');
     }
 
     $forgottenUser->update(['password' => Hash::make($user['password'])]);
