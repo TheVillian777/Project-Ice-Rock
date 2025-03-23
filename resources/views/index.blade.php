@@ -6,7 +6,6 @@
     <title>Home</title>
     <link rel="stylesheet" href="css/index.css" onerror="alert('CSS file not found!')">
     <script type="text/javascript" src="darkmode.js" defer></script>
-    <script type="text/javascript" src="index.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -34,6 +33,11 @@
         </div>
     </div>
 
+    <!-- Arrows for manual scrolling -->
+    <button class="prev-arrow">&#10094;</button>
+    <button class="next-arrow">&#10095;</button>
+    </div>
+
     <!-- Book showcase -->
     <div class="book-slider">
 
@@ -46,7 +50,7 @@
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
             @foreach ($books as $book)
-            <div class="container-slide">
+            <div class="book-slider-container">
                 @include('book_card')
             </div>
         </div>
@@ -85,7 +89,6 @@
     <!-- Divider Line -->
     <div class="section-divider"></div>
 
-    
     <!-- Book showcase -->
     <div class="book-slider">
 
@@ -98,7 +101,7 @@
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
             @foreach ($books as $book)
-            <div class="container-slide">
+            <div class="book-slider-container">
                 @include('book_card')
             </div>
         </div>
