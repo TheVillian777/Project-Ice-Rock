@@ -21,8 +21,16 @@ return new class extends Migration
             $table->unsignedBigInteger('phone')->nullable();
             $table->boolean('isadmin');
             $table->string('password');
+<<<<<<< Updated upstream
             $table->char('security_answer', length: 15);
             $table->char('address', length: 20);
+=======
+<<<<<<< HEAD
+            $table->char('security_answer', length: 15);
+            $table->char('address', length: 20);
+=======
+>>>>>>> parent of 26bef1a (merge)
+>>>>>>> Stashed changes
             $table->rememberToken();
             $table->timestamps();
         });
