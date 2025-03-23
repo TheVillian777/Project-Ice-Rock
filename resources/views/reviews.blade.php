@@ -124,8 +124,8 @@
         <div class="reviews-section">
             <div class="review-item">
                 <p class="review-title">"{{ $review->review_title }}"</p>
-                <p class="review-author">by {{ $review->user->name }}</p>
-                <div class="review-rating">★★★★★</div>
+                <p class="review-author">by {{ $review->user->first_name . " " . $review->user->last_name}}</p>
+                <div class="review-rating">Rated: {{ number_format($review->review_rating,1) }} /5</div>
                 <p class="review-text">{{ $review->review_text }}</p>
             </div>
         </div>
@@ -141,7 +141,7 @@
             <h2 class="book-title">{{ $book->book_name }}</h2>
             <p class="book-author">{{ $book->author->first_name . " " . $book->author->last_name }}</p>
             <p class="book-price">£{{ $book->book_price }}</p>
-            <div class="review-rating">★★★★★</div>
+            <div class="review-rating">Rated: {{ number_format($averageRating,1) }} /5</div><!-- displays average rating /5 to one decimal points-->
         </div>
         <div class="purchase-container">
             <button class="add-to-basket">Add to Basket</button>
