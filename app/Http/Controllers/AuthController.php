@@ -82,7 +82,7 @@ class AuthController extends Controller
     ->where('security_answer', $user['security_answer'])->first();
 
     if (!$forgottenUser){
-      return redirect()->back()->withErrors('No matching details');
+      return redirect()->back()->withErrors('Security question is incorrect.');
     }
 
     if ($user['password'] !== $request->input('confirm-password')) {

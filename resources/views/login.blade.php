@@ -116,7 +116,9 @@
         <h2>Forgotten Password</h2>
 
         @if ($errors->any())
-                <p style="color: red;">{{ $errors }}</p>
+            @foreach ($errors->all() as $error)
+                <p style="color: red;">{{ $error }}</p>
+            @endforeach
         @endif
         
         <form action="{{ route('forgottenPassword') }}" method="post">
@@ -139,6 +141,8 @@
         
         <!-- submit -->
             <button type="submit">Confirm</button>
+            <p>Remembered your password? <a href="javascript:void(0);" onclick="showLoginForm()">Login</a></p>
+            <p>Don't have an account? <a href="javascript:void(0);" onclick="showRegisterForm()">Register</a></p>
         </form>
     </div>
 </div>
@@ -148,11 +152,13 @@
     function showLoginForm() {
         document.getElementById('login-form').style.display = 'block';
         document.getElementById('register-form').style.display = 'none';
+        document.getElementById('forgottenPassword-form').style.display = 'none';
     }
 
     function showRegisterForm() {
         document.getElementById('login-form').style.display = 'none';
         document.getElementById('register-form').style.display = 'block';
+        document.getElementById('forgottenPassword-form').style.display = 'none';
     }
  
     function forgottenPassword() {
