@@ -9,7 +9,7 @@
 </head>
 <body>
 <!-- header -->
-@include('header')
+|@include('header')
  
 <!-- dark mode -->
 <button id="theme-switch">

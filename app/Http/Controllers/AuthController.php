@@ -22,12 +22,7 @@ class AuthController extends Controller
         'password' => 'required',
         'address' => 'required',
         'security_answer' => 'required',
-        'confirm-password' =>  'required'
     ]);
-
-    if ($user['password'] !== $request->input('confirm-password')) {
-      return redirect()->back()->withErrors('Password does not match');
-    }
 
     //save registration to Users table
     User::create([

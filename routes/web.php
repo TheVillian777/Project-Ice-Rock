@@ -64,8 +64,7 @@ Route::get('/basket', function () {
 })->name('basket');
 
 Route::get('/listing', [ShopController::class, 'listBook'])->name('listing');
-Route::get('/wishing', [ShopController::class, 'addToWishlist'])->name('wishing');
-Route::get('/unwishing', [ShopController::class, 'removeFromWishlist'])->name('unwishing');
+
 
 // Authentication for users
 Route::post('/register', [AuthController::class, 'register'])->name('register');

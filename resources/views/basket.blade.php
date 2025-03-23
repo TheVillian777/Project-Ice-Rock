@@ -37,7 +37,7 @@
                     </div>
                     <div class="spacer"></div>
                     <!-- price -->
-                    <p class="price">£{{ number_format($book['book_price'] * $book['quantity'],2)}}</p>
+                    <p class="price">£{{ number_format($book['price'] * $book['quantity'],2)}}</p>
                     <!-- qty -->
                     <div class="quantity">
                         <!-- form for quantity decrease per book -->
@@ -88,15 +88,14 @@
                         <input type="text" id="country" name="country">
                     </div>
 
-                    <!--checks if there is a payment. if no payment display nothing-->
                     <div class="bank-details">
                         <h2>Bank Details</h2>
                         <label for="card-number">Card Number:</label>
-                        <input type="text" id="card-number" name="card-number" value="{{ $payment ? $payment->card_number: '' }}" required>
+                        <input type="text" id="card-number" name="card-number" required>
                         <label for="expiry-date">Expiry Date (MM/YY):</label>
-                        <input type="text" id="expiry-date" name="expiry-date" value="{{ $payment ? $payment->expiry_date: '' }}" required>
+                        <input type="text" id="expiry-date" name="expiry-date" required>
                         <label for="cvv">CVV:</label>
-                        <input type="text" id="cvv" name="cvv" value="{{ $payment? $payment->security_code: '' }}" required>
+                        <input type="text" id="cvv" name="cvv" required>
                     </div>
                 </div>
 

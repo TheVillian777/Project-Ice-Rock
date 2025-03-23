@@ -38,12 +38,13 @@
 
         <!-- bookmark icon (backend would you add a route after you've made a working wishlist? -->
         <div class="bookmark-icon">
-            <button class="bookmark" onclick="location.href='{{ route('wishing', ['book_id' => $book->id]) }}';">
-                <i class="fas fa-bookmark save-bookmark" 
-                -author="{{ $book->author->first_name . ' ' . $book->author->last_name }}" 
-                data-image="{{ asset('images/' . $book->img_url) }}">
-                </i>
-            </button>
+            
+        
+               <button class="bookmark"><i class="fas fa-bookmark save-bookmark" 
+
+               -author="{{ $book->author->first_name . ' ' . $book->author->last_name }}" 
+               data-image="{{ asset('images/' . $book->img_url) }}">
+            </i>
         </div>
 
         <!-- basket icon -->

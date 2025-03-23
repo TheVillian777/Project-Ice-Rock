@@ -108,8 +108,19 @@ body {
 
 /* Book Slider Container */
 .book-slider-container {
+    padding: 0 10vw;
     display: flex;
-    gap: 15px; /* Reduce gap between cards */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.book-slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+.container-slide {
+    display: flex;
+    gap: 15px;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -120,6 +131,7 @@ body {
     height: 250px;
     border-radius: 10px;
     overflow: hidden;
+    position: absolute;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -135,8 +147,8 @@ body {
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.5rem; /* Smaller arrows */
-    color: #333;
-    background-color: var(--primary-colour);
+    color: var(--primary-colour);
+    background-color: transparent;
     border: none;
     padding: 8px;
     cursor: pointer;
