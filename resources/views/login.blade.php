@@ -128,8 +128,17 @@
             <input type="email" id="forgotten-email" name="email" required>
         
         <!-- security question answer -->
-            <label for="forgotten-security-question">security question answer:</label>
-            <input type="security-answer" id="forgotten-security-question" name="security_answer" placeholder="What's the name of your first pet?" required>
+        <label for="forgotten-security-question"
+            class="@error('security_answer') label-error @enderror"
+                @error('security_answer') data-error="true" @enderror>
+            security question answer:
+        </label>
+    <input type="text"
+        id="forgotten-security-question"
+        name="security_answer"
+        placeholder="What's the name of your first pet?"
+        class="@error('security_answer') input-error @enderror"
+        @error('security_answer') data-error="true" @enderror required>
 
         <!-- input password -->    
             <label for="register-password">password:</label>
@@ -173,6 +182,21 @@
         @endif
     });
 
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const errorFields = document.querySelectorAll('[data-error="true"]');
+
+        errorFields.forEach(el => {
+            setTimeout(() => {
+                el.classList.add('shake');
+
+                setTimeout(() => {
+                    el.classList.remove('shake');
+                }, 500); 
+            }, 100);
+        });
+    });
 </script>
 </body>
 </html>

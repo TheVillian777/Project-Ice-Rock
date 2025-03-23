@@ -82,11 +82,14 @@ class AuthController extends Controller
     ->where('security_answer', $user['security_answer'])->first();
 
     if (!$forgottenUser){
-      return redirect()->back()->withErrors('Security question is incorrect.');
-    }
+      return redirect()->back()->withErrors([
+        'security_answer' => 'Security question is incorrect.'
+    ]);    }
 
     if ($user['password'] !== $request->input('confirm-password')) {
-      return redirect()->back()->withErrors('Password does not match');
+      return redirect()->back()->withErrors([
+        'confirm-password' => 'Passwords do not match.'
+    ]);
     }
 
     $forgottenUser->update(['password' => Hash::make($user['password'])]);
