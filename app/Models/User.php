@@ -61,4 +61,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    // Table Relationships
+    //This function defines the one-to-many relationship.
+    //A single user can have many reviews
+    //The same user can be related to reviews but only one review can be linked to a user.
+    public function review(){
+        return $this->hasMany(Review::class);
+    }
 }
