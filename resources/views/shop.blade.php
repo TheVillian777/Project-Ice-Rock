@@ -91,6 +91,7 @@
 <<<<<<< HEAD
         </section>
         
+<<<<<<< HEAD
     </div>     
 </body>
 @include('footer')
@@ -140,3 +141,10 @@
 =======
 >>>>>>> parent of 26bef1a (merge)
 >>>>>>> Stashed changes
+=======
+    </div>
+
+@include('footer')
+
+</body>
+>>>>>>> c8d3bb9e84e00f992c905c787a5a28c271222f31
