@@ -8,6 +8,7 @@ use App\Models\Purchase;
 use App\Models\OrderItem;
 use App\Models\User;
 use App\Models\Payment;
+use Illuminate\Support\Facades\Crypt;
 
 class ProfileController extends Controller
 {
@@ -23,6 +24,14 @@ class ProfileController extends Controller
         $orderitems = $this->showPastBooks(); 
         $showDetails = $this->showUserDetails();
         $showPaymentDetails = Payment::find(Payment::max('id'));
+        if($showPaymentDetails) {
+            $showPaymentDetails->card_number = Crypt::decryptString($showPaymentDetails->card_number);
+            $showPaymentDetails->expiry_date = Crypt::decryptString($showPaymentDetails->expiry_date);
+            $showPaymentDetails->security_code = Crypt::decryptString($showPaymentDetails->security_code);
+        } else {
+            $showPaymentDetails = null;
+        }
+        
 
         return view('profile', compact('orderitems', 'showDetails', 'showPaymentDetails', 'purchases'));
     }
@@ -86,11 +95,15 @@ class ProfileController extends Controller
             'cvv' => 'required',
         ]);
 
+        $encryptedCardNumber = Crypt::encryptString(request()->input('cardNumber'));
+        $encryptedExpiryDate = Crypt::encryptString(request()->input('expiryDate'));
+        $encryptedSecurityCode = Crypt::encryptString(request()->input('cvv'));
+
         $payment = Payment::create([
             'user_id' => Auth::id(),
-            'card_number' => substr(request()->input('cardNumber'), -4),
-            'expiry_date' => request()->input('expiryDate'),
-            'security_code' => request()->input('cvv')
+            'card_number' => $encryptedCardNumber,
+            'expiry_date' => $encryptedExpiryDate,
+            'security_code' => $encryptedSecurityCode
         ]);
 
         return redirect()->route('profile')->with('message', 'payment details updated!');
