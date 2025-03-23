@@ -39,6 +39,8 @@ route::get('/saved' , function(){
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
+
+
 Route::get('/', [HomeController::class, 'gatherData'])->name('index');
 
 Route::get('/shop', function () {
@@ -61,9 +63,9 @@ Route::get('/basket', function () {
     return view('basket');
 })->name('basket');
 
-Route::get('/listing', function () {
-    return view('listing');
-})->name('listing');
+Route::get('/listing', [ShopController::class, 'listBook'])->name('listing');
+Route::get('/wishing', [ShopController::class, 'addToWishlist'])->name('wishing');
+Route::get('/unwishing', [ShopController::class, 'removeFromWishlist'])->name('unwishing');
 
 // Authentication for users
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -95,5 +97,7 @@ Route::post('confirmBasket', [CheckoutController::class, 'validateBasket'])->nam
 
 //When calling profile ensure user is logged in first
 Route::get('/profile', [ProfileController::class, 'directToProfile'])->name('profile');
-
+Route::post('/updatePaymentDetails', [ProfileController::class, 'updatePaymentDetails'])->name('updatePaymentDetails');
 Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
+Route::post('/returnItem', [ProfileController::class, 'returnItem'])->name('returnItem');
+Route::post('/viewOrder', [ProfileController::class, 'viewOrder'])->name('viewOrder');

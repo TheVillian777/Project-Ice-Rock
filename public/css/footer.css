@@ -1,6 +1,8 @@
+@import "theme.css";
+
 footer {
-    background-color: #3f3f3f;
-    color: white;
+    background-color: var(--base-colour);
+    color: var(--text-colour);
     padding: 20px 0;
     text-align: center;
     margin-top: 20px;
@@ -12,5 +14,5 @@ footer {
     margin-top: 10px;
 }
 .footer-links a:hover {
-    color: #8034eb;
+    color: var(--link-colour);
 }
