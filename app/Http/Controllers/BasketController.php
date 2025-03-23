@@ -42,10 +42,13 @@ class BasketController extends Controller
         $basket = Session::get('basket'.Auth::id(),[]); //gets session basket data (items in basket within specific session )
         
         $quantityUpdated= false;
-        foreach ($basket as &$product) { // &allows original array to be altered
-            if($product['book_ID'] == $request->book_id && $request->quantity >0 ) {
+        foreach ($basket as $index => &$product) { // &allows original array to be altered
+            if($product['book_ID'] == $request->book_id ) {
                 $product['quantity'] = $request->quantity;
                 $quantityUpdated= true;
+                if($product['quantity'] <= 0) {
+                    unset($basket[$index]);
+                }
                 break;
             };
 

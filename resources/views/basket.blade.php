@@ -59,7 +59,7 @@
                         <form action="{{route('basketRemove') }}" method="POST">
                             @csrf
                             <input type="hidden" name="book_id" value="{{ $book['book_ID'] }}">
-                            <button class="add-to-basket-btn">Remove</button>
+                            <button class="arrow up">x</button>
                         </form>
                     </div>
                 </div>
