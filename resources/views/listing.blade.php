@@ -27,22 +27,61 @@
             <h1>{{ $book->book_name }}</h1>
             <h2>{{ $book->author->first_name . " " . $book->author->last_name }}</h2>
             <h3>£{{ $book->book_price }}</h3>
-            <p>{{ $book->description }}</p> <!-- not sure this currently exists? -->
+            <p>{{ $book->description }} sample text sample text sample text sample text sample text sample text sample text sample text </p> <!-- not sure this currently exists? -->
             
             <div class="basket-icon">
             <form action="{{ route('addToBasket') }}" method="POST" class="basket-form">
                 @csrf
                 <input type="hidden" name="bookId" value="{{ $book->id }}">
-                <input type="hidden" name="quantity" value="1">
+
+                <label for="quantity-{{ $book->id }}">Quantity:</label>
+                <input type="number" id="quantity-{{ $book->id }}" name="quantity" value="1" min="1">
+
                 <button type="submit" class="basket-button">
                     Add to basket! <i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i>
                 </button>
             </form>
             </div>
+            <div class="See-Reviews">
+                <a href="{{ route('seeReviews', ['book_id' => $book->id]) }}">See Reviews</a>
+            </div>
+            
+
         </div>
     </div>
+    <div class="leave-review-container">
+    <h2>Write Your Review</h2>
+    <form action="{{ route('reviewSubmit') }}" method="POST">
+        @csrf
+        <input type="hidden" name="book_id" value="{{ $book->id }}">
+
+        <div class="rating-section">
+            <label for="review_rating">Rate this book:</label>
+            <div class="stars">
+                <input type="radio" id="star5" name="review_rating" value="5" ><label for="star5" title="5 stars">★</label>
+                <input type="radio" id="star4" name="review_rating" value="4" ><label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="review_rating" value="3"><label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="review_rating" value="2"><label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="review_rating" value="1"><label for="star1" title="1 star">★</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="review_title">Add a title for your review:</label>
+            <input type="text" id="review_title" name="review_title" required>
+        </div>
+        <div class="form-group">
+            <label for="review-text">Write your review:</label>
+            <textarea id="review_text" name="review_text" maxlength="2000" required></textarea>
+        </div>
+        <button type="submit">Submit Review</button>
+    </form>
+
 </div>
 </body>
+</div>
+
+</body>
+
 <!-- footer -->
 @include('footer')
  
