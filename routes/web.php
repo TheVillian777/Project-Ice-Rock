@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,14 @@ Route::get('/index', [HomeController::class, 'gatherData'])->name('index');
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+Route::get('/wishlist1', function () {
+    return view('wishlist1');
+});
+
+Route::get('/reviews', function () {
+    return view('reviews');
+});
 
 Route::get('/basket', function () {
     return view('basket');
