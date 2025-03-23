@@ -205,4 +205,12 @@
 
 </body>
 @include('footer')
+<<<<<<< Updated upstream
 </html>
+=======
+<<<<<<< HEAD
+</html>
+=======
+</html>
+>>>>>>> parent of 26bef1a (merge)
+>>>>>>> Stashed changes

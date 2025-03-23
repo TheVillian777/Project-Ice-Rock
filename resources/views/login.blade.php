@@ -161,6 +161,7 @@
         document.getElementById('forgottenPassword-form').style.display = 'block';
     }
 
+<<<<<<< Updated upstream
     document.addEventListener('DOMContentLoaded', () => {
         @if ($errors->any())
             forgottenPassword();
@@ -168,5 +169,12 @@
     });
 
 </script>
+=======
+</script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 26bef1a (merge)
+>>>>>>> Stashed changes
 </body>
 </html>

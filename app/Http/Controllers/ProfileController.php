@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+<<<<<<< Updated upstream
 use App\Models\Purchase;
 use App\Models\OrderItem;
 use App\Models\User;
+=======
+<<<<<<< HEAD
+use App\Models\Purchase;
+use App\Models\OrderItem;
+use App\Models\User;
+=======
+>>>>>>> parent of 26bef1a (merge)
+>>>>>>> Stashed changes
 
 class ProfileController extends Controller
 {
@@ -17,6 +26,10 @@ class ProfileController extends Controller
             return redirect()->route('login');
         }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> Stashed changes
         $orderitems = $this->showPastBooks(); 
         $showDetails = $this->showUserDetails();
 
@@ -72,5 +85,11 @@ class ProfileController extends Controller
         } else {
             return redirect()->route('profile')->with('message', 'Error!');
         }     
+<<<<<<< Updated upstream
+=======
+=======
+        return view('profile'); 
+>>>>>>> parent of 26bef1a (merge)
+>>>>>>> Stashed changes
     }
 }

@@ -20,9 +20,19 @@ class UserSeeder extends Seeder
             'email' => 'notjackfryer@gmail.com',
             'phone' => 123456789,
             'isadmin' => false,
+<<<<<<< Updated upstream
             'password' => 'password',
             'security_answer' => 'brian',
             'address' => '5 team3 lane'
+=======
+<<<<<<< HEAD
+            'password' => 'password',
+            'security_answer' => 'brian',
+            'address' => '5 team3 lane'
+=======
+            'password' => 'password'
+>>>>>>> parent of 26bef1a (merge)
+>>>>>>> Stashed changes
         ]);
     }
 }

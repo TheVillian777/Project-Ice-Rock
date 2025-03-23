@@ -122,6 +122,13 @@
             </form>
         </div>
     </div>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+</body>
+>>>>>>> parent of 26bef1a (merge)
+>>>>>>> Stashed changes
 
 @include('footer')
 </html>

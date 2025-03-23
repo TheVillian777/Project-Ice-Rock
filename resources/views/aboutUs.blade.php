@@ -134,6 +134,33 @@
 
     </div>
 
+<<<<<<< Updated upstream
+=======
+    <div class="navBar">
+        <a class="active" href="index.html">Home</a>
+        <a href="New page">Whats new!</a>
+        <a href="books page">Books</a>
+
+<<<<<<< HEAD
+     <h2>Why Choose Us?</h2>
+     <p>we have vast collection - From bestsellers to hidden gems, we have something for everyone.</p>
+     <p>we are easy & secure - A hassle-free experience with safe payment options.</p>
+
+     <h2>Our Commitment</h2>
+     <p>At PageTurner, we are committed to promoting the joy of reading and supporting authors and publishers worldwide. Our goal is to make literature accessible and enjoyable for all.</p>
+
+    </div>
+=======
+        <a href="aboutUs.html">About us</a>
+      </div>
+<div Class="aboutHeader">
+    <h2>
+        About us
+      </h2>
+</div>
+>>>>>>> parent of 26bef1a (merge)
+
+>>>>>>> Stashed changes
 </body>
 
 @include('footer')
