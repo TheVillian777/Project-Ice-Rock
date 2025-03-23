@@ -27,18 +27,22 @@
             <h1>{{ $book->book_name }}</h1>
             <h2>{{ $book->author->first_name . " " . $book->author->last_name }}</h2>
             <h3>£{{ $book->book_price }}</h3>
-            <p>{{ $book->description }}</p> <!-- not sure this currently exists? -->
+            <p>{{ $book->description }} sample text sample text sample text sample text sample text sample text sample text sample text </p> <!-- not sure this currently exists? -->
             
             <div class="basket-icon">
             <form action="{{ route('addToBasket') }}" method="POST" class="basket-form">
                 @csrf
                 <input type="hidden" name="bookId" value="{{ $book->id }}">
-                <input type="hidden" name="quantity" value="1">
+
+                <label for="quantity-{{ $book->id }}">Quantity:</label>
+                <input type="number" id="quantity-{{ $book->id }}" name="quantity" value="1" min="1">
+
                 <button type="submit" class="basket-button">
                     Add to basket! <i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i>
                 </button>
             </form>
             </div>
+
         </div>
     </div>
     <div class="leave-review-container">
