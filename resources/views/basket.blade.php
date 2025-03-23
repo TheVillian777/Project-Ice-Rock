@@ -37,7 +37,7 @@
                     </div>
                     <div class="spacer"></div>
                     <!-- price -->
-                    <p class="price">£{{ number_format($book['price'] * $book['quantity'],2)}}</p>
+                    <p class="price">£{{ number_format($book['book_price'] * $book['quantity'],2)}}</p>
                     <!-- qty -->
                     <div class="quantity">
                         <!-- form for quantity decrease per book -->

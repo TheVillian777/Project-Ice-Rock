@@ -65,7 +65,7 @@
         $totalItemsNo=0;
 
         foreach ($basket as &$product){ 
-            $total = $total + $product['price'] * $product['quantity'];
+            $total = $total + $product['book_price'] * $product['quantity'];
             $totaltemsNo = $totalItemsNo + $product['quantity'];
         }
 @endphp   <!-- due to header being it's own view its very difficult to do it
