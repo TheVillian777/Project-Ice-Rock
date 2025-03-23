@@ -177,7 +177,6 @@
                 @endforeach
                 @endif
             </div>
-        </div>
 
         <div id="paymentOptions" class="content-section" style="display:none;">
             <h2>Saved Payment Method</h2>
