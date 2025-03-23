@@ -64,18 +64,52 @@ body {
     margin-bottom: 20px;    
 }
 
+.basket-form {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds space between elements */
+}
+
+.basket-form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.basket-form input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.basket-form input[type="number"]:focus {
+    border-color: #007bff;
+}
+
 .basket-button {
-	background-color:var(--primary-colour);
-	border-radius:10px;
-	border:1px var(--accent-colour);
-	cursor: pointer;
-	color:var(--interface-colour);
-	padding: 13px 40px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s;
 }
+
 .basket-button:hover {
-	background-color:var(--accent-colour);
+    background-color: #218838;
 }
-.basket-button:active {
-	position:relative;
-	top:1px;
+
+.basket-button i {
+    font-size: 18px;
 }
