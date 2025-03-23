@@ -24,19 +24,11 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
-<<<<<<< Updated upstream
         'isadmin',
         'address',
-        'security_answer'
-=======
-<<<<<<< HEAD
-        'isadmin',
+        'security_answer',
         'address',
         'security_answer'
-=======
-        'isadmin'
->>>>>>> parent of 26bef1a (merge)
->>>>>>> Stashed changes
     ];
 
     /**
