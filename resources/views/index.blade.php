@@ -95,6 +95,7 @@
             <h2 class="showcase-title">Our Showcase</h2>
             <a href="{{ route('shop') }}" class="see-more">See More</a>
         </div>
+        
 
         <button class="book-prev-arrow">&#10094;</button>
         <div class="book-slider-container">
