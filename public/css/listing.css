@@ -92,8 +92,8 @@ body {
 }
 
 .basket-button {
-    background-color: #28a745;
-    color: white;
+    background-color: var(--primary-colour);
+    color: var(--interface-colour);
     font-size: 16px;
     font-weight: bold;
     padding: 10px 15px;
@@ -107,7 +107,7 @@ body {
 }
 
 .basket-button:hover {
-    background-color: #218838;
+    background-color: var(--accent-colour);
 }
 
 .basket-button i {
