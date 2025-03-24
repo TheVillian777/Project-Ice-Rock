@@ -30,10 +30,13 @@
      <p>Founded with a passion for literature, PageTurner started as a small bookshop and grew into an online hub for book enthusiasts. We believe that books have the power to inspire, educate, and transport readers to new worlds.</p>
       
      <!-- Read More Button -->
-     <button id="readMoreBtn" class="read-more-btn">Read More</button>
+     @if (!session('show_more'))
+        <button id="readMoreBtn" class="read-more-btn">Read More</button>
+    @endif
      
      <!-- Hidden Content -->
-     <div id="moreContent">
+     <div id="moreContent" style="{{ session('show_more') ? 'display: block;' : 'display: none;' }}">
+
 
      <h2>Why Choose Us?</h2>
      <p>we have vast collection - From bestsellers to hidden gems, we have something for everyone.</p>
@@ -43,15 +46,27 @@
      <p>At PageTurner, we are committed to promoting the joy of reading and supporting authors and publishers worldwide. Our goal is to make literature accessible and enjoyable for all.</p>
      
      <!--join us button-->
-    </div>
-    <div class="join-us-container">
-        <h2>Become a Part of PageTurner!</h2>
-        <p>Join our community of book lovers and get access to an extensive collection of books.</p>
-        <a href="{{ route('login') }}" class="join-us-btn">Join Us</a>
+     <div class="join-us-container">
+    <h2>Become a Part of PageTurner!</h2>
+    <p>Join our community of book lovers by entering your email below and get access to an extensive collection of books:</p>
+
+    <div class="join-us-form">
+        @if(session('success'))
+            <p style="color: green; text-align: center; margin-bottom: 15px;">
+                {{ session('success') }}
+            </p>
+        @endif
+
+        <form action="{{ route('joinUs') }}" method="POST" class="join-us-form">
+            @csrf
+            <label for="join-email">Email:</label>
+            <input type="email" id="join-email" name="email" required style="width: 600px; padding: 12px">
+            <button type="submit" class="join-us-btn">Join Us</button>
+        </form>
     </div>
 </div>
 
-@include('footer')
-
 </body>
+
+@include('footer')
 </html>

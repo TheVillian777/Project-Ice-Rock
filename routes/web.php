@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -8,6 +9,7 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', function () {
     return view('index');
@@ -22,6 +24,14 @@ Route::get('/index', [HomeController::class, 'gatherData'])->name('index');
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+Route::get('/wishlist1', function () {
+    return view('wishlist1');
+});
+
+Route::get('/reviews', function () {
+    return view('reviews');
+});
 
 Route::get('/basket', function () {
     return view('basket');
@@ -64,6 +74,9 @@ Route::get('/basket', function () {
 })->name('basket');
 
 Route::get('/listing', [ShopController::class, 'listBook'])->name('listing');
+Route::get('/wishing', [ShopController::class, 'addToWishlist'])->name('wishing');
+Route::get('/unwishing', [ShopController::class, 'removeFromWishlist'])->name('unwishing');
+Route::get('/listing/{book_id}/reviews', [ReviewController::class, 'seeReviews'])->name('seeReviews');
 
 
 // Authentication for users
@@ -81,6 +94,8 @@ Route::get('/shop', [ShopController::class, 'gatherData'])->name('shop'); //allo
 Route::post('/shopSearch', [ShopController::class, 'searchShop'])->name('shopSearch');
 Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFilter');
 Route::post('/listing', [ShopController::class, 'listBook'])->name('listing');
+
+
 
 Route::post('/navigateShop', [ShopController::class, 'navShop'])->name('navigateShop');
 
@@ -100,3 +115,10 @@ Route::post('/updatePaymentDetails', [ProfileController::class, 'updatePaymentDe
 Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
 Route::post('/returnItem', [ProfileController::class, 'returnItem'])->name('returnItem');
 Route::post('/viewOrder', [ProfileController::class, 'viewOrder'])->name('viewOrder');
+
+//Ensures user is logged in and authenticated
+Route::middleware(['auth'])->group(function(){
+    Route::post('/listing/reviewBook', [ReviewController::class, 'reviewSubmit'])->name('reviewSubmit');
+});
+
+Route::post('/join-us', [AuthController::class, 'joinUs'])->name('joinUs');

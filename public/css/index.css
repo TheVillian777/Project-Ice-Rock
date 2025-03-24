@@ -108,7 +108,7 @@ body {
 
 /* Book Slider Container */
 .book-slider-container {
-    padding: 0 10vw;
+    padding: 0 5vw;
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -147,9 +147,10 @@ body {
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.5rem; /* Smaller arrows */
-    color: var(--primary-colour);
-    background-color: transparent;
-    border: none;
+    color: var(--interface-colour);
+    background-color: var(--primary-colour);
+    border: 1px solid var(--primary-colour);
+    border-radius: 5px;
     padding: 8px;
     cursor: pointer;
     z-index: 10;
