@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -35,7 +37,8 @@ class AdminController extends Controller
 
     public function stock()
     {
-        return view('adminStock');
+        $books = Book::all()-get();
+        return view('adminStock',compact('stock'));
     }
 
     public function gatherUsers(){

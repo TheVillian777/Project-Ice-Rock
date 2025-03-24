@@ -42,17 +42,19 @@
                     </thead>
                     <tbody>
                         <!-- Loop through books here -->
+                         @foreach($books as $book)
                         <tr>
-                            <td class="border p-2">1</td>
-                            <td class="border p-2">book book book</td>
-                            <td class="border p-2">name name</td>
-                            <td class="border p-2">twenny dollars</td>
-                            <td class="border p-2">50</td>
+                            <td class="border p-2">{{ $book->id }}</td>
+                            <td class="border p-2">{{ $book->title }}</td>
+                            <td class="border p-2">{{ $book->author }}</td>
+                            <td class="border p-2">{{ $book->price }}</td>
+                            <td class="border p-2">{{ $book->stock }}</td>
                             <td class="border p-2 text-center">
                                 <button class="bg-blue-500 text-white px-2 py-1 rounded">Edit</button>
                                 <button class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
