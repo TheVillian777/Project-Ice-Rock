@@ -63,6 +63,7 @@ class AdminController extends Controller
     public function adminInfoChange(Request $request,$user_id){
         $user = User::where('id', $user_id)->first(); //match user ids
 
+        //validate user details
         $request->validate([
             'title' => 'required',
             'firstName' => 'required',
@@ -72,6 +73,7 @@ class AdminController extends Controller
         ]);
 
         if($user){
+            //update user details with details in field
             $user->title = $request['title'];
             $user->first_name = $request['firstName'];
             $user->last_name = $request['lastName'];
@@ -80,11 +82,17 @@ class AdminController extends Controller
             $user->email = $request["email"];
             $user->security_answer = $request["security_answer"];
 
+            //checks if security level field is filled first, if filled: updates security level
+            if($request->filled('security_level')){
+                $user->security_level = $request['security_level'];
+            }
+
+            //checks if password field is filled first, if filled: checks if password matchs confirm password before hashing and submitting to table
             if ($request->input('password') !== $request->input('confirm-password')) {
                 return redirect()->back()->withErrors('Passwords do not match');
               } else {
                 if ($request->filled('password')) {
-                  $user->password = ($request->input('password'));
+                  $user->password = Hash::make($request->input('password'));
                 }
               }
 

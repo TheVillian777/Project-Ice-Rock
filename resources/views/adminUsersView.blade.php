@@ -99,11 +99,21 @@
                         <input type="password" id="confirm_password" name="confirm-password" >
                     </div>
 
+                     <!-- Drop-down menu for security level-->
+                     <div class="name-input">
+                        <label for="security-level">User Security Level</label>
+                        <select id="security-level" name="security_level" value="{{ $showDetails->security_level }}">
+                            <option value="{{ $showDetails->security_level }}"></option>
+                            <option value="Customer">Customer</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Senior-Admin">Senior-Admin</option>
+                        </select>
+                    </div>
+
                     <!-- submit button -->
                     <button type="submit" class="confirm-button">Confirm</button>
+
                 </form>
             </div>
         </div>
-
-
 </body>
