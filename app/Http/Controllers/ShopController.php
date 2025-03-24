@@ -17,9 +17,11 @@ class ShopController extends Controller
         //Fetch all categories
         $categories = Category::all();
         $books = Book::with('author')->get();
+        $reviews = Review::all();
+
 
         //Pass categories to the shop listing view
-        return view('shop',compact('categories','books'));
+        return view('shop',compact('categories','books','reviews'));
     }
 
     public function searchShop(Request $request){
@@ -48,6 +50,7 @@ class ShopController extends Controller
 
         $filterOptions = $request->input('options', []);
         $priceRange = $request->input('priceRange');
+        
         $priceRange = floatval($priceRange);
 
         //Fetch all categories
