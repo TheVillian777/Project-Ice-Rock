@@ -26,6 +26,7 @@
         <div class="sideBar">
             <h2>Account information</h2>
             <ul>
+            <li class="mb-2"><a href="{{ route('admin') }}" class="text-gray-700 hover:text-blue-600">Dashboard</a></li>
                 <li><a href="#" onclick="showSection('profileInfo')">User profile</a></li>
                 <li><a href="#" onclick="showSection('pastOrders')">Past orders</a></li>
             </ul>

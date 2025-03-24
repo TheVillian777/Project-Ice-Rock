@@ -226,8 +226,10 @@ class AdminController extends Controller
 
     public function deleteRecord(Request $request){
 
+        $validated = $request->validate(['book_id' => 'required']);
+
         $books = Book::all();
-        Book::where('id', $request->input('book_id'))->first()->delete();
+        Book::find($validated['book_id'])->delete();
 
         return view('adminStock', compact('books'));
     }
@@ -236,10 +238,22 @@ class AdminController extends Controller
 
         $books = Book::all();
 
-        Book::where('id', $request->input('book_id'))->update(['name' => $request->input('book_name')]);
-        Book::where('id', $request->input('book_id'))->update(['category_id' => $request->input('category')]);
-        Book::where('id', $request->input('book_id'))->update(['book_price' => $request->input('price')]);
-        Book::where('id', $request->input('book_id'))->update(['book_inventory' => $request->input('stock')]);
+        $validated = $request->validate([
+            'book_id' => 'required',
+            'book_name' => 'required',
+            'category' => 'required',
+            'book_price' => 'required',
+            'stock' => 'required',
+        ]);
+
+        $book = Book::where('id', $request->input('book_id'))->first();
+
+        $book->update([
+            'book_name' => $validated['book_name'],
+            'category_id' => $validated['category'],
+            'book_price' => $validated['book_price'],
+            'book_inventory' => $validated['stock'],
+        ]);
 
         return view('adminStock', compact('books'));
     }

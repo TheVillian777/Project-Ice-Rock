@@ -60,7 +60,8 @@
                         @csrf
                         <tr>
                             <td class="border p-2">{{ $book->id }}</td>
-                            <td class="border p-2"><img src="{{ 'images/' . $book->img_url}} " alt="{{$book->book_name}}"><input name="name" value="{{ $book->book_name }}"></input></td>
+                            <td class="border p-2"><img src="{{ 'images/' . $book->img_url}} " alt="{{$book->book_name}}">
+                            <input type="text" name="book_name" value="{{ $book->book_name }}"></input></td>
                             <td class="border p-2">{{ $book->author-> first_name }} {{ $book->author->last_name}}</td>
                             <td class="border p-2">
                             <select id="security-level" name="category" value="{{ $book->category->name}}">
@@ -71,8 +72,8 @@
                             <option value="4">Fiction</option>
                             <option value="5">Science-Fiction</option>
                         </select></td>
-                            <td class="border p-2"><input name="price" value="{{ $book->book_price }}"></input></td>
-                            <td class="border p-2"><input name="stock" value="{{ $book->book_inventory}}" ></input></td>
+                            <td class="border p-2"><input type="text" name="book_price" value="{{ $book->book_price }}"></input></td>
+                            <td class="border p-2"><input type="text" name="stock" value="{{ $book->book_inventory}}" ></input></td>
                             <td class="border p-2 text-center">
                                 <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                                 <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded">Edit</button>

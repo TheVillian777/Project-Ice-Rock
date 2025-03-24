@@ -20,6 +20,8 @@ class Book extends Model
         'img_url'
     ];
 
+    public $timestamps = false; 
+
     // Table Relationships
 
     //This function defines the many-to-one relationship books have to authors
