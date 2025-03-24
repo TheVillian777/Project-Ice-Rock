@@ -5,6 +5,10 @@ use App\Models\User;
 use App\Models\Book;
 use App\Models\Author;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Purchase;
+use App\Models\OrderItem;
+
 
 
 class AdminController extends Controller
@@ -24,7 +28,10 @@ class AdminController extends Controller
     {
         $users = User::find($user_id);
         $showDetails = $this->showUserDetails($user_id);
-        return view('adminUsersView',compact('showDetails'));
+
+        $orderitems = $this->showPastBooks();
+
+        return view('adminUsersView',compact('showDetails','orderitems'));
     }
 
     public function showUserDetails($user_id)
@@ -139,6 +146,63 @@ class AdminController extends Controller
 
     return redirect()->back()->with('Registration successful!');
   }
+
+
+  // past orders views
+  public function viewOrder(Request $request){
+
+        $orderitems = request('orderItems');
+
+        $user_id = Auth::id();
+        $purchase_id = request('purchaseID');
+        $orderitems = OrderItem::where('purchase_id', $purchase_id)->get();
+
+        return view('reciepts', compact('orderitems','user_id','purchase_id'));
+    }
+
+    public function showPastBooks()
+    {
+        $user_id = Auth::id();
+
+        //match users and take just the purchase ids
+        $purchase_ids = Purchase::where('user_id', $user_id)->pluck('id');
+
+        //get item based off purchase id
+        $orderitems = OrderItem::whereIn('purchase_id', $purchase_ids)
+        ->with(['book', 'purchase'])->get(); //loads book and purchase tables alongside to display book title and order ID (purchase ID)
+
+        return $orderitems; //return required data
+    }
+
+
+    public function returnItem(Request $request){
+
+        $purchase_id = request('purchaseID');
+        $book_id = request('bookID');
+
+        $user_id = Auth::id();
+
+        $orderitems = OrderItem::where('purchase_id', $purchase_id)->where('book_id', $book_id)->limit(1)->first();
+
+        if ($orderitems->quantity > 1){
+            $orderitems->update(['subtotal_price' => number_format($orderitems->book_price * $orderitems->quantity,2)]);
+            $orderitems->update(['quantity' => $orderitems->quantity - 1]);
+            
+            OrderItem::create([
+                'purchase_id' => $purchase_id,
+                'book_id' => $orderitems->book_id,
+                'quantity' => $orderitems->quantity,
+                'book_price' => $orderitems->book_price,
+                'item_status' => 'Returned',
+                'subtotal_price' => number_format($orderitems->book_price),
+            ]);
+        } else {
+            $orderitems->update(['item_status' => 'Returned']);
+        }
+        
+
+        return redirect()->route('adminUserView');
+    }
 
 }
 
