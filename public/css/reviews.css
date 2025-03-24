@@ -1,3 +1,5 @@
+@import "theme.css";
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -269,13 +271,32 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px;
     margin-top: 0px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
+/* Book Section */
+.book-container {
+    width: 35%; 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0%;
+    position: relative;
+    margin-left: auto;
+    margin-top: -950px;
+    margin-right: 100px;
+}
+
+/* Reviews Container */
 .reviews-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: flex-start;
-    padding: 100px;
+    width: 50%; 
+    min-height: 840px;
+    padding: 20px;
 }
 
 .reviews-header {
@@ -284,7 +305,7 @@ body {
 }
 
 .reviews-header h2 {
-    font-size: 28px;
+    font-size: 40px;
     color: #333;
 }
 
@@ -298,7 +319,7 @@ body {
 }
 
 .review-title {
-    font-size: 18px;
+    font-size: 30px;
     font-weight: bold;
     color: #333;
 }
@@ -319,25 +340,21 @@ body {
 }
 
 .review-rating i {
-    color: #FFD700; 
+    color: #FFD700;
 }
 
-/* Book Section */
-.book-container {
-    width: 35%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+
 
 .book-details {
     margin-bottom: 20px;
 }
 
 .book-image {
-    width: 100%;
+    width: 40%; 
     border-radius: 5px;
+    margin: 0 auto 10px; 
+    display: block;
+
 }
 
 .book-title {
@@ -346,10 +363,20 @@ body {
     margin: 10px 0;
 }
 
-.book-genre, .book-author, .book-price {
+.book-genre,
+.book-author,
+.book-price {
     font-size: 16px;
     color: #555;
     margin: 5px 0;
+}
+
+.book-title,
+.book-author,
+.book-price,
+.review-rating {
+    text-align: center;
+    width: 100%;
 }
 
 .book-rating {
@@ -363,7 +390,8 @@ body {
     gap: 10px;
 }
 
-.add-to-basket, .add-to-wishlist {
+.add-to-basket,
+.add-to-wishlist {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -376,6 +404,7 @@ body {
 .add-to-wishlist {
     background-color: #ff4d4d;
 }
+
 /* Leave Review Section */
 .leave-review-container {
     width: 95%;
@@ -385,6 +414,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-left: 40px;
+    
 }
 
 .leave-review-container h2 {
@@ -418,8 +448,8 @@ body {
     cursor: pointer;
 }
 
-.stars input[type='radio']:checked ~ label {
-    color: #FFD700; 
+.stars input[type='radio']:checked~label {
+    color: #FFD700;
 }
 
 .form-group {
@@ -447,7 +477,7 @@ body {
 }
 
 button[type='submits'] {
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -457,7 +487,8 @@ button[type='submits'] {
 }
 
 button[type='submits']:hover {
-    background-color: #45a049; /
+    background-color: #45a049;
+    /
 }
 
 .star-rating {

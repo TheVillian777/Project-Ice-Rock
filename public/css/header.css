@@ -259,3 +259,49 @@ body {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+@media screen and (max-width: 600px) {
+    * {
+        padding: 0%;
+    }
+
+    .new-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;    
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .logo h1 {
+        display: none;
+    }
+    .logo img, .account-button i, .basket-button-container i, .wishlist-button i {
+        width: 10vw;
+        margin: 0;
+    }
+    .wishlist-button p, .account-button p {
+        display: none;
+    }
+
+    .navBar {
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .dropdown-content {
+        min-width: 100%;
+    }
+
+    .basket-button-container a {
+        font-size: 2vw;
+    }
+    
+    .search-box, .search-bar, .search-bar input[type="text"], .search-icon {
+        flex: 2;
+    }
+    .search-bar input[type="text"] {
+        font-size: 2vw;
+    }
+}
