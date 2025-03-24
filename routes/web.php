@@ -126,6 +126,8 @@ Route::get('admin/users', [AdminController::class, 'gatherUsers'])->name('adminU
 Route::get('admin/users/search', [AdminController::class, 'searchUser'])->name('searchUser');
 Route::get('admin/users/{user_id}', [AdminController::class, 'usersView'])->name('adminUserView');
 Route::get('admin/stock', [AdminController::class, 'stock'])->name('adminStock');
+Route::get('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
+Route::post('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
 
 //Ensures user is logged in and authenticated
 Route::middleware(['auth'])->group(function(){

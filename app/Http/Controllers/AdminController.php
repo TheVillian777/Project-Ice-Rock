@@ -58,7 +58,7 @@ class AdminController extends Controller
     }
 
 
-    public function updateInfo(Request $request,$user_id){
+    public function adminInfoChange(Request $request,$user_id){
         $user = User::where('id', $user_id)->first(); //match user ids
 
         $request->validate([
@@ -78,11 +78,9 @@ class AdminController extends Controller
             $user->email = $request["email"];
 
         $user->save(); //save changes to editted user details
-        return redirect()->route('profile')->with('message', 'Profile updated!');
+        return redirect()->route('adminUserView', ['user_id'=>$user_id])->with('message', 'Profile updated!');
 
-        } else {
-            return redirect()->route('profile')->with('message', 'Error!');
-        }     
+        } 
     }
 
 }

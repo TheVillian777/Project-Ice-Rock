@@ -35,7 +35,7 @@
         <!-- Content sections -->
         <div class="content-area">
             <div id="profileInfo" class="content-section">
-                <form action="{{ route('updateInfo') }}" method="post">
+                <form action="{{ route('adminInfoChange',  ['user_id' => $showDetails->id]) }}" method="post">
                 @csrf
                     <label for="title">Title:</label>
                     <select id="title" name="title" value="{{ $showDetails->title }}">
