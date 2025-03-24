@@ -56,19 +56,35 @@
                     <tbody>
                         <!-- Loop through books here -->
                          @foreach($books as $book)
+                    <form action="{{ route('updateRecord')}}" method="post">
+                        @csrf
                         <tr>
                             <td class="border p-2">{{ $book->id }}</td>
-                            <td class="border p-2">{{ $book->book_name }}</td>
-                            <td class="border p-2">{{ $book->author-> first_name }} {{ $book->author->last_name}} </td>
-                            <td class="border p-2">{{ $book->category->name}}</td>
-                            <td class="border p-2">{{ $book->book_price }}</td>
-                            <td class="border p-2">{{ $book->book_inventory}}</td>
-
+                            <td class="border p-2"><img src="{{ 'images/' . $book->img_url}} " alt="{{$book->book_name}}"><input name="name" value="{{ $book->book_name }}"></input></td>
+                            <td class="border p-2">{{ $book->author-> first_name }} {{ $book->author->last_name}}</td>
+                            <td class="border p-2">
+                            <select id="security-level" name="category" value="{{ $book->category->name}}">
+                            <option value="{{ $book->category_id }}">{{$book->category->name}}</option>
+                            <option value="1">Fantasy</option>
+                            <option value="2">Non-Fiction</option>
+                            <option value="3">Mystery</option>
+                            <option value="4">Fiction</option>
+                            <option value="5">Science-Fiction</option>
+                        </select></td>
+                            <td class="border p-2"><input name="price" value="{{ $book->book_price }}"></input></td>
+                            <td class="border p-2"><input name="stock" value="{{ $book->book_inventory}}" ></input></td>
                             <td class="border p-2 text-center">
-                                <button class="bg-blue-500 text-white px-2 py-1 rounded">Edit</button>
-                                <button class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                                <input type="hidden" name="book_id" value="{{ $book->id }}"/>
+                                <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded">Edit</button>
+                            </form>
+                            <form action="{{ route('deleteRecord')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="book_id" value="{{ $book->id }}"/>
+                                <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                            </form>
                             </td>
                         </tr>
+                    
                         @endforeach
                     </tbody>
                 </table>

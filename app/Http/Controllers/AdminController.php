@@ -224,6 +224,26 @@ class AdminController extends Controller
         return view('adminStock', compact('books'));
     }
 
+    public function deleteRecord(Request $request){
+
+        $books = Book::all();
+        Book::where('id', $request->input('book_id'))->first()->delete();
+
+        return view('adminStock', compact('books'));
+    }
+
+    public function updateRecord(Request $request){
+
+        $books = Book::all();
+
+        Book::where('id', $request->input('book_id'))->update(['name' => $request->input('book_name')]);
+        Book::where('id', $request->input('book_id'))->update(['category_id' => $request->input('category')]);
+        Book::where('id', $request->input('book_id'))->update(['book_price' => $request->input('price')]);
+        Book::where('id', $request->input('book_id'))->update(['book_inventory' => $request->input('stock')]);
+
+        return view('adminStock', compact('books'));
+    }
+
 }
 
 
