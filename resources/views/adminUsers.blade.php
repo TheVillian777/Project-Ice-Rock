@@ -15,7 +15,10 @@
             });
 
 
-            document.getElementById(sectionId).style.display = 'block';
+            const sectionToShow = document.getElementById(sectionId);
+            if (sectionToShow) {
+                sectionToShow.style.display = 'block';
+            }
 
             
 
@@ -23,7 +26,10 @@
         }
         
         document.addEventListener("DOMContentLoaded", function () {
-            showSection("user-card"); // user cards should show by default
+            document.getElementById("user-grid").style.display = 'flex';
+            document.querySelectorAll('.form-container').forEach(section => {
+                section.style.display = 'none';
+            });
         });
     </script>
 </head>
