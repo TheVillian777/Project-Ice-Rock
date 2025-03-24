@@ -120,3 +120,5 @@ Route::post('/viewOrder', [ProfileController::class, 'viewOrder'])->name('viewOr
 Route::middleware(['auth'])->group(function(){
     Route::post('/listing/reviewBook', [ReviewController::class, 'reviewSubmit'])->name('reviewSubmit');
 });
+
+Route::post('/join-us', [AuthController::class, 'joinUs'])->name('joinUs');

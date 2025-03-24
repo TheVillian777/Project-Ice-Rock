@@ -119,4 +119,15 @@ class AuthController extends Controller
     return redirect()->route('login');
 
     }
+    public function joinUs(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+    
+        return redirect()->back()
+            ->with('success', 'Success! Please check your inbox.')
+            ->with('show_more', true);
+    }
+    
 }
