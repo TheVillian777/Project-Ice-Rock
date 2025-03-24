@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class AdminController extends Controller
 {
@@ -76,7 +78,17 @@ class AdminController extends Controller
             $user->phone = $request['phoneNumber'];
             $user->address = $request["address"];
             $user->email = $request["email"];
+            $user->security_answer = $request["security_answer"];
 
+            if ($request->input('password') !== $request->input('confirm-password')) {
+                return redirect()->back()->withErrors('Passwords do not match');
+              } else {
+                if ($request->filled('password')) {
+                  $user->password = ($request->input('password'));
+                }
+              }
+
+   
         $user->save(); //save changes to editted user details
         return redirect()->route('adminUserView', ['user_id'=>$user_id])->with('message', 'Profile updated!');
 

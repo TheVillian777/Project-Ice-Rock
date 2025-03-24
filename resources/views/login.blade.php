@@ -95,7 +95,7 @@
             <label for="register-password">Password:</label>
             <input type="password" id="register-password" name="password" required>
 
-        <!-- confirm passw -->    
+        <!-- confirm password -->    
             <label for="register-confirm-password">Confirm Password:</label>
             <input type="password" id="register-confirm-password" name="confirm-password" required>
 
@@ -122,19 +122,19 @@
         <form action="{{ route('forgottenPassword') }}" method="post">
             @csrf
         <!-- enter email -->
-            <label for="forgotten-email">email:</label>
+            <label for="forgotten-email">Email:</label>
             <input type="email" id="forgotten-email" name="email" required>
         
         <!-- security question answer -->
-            <label for="forgotten-security-question">security question answer:</label>
+            <label for="forgotten-security-question">Security question answer:</label>
             <input type="security-answer" id="forgotten-security-question" name="security_answer" placeholder="What's the name of your first pet?" required>
 
         <!-- input password -->    
-            <label for="register-password">password:</label>
+            <label for="register-password">Password:</label>
             <input type="password" id="register-password" name="password" required>
 
         <!-- confirm password -->    
-            <label for="register-confirm-password">confirm password:</label>
+            <label for="register-confirm-password">Confirm password:</label>
             <input type="password" id="register-confirm-password" name="confirm-password" required>
         
         <!-- submit -->
