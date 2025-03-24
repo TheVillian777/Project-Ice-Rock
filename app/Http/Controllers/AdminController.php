@@ -11,12 +11,18 @@ use App\Models\OrderItem;
 
 
 
+
 class AdminController extends Controller
 {
 
     public function dashboard()
     {
-        return view('admin');
+        $userTotal = User::count();
+        $bookTotal = Book::count();
+        $authorTotal = Authors::count();
+        $purchaseTotal = Purchase::count();
+
+        return view('admin', compact('userTotal','bookTotal'. 'authorTotal', 'purchaseTotal'));
     }
 
     public function users()
