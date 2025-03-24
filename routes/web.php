@@ -21,8 +21,14 @@ Route::get('/index', function () {
 })->name('index');
 Route::get('/index', [HomeController::class, 'gatherData'])->name('index');
 
-Route::get('/login', function () {
-    return view('login');
+Route::get('/login', function (Request $request) {
+    if (request()->input('option') == "login"){
+        $option = array(0 => "block",1 => "none",2 => "none");
+        return view('login',compact('option'));
+    } else {
+        $option = array(0 => "none",1 => "block",2 => "none");
+        return view('login',compact('option'));
+    }
 })->name('login');
 
 Route::get('/wishlist1', function () {

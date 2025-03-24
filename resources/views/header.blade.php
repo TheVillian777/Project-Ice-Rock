@@ -47,7 +47,7 @@
                         <i class="fa fa-user"></i> PROFILE
                     </a>
                 @else
-                    <a href="{{ route('login') }}">
+                    <a href="{{ route('login', ['option' => 'login']) }}">
                         <i class="fa fa-user"></i> LOGIN 
                 @endif
             </div>

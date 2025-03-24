@@ -24,9 +24,17 @@ class AuthController extends Controller
         'security_answer' => 'required',
         'confirm-password' =>  'required'
     ]);
-
+    
     if ($user['password'] !== $request->input('confirm-password')) {
-      return redirect()->back()->withErrors('Password does not match');
+        return redirect()->back()->withErrors('Password does not match');
+    }else if (strlen($user['password']) < 8 ) {
+        return redirect()->route('login', ['option' => 'register'])->withErrors("Registeration failed.\nPassword must be more than 7 characters.");
+    } else if (preg_match('/[^a-zA-Z0-9]/',$user['password']) < 1) {
+        return redirect()->route('login', ['option' => 'register'])->withErrors("Registeration failed.\nPassword must contain one or more symbols.");
+    } else if (preg_match('/[A-Z]/',$user['password']) < 1) {
+        return redirect()->route('login', ['option' => 'register'])->withErrors("Registeration failed.\nPassword must contain one or more uppercase letters.");
+    } else if (preg_match('/[@]/',$user['email']) != 1) {
+        return redirect()->route('login', ['option' => 'register'])->withErrors("Registeration failed.\nEmail is incorrect.");
     }
 
     //save registration to Users table
@@ -42,7 +50,7 @@ class AuthController extends Controller
         'password' => Hash::make($user['password']), //Hash for security with built in method
     ]);
 
-    return redirect()->back()->with('Registration successful!');
+    return redirect()->back()->withErrors('Registration successful!');
   }
   
   public function login(Request $request)
