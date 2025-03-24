@@ -17,9 +17,7 @@
 
             document.getElementById(sectionId).style.display = 'block';
 
-            document.querySelectorAll('user-card').forEach(section => {
-                section.style.display = 'none';
-            });
+            
 
         }
         
@@ -126,7 +124,7 @@
             <input type="password" id="register-confirm-password" name="confirm-password" required>
 
         <!-- security question -->
-            <label for="register-security-answer">enter your security answer:</label>
+            <label for="register-security-answer">Enter your security answer:</label>
             <input type="text" id="register-security-answer" name="security_answer" placeholder="What's the name of your first pet?" required>
 
         <!-- submit -->
