@@ -36,8 +36,6 @@
             <p>£{{ $book->book_price }}</p>
         </div>
 
-        <input type="hidden" name="rating" value="{{ $averagerating }}">
-
         <!-- bookmark icon (backend would you add a route after you've made a working wishlist? -->
         <div class="bookmark-icon">
             <button class="bookmark" onclick="location.href='{{ route('wishing', ['book_id' => $book->id]) }}';">
