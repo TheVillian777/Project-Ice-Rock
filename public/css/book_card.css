@@ -83,3 +83,30 @@ p, h3 {
 .bookmark:hover {
     color: var(--accent-colour);
 }
+
+@media screen and (max-width: 600px) {
+    .book-card {
+        height: auto;
+        padding: 10px;
+    }
+
+    .book-cover {
+        height: 180px;
+        width: 80%;
+        align-self: center;
+    }
+
+    .book-title {
+        font-size: 0.9rem;
+    }
+
+    .book-author, .book-price {
+        font-size: 0.7rem;
+    }
+
+    .basket, .bookmark {
+        width: 30;
+        height: 30;
+    }
+
+}
