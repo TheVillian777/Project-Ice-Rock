@@ -25,19 +25,16 @@
      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/></svg>
     </button>
 
-    <div class="form-container" id="login-form">
+    <div class="form-container" id="login-form" style="display: {{$option[0]}};">
         <h2>Login</h2>
-        
-        @if ($errors->has('password'))
+        @if ($errors->any())
             <p style="color: red;">
-                {{ $errors->first('password') }}
+                {{ $errors->first() }}
             </p>
         @endif
-
-        @if ($errors->has('email') && !$errors->has('password'))
-            <p style="color: red;">
-                {{ $errors->first('email') }}
-            </p>
+        
+        @if(session('success'))
+            <p style="color: green;">{{ session('success') }}</p>
         @endif
 
         <!-- login form -->
@@ -78,12 +75,11 @@
         <!-- hyperlinks for forgotten password, register -->
             <p>Don't have an account? <a href="javascript:void(0);" onclick="showRegisterForm()">Register</a></p>
             <p><a href="javascript:void(0);" onclick="forgottenPassword()">Forgotten your password?</a></p>
-
         </form>
     </div>
 
     <!-- register Section -->
-    <div class="form-container" id="register-form" style="display: none;">
+    <div class="form-container" id="register-form" style="display: {{$option[1]}};">
         <h2>Register</h2>
         <form action="{{ route('register') }}" method="post">
             @csrf
@@ -124,7 +120,10 @@
 
         <!-- input password -->    
             <label for="register-password">Password:</label>
-            <input type="password" id="register-password" name="password" required>
+            <input type="password" id="register-password" name="password" 
+            class="@error('password') input-error @enderror"
+            @error('password') data-error="true" @enderror 
+            required>
 
         <!-- confirm passw -->    
             <label for="register-confirm-password">Confirm Password:</label>
@@ -143,7 +142,7 @@
     </div>
 
     <!-- forgotten password Section -->
-     <div class="form-container" id="forgottenPassword-form" style="display: none;">
+     <div class="form-container" id="forgottenPassword-form" style="display: {{$option[2]}};">
         <h2>Forgotten Password</h2>
 
         @if ($errors->any())
