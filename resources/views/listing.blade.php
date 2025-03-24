@@ -27,6 +27,7 @@
             <h1>{{ $book->book_name }}</h1>
             <h2>{{ $book->author->first_name . " " . $book->author->last_name }}</h2>
             <h3>£{{ $book->book_price }}</h3>
+            <div class="review-rating">Rated: {{ number_format($book->averageRating,1) }} /5</div><!-- displays average rating /5 to one decimal points-->
             <p>{{ $book->description }} sample text sample text sample text sample text sample text sample text sample text sample text </p> <!-- not sure this currently exists? -->
             
             <div class="basket-icon">
@@ -76,7 +77,7 @@
         <button type="submit">Submit Review</button>
     </form>
 
-</div>
+    </div>
 </body>
 </div>
 
