@@ -118,6 +118,10 @@
         <a href="{{ route('profile') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
+
+        @if (Auth::check() && Auth::user()->security_level !== 'Customer')
+        <a href="{{ route('admin') }}">Admin</a>
+        @endif
         
         @if (Auth::check())
         <form action="{{ route('logout') }}" method="POST">
