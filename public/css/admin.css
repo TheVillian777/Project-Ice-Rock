@@ -132,3 +132,65 @@ button.bg-red-500:hover {
     margin: 5px 0;
     color: var(text-colour);
 }
+
+.form-container {
+    background-color: var(--base-variant);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-colour);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-colour);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="security-answer"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-colour);
+    color: var(--interface-colour);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--accent-colour);
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+    color: var(--text-colour);
+}
+
+a {
+    color: var(--link-colour);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -81,6 +81,7 @@ Route::get('/listing/{book_id}/reviews', [ReviewController::class, 'seeReviews']
 
 
 // Authentication for users
+
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -128,6 +129,7 @@ Route::get('admin/users/{user_id}', [AdminController::class, 'usersView'])->name
 Route::get('admin/stock', [AdminController::class, 'stock'])->name('adminStock');
 Route::get('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
 Route::post('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
 
 //Ensures user is logged in and authenticated
 Route::middleware(['auth'])->group(function(){
