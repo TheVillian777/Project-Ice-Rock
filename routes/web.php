@@ -76,6 +76,8 @@ Route::get('/basket', function () {
 Route::get('/listing', [ShopController::class, 'listBook'])->name('listing');
 Route::get('/wishing', [ShopController::class, 'addToWishlist'])->name('wishing');
 Route::get('/unwishing', [ShopController::class, 'removeFromWishlist'])->name('unwishing');
+Route::get('/listing/{book_id}/reviews', [ReviewController::class, 'seeReviews'])->name('seeReviews');
+
 
 // Authentication for users
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -92,7 +94,6 @@ Route::get('/shop', [ShopController::class, 'gatherData'])->name('shop'); //allo
 Route::post('/shopSearch', [ShopController::class, 'searchShop'])->name('shopSearch');
 Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFilter');
 Route::post('/listing', [ShopController::class, 'listBook'])->name('listing');
-Route::get('/listing/{book_id}/reviews', [ReviewController::class, 'seeReviews'])->name('seeReviews');
 
 
 
