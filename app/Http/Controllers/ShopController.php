@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Category;
 use App\Models\Book;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
@@ -140,10 +141,16 @@ class ShopController extends Controller
             array_unshift($viewed,$newViewed);
         }
 
+        //gets all reviews for specific book
+        $reviews = Review::where('book_id', $id)->get();
+
+        //calculates average rating for specific book
+        $averageRating = $reviews->avg('review_rating');
+
         session()->put('recentView'.Auth::id(),$viewed);
         //$request->session()->forget('recentView');
         
-        return view('listing',compact('book'));
+        return view('listing',compact('book','averageRating'));
 
     }
 
