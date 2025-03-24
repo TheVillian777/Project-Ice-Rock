@@ -26,12 +26,13 @@ class AdminController extends Controller
 
     public function usersView($user_id)
     {
+        $purchases = Purchase::All();
         $users = User::find($user_id);
         $showDetails = $this->showUserDetails($user_id);
 
         $orderitems = $this->showPastBooks();
 
-        return view('adminUsersView',compact('showDetails','orderitems'));
+        return view('adminUsersView',compact('showDetails','orderitems','purchases'));
     }
 
     public function showUserDetails($user_id)

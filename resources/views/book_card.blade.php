@@ -35,20 +35,6 @@
         <div class="book-price">
             <p>£{{ $book->book_price }}</p>
         </div>
-        
-        @php
-        $averagerating = 0;
-        $total = 0;
-        foreach ($reviews as $review) {
-            if ($review['book_id'] == $book->id) {
-                $total = $total + 1;
-                $averagerating = $averagerating + $review('review_rating');
-            }
-        }
-        if (!$averagerating == 0) {
-            $averagerating = $averagerating / $total;
-        }
-        @endphp
 
         <input type="hidden" name="rating" value="{{ $averagerating }}">
 

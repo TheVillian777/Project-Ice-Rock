@@ -27,26 +27,29 @@ class ShopController extends Controller
     public function searchShop(Request $request){
 
         $search = $request->input('search');
+        $reviews = Review::all();
 
         $categories = Category::all();
         $books = Book::with('author')->where('book_name','like','%' . $search . '%')->get();
 
-        return view('shop', compact('categories','books'));
+        return view('shop', compact('categories','books','reviews'));
     }
 
     public function navShop(Request $request){
         
         $filterOption = $request->input('genre-select');
-        
+        $reviews = Review::all();
         //Fetch all categories
         $categories = Category::all();
         $books = Book::with('author')->where('category_id', $filterOption)->get();
 
-        return view('shop',compact('categories','books'));
+        return view('shop',compact('categories','books','reviews'));
 
     }
 
     public function filterShop(Request $request){
+
+        $reviews = Review::all();
 
         $filterOptions = $request->input('options', []);
         $priceRange = $request->input('priceRange');
@@ -62,7 +65,7 @@ class ShopController extends Controller
         }
 
         //Pass categories to the shop listing view
-        return view('shop',compact('categories','books'));
+        return view('shop',compact('categories','books','reviews'));
 
     }
 

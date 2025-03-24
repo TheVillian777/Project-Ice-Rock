@@ -140,7 +140,7 @@
                     <td>@foreach ($orderitems as $items)
                         @if ($items->purchase_id == $purchase->id)
                         @if (!in_array($items->book->book_name, $RepeatedItem))
-                        <img src="{{ 'images/' . $items->book->img_url}} " alt="$items->book->book_name">
+                        <img src="{{ 'images/' . $items->book->img_url}} " alt="{{$items->book->book_name}}">
                         @endif
                         @php $RepeatedItem[] = $items->book->book_name; @endphp
                         <div></div>
