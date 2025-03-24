@@ -29,7 +29,14 @@
             <h3>£{{ $book->book_price }}</h3>
             <div class="review-rating">Rated: {{ number_format($book->averageRating,1) }} /5</div><!-- displays average rating /5 to one decimal points-->
             <p>{{ $book->description }} sample text sample text sample text sample text sample text sample text sample text sample text </p> <!-- not sure this currently exists? -->
-            
+            @if($book->stock && $book->stock->stock_quantity > 5)
+                <h3> In stock ({{$book->stock->stock_quantity}} available)
+            @elseif($book->stock && $book->stock->stock_quantity < 5)
+                <h3> Low stock ({{$book->stock->stock_quantity}} available)
+            @else
+                <h3> Out of stock </h3>
+            @endif
+                
             <div class="basket-icon">
             <form action="{{ route('addToBasket') }}" method="POST" class="basket-form">
                 @csrf

@@ -47,5 +47,9 @@ class Book extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function stock(){
+        return $this->hasOne(Stock::class);
+    }
+
 
 }
