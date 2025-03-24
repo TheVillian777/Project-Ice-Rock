@@ -28,7 +28,6 @@
             <ul>
                 <li><a href="#" onclick="showSection('profileInfo')">User profile</a></li>
                 <li><a href="#" onclick="showSection('pastOrders')">Past orders</a></li>
-                <li><a href="#" onclick="showSection('paymentOptions')">Payment options</a></li>
             </ul>
         </div>
 
@@ -115,5 +114,67 @@
 
                 </form>
             </div>
-        </div>
+            <div id="pastOrders" class="content-section" style="display:none;"> <!-- past orders section -->
+            <h2>Past Orders</h2>
+            @if ($orderitems->isEmpty())
+                <p>You have no orders!</p>
+            @else
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date Ordered</th>
+                        <th>Items</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        <th>Options</th>
+                    </tr>
+                 </thead>
+            <tbody>
+                @foreach ($purchases as $purchase)
+                <tr>
+                    <td>{{ $purchase->id }}</td> <!-- order ID -->
+                    <td>{{ $purchase->created_at }}</td> <!-- date -->
+                    @php $RepeatedItem = []; @endphp
+                    <td>@foreach ($orderitems as $items)
+                        @if ($items->purchase_id == $purchase->id)
+                        @if (!in_array($items->book->book_name, $RepeatedItem))
+                        <img src="{{ 'images/' . $items->book->img_url}} " alt="$items->book->book_name">
+                        @endif
+                        @php $RepeatedItem[] = $items->book->book_name; @endphp
+                        <div></div>
+                        @endif
+                        @endforeach 
+                    </td> <!-- book title -->
+                        @php
+                        $total = 0;
+                        foreach ($orderitems as $items){
+                        if ($items->purchase_id == $purchase->id){
+                        $total = $total + $items->quantity;
+                        }
+                        }
+                        @endphp
+                    <td>
+                        {{$total}}
+                    </td> <!-- quantity -->
+                    <td>£{{ $purchase->order_total_price }}</td> <!-- total price -->
+                    <td>{{ $purchase->order_status }}</td> <!-- status -->
+                    <td>
+                        <form action=" {{ route('viewOrder') }}" method="post">
+                        @csrf
+                            <input type="hidden" value="{{ $orderitems }}" name="orderItems">
+                            <input type="hidden" value="{{ $purchase->id }}" name="purchaseID">
+                            <button type="submit" class="confirm-button">View</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        @endif
+
+
+    </div>
+
 </body>
