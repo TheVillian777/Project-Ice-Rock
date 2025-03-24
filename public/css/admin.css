@@ -6,6 +6,7 @@
     width: 16rem;
     background-color: #ffffff;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
 }
 
 .sidebar ul li a {
@@ -113,9 +114,9 @@ button.bg-red-500:hover {
 
 .user-card-2 {
     background-color: var(--base-variant);
-    border: 1px solid var(--base-colour);
+    border: 4px solid var(--base-colour);
     border-radius: 16px;
-    margin: 20px;
+    margin: 25px;
     padding: 5px;
     text-align: center;
     transition: transform 0.3s ease-in-out;
@@ -124,6 +125,11 @@ button.bg-red-500:hover {
     height: 150px;
 }
 
+.user-card-2 h4 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: var(text-colour);
+}
 .user-card h4 {
     font-size: 1.2em;
     margin: 10px 0;

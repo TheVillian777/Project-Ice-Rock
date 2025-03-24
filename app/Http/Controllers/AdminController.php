@@ -23,8 +23,9 @@ class AdminController extends Controller
         $authorTotal = Author::count();
         $purchaseTotal = Purchase::count();
         $categoryTotal = Category::count();
+        $outOfStock = Book::where('book_inventory', '<=', 0)->count();
 
-        return view('admin', compact('userTotal','bookTotal','authorTotal','purchaseTotal','categoryTotal'));
+        return view('admin', compact('userTotal','bookTotal','authorTotal','purchaseTotal','categoryTotal','outOfStock'));
     }
 
     public function users()

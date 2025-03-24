@@ -30,36 +30,47 @@
         </ul>
     </aside>
 
-    <!-- Main Content -->
+    <!-- Admin Dashboard -->
     <div class="flex-1 p-6">
         <h1 class="text-2xl font-bold mb-6">Admin Dashboard</h1>
-        <div class="user-card">
+
+        <!-- Number of Users Stat -->
+        <div class="user-card-2">
             <div class="User Total">
+                <h4 class="Total">Number of Users</h4>
                 <h4 class="Total">{{ $userTotal }}</h4>
-                <h4 class="Total">Users</h4>
             </div>
         </div>
-        <div class="user-card">
+
+        <!-- Number of total purchases -->
+        <div class="user-card-2">
             <div class="Purchases Total">
+                <h4 class="Total">Total Number of Purchases</h4>
                 <h4 class="Total">{{ $purchaseTotal }}</h4>
-                <h4 class="Total">Purchases</h4>
             </div>
         </div>
-        <div class="user-card">
+
+        <!-- Number of total unique products -->
+        <div class="user-card-2">
             <div class="Books Total">
                 <h4 class="Total">Total Amount of Products</h4>
                 <h4 class="Total">{{ $bookTotal }}</h4>
             </div>
-        <div class="user-card">
-            <div class="Authors Total">
-                <h4 class="Total">{{ $authorTotal }}</h4>
-                <h4 class="Total"> Different Authors</h4>
+        </div>
+
+        <!-- Number of total products out of stock -->
+        <div class="user-card-2">
+            <div class="Items Out of Stock">
+                <h4 class="Total">{{ $outOfStock }}</h4>
+                <h4 class="Total"> Items Out of Stock</h4>
             </div>
         </div>
-        <div class="user-card">
+
+        <!-- Number of total different categories -->
+        <div class="user-card-2">
             <div class="Categories Total">
-                <h4 class="Total">Total Amount of Categories</h4>
                 <h4 class="Total">{{ $categoryTotal }}</h4>
+                <h4 class="Total">Different Categories</h4>
             </div>
         </div>
     
@@ -67,22 +78,4 @@
     </div>
 </div>
 
-<footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: contact@icerock.com</p>
-                <p>Phone: +1 234 567 890</p>
-            </div>
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+@include('footer')
