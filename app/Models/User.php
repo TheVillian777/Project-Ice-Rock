@@ -26,6 +26,8 @@ class User extends Authenticatable
         'password',
         'security_level',
         'address',
+        'security_answer',
+        'address',
         'security_answer'
     ];
 

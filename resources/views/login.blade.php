@@ -25,21 +25,49 @@
      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/></svg>
     </button>
 
-    <div class="form-container" id="login-form">
+    <div class="form-container" id="login-form" style="display: {{$option[0]}};">
         <h2>Login</h2>
-        @if (session('message'))
-            <p style="color: red;">{{ session('message') }}</p>
+        @if ($errors->any())
+            <p style="color: red;">
+                {{ $errors->first() }}
+            </p>
         @endif
+        
+        @if(session('success'))
+            <p style="color: green;">{{ session('success') }}</p>
+        @endif
+
         <!-- login form -->
         <form action="{{ route('login') }}" method="post">
             @csrf
         <!-- input email -->
-            <label for="login-email">Email:</label>
-            <input type="email" id="login-email" name="email" required>
+        <label for="login-email"
+            class="@error('email') label-error @enderror"
+            @error('email') data-error="true" @enderror>
+            Email:
+        </label>
+
+        <input type="email"
+            id="login-email"
+            name="email"
+            value="{{ old('email') }}"
+            required
+            class="@error('email') input-error @enderror"
+            @error('email') data-error="true" @enderror>
 
         <!-- input password -->
-            <label for="login-password">Password:</label>
-            <input type="password" id="login-password" name="password" required>
+        <label for="login-password"
+            class="@error('password') label-error @enderror"
+            @error('password') data-error="true" @enderror>
+            Password:
+        </label>
+
+        <input type="password"
+            id="login-password"
+            name="password"
+            required
+            class="@error('password') input-error @enderror"
+            @error('password') data-error="true" @enderror>
 
         <!-- submit -->
             <button type="submit">login</button>
@@ -47,12 +75,11 @@
         <!-- hyperlinks for forgotten password, register -->
             <p>Don't have an account? <a href="javascript:void(0);" onclick="showRegisterForm()">Register</a></p>
             <p><a href="javascript:void(0);" onclick="forgottenPassword()">Forgotten your password?</a></p>
-
         </form>
     </div>
 
     <!-- register Section -->
-    <div class="form-container" id="register-form" style="display: none;">
+    <div class="form-container" id="register-form" style="display: {{$option[1]}};">
         <h2>Register</h2>
         <form action="{{ route('register') }}" method="post">
             @csrf
@@ -93,7 +120,10 @@
 
         <!-- input password -->    
             <label for="register-password">Password:</label>
-            <input type="password" id="register-password" name="password" required>
+            <input type="password" id="register-password" name="password" 
+            class="@error('password') input-error @enderror"
+            @error('password') data-error="true" @enderror 
+            required>
 
         <!-- confirm password -->    
             <label for="register-confirm-password">Confirm Password:</label>
@@ -112,11 +142,13 @@
     </div>
 
     <!-- forgotten password Section -->
-     <div class="form-container" id="forgottenPassword-form" style="display: none;">
+     <div class="form-container" id="forgottenPassword-form" style="display: {{$option[2]}};">
         <h2>Forgotten Password</h2>
 
         @if ($errors->any())
-                <p style="color: red;">{{ $errors }}</p>
+            @foreach ($errors->all() as $error)
+                <p style="color: red;">{{ $error }}</p>
+            @endforeach
         @endif
         
         <form action="{{ route('forgottenPassword') }}" method="post">
@@ -126,8 +158,17 @@
             <input type="email" id="forgotten-email" name="email" required>
         
         <!-- security question answer -->
-            <label for="forgotten-security-question">Security question answer:</label>
-            <input type="security-answer" id="forgotten-security-question" name="security_answer" placeholder="What's the name of your first pet?" required>
+        <label for="forgotten-security-question"
+            class="@error('security_answer') label-error @enderror"
+                @error('security_answer') data-error="true" @enderror>
+            security question answer:
+        </label>
+    <input type="text"
+        id="forgotten-security-question"
+        name="security_answer"
+        placeholder="What's the name of your first pet?"
+        class="@error('security_answer') input-error @enderror"
+        @error('security_answer') data-error="true" @enderror required>
 
         <!-- input password -->    
             <label for="register-password">Password:</label>
@@ -139,6 +180,8 @@
         
         <!-- submit -->
             <button type="submit">Confirm</button>
+            <p>Remembered your password? <a href="javascript:void(0);" onclick="showLoginForm()">Login</a></p>
+            <p>Don't have an account? <a href="javascript:void(0);" onclick="showRegisterForm()">Register</a></p>
         </form>
     </div>
 </div>
@@ -148,11 +191,13 @@
     function showLoginForm() {
         document.getElementById('login-form').style.display = 'block';
         document.getElementById('register-form').style.display = 'none';
+        document.getElementById('forgottenPassword-form').style.display = 'none';
     }
 
     function showRegisterForm() {
         document.getElementById('login-form').style.display = 'none';
         document.getElementById('register-form').style.display = 'block';
+        document.getElementById('forgottenPassword-form').style.display = 'none';
     }
  
     function forgottenPassword() {
@@ -162,11 +207,36 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        @if ($errors->any())
+        const oldEmail = "{{ old('email') }}";
+
+        @if ($errors->has('security_answer') || $errors->has('confirm-password'))
             forgottenPassword();
+        @elseif ($errors->has('first_name') || $errors->has('register-password'))
+            showRegisterForm();
+        @elseif ($errors->has('password'))
+            if (oldEmail !== '') {
+                showLoginForm();
+            }
+        @else
+            showLoginForm();
         @endif
     });
 
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const errorFields = document.querySelectorAll('[data-error="true"]');
+
+        errorFields.forEach(el => {
+            setTimeout(() => {
+                el.classList.add('shake');
+
+                setTimeout(() => {
+                    el.classList.remove('shake');
+                }, 500); 
+            }, 100);
+        });
+    });
 </script>
 </body>
 </html>

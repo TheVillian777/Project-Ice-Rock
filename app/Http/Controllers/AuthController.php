@@ -24,9 +24,17 @@ class AuthController extends Controller
         'security_answer' => 'required',
         'confirm-password' =>  'required'
     ]);
-
+    
     if ($user['password'] !== $request->input('confirm-password')) {
-      return redirect()->back()->withErrors('Password does not match');
+        return redirect()->back()->withErrors('Password does not match');
+    }else if (strlen($user['password']) < 8 ) {
+        return redirect()->route('login', ['option' => 'register'])->withErrors("Registeration failed.\nPassword must be more than 7 characters.");
+    } else if (preg_match('/[^a-zA-Z0-9]/',$user['password']) < 1) {
+        return redirect()->route('login', ['option' => 'register'])->withErrors("Registeration failed.\nPassword must contain one or more symbols.");
+    } else if (preg_match('/[A-Z]/',$user['password']) < 1) {
+        return redirect()->route('login', ['option' => 'register'])->withErrors("Registeration failed.\nPassword must contain one or more uppercase letters.");
+    } else if (preg_match('/[@]/',$user['email']) != 1) {
+        return redirect()->route('login', ['option' => 'register'])->withErrors("Registeration failed.\nEmail is incorrect.");
     }
 
     //save registration to Users table
@@ -42,23 +50,39 @@ class AuthController extends Controller
         'password' => Hash::make($user['password']), //Hash for security with built in method
     ]);
 
-    return redirect()->back()->with('Registration successful!');
+    return redirect()->back()->withErrors('Registration successful!');
   }
   
-  //login a user
   public function login(Request $request)
   {
-    //validate login details
-    $user = $request->validate([
-        'email' => 'required',
-        'password' => 'required',
-    ]);
-
-    if (Auth::attempt($user)) {
-      $request->session()->regenerate();
-      return redirect()->route('shop'); // Redirect to the shop page
+      // Validate login inputs
+      $credentials = $request->validate([
+          'email' => 'required|email',
+          'password' => 'required',
+      ]);
+  
+      $user = User::whereRaw('LOWER(email) = ?', [strtolower($credentials['email'])])->first();
+  
+      if (!$user) {
+          return back()->withErrors([
+              'email' => 'This is not a registered email.',
+          ])->withInput();
+      }
+  
+      if (!Hash::check($credentials['password'], $user->password)) {
+        session()->forget('errors');
+    
+        return back()->withErrors([
+            'password' => 'Incorrect password.',
+        ])->withInput([
+            'email' => $credentials['email']
+        ]);
     }
-    return redirect()->route('login')->with('message', 'Incorrect Password');
+  
+      Auth::login($user);
+      $request->session()->regenerate();
+  
+      return redirect()->route('shop');
   }
 
   
@@ -87,16 +111,31 @@ class AuthController extends Controller
     ->where('security_answer', $user['security_answer'])->first();
 
     if (!$forgottenUser){
-      return redirect()->back()->withErrors('No matching details');
-    }
-
+      return redirect()->back()->withErrors([
+          'security_answer' => 'Security question is incorrect.'
+      ]);
+  }
+  
     if ($user['password'] !== $request->input('confirm-password')) {
-      return redirect()->back()->withErrors('Password does not match');
-    }
+      return redirect()->back()->withErrors([
+          'password' => 'Passwords do not match.'
+      ]);
+  }
 
     $forgottenUser->update(['password' => Hash::make($user['password'])]);
 
     return redirect()->route('login');
 
     }
+    public function joinUs(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+    
+        return redirect()->back()
+            ->with('success', 'Success! Please check your inbox.')
+            ->with('show_more', true);
+    }
+    
 }

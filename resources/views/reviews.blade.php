@@ -3,112 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Reviews</title>
     <link rel="stylesheet" href="/css/reviews.css">
+    <link rel="stylesheet" href="/css/header.css">
+    
     <script src="js/reviews.js" defer></script>
+    <script type="text/javascript" src="darkmode.js" defer></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-<header class="new-header">
-    <div class="logo">
-        <img src="images/logo.png" alt="Logo">
-        <h1>PageTurner</h1>
-    </div>
+     @include('header')
 
-    <div class="search-box">
-        <form action="{{ route('shopSearch') }}" method="POST">
-            @csrf
-            <div class="search-bar">
-                <input type="text" name='search' placeholder="Search for books..." id="search" value="{{ request()->input('search') }}">
-                <button type="submit" class="search-icon">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </form>
-    </div>
-
-    <div class="header-right">
-        <div class="account-dropdown">
-            <a href="#" class="account-button">
-                <i class="fa fa-user"></i> ACCOUNT
-            </a>
-            <div class="account-dropdown-content">
-                <form action="{{ route('login') }}" method="GET">
-                    @csrf
-                    <button type="submit">Sign In</button>
-                </form>
-                <div class="dropdown-divider"></div>
-                <form action="{{ route('register') }}" method="GET">
-                    @csrf
-                    <button type="submit">Register</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Wishlist Button -->
-        <div class="wishlist-button">
-            <a href="{{ route('saved')}}">
-               <i class="fa fa-heart"></i> WISHLIST
-            </a>
-        </div>
-
-        <!-- Basket Button -->
-        <div class="basket-button-container">
-            <a href="{{ route('basket') }}" class="basket-button">
-                <i class="fa fa-shopping-basket"></i> £0.00
-            </a>
-        </div>
-
-    </div>
-</header>
-
-<!-- Navigation Bar -->
-<div class="navBar">
-    <a class="active" href="{{ route('index') }}">Home</a>
-
-    <!-- Account Dropdown backend can you route this to the correct pages -->
-    <div class="dropdown">
-            <a href="{{ route('shop') }}">Books</a>
-            <div class="dropdown-content">
-                <form action="{{ route('navigateShop') }}" method="POST">
-                    @csrf
-                    <input type="hidden" value="1" name="genre-select">
-                    <button type="submit">Fantasy</button>
-                </form>
-                <form action="{{ route('navigateShop') }}" method="POST">
-                    @csrf
-                    <input type="hidden" value="2" name="genre-select">
-                    <button type="submit">Horror</button>
-                </form>
-                <form action="{{ route('navigateShop') }}" method="POST">
-                    @csrf
-                    <input type="hidden" value="3" name="genre-select">
-                    <button type="submit">Mystery</button>
-                </form>
-                <form action="{{ route('navigateShop') }}" method="POST">
-                    @csrf
-                    <input type="hidden" value="4" name="genre-select">
-                    <button type="submit">Crime</button>
-                </form>
-                <form action="{{ route('navigateShop') }}" method="POST">
-                    @csrf
-                    <input type="hidden" value="5" name="genre-select">
-                    <button type="submit">Biography</button>
-                </form>
-            </div>
-        </div>
-        <a href="{{ route('aboutUs') }}">About Us</a>
-        <a href="{{ route('contact') }}">Contact Us</a>
-        @if (Auth::check())
-        <form action="{{ route('logout')}}" method="POST">
-            @csrf
-            <button type="submit">Log Out</button>
-        </form>
-        @else
-        @endif
-    </div>
-
+     <button id="theme-switch">
+     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>
+     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/></svg>
+    </button>
 
 <!-- Reviews Section -->
 <div class="reviews-container">
@@ -125,8 +36,22 @@
             <div class="review-item">
                 <p class="review-title">"{{ $review->review_title }}"</p>
                 <p class="review-author">by {{ $review->user->first_name . " " . $review->user->last_name}}</p>
-                <div class="review-rating">Rated: {{ number_format($review->review_rating,1) }} /5</div>
                 <p class="review-text">{{ $review->review_text }}</p>
+                <div class="review-rating">
+    @if (!empty($reviews) && $reviews->count() > 0) 
+        @php $averageRating = $reviews->avg('review_rating'); @endphp
+        @for ($i = 1; $i <= 5; $i++)
+            @if ($i <= round($averageRating))
+                <i class="fa fa-star" style="color: #FFD700;"></i> 
+            @else
+                <i class="fa fa-star" style="color: #ccc;"></i> 
+            @endif
+        @endfor
+    @else
+        <p>No ratings yet</p> 
+    @endif
+</div>
+                
             </div>
         </div>
         @endforeach
@@ -135,14 +60,26 @@
 
 
     <!-- Book Display and Purchase -->
-    <div class="book-container">
+<div class="book-container">
         <div class="book-details">
             <img src="{{ asset('images/' . $book->img_url) }}" alt="Book Cover" class="book-image">
             <h2 class="book-title">{{ $book->book_name }}</h2>
             <p class="book-author">{{ $book->author->first_name . " " . $book->author->last_name }}</p>
             <p class="book-price">£{{ $book->book_price }}</p>
-            <div class="review-rating">Rated: {{ number_format($averageRating,1) }} /5</div><!-- displays average rating /5 to one decimal points-->
-        </div>
+<div class="review-rating">
+    @if (!empty($reviews) && $reviews->count() > 0) 
+        @php $averageRating = $reviews->avg('review_rating'); @endphp
+        @for ($i = 1; $i <= 5; $i++)
+            @if ($i <= round($averageRating))
+                <i class="fa fa-star" style="color: #FFD700;"></i> 
+            @else
+                <i class="fa fa-star" style="color: #ccc;"></i> 
+            @endif
+        @endfor
+    @else
+        <p>No ratings yet</p> 
+    @endif
+</div>
         <div class="purchase-container">
             <button class="add-to-basket">Add to Basket</button>
             <button class="add-to-wishlist">Add to Wishlist</button>
@@ -175,10 +112,12 @@
             <label for="review-text">Write your review:</label>
             <textarea id="review_text" name="review_text" maxlength="2000" required></textarea>
         </div>
-        <button type="submit">Submit Review</button>
+        <button type="submits">Submit Review</button>
     </form>
 
     </div>
+</body>
+</html>
 
     
 

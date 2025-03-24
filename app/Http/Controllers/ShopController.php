@@ -115,7 +115,7 @@ class ShopController extends Controller
         $viewed = Session::get('recentView'.Auth::id(),[]);
 
         $id = request()->input('book_id');
-        $book = Book::find($id);
+        $book = Book::with('stock')->find($id);
 
         foreach ($viewed as &$books) {
             if($books['book_ID'] == $book->id) {

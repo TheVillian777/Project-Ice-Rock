@@ -44,10 +44,11 @@
             <div class="account-button">
                 @if (Auth::check())
                     <a href="{{ route('profile') }}">
-                        <i class="fa fa-user"></i> PROFILE
+                        <i class="fa fa-user"></i> 
+                        <p> PROFILE </p>
                     </a>
                 @else
-                    <a href="{{ route('login') }}">
+                    <a href="{{ route('login', ['option' => 'login']) }}">
                         <i class="fa fa-user"></i> LOGIN 
                 @endif
             </div>
@@ -55,7 +56,8 @@
             <!-- wishlist -->
             <div class="wishlist-button">
                 <a href="{{ route('saved') }}">
-                   <i class="fa fa-heart"></i> WISHLIST
+                   <i class="fa fa-heart"></i> 
+                     <p> WISHLIST </p>
                 </a>
             </div>
 @php
@@ -82,7 +84,7 @@
 
     <!-- nav -->
     <div class="navBar">
-        <a href="{{ route('index') }}">Home</a>
+    <a href="{{ route('index') }}" class="{{ request()->routeIs('index') ? 'active' : '' }}">Home</a>
         <div class="dropdown">
             <a href="{{ route('shop') }}">Books</a>
             <div class="dropdown-content">
@@ -116,6 +118,10 @@
         <a href="{{ route('profile') }}">Profile</a>
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
+
+        @if (Auth::check() && Auth::user()->security_level !== 'Customer')
+        <a href="{{ route('admin') }}">Admin</a>
+        @endif
         
         @if (Auth::check())
         <form action="{{ route('logout') }}" method="POST">

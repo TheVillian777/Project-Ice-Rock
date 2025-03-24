@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum ('security_level', ['Customer', 'Admin', 'Senior-Admin'])->default('Customer');
             $table->string('password');
             $table->char('security_answer', length: 15);
-            $table->char('address', length: 20);
+            $table->string('address');
             $table->rememberToken();
             $table->timestamps();
         });
