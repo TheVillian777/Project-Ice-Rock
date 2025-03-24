@@ -1,10 +1,13 @@
 @import "theme.css";
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Winky Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(231, 231, 231);
+    background-size: cover;
+    position: relative;
+    background-color: var(--base-colour);
+    color: var(--text-colour);
 }
 
 /* Scrollbar Customization */
@@ -13,253 +16,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--base-colour)
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-/* New Header Styles */
-.new-header {
-    background-color: #333; 
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.new-header a {
-    color: white;
-    text-decoration: none;
-}
-
-/* Logo and Title */
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    width: 80px; 
-    height: auto;
-    margin-right: 10px;
-}
-
-.logo h1 {
-    font-size: 24px; 
-    margin: 0;
-}
-
-/* Search Box */
-.search-box {
-    flex-grow: 1; 
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-.search-bar input[type="text"] {
-    padding: 8px;
-    font-size: 16px;
-    border: none;
-    flex-grow: 1; 
-    border-radius: 5px 0 0 5px;
-}
-
-.search-bar input[type="text"]:focus {
-    outline: none;
-}
-
-.search-icon {
-    background: none;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    color: #555;
-}
-
-/*Account/Basket*/
-.header-right {
-    display: flex;
-    align-items: center;
-}
-
-.account-dropdown {
-    position: relative;
-    margin-right: 20px;
-}
-
-.account-button {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-}
-
-.account-button i {
-    margin-right: 5px; 
-}
-
-.account-dropdown-content {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: white;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    display: none; 
-}
-
-.account-dropdown:hover .account-dropdown-content {
-    display: block; 
-}
-
-.account-dropdown-content form {
-    padding: 10px;
-    text-align: center;
-}
-
-.account-dropdown-content button {
-    background-color: #4CAF50; 
-    border: none;
-    color: white;
-    padding: 8px 12px;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.dropdown-divider {
-    height: 1px;
-    background-color: #ccc;
-    margin: 5px 0;
-}
-
-.basket-button-container a {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 12px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.basket-button-container i {
-    margin-right: 5px;
-}
-
-/* Wishlist */
-.wishlist-button {
-    display: flex;
-    color: white;
-    padding: 8px 12px;
-    text-decoration: none;
-    border-radius: 5px;
-    align-items: center;
-    margin-right: 20px;
-}
-
-/* Navigation Bar */
-.navBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background-color: #3f3f3f;
-    padding: 10px;
-    margin: 0;
-    list-style: none;
-}
-
-.navBar a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
-}
-
-.navBar button {
-    padding: 0;
-    border: none;
-    background: none;
-    color:white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
-}
-
-.navBar a:hover {
-    color: #ccc;
-}
-
-.navBar a.active {
-    text-decoration: underline;
-}
-
-/* Dropdown box */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    margin-top: -10px;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content form {
-    display: block;
-    padding: 0;
-    margin: 0;
-}
-
-.dropdown-content button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-}
-
-.dropdown-content button:hover {
-    background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
+    background: var(--base-variant);
 }
 
 /* Reviews Section */
@@ -285,7 +46,7 @@ body {
     margin-top: 0%;
     position: relative;
     margin-left: auto;
-    margin-top: -950px;
+    margin-top: -850px;
     margin-right: 100px;
 }
 
