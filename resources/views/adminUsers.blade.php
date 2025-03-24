@@ -19,6 +19,7 @@
 
             
 
+            document.getElementById('user-grid').style.display = 'none';
         }
         
         document.addEventListener("DOMContentLoaded", function () {
@@ -54,7 +55,7 @@
                 </div>
             </form>
         </div>
-        <section class="user-grid">
+        <section class="user-grid" id="user-grid">
             <!-- defining a user card -->
             @foreach ($users as $user)
             <div class="user-card" id="user-card" onclick="window.location='{{ route('adminUserView', ['user_id' => $user->id]) }}'">
