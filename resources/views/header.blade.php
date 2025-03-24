@@ -44,18 +44,21 @@
             <div class="account-button">
                 @if (Auth::check())
                     <a href="{{ route('profile') }}">
-                        <i class="fa fa-user"></i> PROFILE
+                        <i class="fa fa-user"></i> 
+                        <p> ACCOUNT </p>
                     </a>
                 @else
                     <a href="{{ route('login') }}">
-                        <i class="fa fa-user"></i> LOGIN 
+                        <i class="fa fa-user"></i> 
+                        <p> LOGIN </p>
                 @endif
             </div>
 
             <!-- wishlist -->
             <div class="wishlist-button">
                 <a href="{{ route('saved') }}">
-                   <i class="fa fa-heart"></i> WISHLIST
+                   <i class="fa fa-heart"></i>
+                   <p> WISHLIST </p>
                 </a>
             </div>
 @php
@@ -74,7 +77,8 @@
 
             <div class="basket-button-container">
                 <a href="{{ route('basket') }}" class="basket-button">
-                    <i class="fa fa-shopping-basket"></i> £ {{ number_format($total,2) }}
+                    <i class="fa fa-shopping-basket"></i>
+                     £ {{ number_format($total,2) }}
                 </a>
             </div>
         </div>
