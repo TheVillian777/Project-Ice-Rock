@@ -45,20 +45,36 @@ class AuthController extends Controller
     return redirect()->back()->with('Registration successful!');
   }
   
-  //login a user
   public function login(Request $request)
   {
-    //validate login details
-    $user = $request->validate([
-        'email' => 'required',
-        'password' => 'required',
-    ]);
-
-    if (Auth::attempt($user)) {
-      $request->session()->regenerate();
-      return redirect()->route('shop'); // Redirect to the shop page
+      // Validate login inputs
+      $credentials = $request->validate([
+          'email' => 'required|email',
+          'password' => 'required',
+      ]);
+  
+      $user = User::whereRaw('LOWER(email) = ?', [strtolower($credentials['email'])])->first();
+  
+      if (!$user) {
+          return back()->withErrors([
+              'email' => 'This is not a registered email.',
+          ])->withInput();
+      }
+  
+      if (!Hash::check($credentials['password'], $user->password)) {
+        session()->forget('errors');
+    
+        return back()->withErrors([
+            'password' => 'Incorrect password.',
+        ])->withInput([
+            'email' => $credentials['email']
+        ]);
     }
-    return redirect()->route('login')->with('message', 'Incorrect Password');
+  
+      Auth::login($user);
+      $request->session()->regenerate();
+  
+      return redirect()->route('shop');
   }
 
   
@@ -87,12 +103,16 @@ class AuthController extends Controller
     ->where('security_answer', $user['security_answer'])->first();
 
     if (!$forgottenUser){
-      return redirect()->back()->withErrors('No matching details');
-    }
-
+      return redirect()->back()->withErrors([
+          'security_answer' => 'Security question is incorrect.'
+      ]);
+  }
+  
     if ($user['password'] !== $request->input('confirm-password')) {
-      return redirect()->back()->withErrors('Password does not match');
-    }
+      return redirect()->back()->withErrors([
+          'password' => 'Passwords do not match.'
+      ]);
+  }
 
     $forgottenUser->update(['password' => Hash::make($user['password'])]);
 

@@ -27,19 +27,50 @@
 
     <div class="form-container" id="login-form">
         <h2>Login</h2>
-        @if (session('message'))
-            <p style="color: red;">{{ session('message') }}</p>
+        
+        @if ($errors->has('password'))
+            <p style="color: red;">
+                {{ $errors->first('password') }}
+            </p>
         @endif
+
+        @if ($errors->has('email') && !$errors->has('password'))
+            <p style="color: red;">
+                {{ $errors->first('email') }}
+            </p>
+        @endif
+
         <!-- login form -->
         <form action="{{ route('login') }}" method="post">
             @csrf
         <!-- input email -->
-            <label for="login-email">Email:</label>
-            <input type="email" id="login-email" name="email" required>
+        <label for="login-email"
+            class="@error('email') label-error @enderror"
+            @error('email') data-error="true" @enderror>
+            Email:
+        </label>
+
+        <input type="email"
+            id="login-email"
+            name="email"
+            value="{{ old('email') }}"
+            required
+            class="@error('email') input-error @enderror"
+            @error('email') data-error="true" @enderror>
 
         <!-- input password -->
-            <label for="login-password">Password:</label>
-            <input type="password" id="login-password" name="password" required>
+        <label for="login-password"
+            class="@error('password') label-error @enderror"
+            @error('password') data-error="true" @enderror>
+            Password:
+        </label>
+
+        <input type="password"
+            id="login-password"
+            name="password"
+            required
+            class="@error('password') input-error @enderror"
+            @error('password') data-error="true" @enderror>
 
         <!-- submit -->
             <button type="submit">login</button>
@@ -177,8 +208,18 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        @if ($errors->any())
+        const oldEmail = "{{ old('email') }}";
+
+        @if ($errors->has('security_answer') || $errors->has('confirm-password'))
             forgottenPassword();
+        @elseif ($errors->has('first_name') || $errors->has('register-password'))
+            showRegisterForm();
+        @elseif ($errors->has('password'))
+            if (oldEmail !== '') {
+                showLoginForm();
+            }
+        @else
+            showLoginForm();
         @endif
     });
 

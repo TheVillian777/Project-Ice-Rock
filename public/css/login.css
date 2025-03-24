@@ -32,6 +32,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
+    margin-top: 150px;
 }
 
 h2 {
@@ -169,4 +170,9 @@ a:hover {
 
 .shake {
     animation: shake 0.3s ease-in-out;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
 }
