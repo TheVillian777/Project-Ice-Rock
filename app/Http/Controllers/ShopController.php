@@ -145,12 +145,12 @@ class ShopController extends Controller
         $reviews = Review::where('book_id', $id)->get();
 
         //calculates average rating for specific book
-        $averageRating = $reviews->avg('review_rating');
+        $book-> averageRating = $reviews->avg('review_rating');
 
         session()->put('recentView'.Auth::id(),$viewed);
         //$request->session()->forget('recentView');
         
-        return view('listing',compact('book','averageRating'));
+        return view('listing',compact('book'));
 
     }
 
