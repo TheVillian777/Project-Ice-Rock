@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Purchase;
 use App\Models\OrderItem;
+use App\Models\Category;
+
 
 
 
@@ -16,7 +18,14 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin');
+        $userTotal = User::count();
+        $bookTotal = Book::count();
+        $authorTotal = Author::count();
+        $purchaseTotal = Purchase::count();
+        $categoryTotal = Category::count();
+        $outOfStock = Book::where('book_inventory', '<=', 0)->count();
+
+        return view('admin', compact('userTotal','bookTotal','authorTotal','purchaseTotal','categoryTotal','outOfStock'));
     }
 
     public function users()

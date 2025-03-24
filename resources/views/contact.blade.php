@@ -23,6 +23,8 @@
     <div class="contact-section">
         <h1>We are here to help!</h1>
         <p>Let us know how we can best help you. Use the contact form below to email us. It's an honor to support you.</p>
+        <p>For more help:</p>
+        <p>Call us on : +1 234 567 890 or Email us at: contact@icerock.com</p>
 
         <form class="contact-form" action="{{ route('contactUs') }}" method="post">
             @csrf

@@ -23,7 +23,7 @@ class BookSeeder extends Seeder
              'isbn' => '978150435',
              'book_price' => '6.95',
              'book_inventory' => '36',
-             'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
+             'book_description' => 'A stunningly beautiful hardback edition of the most famous journey in the world. Follow the yellow brick road! Dorothy thinks she is lost forever when a terrifying tornado crashes through Kansas and whisks her and her dog, Toto, far away to the magical land of Oz. To get home Dorothy must follow the yellow brick road to Emerald City and find the wonderfully mysterious Wizard of Oz. Together with her companions the Tin Woodman, the Scarecrow and the Cowardly Lion whom she meets on the way, Dorothy embarks on a strange and enchanting adventure.',
              'published_date' => '1993-02-01',
              'img_url' => 'Wizard_of_Oz_Cover.jpg'
             ],
@@ -35,7 +35,7 @@ class BookSeeder extends Seeder
                 'isbn' => '97814123',
                 'book_price' => '16.95',
                 'book_inventory' => '34',
-                'book_description' => 'A classic children"s novel in the late 19th century.',
+                'book_description' => 'One of Stevensons most famous and enduringly popular works, the Strange Case of Dr Jekyll and Mr Hyde describes the mysterious relationship between a respectable and affable doctor and his brutal associate. Set in the grimy streets of Victorian London, this tale of murder, split personality and obscure science, with its chilling revelation, became an instant horror classic when it was first published in 1886, and has enthralled and terrified generations of readers ever since. This volume also contains seven other Gothic stories by Stevenson such as The Body Snatchers, Markheim and Olalla - showcasing the authors mastery of the horror genre and his interest in both the otherworldly and the strange ways the human brain can distort reality.',
                 'published_date' => '1993-02-01',
                 'img_url' => 'Dr_JK_Cover.jpg'
             ],
@@ -47,7 +47,7 @@ class BookSeeder extends Seeder
                 'isbn' => '9781223',
                 'book_price' => '9.99',
                 'book_inventory' => '24',
-                'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
+                'book_description' => 'A young drifter finds more than he bargained for when he agrees to deliver a parcel to an English country house… Little did Anthony Cade suspect that a simple errand on behalf of a friend would make him the centrepiece of a murderous international conspiracy. Someone would stop at nothing to prevent the monarchy being restored in faraway Herzoslovakia.  The combined forces of Scotland Yard and the French Surete can do no better than go in circles – until the final murder at Chimneys, the great country estate that yields up an amazing secret…',
                 'published_date' => '1993-02-01',
                 'img_url' => 'Secret_of_Chimneys_Cover.jpg'
             ],
@@ -59,7 +59,7 @@ class BookSeeder extends Seeder
                 'isbn' => '97814123',
                 'book_price' => '16.95',
                 'book_inventory' => '12',
-                'book_description' => 'Written by L. Frank Baum is a classic children"s novel in the late 19th century.',
+                'book_description' => 'AN INTRODUCTION OF P.D. JAMES. This book contains all the investigations and adventures of the worlds most popular detective, Sherlock Holmes. From The Adventure of the Gloria Scott to His Last Bow we follow the illustrious career of this quintessential British hero from his university days to his final case. His efforts to uncover the truth take him all over the world and into conflict with all manner of devious criminals and dangerous villains, but thankfully his legendary powers of deduction, and his faithful companion Dr Watson, are more than up to the challenge.',
                 'published_date' => '1993-02-01',
                 'img_url' => 'Sherlock_Holmes_Cover.jpg'
             ],
@@ -319,3 +319,4 @@ class BookSeeder extends Seeder
         ]);
     }
 }
+//Image and Description Sources: Waterstones [online]. Available at: https://www.waterstones.com/books/bestsellers 
