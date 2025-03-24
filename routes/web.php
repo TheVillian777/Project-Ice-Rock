@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BasketController;
@@ -86,6 +87,7 @@ Route::get('/listing/{book_id}/reviews', [ReviewController::class, 'seeReviews']
 
 
 // Authentication for users
+
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -121,6 +123,19 @@ Route::post('/updatePaymentDetails', [ProfileController::class, 'updatePaymentDe
 Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
 Route::post('/returnItem', [ProfileController::class, 'returnItem'])->name('returnItem');
 Route::post('/viewOrder', [ProfileController::class, 'viewOrder'])->name('viewOrder');
+
+Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
+
+//Admin Panel routes
+//Route::middleware(['auth'])->group(function(){
+Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('admin/users', [AdminController::class, 'gatherUsers'])->name('adminUsers');
+Route::get('admin/users/search', [AdminController::class, 'searchUser'])->name('searchUser');
+Route::get('admin/users/searchStock', [AdminController::class, 'searchStock'])->name('searchStock');
+Route::get('admin/users/{user_id}', [AdminController::class, 'usersView'])->name('adminUserView');
+Route::get('admin/stock', [AdminController::class, 'stock'])->name('adminStock');
+Route::get('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
+Route::post('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
 
 //Ensures user is logged in and authenticated
 Route::middleware(['auth'])->group(function(){

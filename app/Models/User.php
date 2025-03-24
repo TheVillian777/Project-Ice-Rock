@@ -24,7 +24,7 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
-        'isadmin',
+        'security_level',
         'address',
         'security_answer',
         'address',
