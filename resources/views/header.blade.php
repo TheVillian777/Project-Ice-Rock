@@ -84,7 +84,7 @@
 
     <!-- nav -->
     <div class="navBar">
-        <a href="{{ route('index') }}">Home</a>
+    <a href="{{ route('index') }}" class="{{ request()->routeIs('index') ? 'active' : '' }}">Home</a>
         <div class="dropdown">
             <a href="{{ route('shop') }}">Books</a>
             <div class="dropdown-content">
