@@ -122,7 +122,7 @@ Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('upda
 
 //Admin Panel routes
 //Route::middleware(['auth'])->group(function(){
-Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('admin', [AdminController::class, 'dashboard'])->name('admin');
 Route::get('admin/users', [AdminController::class, 'gatherUsers'])->name('adminUsers');
 Route::get('admin/users/search', [AdminController::class, 'searchUser'])->name('searchUser');
 Route::get('admin/users/searchStock', [AdminController::class, 'searchStock'])->name('searchStock');

@@ -111,6 +111,19 @@ button.bg-red-500:hover {
     height: 150px;
 }
 
+.user-card-2 {
+    background-color: var(--base-variant);
+    border: 1px solid var(--base-colour);
+    border-radius: 16px;
+    margin: 20px;
+    padding: 5px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    cursor: pointer;
+    height: 150px;
+}
+
 .user-card h4 {
     font-size: 1.2em;
     margin: 10px 0;

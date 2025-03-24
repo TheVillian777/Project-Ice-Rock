@@ -34,11 +34,34 @@
     <div class="flex-1 p-6">
         <h1 class="text-2xl font-bold mb-6">Admin Dashboard</h1>
         <div class="user-card">
-                <div class="User Total">
-                        <h4 class="Users Total">Total Amount of Users</h4>
-                        <h4 class="User Total">{{ $bookTotal }}</h4>
-                </div>
+            <div class="User Total">
+                <h4 class="Total">{{ $userTotal }}</h4>
+                <h4 class="Total">Users</h4>
             </div>
+        </div>
+        <div class="user-card">
+            <div class="Purchases Total">
+                <h4 class="Total">{{ $purchaseTotal }}</h4>
+                <h4 class="Total">Purchases</h4>
+            </div>
+        </div>
+        <div class="user-card">
+            <div class="Books Total">
+                <h4 class="Total">Total Amount of Products</h4>
+                <h4 class="Total">{{ $bookTotal }}</h4>
+            </div>
+        <div class="user-card">
+            <div class="Authors Total">
+                <h4 class="Total">{{ $authorTotal }}</h4>
+                <h4 class="Total"> Different Authors</h4>
+            </div>
+        </div>
+        <div class="user-card">
+            <div class="Categories Total">
+                <h4 class="Total">Total Amount of Categories</h4>
+                <h4 class="Total">{{ $categoryTotal }}</h4>
+            </div>
+        </div>
     
         
     </div>
