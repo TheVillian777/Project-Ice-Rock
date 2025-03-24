@@ -121,16 +121,16 @@ Route::post('/viewOrder', [ProfileController::class, 'viewOrder'])->name('viewOr
 Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
 
 //Admin Panel routes
-//Route::middleware(['auth'])->group(function(){
-Route::get('admin', [AdminController::class, 'dashboard'])->name('admin');
-Route::get('admin/users', [AdminController::class, 'gatherUsers'])->name('adminUsers');
-Route::get('admin/users/search', [AdminController::class, 'searchUser'])->name('searchUser');
-Route::get('admin/users/searchStock', [AdminController::class, 'searchStock'])->name('searchStock');
-Route::get('admin/users/{user_id}', [AdminController::class, 'usersView'])->name('adminUserView');
-Route::get('admin/stock', [AdminController::class, 'stock'])->name('adminStock');
-Route::get('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
-Route::post('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
-
+Route::middleware(['auth'])->group(function(){
+    Route::get('admin', [AdminController::class, 'dashboard'])->name('admin');
+    Route::get('admin/users', [AdminController::class, 'gatherUsers'])->name('adminUsers');
+    Route::get('admin/users/search', [AdminController::class, 'searchUser'])->name('searchUser');
+    Route::get('admin/users/searchStock', [AdminController::class, 'searchStock'])->name('searchStock');
+    Route::get('admin/users/{user_id}', [AdminController::class, 'usersView'])->name('adminUserView');
+    Route::get('admin/stock', [AdminController::class, 'stock'])->name('adminStock');
+    Route::get('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
+    Route::post('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
+});
 //Ensures user is logged in and authenticated
 Route::middleware(['auth'])->group(function(){
     Route::post('/listing/reviewBook', [ReviewController::class, 'reviewSubmit'])->name('reviewSubmit');
