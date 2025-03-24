@@ -12,6 +12,7 @@ class BasketController extends Controller
 {
     public function viewBasket(){ //displays items in basket
 
+        $admin = User::where('id', Auth::id())->value('security_level');
         $user_id = Auth::id();
         $user = User::where('id', $user_id)->first(); //match user ids
         $payment = Payment::find(Payment::where('user_id', $user_id)->max('id')); //retrieves most recent payment details
@@ -34,7 +35,7 @@ class BasketController extends Controller
             $totalItemsNo = $totalItemsNo + $product['quantity'];
         }
 
-        return view('basket',compact('user','basket','total', 'totalItemsNo', 'payment')); // returns basket view, passing to basket and total and totalItemsNo.
+        return view('basket',compact('user','admin','basket','total', 'totalItemsNo', 'payment')); // returns basket view, passing to basket and total and totalItemsNo.
     }
 
     public function basketUpdate(Request $request){

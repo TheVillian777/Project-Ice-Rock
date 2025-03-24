@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Category;
 use App\Models\Book;
+use App\Models\User;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,21 +19,23 @@ class ShopController extends Controller
         $categories = Category::all();
         $books = Book::with('author')->get();
         $reviews = Review::all();
+        $admin = User::where('id', Auth::id())->value('security_level');
 
 
         //Pass categories to the shop listing view
-        return view('shop',compact('categories','books','reviews'));
+        return view('shop',compact('categories','books','reviews','admin'));
     }
 
     public function searchShop(Request $request){
 
+        $admin = User::where('id', Auth::id())->value('security_level');
         $search = $request->input('search');
         $reviews = Review::all();
 
         $categories = Category::all();
         $books = Book::with('author')->where('book_name','like','%' . $search . '%')->get();
 
-        return view('shop', compact('categories','books','reviews'));
+        return view('shop', compact('categories','books','reviews','admin'));
     }
 
     public function navShop(Request $request){
@@ -50,7 +53,7 @@ class ShopController extends Controller
     public function filterShop(Request $request){
 
         $reviews = Review::all();
-
+        $admin = User::where('id', Auth::id())->value('security_level');
         $filterOptions = $request->input('options', []);
         $priceRange = $request->input('priceRange');
         
@@ -65,7 +68,7 @@ class ShopController extends Controller
         }
 
         //Pass categories to the shop listing view
-        return view('shop',compact('categories','books','reviews'));
+        return view('shop',compact('categories','books','reviews','admin'));
 
     }
 
@@ -113,13 +116,13 @@ class ShopController extends Controller
     public function listBook(Request $request){
 
         $viewed = Session::get('recentView'.Auth::id(),[]);
-
+        $admin = User::where('id', Auth::id())->value('security_level');
         $id = request()->input('book_id');
         $book = Book::with('stock')->find($id);
 
         foreach ($viewed as &$books) {
             if($books['book_ID'] == $book->id) {
-                return view('listing',compact('book'));
+                return view('listing',compact('book','admin'));
             }
         }
 
@@ -156,7 +159,7 @@ class ShopController extends Controller
         session()->put('recentView'.Auth::id(),$viewed);
         //$request->session()->forget('recentView');
         
-        return view('listing',compact('book'));
+        return view('listing',compact('book','admin'));
 
     }
 

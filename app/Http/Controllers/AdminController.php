@@ -10,14 +10,12 @@ use App\Models\Purchase;
 use App\Models\OrderItem;
 use App\Models\Category;
 
-
-
-
 class AdminController extends Controller
 {
 
     public function dashboard()
     {
+        $admin = User::where('id', Auth::id())->value('security_level');
         $userTotal = User::count();
         $bookTotal = Book::count();
         $authorTotal = Author::count();
@@ -25,7 +23,7 @@ class AdminController extends Controller
         $categoryTotal = Category::count();
         $outOfStock = Book::where('book_inventory', '<=', 0)->count();
 
-        return view('admin', compact('userTotal','bookTotal','authorTotal','purchaseTotal','categoryTotal','outOfStock'));
+        return view('admin', compact('admin','userTotal','bookTotal','authorTotal','purchaseTotal','categoryTotal','outOfStock'));
     }
 
     public function users()
@@ -35,13 +33,14 @@ class AdminController extends Controller
 
     public function usersView($user_id)
     {
+        $admin = User::where('id', Auth::id())->value('security_level');
         $purchases = Purchase::All();
         $users = User::find($user_id);
         $showDetails = $this->showUserDetails($user_id);
 
         $orderitems = $this->showPastBooks();
 
-        return view('adminUsersView',compact('showDetails','orderitems','purchases'));
+        return view('adminUsersView',compact('showDetails','orderitems','purchases','admin'));
     }
 
     public function showUserDetails($user_id)
@@ -53,18 +52,20 @@ class AdminController extends Controller
 
     public function stock()
     {
+        $admin = User::where('id', Auth::id())->value('security_level');
         $books = Book::with('author')->get();
-        return view('adminStock',compact('books'));
+        return view('adminStock',compact('books','admin'));
     }
 
     public function gatherUsers(){
 
         //Fetch all users
         $users = User::all();
- 
+
+        $admin = User::where('id', Auth::id())->value('security_level');
 
         //Pass users to the users display
-        return view('adminUsers',compact('users'));
+        return view('adminUsers',compact('users','admin'));
     }
 
     public function searchUser(Request $request){
@@ -74,8 +75,9 @@ class AdminController extends Controller
         ->orWhere('last_name','like','%' . $search . '%')
         ->orWhere('email','like','%' . $search . '%')
         ->get();
+        $admin = User::where('id', Auth::id())->value('security_level');
 
-        return view('adminUsers', compact('users'));
+        return view('adminUsers', compact('users','admin'));
     }
 
 
@@ -162,12 +164,13 @@ class AdminController extends Controller
   public function viewOrder(Request $request){
 
         $orderitems = request('orderItems');
+        $admin = User::where('id', Auth::id())->value('security_level');
 
         $user_id = Auth::id();
         $purchase_id = request('purchaseID');
         $orderitems = OrderItem::where('purchase_id', $purchase_id)->get();
 
-        return view('reciepts', compact('orderitems','user_id','purchase_id'));
+        return view('reciepts', compact('orderitems','user_id','purchase_id','admin'));
     }
 
     public function showPastBooks()
@@ -216,12 +219,11 @@ class AdminController extends Controller
 
     public function searchStock(Request $request){
 
+
         $search = $request->input('search');
         $books = Book::where('book_name','like','%' . $search . '%')->get();
 
-
-
-        return view('adminStock', compact('books'));
+        return view('adminStock', compact('books','admin'));
     }
 
     public function deleteRecord(Request $request){

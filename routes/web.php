@@ -11,6 +11,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
+use App\Models\User;
+
 
 Route::get('/', function () {
     return view('index');
@@ -33,15 +35,18 @@ Route::get('/login', function (Request $request) {
 })->name('login');
 
 Route::get('/wishlist1', function () {
+    $admin = User::where('id', Auth::id())->value('security_level');
     return view('wishlist1');
 });
 
 Route::get('/reviews', function () {
+    $admin = User::where('id', Auth::id())->value('security_level');
     return view('reviews');
 });
 
 Route::get('/basket', function () {
-    return view('basket');
+    $admin = User::where('id', Auth::id())->value('security_level');
+    return view('basket','admin');
 });
 
 Route::get('/admin', function () {
@@ -54,6 +59,7 @@ route::get('/saved' , function(){
 })->name('saved');
 
 Route::get('/profile', function () {
+    $admin = User::where('id', Auth::id())->value('security_level');
     return view('profile');
 })->name('profile');
 
@@ -69,15 +75,18 @@ Route::get('/profile', function () {
 })->name('profile');
 
 Route::get('/contact', function () {
-    return view('contact');
+    $admin = User::where('id', Auth::id())->value('security_level');
+    return view('contact',compact('admin'));
 })->name('contact');
 
 Route::get('/aboutUs', function () {
-    return view('aboutUs');
+    $admin = User::where('id', Auth::id())->value('security_level');
+    return view('aboutUs',compact('admin'));
 })->name('aboutUs');
 
 Route::get('/basket', function () {
-    return view('basket');
+    $admin = User::where('id', Auth::id())->value('security_level');
+    return view('basket',compact('admin'));
 })->name('basket');
 
 Route::get('/listing', [ShopController::class, 'listBook'])->name('listing');

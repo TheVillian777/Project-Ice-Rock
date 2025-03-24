@@ -41,7 +41,9 @@
         <h2 class="text-xl font-semibold mb-4">Admin Panel</h2>
         <ul>
             <li class="mb-2"><a href="{{ route('admin') }}" class="text-gray-700 hover:text-blue-600">Dashboard</a></li>
+            @if (Auth::check() && $admin == 'Senior-Admin')
             <li class="mb-2"><a href="{{ route('adminUsers') }}" class="text-gray-700 hover:text-blue-600">Users</a></li>
+            @endif
             <li class="mb-2"><a href="{{ route('adminStock') }}" class="text-gray-700 hover:text-blue-600">Stock</a></li>
         </ul>
     </aside>

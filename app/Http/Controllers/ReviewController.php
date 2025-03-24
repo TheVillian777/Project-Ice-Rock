@@ -53,6 +53,7 @@ class ReviewController extends Controller
     {
         //gets all reviews for book
         $book = Book::find($book_id);
+        $admin = User::where('id', Auth::id())->value('security_level');
 
         //gets all reviews for specific book
         $reviews = Review::where('book_id', $book_id)->get();
@@ -61,7 +62,7 @@ class ReviewController extends Controller
         $averageRating = $reviews->avg('review_rating');
 
         //passes variables book , reviews and average rating to reviews blade
-        return view('reviews', compact('book','reviews','averageRating'));
+        return view('reviews', compact('book','reviews','averageRating','admin'));
     }
 
 

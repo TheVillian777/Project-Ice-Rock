@@ -55,7 +55,7 @@
 
             <!-- wishlist -->
             <div class="wishlist-button">
-                <a href="{{ route('saved') }}">
+                <a href="{{ route('profile') }}">
                    <i class="fa fa-heart"></i> 
                      <p> WISHLIST </p>
                 </a>
@@ -119,7 +119,7 @@
         <a href="{{ route('aboutUs') }}">About Us</a>
         <a href="{{ route('contact') }}">Contact Us</a>
 
-        @if (Auth::check() && Auth::user()->security_level !== 'Customer')
+        @if (Auth::check() && $admin !== 'Customer')
         <a href="{{ route('admin') }}">Admin</a>
         @endif
         
