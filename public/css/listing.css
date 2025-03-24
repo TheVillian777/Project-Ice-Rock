@@ -1,165 +1,217 @@
+@import"theme.css";
+
 body {
-    font-family: Arial, sans-serif;
+    height: 100%;
+    width: 100%;
     margin: 0;
-    padding: 0;
+    background-color: var(--base-colour);
+    color: var(--text-colour);
+}
+
+.container {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
-    background-color: #f9f9f9;
-}
-
-.main-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 20px;
-    width: 80%;
-    max-width: 1200px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-.cover-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-}
-
-.cover-container .book-cover img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.cover-container .genre-text {
-    font-size: 0.9rem;
-    color: grey;
-}
-
-.info-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 10px;
-}
-
-.info-container .book-title h2 {
-    font-size: 1.5rem;
-    margin: 0;
-    text-transform: capitalize;
-}
-
-.info-container .author p {
-    font-size: 1rem;
-    margin: 5px 0;
-    text-transform: capitalize;
-    color: #555;
-}
-
-.info-container .book-description p {
-    font-size: 1rem;
-    margin: 10px 0;
-    flex-grow: 1;
-}
-
-.info-container .publish-date p {
-    font-size: 0.9rem;
-    color: #999;
-}
-
-.basket-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.basket-container .price p {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-.basket-container .quantity {
-    display: flex;
-    align-items: center;
-}
-
-.basket-container .quantity label {
-    margin-right: 10px;
-    font-size: 1rem;
-}
-
-.basket-container .quantity input {
-    width: 50px;
-    padding: 5px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.basket-container .add-to-basket .add-to-cart-btn {
-    display: flex;
+    background-color: var(--base-colour);
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #007BFF;
+    flex-direction: column;
+    margin-top: 50px;
+
+}
+
+.listing {
+    width: 90%;
+    max-width: 1050px;
+    display: flex;
+    border:1px var(--accent-colour);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cover {
+    flex-basis: 47%;
+    background-color: var(--base-variant);
+}
+
+.cover img {
+    width: 100%;
+    display: block;
+}
+
+.product-info {
+    flex-basis: 53%;
+    background-color: var(--base-variant);
+    padding: 40px;
+    padding-left: 60px;
+    box-shadow: -10px 5px 10px 10px rgba(0, 0, 0, 0.1);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.product-info h1 {
+    font-size: 35px;
+    color: var(--text-colour);
+}
+
+.product-info h2 {
+    font-size: 30px;
+    color: var(--text-colour);
+    font-weight: 600;
+}
+
+.product-info h3 {
+    font-size: 20px;
+    color: var(--text-colour);
+    margin-bottom: 20px;    
+}
+
+.basket-form {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds space between elements */
+}
+
+.basket-form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.basket-form input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.basket-form input[type="number"]:focus {
+    border-color: #007bff;
+}
+
+.basket-button {
+    background-color: var(--primary-colour);
+    color: var(--interface-colour);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s;
 }
 
-.basket-container .add-to-basket .add-to-cart-btn:hover {
-    background-color: #0056b3;
+.basket-button:hover {
+    background-color: var(--accent-colour);
 }
 
-.basket-container .add-to-basket .add-to-cart-btn i {
-    margin-right: 10px;
+.basket-button i {
+    font-size: 18px;
 }
 
-.navBar {
-    display: flex; 
-    flex-direction: row; 
-    justify-content: center; 
-    align-items: center; 
-    position: fixed; 
-    top: 0; 
-    width: 100%; 
-    background-color: #333; 
-    padding: 10px 0; 
-    
+
+/* Leave Review Section */
+.leave-review-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 60px auto;
+    width: 800px;
+    clear: both;
 }
 
-.navBar a {
+.leave-review-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.rating-section {
+    margin-bottom: 15px;
+}
+
+.rating-section label {
+    font-size: 16px;
+    color: #555;
+}
+
+.stars {
+    display: flex;
+    direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.stars input[type='radio'] {
+    display: none;
+}
+
+.stars label {
+    font-size: 24px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.stars input[type='radio']:checked ~ label {
+    color: #FFD700; 
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input[type='text'],
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+button[type='submits'] {
+    background-color: #4CAF50; 
     color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
-}
-
-.navBar button {
-    padding: 0;
     border: none;
-    background: none;
-    color:white;
-    text-decoration: none;
-    margin: 0 15px;
+    padding: 10px 20px;
     font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.navBar a:hover{
-    color:#ccc; 
+button[type='submits']:hover {
+    background-color: #45a049; /
 }
 
-.navBar a.active {
-    text-decoration: underline; 
+.star-rating {
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 2rem;
+    color: grey;
+    transition: color 0.2s ease-in-out;
+}
+
+.star.highlighted {
+    color: gold;
 }

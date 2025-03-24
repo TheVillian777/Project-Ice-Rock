@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Category;
 use App\Models\Book;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
@@ -86,7 +87,7 @@ class ShopController extends Controller
                 'book_name' => $bookId->book_name,
                 'first_name' => $bookId->author->first_name,
                 'last_name' => $bookId->author->last_name,
-                'price' => $bookId->book_price,
+                'book_price' => $bookId->book_price,
                 'img_url' => $bookId->img_url,
                 'published_date' => $bookId->published_date,
                 'quantity' => $request->quantity,
@@ -122,7 +123,7 @@ class ShopController extends Controller
                 'book_name' => $book->book_name,
                 'first_name' => $book->author->first_name,
                 'last_name' => $book->author->last_name,
-                'price' => $book->book_price,
+                'book_price' => $book->book_price,
                 'img_url' => $book->img_url,
                 'published_date' => $book->published_date,
             ];
@@ -133,17 +134,73 @@ class ShopController extends Controller
                 'book_name' => $book->book_name,
                 'first_name' => $book->author->first_name,
                 'last_name' => $book->author->last_name,
-                'price' => $book->book_price,
+                'book_price' => $book->book_price,
                 'img_url' => $book->img_url,
                 'published_date' => $book->published_date,
             ];
             array_unshift($viewed,$newViewed);
         }
 
+        //gets all reviews for specific book
+        $reviews = Review::where('book_id', $id)->get();
+
+        //calculates average rating for specific book
+        $book-> averageRating = $reviews->avg('review_rating');
+
         session()->put('recentView'.Auth::id(),$viewed);
         //$request->session()->forget('recentView');
         
         return view('listing',compact('book'));
+
+    }
+
+    public function addToWishlist(Request $request){
+
+        $wishlist = Session::get('wishlist'.Auth::id(),[]);
+
+        $id = request()->input('book_id');
+        $book = Book::find($id);
+
+        foreach ($wishlist as &$books) {
+            if($books['book_ID'] == $book->id) {
+                $books['quantity'] += 1;
+                return redirect()->route('shop');
+            }
+        }
+
+        $wishlist[] = [
+            'book_ID' => $book->id,
+            'book_name' => $book->book_name,
+            'first_name' => $book->author->first_name,
+            'last_name' => $book->author->last_name,
+            'book_price' => $book->book_price,
+            'img_url' => $book->img_url,
+            'published_date' => $book->published_date,
+            'quantity' => 1,
+        ];
+
+        session()->put('wishlist'.Auth::id(),$wishlist);
+
+        return redirect()->route('shop');
+
+    }
+
+    public function removeFromWishlist(Request $request){
+
+        $wishlist = Session::get('wishlist'.Auth::id(),[]);
+
+        $id = request()->input('book_id');
+        $book = Book::find($id);
+
+        for ($i = 0; $i < count($wishlist); $i++){
+            if($wishlist[$i]['book_ID'] == $id){
+                unset($wishlist[$i]);
+            } 
+        }
+
+        session()->put('wishlist'.Auth::id(),$wishlist);
+
+        return redirect()->route('profile');
 
     }
 };

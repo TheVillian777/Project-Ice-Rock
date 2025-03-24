@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -9,6 +10,7 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', function () {
     return view('index');
@@ -23,6 +25,14 @@ Route::get('/index', [HomeController::class, 'gatherData'])->name('index');
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+Route::get('/wishlist1', function () {
+    return view('wishlist1');
+});
+
+Route::get('/reviews', function () {
+    return view('reviews');
+});
 
 Route::get('/basket', function () {
     return view('basket');
@@ -40,6 +50,8 @@ route::get('/saved' , function(){
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
+
+
 Route::get('/', [HomeController::class, 'gatherData'])->name('index');
 
 Route::get('/shop', function () {
@@ -62,9 +74,11 @@ Route::get('/basket', function () {
     return view('basket');
 })->name('basket');
 
-Route::get('/listing', function () {
-    return view('listing');
-})->name('listing');
+Route::get('/listing', [ShopController::class, 'listBook'])->name('listing');
+Route::get('/wishing', [ShopController::class, 'addToWishlist'])->name('wishing');
+Route::get('/unwishing', [ShopController::class, 'removeFromWishlist'])->name('unwishing');
+Route::get('/listing/{book_id}/reviews', [ReviewController::class, 'seeReviews'])->name('seeReviews');
+
 
 // Authentication for users
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -82,6 +96,8 @@ Route::post('/shopSearch', [ShopController::class, 'searchShop'])->name('shopSea
 Route::post('/shopFilter', [ShopController::class, 'filterShop'])->name('shopFilter');
 Route::post('/listing', [ShopController::class, 'listBook'])->name('listing');
 
+
+
 Route::post('/navigateShop', [ShopController::class, 'navShop'])->name('navigateShop');
 
 //Ensures user is logged in and authenticated
@@ -96,6 +112,10 @@ Route::post('confirmBasket', [CheckoutController::class, 'validateBasket'])->nam
 
 //When calling profile ensure user is logged in first
 Route::get('/profile', [ProfileController::class, 'directToProfile'])->name('profile');
+Route::post('/updatePaymentDetails', [ProfileController::class, 'updatePaymentDetails'])->name('updatePaymentDetails');
+Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
+Route::post('/returnItem', [ProfileController::class, 'returnItem'])->name('returnItem');
+Route::post('/viewOrder', [ProfileController::class, 'viewOrder'])->name('viewOrder');
 
 Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
 
@@ -107,3 +127,7 @@ Route::get('admin/users/search', [AdminController::class, 'searchUser'])->name('
 Route::get('admin/users/{user_id}', [AdminController::class, 'usersView'])->name('adminUserView');
 Route::get('admin/stock', [AdminController::class, 'stock'])->name('adminStock');
 
+//Ensures user is logged in and authenticated
+Route::middleware(['auth'])->group(function(){
+    Route::post('/listing/reviewBook', [ReviewController::class, 'reviewSubmit'])->name('reviewSubmit');
+});

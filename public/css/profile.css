@@ -1,14 +1,8 @@
-/* General styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+@import "theme.css";
 
 body {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--base-colour);
+    color: var(--text-colour);
 }
 
 /* Container for content */
@@ -16,12 +10,13 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 20px;
+    flex-wrap: wrap;
 }
 
 /* Sidebar styles */
 .sideBar {
     width: 25%;
-    background-color: #fff;
+    background-color: var(--base-variant);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -30,6 +25,7 @@ body {
 .sideBar h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
+    color: var(--text-colour);
 }
 
 .sideBar ul {
@@ -42,13 +38,13 @@ body {
 
 .sideBar ul li a {
     text-decoration: none;
-    color: #333;
+    color: var(--link-colour);
     font-size: 1.1rem;
     transition: color 0.3s ease;
 }
 
 .sideBar ul li a:hover {
-    color: #0066cc;
+    color: var(--accent-colour);
 }
 
 /* Content section styles */
@@ -63,13 +59,13 @@ body {
 h2 {
     font-size: 1.6rem;
     margin-bottom: 15px;
-    color: #333;
+    color: var(--text-colour);
 }
 
 h3 {
     font-size: 1.2rem;
     margin-bottom: 20px;
-    color: #666;
+    color: var(--alt-text-colour);
 }
 
 /* Form styles */
@@ -81,37 +77,24 @@ form {
 
 form label {
     font-size: 1.1rem;
-    color: #333;
+    color: var(--text-colour);
 }
 
 form input, form select {
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--text-colour);
     border-radius: 5px;
+    background: var(--interface-colour);
 }
 
 form input:focus, form select:focus {
-    border-color: #0066cc;
+    border-color: var(--link-colour);
     outline: none;
 }
 
-.name-input {
-    display: flex;
-    flex-direction: column;
-}
-
-.changePassword {
-    margin-top: 20px;
-}
-
-.changePassword p {
-    font-size: 1rem;
-    color: #666;
-}
-
 button.confirm-button {
-    background-color: #0066cc;
+    background-color: var(--primary-colour);
     color: white;
     padding: 10px;
     font-size: 1rem;
@@ -122,7 +105,7 @@ button.confirm-button {
 }
 
 button.confirm-button:hover {
-    background-color: #004c99;
+    background-color: var(--accent-colour);
 }
 
 /* Table styles */
@@ -130,40 +113,85 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background: var(--base-variant);
+    color: var(--text-colour);
 }
 
 table th, table td {
     padding: 12px;
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid var(--text-colour);
 }
 
 table th {
-    background-color: #f2f2f2;
+    background-color: var(--base-colour);
     font-weight: bold;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--base-colour);
 }
 
-table tbody tr:hover {
-    background-color: #f1f1f1;
+img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+/* Wishlist Section */
+.wishlist-section, .favourites-section {
+    margin: 20px;
+    padding: 20px;
+    background: var(--base-variant);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
+.wishlist-section h2, .favourites-section h2 {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 15px;
+    color: var(--text-colour);
+}
 
-    .sideBar {
-        width: 100%;
-        margin-bottom: 20px;
-    }
+.favourites-list, .wishlist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
-    .content-area {
-        width: 100%;
-    }
+.book-cover img, .wish-cover img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.wish-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid var(--alt-text-colour);
+    border-radius: 5px;
+    background: var(--base-colour);
+}
+
+.remove {
+    color: red;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.remove:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    background-color: #f8f8f8; /* Adjust as needed */
 }

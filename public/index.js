@@ -1,67 +1,62 @@
-// variables to calcuate how to move images.
-const sliderContainer = document.querySelector('.slider-container');
-const slides = document.querySelectorAll('.slide');
-const totalSlides = slides.length;
-let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.book-slider').forEach(slider => {
+        const bookSliderContainer = slider.querySelector('.book-slider-container');
+        const bookPrevArrow = slider.querySelector('.book-prev-arrow');
+        const bookNextArrow = slider.querySelector('.book-next-arrow');
 
-// Periodic scrolling in 5 seconds interval
-setInterval(() => {
-    moveToNextSlide();
-}, 5000); 
+        const scrollAmount = 300; // Adjust this value to control how much to scroll
 
-// Force move to the next slide
-function moveToNextSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSliderPosition();
-}
+        if (bookPrevArrow && bookNextArrow && bookSliderContainer) {
+            bookPrevArrow.addEventListener('click', () => {
+                bookSliderContainer.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
 
-// Force move to the previous slide
-function moveToPrevSlide() {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    updateSliderPosition();
-}
-
-// Updates the image sliders position
-function updateSliderPosition() {
-    sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
-
-// Attach event listeners to arrows so you have the option to moves the images either next slide or previous
-document.querySelector('.prev-arrow').addEventListener('click', moveToPrevSlide);
-document.querySelector('.next-arrow').addEventListener('click', moveToNextSlide);
-
-
-// Calculates how many spaces to move the books either forward or backwards
-const bookSliderContainer = document.querySelector('.book-slider-container');
-const bookSlides = document.querySelectorAll('.book-slide');
-const totalBookSlides = bookSlides.length;
-let currentBookIndex = 0;
-
-document.querySelector('.book-next-arrow').addEventListener('click', () => {
-    currentBookIndex = (currentBookIndex + 1) % totalBookSlides;
-    updateBookSliderPosition();
+            bookNextArrow.addEventListener('click', () => {
+                bookSliderContainer.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    });
 });
-
-document.querySelector('.book-prev-arrow').addEventListener('click', () => {
-    currentBookIndex = (currentBookIndex - 1 + totalBookSlides) % totalBookSlides;
-    updateBookSliderPosition();
+ 
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".slide");
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+ 
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.display = i === index ? "block" : "none";
+        });
+    }
+ 
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+    }
+ 
+    // Initial display
+    showSlide(currentIndex);
+   
+    // Change slide every 8 seconds
+    setInterval(nextSlide, 8000);
 });
-
-function updateBookSliderPosition() {
-    const bookSlideWidth = bookSlides[0].clientWidth + 20; 
-    bookSliderContainer.style.transform = `translateX(-${currentBookIndex * bookSlideWidth}px)`;
-}
-
+ 
 //Add to basket function
-const bookslide = document.querySelectorAll('.book-slide');
-
+const bookSlides = document.querySelectorAll('.book-card');
+ 
 bookSlides.forEach((slide) => {
     const popup = slide.querySelector('.hover-popup');
     popup.addEventListener('click', () => {
         alert(`${slide.querySelector('h3').innerText} added to basket!`);
     });
 });
-
+ 
 //takes user to the shop
 function navigateToShop(){
     window.location.href = `shop`;
