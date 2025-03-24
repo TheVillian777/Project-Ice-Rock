@@ -50,7 +50,10 @@
 
         </div>
     </div>
-    <div class="leave-review-container">
+
+    
+ <!-- Review Form -->
+<div class="leave-review-container">
     <h2>Write Your Review</h2>
     <form action="{{ route('reviewSubmit') }}" method="POST">
         @csrf
@@ -74,10 +77,10 @@
             <label for="review-text">Write your review:</label>
             <textarea id="review_text" name="review_text" maxlength="2000" required></textarea>
         </div>
-        <button type="submit">Submit Review</button>
+        <button type="submits">Submit Review</button>
     </form>
 
-    </div>
+</div>
 </body>
 </div>
 

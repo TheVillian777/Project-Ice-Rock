@@ -145,8 +145,8 @@ body {
 
 .stars {
     display: flex;
-    direction: row-reverse;
-    justify-content: flex-start;
+    flex-direction: row-reverse;
+    justify-content: left;
 }
 
 .stars input[type='radio'] {
@@ -159,8 +159,8 @@ body {
     cursor: pointer;
 }
 
-.stars input[type='radio']:checked ~ label {
-    color: #FFD700; 
+.stars input[type='radio']:checked~label {
+    color: #FFD700;
 }
 
 .form-group {
