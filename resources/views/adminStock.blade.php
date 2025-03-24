@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/admin.css"> 
+    <link rel="stylesheet" href="/css/admin.css"> 
     <script src="index.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -24,6 +24,18 @@
     <!-- Main Content -->
     <div class="flex-1 p-6">
         <h1 class="text-2xl font-bold mb-6">Admin Dashboard</h1>
+        <!-- User Search Bar -->
+        <div class="search-box">
+            <form action="{{ route('searchStock') }}" method="GET">
+                @csrf
+                <div class="search-bar">
+                    <input type="text" name='search' placeholder="Search for products..." id="search" value="{{ request()->input('search') }}">
+                    <button type="submit" class="search-icon">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
         
         <!-- Stock Table -->
         <section id="stock" class="mb-10">
