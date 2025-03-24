@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+
     public function dashboard()
     {
         return view('admin');
@@ -37,8 +38,8 @@ class AdminController extends Controller
 
     public function stock()
     {
-        $books = Book::all()-get();
-        return view('adminStock',compact('stock'));
+        $books = Book::with('author','stock')->get();
+        return view('adminStock',compact('books'));
     }
 
     public function gatherUsers(){
