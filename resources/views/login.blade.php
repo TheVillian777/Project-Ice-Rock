@@ -125,7 +125,7 @@
             @error('password') data-error="true" @enderror 
             required>
 
-        <!-- confirm passw -->    
+        <!-- confirm password -->    
             <label for="register-confirm-password">Confirm Password:</label>
             <input type="password" id="register-confirm-password" name="confirm-password" required>
 
@@ -154,7 +154,7 @@
         <form action="{{ route('forgottenPassword') }}" method="post">
             @csrf
         <!-- enter email -->
-            <label for="forgotten-email">email:</label>
+            <label for="forgotten-email">Email:</label>
             <input type="email" id="forgotten-email" name="email" required>
         
         <!-- security question answer -->
@@ -171,11 +171,11 @@
         @error('security_answer') data-error="true" @enderror required>
 
         <!-- input password -->    
-            <label for="register-password">password:</label>
+            <label for="register-password">Password:</label>
             <input type="password" id="register-password" name="password" required>
 
         <!-- confirm password -->    
-            <label for="register-confirm-password">confirm password:</label>
+            <label for="register-confirm-password">Confirm password:</label>
             <input type="password" id="register-confirm-password" name="confirm-password" required>
         
         <!-- submit -->

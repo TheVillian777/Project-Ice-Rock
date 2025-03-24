@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BasketController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
+use App\Models\User;
+
 
 Route::get('/', function () {
     return view('index');
@@ -32,15 +35,18 @@ Route::get('/login', function (Request $request) {
 })->name('login');
 
 Route::get('/wishlist1', function () {
+    $admin = User::where('id', Auth::id())->value('security_level');
     return view('wishlist1');
 });
 
 Route::get('/reviews', function () {
+    $admin = User::where('id', Auth::id())->value('security_level');
     return view('reviews');
 });
 
 Route::get('/basket', function () {
-    return view('basket');
+    $admin = User::where('id', Auth::id())->value('security_level');
+    return view('basket','admin');
 });
 
 Route::get('/admin', function () {
@@ -53,6 +59,7 @@ route::get('/saved' , function(){
 })->name('saved');
 
 Route::get('/profile', function () {
+    $admin = User::where('id', Auth::id())->value('security_level');
     return view('profile');
 })->name('profile');
 
@@ -68,15 +75,18 @@ Route::get('/profile', function () {
 })->name('profile');
 
 Route::get('/contact', function () {
-    return view('contact');
+    $admin = User::where('id', Auth::id())->value('security_level');
+    return view('contact',compact('admin'));
 })->name('contact');
 
 Route::get('/aboutUs', function () {
-    return view('aboutUs');
+    $admin = User::where('id', Auth::id())->value('security_level');
+    return view('aboutUs',compact('admin'));
 })->name('aboutUs');
 
 Route::get('/basket', function () {
-    return view('basket');
+    $admin = User::where('id', Auth::id())->value('security_level');
+    return view('basket',compact('admin'));
 })->name('basket');
 
 Route::get('/listing', [ShopController::class, 'listBook'])->name('listing');
@@ -86,6 +96,7 @@ Route::get('/listing/{book_id}/reviews', [ReviewController::class, 'seeReviews']
 
 
 // Authentication for users
+
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -121,6 +132,24 @@ Route::post('/updatePaymentDetails', [ProfileController::class, 'updatePaymentDe
 Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
 Route::post('/returnItem', [ProfileController::class, 'returnItem'])->name('returnItem');
 Route::post('/viewOrder', [ProfileController::class, 'viewOrder'])->name('viewOrder');
+
+Route::post('/updateInfo', [ProfileController::class, 'updateInfo'])->name('updateInfo');
+
+//Admin Panel routes
+Route::middleware(['auth'])->group(function(){
+    Route::get('admin', [AdminController::class, 'dashboard'])->name('admin');
+    Route::get('admin/users', [AdminController::class, 'gatherUsers'])->name('adminUsers');
+    Route::get('admin/users/search', [AdminController::class, 'searchUser'])->name('searchUser');
+    Route::get('admin/users/searchStock', [AdminController::class, 'searchStock'])->name('searchStock');
+    Route::get('admin/users/{user_id}', [AdminController::class, 'usersView'])->name('adminUserView');
+    Route::get('admin/stock', [AdminController::class, 'stock'])->name('adminStock');
+    Route::get('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
+    Route::post('admin/users/{user_id}/adminInfoChange', [AdminController::class, 'adminInfoChange'])->name('adminInfoChange');
+    Route::post('admin/stock/deleteRecord', [AdminController::class, 'deleteRecord'])->name('deleteRecord');
+    Route::post('admin/stock/updateRecord', [AdminController::class, 'updateRecord'])->name('updateRecord');
+});
+
+
 
 //Ensures user is logged in and authenticated
 Route::middleware(['auth'])->group(function(){

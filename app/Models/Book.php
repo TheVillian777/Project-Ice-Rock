@@ -20,6 +20,8 @@ class Book extends Model
         'img_url'
     ];
 
+    public $timestamps = false; 
+
     // Table Relationships
 
     //This function defines the many-to-one relationship books have to authors
@@ -40,20 +42,15 @@ class Book extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    //This function defines the one-to-one relationship books have to stock
-    //A single book has a single entry in the stock 
-    //This is a one-to-one as there is only one location for the stock 
-    //This can be a one-to-many depending on if more stock locations are used
-    public function stock(){
-        return $this->hasOne(Stock::class);
-    }
-
-
     //This function defines the one-to-many relationship.
     //A single book can have many reviews
     //The same book can be related to reviews but only one review can be linked to a book
     public function review(){
         return $this->hasMany(Review::class);
+    }
+
+    public function stock(){
+        return $this->hasOne(Stock::class);
     }
 
 

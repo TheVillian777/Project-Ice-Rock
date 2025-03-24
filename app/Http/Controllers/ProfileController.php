@@ -16,6 +16,7 @@ class ProfileController extends Controller
     public function directToProfile()
     {
         $purchases = Purchase::All();
+        $admin = User::where('id', Auth::id())->value('security_level');
 
         //checks if user is logged in before going to profile page
         if (!Auth::check()){
@@ -37,7 +38,7 @@ class ProfileController extends Controller
         }
         
 
-        return view('profile', compact('basket', 'wishlist' , 'orderitems', 'showDetails', 'showPaymentDetails', 'purchases'));
+        return view('profile', compact('admin','basket', 'wishlist' , 'orderitems', 'showDetails', 'showPaymentDetails', 'purchases'));
     }
 
     public function showPastBooks()
