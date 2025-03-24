@@ -81,8 +81,9 @@
     @endif
 </div>
         <div class="purchase-container">
-            <button class="add-to-basket">Add to Basket</button>
-            <button class="add-to-wishlist">Add to Wishlist</button>
+        <button type="submit" class="add-to-basket">Add to basket! <i class="fa-sharp fa-solid fa-basket-shopping"></i></button>
+        <button type="submit" class="add-to-wishlist">Add to Wishlist! <i class="fa-sharp fa-solid fa fa-heart"></i></button>
+            
         </div>
     </div>
 </div>
