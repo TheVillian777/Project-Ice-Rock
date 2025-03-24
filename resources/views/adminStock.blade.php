@@ -50,7 +50,7 @@
                             <td class="border p-2">{{ $book->author-> first_name }} {{ $book->author->last_name}} </td>
                             <td class="border p-2">{{ $book->category->name}}</td>
                             <td class="border p-2">{{ $book->book_price }}</td>
-                            <td class="border p-2">{{ $book->book_quantity }}</td>
+                            <td class="border p-2">{{ $book->book_inventory}}</td>
 
                             <td class="border p-2 text-center">
                                 <button class="bg-blue-500 text-white px-2 py-1 rounded">Edit</button>

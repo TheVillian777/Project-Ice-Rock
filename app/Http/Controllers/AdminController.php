@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Book;
@@ -38,7 +36,7 @@ class AdminController extends Controller
 
     public function stock()
     {
-        $books = Book::with('author','stock')->get();
+        $books = Book::with('author')->get();
         return view('adminStock',compact('books'));
     }
 
