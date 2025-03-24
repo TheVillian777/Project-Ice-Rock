@@ -67,31 +67,7 @@
             </div>
         </section>
         
-        <!-- Customers Table -->
-        <section id="customers" class="mb-10">
-            <h2 class="text-xl font-semibold mb-3">Customer List</h2>
-            <div class="overflow-x-auto bg-white shadow-md rounded-lg p-4">
-                <table class="w-full border-collapse border border-gray-300">
-                    <thead>
-                        <tr class="bg-gray-200">
-                            <th class="border p-2">ID</th>
-                            <th class="border p-2">Name</th>
-                            <th class="border p-2">Email</th>
-                            <th class="border p-2">Joined Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Loop through customers here -->
-                        <tr>
-                            <td class="border p-2">1</td>
-                            <td class="border p-2">name name</td>
-                            <td class="border p-2">name@name.com</td>
-                            <td class="border p-2">2025-01-01</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        
     </div>
 </div>
 

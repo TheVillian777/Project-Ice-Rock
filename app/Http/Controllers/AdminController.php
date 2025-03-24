@@ -205,6 +205,16 @@ class AdminController extends Controller
         return redirect()->route('adminUserView');
     }
 
+    public function searchStock(Request $request){
+
+        $search = $request->input('search');
+        $books = Book::where('book_name','like','%' . $search . '%')->get();
+
+
+
+        return view('adminStock', compact('books'));
+    }
+
 }
 
 
