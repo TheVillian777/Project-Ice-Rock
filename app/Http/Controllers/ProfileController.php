@@ -146,11 +146,12 @@ class ProfileController extends Controller
     public function viewOrder(Request $request){
 
         $orderitems = request('orderItems');
-
+        $admin = User::where('id', Auth::id())->value('security_level');
+        
         $user_id = Auth::id();
         $purchase_id = request('purchaseID');
         $orderitems = OrderItem::where('purchase_id', $purchase_id)->get();
 
-        return view('reciepts', compact('orderitems','user_id','purchase_id'));
+        return view('reciepts', compact('orderitems','user_id','purchase_id','admin'));
     }
 }
