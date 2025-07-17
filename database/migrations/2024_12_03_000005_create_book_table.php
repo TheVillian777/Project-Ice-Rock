@@ -20,6 +20,7 @@ return new class extends Migration
             $table->char('book_name', length: 40);
             $table->string('isbn'); //may contain leading Zeros
             $table->decimal('book_price', total: 10, places: 2);
+            $table->integer('book_inventory')->default('0');
             $table->text('book_description');
             $table->date('published_date');
             $table->string('img_url')->nullable();

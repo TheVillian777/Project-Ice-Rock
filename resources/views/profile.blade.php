@@ -85,8 +85,8 @@
                     </div>
                     
                     <div class="name-input">
-                        <label for="email">Current Email Address:</label>
-                        <span>{{ $showDetails->email }}</span> <!-- changing email is not allowed -->
+                        <label for="email">Email Address:</label>
+                        <input type="text" id="email" name="email" value="{{ $showDetails->email }}">
                     </div>
 
                     <button type="submit" class="confirm-button">Confirm</button>
@@ -155,40 +155,36 @@
     </div>
 
     <div id="wishlist-section" class="content-section" style="display:none;">
-            <h2><em>My Wish List</em> - 2 books</h2>
+            <h2><em>My Wish List</em> - {{count($wishlist)}} books</h2>
             <div class="wishlist-list">
+                @if (!$wishlist)
+                <p> There is no wishlist </p>
+                @else
+                @foreach ($wishlist as $book)
                 <div class="wish-item">
                         <div class="wish-cover">
-                            <img src="images/book1.jpg" alt="PlaceHolder">
+                            <img src="{{ asset('images/' . $book['img_url']) }}" alt="Book Cover">
                         </div>
                         <div class="wish-details">
-                            <h3>PlaceHolder</h3>  <!-- Placeholder for book title -->
-                            <p class="author">PlaceHolder</p> <!-- Placeholder for author -->
-                            <p class="price">&pound;9.99</p>
-                            <a href="#" class="remove">Remove</a>
-                        </div>
-                    </div>
-
-                    <div class="wish-item">
-                        <div class="wish-cover">
-                            <img src="images/book1.jpg" alt="PlaceHolder">
-                        </div>
-                        <div class="wish-details">
-                            <h3>PlaceHolder</h3>
-                            <p class="author">PlaceHolder</p>
-                            <p class="price">&pound;9.99</p>
-                            <a href="#" class="remove">Remove</a>
+                            <h3>{{$book['book_name']}}</h3>
+                            <p class="author">{{$book['first_name'] . " ". $book['last_name']}}</p>
+                            <p class="price">&pound;{{$book['book_price']}}</p>
+                            <a href="{{ route('listing', ['book_id' => $book['book_ID']]) }}" class="remove">View</a>
+                            <a href="{{ route('unwishing', ['book_id' => $book['book_ID']]) }}" class="remove">Remove</a>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                @endif
             </div>
+        </div>
 
         <div id="paymentOptions" class="content-section" style="display:none;">
             <h2>Saved Payment Method</h2>
 
             @if($showPaymentDetails)
                 <div class="card-details">
-                    <p>Card Number: ****{{ $showPaymentDetails->card_number }}</p>
+                    <p>Card Number: ****{{ substr($showPaymentDetails->card_number, -4) }}</p>
                     <p>Expiry Date: {{ $showPaymentDetails->expiry_date }}</p>
                 </div>
             @else
@@ -218,6 +214,8 @@
         </div>
 </div>
 
+
+
 <script>
     function showUpdatePaymentDetailsForm(){
         document.getElementById('updatePaymentDetails').style.display = 'block';
@@ -230,28 +228,10 @@
     }
 </script>
 
-@include('footer')
+
 
 </body>
-<!--
-<footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <p>&copy; 2025 Ice Rock. All rights reserved.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: contact@icerock.com</p>
-                <p>Phone: +1 234 567 890</p>
-            </div>
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+
+@include('footer')
+
 </html>
-    -->

@@ -36,22 +36,23 @@
             <p>£{{ $book->book_price }}</p>
         </div>
 
-        <!-- bookmark icon -->
+        <!-- bookmark icon (backend would you add a route after you've made a working wishlist? -->
         <div class="bookmark-icon">
-            <i class="fas fa-bookmark save-bookmark" 
-               data-author="{{ $book->author->first_name . ' ' . $book->author->last_name }}" 
-               data-image="{{ asset('images/' . $book->img_url) }}">
-            </i>
+            <button class="bookmark" onclick="location.href='{{ route('wishing', ['book_id' => $book->id]) }}';">
+                <i class="fas fa-bookmark save-bookmark" 
+                -author="{{ $book->author->first_name . ' ' . $book->author->last_name }}" 
+                data-image="{{ asset('images/' . $book->img_url) }}">
+                </i>
+            </button>
         </div>
 
         <!-- basket icon -->
         <div class="basket-icon">
             <form action="{{ route('addToBasket') }}" method="POST" class="basket-form">
                 @csrf
-                <button>
+                <button class="basket"><i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i>
                 <input type="hidden" name="bookId" value="{{ $book->id }}">
                 <input type="hidden" name="quantity" value="1">
-                <i class="fa-sharp fa-solid fa-basket-shopping" data-id="{{ $book->id }}"></i>
             </form>
         </div>
         

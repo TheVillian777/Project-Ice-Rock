@@ -37,7 +37,7 @@
                     </div>
                     <div class="spacer"></div>
                     <!-- price -->
-                    <p class="price">£{{ number_format($book['price'] * $book['quantity'],2)}}</p>
+                    <p class="price">£{{ number_format($book['book_price'] * $book['quantity'],2)}}</p>
                     <!-- qty -->
                     <div class="quantity">
                         <!-- form for quantity decrease per book -->
@@ -59,7 +59,7 @@
                         <form action="{{route('basketRemove') }}" method="POST">
                             @csrf
                             <input type="hidden" name="book_id" value="{{ $book['book_ID'] }}">
-                            <button class="add-to-basket-btn">Remove</button>
+                            <button class="arrow up">x</button>
                         </form>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
 
         <div class="checkout-container">
             <h2>Checkout:</h2>
-            <form action="{{ route('confirmBasket')}}" method="POST" class="main-checkout-form"> <!-- the whole checkout bit should be contained in this form now :) -->
+            <form id="checkout-form" onsubmit="return validateForm(event)" action="{{ route('confirmBasket')}}" method="POST" class="main-checkout-form"> <!-- the whole checkout bit should be contained in this form now :) -->
                 @csrf
                 <div class="main-content">
                     <div class="delivery-address">
@@ -81,21 +81,22 @@
                         <label for="address">Address:</label>
                         <input type="text" id="address" name="address" value="{{ $user->address }}" required>
                         <label for="city">City:</label>
-                        <input type="text" id="city" name="city">
+                        <input type="text" id="city" name="city" required>
                         <label for="postcode">Postcode:</label>
-                        <input type="text" id="postcode" name="postcode">
+                        <input type="text" id="postcode" name="postcode" required>
                         <label for="country">Country:</label>
-                        <input type="text" id="country" name="country">
+                        <input type="text" id="country" name="country" required>
                     </div>
 
+                    <!--checks if there is a payment. if no payment display nothing-->
                     <div class="bank-details">
                         <h2>Bank Details</h2>
                         <label for="card-number">Card Number:</label>
-                        <input type="text" id="card-number" name="card-number" required>
+                        <input type="text" id="card-number" name="card-number" value="{{ $payment ? $payment->card_number: '' }}" required>
                         <label for="expiry-date">Expiry Date (MM/YY):</label>
-                        <input type="text" id="expiry-date" name="expiry-date" required>
+                        <input type="text" id="expiry-date" name="expiry-date" value="{{ $payment ? $payment->expiry_date: '' }}" required>
                         <label for="cvv">CVV:</label>
-                        <input type="text" id="cvv" name="cvv" required>
+                        <input type="text" id="cvv" name="cvv" value="{{ $payment? $payment->security_code: '' }}" required>
                     </div>
                 </div>
 
@@ -130,6 +131,36 @@
     </div>
 
 @include('footer')
+
+<script>
+    function validateForm() //https://stackoverflow.com/questions/27054951/how-do-i-validate-a-credit-card-expiry-date-with-javascript
+    {
+        var cardNumber = document.getElementById('card-number');
+        var expiryDate = document.getElementById('expiry-date');
+        var cvv = document.getElementById('cvv');
+
+        if(cardNumber.value.length!=16 || isNaN(cardNumber.value)){  //has to be 16 digits and numbers
+            alert("Please enter 16 numbers for your credit card");
+            cardNumber.focus();
+            return false;
+        }
+
+        if(expiryDate.value.length !=5 || !expiryDate.value.includes('/')){ //must be 5 chars including /
+            alert("Please enter in format MM/YY")
+            expiryDate.focus();
+            return false;
+        }
+
+        if(cvv.value.length!=3 || isNaN(cvv.value)){ //has to be 3 digits and numbers
+            alert("Please enter 3 numbers for your security code")
+            cvv.focus();
+            return false;
+        }
+        return true;
+            
+    }
+</script>
+
 
 </body>
 </html>

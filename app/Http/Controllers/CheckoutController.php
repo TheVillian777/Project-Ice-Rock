@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Payment;
+use Illuminate\Support\Facades\Crypt;
 
 
 class CheckoutController extends Controller
@@ -35,14 +36,18 @@ class CheckoutController extends Controller
         $basket = Session::get('basket'.Auth::id(),[]);
         $existingCard = Payment::where('card_number', 'card-number')->first();
 
+        $encryptedCardNumber = Crypt::encryptString(request()->input('card-number'));
+        $encryptedExpiryDate = Crypt::encryptString(request()->input('expiry-date'));
+        $encryptedSecurityCode = Crypt::encryptString(request()->input('cvv'));
+
         if($existingCard){
             $paymentId = $existingCard->id;
         } else {
             $payment = Payment::create([
                 'user_id' => Auth::id(),
-                'card_number' => substr(request()->input('card-number'), -4),
-                'expiry_date' => request()->input('expiry-date'),
-                'security_code' => request()->input('cvv')
+                'card_number' => $encryptedCardNumber,
+                'expiry_date' => $encryptedExpiryDate,
+                'security_code' => $encryptedSecurityCode
             ]);
 
             $paymentId = $payment->id;
@@ -64,9 +69,9 @@ class CheckoutController extends Controller
                 'purchase_id' => $purchase->id,
                 'book_id' => $order['book_ID'],
                 'quantity' => $order['quantity'],
-                'book_price' => $order['price'],
+                'book_price' => $order['book_price'],
                 'item_status' => 'Delivered',
-                'subtotal_price' => number_format($order['price'] * $order['quantity'],2),
+                'subtotal_price' => number_format($order['book_price'] * $order['quantity'],2),
             ]);
         }
 

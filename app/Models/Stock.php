@@ -12,6 +12,7 @@ class Stock extends Model
     protected $table = 'stock';
 
     protected $fillable = [
+        'book_id',
         'stock_quantity'
     ];
 
@@ -21,6 +22,6 @@ class Stock extends Model
     //There is only one stock entry for each book
     //This would be different if there are multiple stock locations
     public function book(){
-        return $this->belongsTo(Book::class);
+        return $this->hasOne(Book::class);
     }
 }

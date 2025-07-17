@@ -32,6 +32,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
+    margin-top: 150px;
 }
 
 h2 {
@@ -149,4 +150,29 @@ a:hover {
 
 .navBar a.active {
     text-decoration: underline; 
+}
+
+.input-error {
+    border: 2px solid red !important;
+}
+
+.label-error {
+    color: red !important;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.shake {
+    animation: shake 0.3s ease-in-out;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
 }

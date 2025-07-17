@@ -1,0 +1,268 @@
+@import "theme.css";
+
+body {
+    font-family: 'Winky Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    position: relative;
+    background-color: var(--base-colour);
+    color: var(--text-colour);
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--base-colour)
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--base-variant);
+}
+
+/* Reviews Section */
+.reviews-section {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    margin-top: 0px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Book Section */
+.book-container {
+    width: 35%; 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0%;
+    position: relative;
+    margin-left: auto;
+    margin-top: -850px;
+    margin-right: 100px;
+}
+
+/* Reviews Container */
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%; 
+    min-height: 840px;
+    padding: 20px;
+}
+
+.reviews-header {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.reviews-header h2 {
+    font-size: 40px;
+    color: #333;
+}
+
+.review-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+.review-author {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.review-text {
+    font-size: 16px;
+    color: #444;
+}
+
+.review-rating {
+    margin-top: 10px;
+}
+
+.review-rating i {
+    color: #FFD700;
+}
+
+
+
+.book-details {
+    margin-bottom: 20px;
+}
+
+.book-image {
+    width: 40%; 
+    border-radius: 5px;
+    margin: 0 auto 10px; 
+    display: block;
+
+}
+
+.book-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.book-genre,
+.book-author,
+.book-price {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.book-title,
+.book-author,
+.book-price,
+.review-rating {
+    text-align: center;
+    width: 100%;
+}
+
+.book-rating {
+    font-size: 18px;
+    color: #FFD700;
+}
+
+.purchase-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-to-basket,
+.add-to-wishlist {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-to-wishlist {
+    background-color: #ff4d4d;
+}
+
+/* Leave Review Section */
+.leave-review-container {
+    width: 95%;
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 40px;
+    
+}
+
+.leave-review-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.rating-section {
+    margin-bottom: 15px;
+}
+
+.rating-section label {
+    font-size: 16px;
+    color: #555;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+}
+
+.stars input[type='radio'] {
+    display: none;
+}
+
+.stars label {
+    font-size: 24px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.stars input[type='radio']:checked~label {
+    color: #FFD700;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input[type='text'],
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+button[type='submits'] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button[type='submits']:hover {
+    background-color: #45a049;
+    /
+}
+
+.star-rating {
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 2rem;
+    color: grey;
+    transition: color 0.2s ease-in-out;
+}
+
+.star.highlighted {
+    color: gold;
+}
