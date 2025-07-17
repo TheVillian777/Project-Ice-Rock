@@ -17,7 +17,8 @@ class OrderItem extends Model
         'book_price',
         'quantity',
         'book_price',
-        'subtotal_price'
+        'subtotal_price',
+        'item_status'
     ];
 
     // Table Relationships
@@ -28,8 +29,8 @@ class OrderItem extends Model
         return $this->belongsTo(Book::class);
     }
 
-    public function order(){
-        return $this->belongsTo(Order::class);
+    public function purchase(){
+        return $this->belongsTo(Purchase::class);
     }
 
 }

@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
+* {
+    font-family: 'Winky Sans', sans-serif;
+}
+
+:root {
+    --base-colour: #b9bbb3;
+    --base-variant: #ffffff;
+    --text-colour: hsl(0, 0%, 0%);
+    --alt-text-colour: #2b2b2b;
+    --primary-colour: #183e1a;
+    --accent-colour: #1e391f;
+    --interface-colour: #ffffff;
+    --link-colour: #3a6d3d;
+}
+
+.darkmode {
+    --base-colour: #000000;
+    --base-variant: #232323;
+    --text-colour: #ffffff;
+    --alt-text-colour: #dcdcdc;
+    --primary-colour: #183e1a;
+    --accent-colour: #1e391f;
+    --interface-colour: #ffffff;
+    --link-colour: #3a6d3d;
+}
+
+#theme-switch {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#theme-switch  {
+    fill: var(--text-colour);
+}
+
+#theme-switch svg:last-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+    display: none;
+}
+.darkmode #theme-switch svg:last-child {
+    display: block;
+}
+

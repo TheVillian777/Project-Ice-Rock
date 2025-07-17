@@ -1,9 +1,9 @@
-/* Top Bar Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Winky Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(231, 231, 231);
+    background-color: var(--base-colour);
+    color: var(--text-colour);
 }
 
 /* Scrollbar Customization */
@@ -12,21 +12,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--base-variant);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: var(--alt-text-colour);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: var(--text-colour);
 }
 
 /* Header */
 .new-header {
-    background-color: #333; 
-    color: white;
+    background-color: var(--primary-colour); 
+    color: var(--interface-colour);
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -34,7 +34,7 @@ body {
 }
 
 .new-header a {
-    color: white;
+    color: var(--interface-colour);
     text-decoration: none;
 }
 
@@ -53,6 +53,7 @@ body {
 .logo h1 {
     font-size: 24px; 
     margin: 0;
+    color: var(--interface-colour);
 }
 
 /* Search Box */
@@ -65,7 +66,7 @@ body {
 .search-bar {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: var(--base-colour);
     border-radius: 5px;
     padding: 5px;
 }
@@ -76,6 +77,8 @@ body {
     border: none;
     flex-grow: 1; 
     border-radius: 5px 0 0 5px;
+    background: var(--base-variant);
+    color: var(--text-colour);
 }
 
 .search-bar input[type="text"]:focus {
@@ -87,7 +90,7 @@ body {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    color: #555;
+    color: var(--alt-text-colour);
 }
 
 /* Account & Basket */
@@ -104,7 +107,7 @@ body {
 .account-button {
     background: none;
     border: none;
-    color: white;
+    color: var(--interface-colour);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -119,7 +122,7 @@ body {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: white;
+    background-color: var(--base-variant);
     min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -136,9 +139,9 @@ body {
 }
 
 .account-dropdown-content button {
-    background-color: #4CAF50; 
+    background-color: var(--link-colour); 
     border: none;
-    color: white;
+    color: var(--interface-colour);
     padding: 8px 12px;
     text-decoration: none;
     cursor: pointer;
@@ -146,8 +149,8 @@ body {
 }
 
 .basket-button-container a {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--link-colour);
+    color: var(--interface-colour);
     padding: 8px 12px;
     text-decoration: none;
     border-radius: 5px;
@@ -162,7 +165,7 @@ body {
 /* Wishlist */
 .wishlist-button {
     display: flex;
-    color: white;
+    color: var(--interface-colour);
     padding: 8px 12px;
     text-decoration: none;
     border-radius: 5px;
@@ -175,14 +178,14 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: #3f3f3f;
+    background-color: var(--accent-colour);
     padding: 10px;
     margin: 0;
     list-style: none;
 }
 
 .navBar a {
-    color: white;
+    color: var(--interface-colour);
     text-decoration: none;
     margin: 0 15px;
     font-size: 16px;
@@ -192,14 +195,14 @@ body {
     padding: 0;
     border: none;
     background: none;
-    color:white;
+    color: var(--interface-colour);
     text-decoration: none;
     margin: 0 15px;
     font-size: 16px;
 }
 
 .navBar a:hover {
-    color: #ccc;
+    color: var(--alt-text-colour);
 }
 
 .navBar a.active {
@@ -214,7 +217,7 @@ body {
 
 .dropdown a {
     display: block;
-    color: white;
+    color: var(--interface-colour);
     text-decoration: none;
     padding: 10px 15px;
     font-size: 16px;
@@ -223,7 +226,7 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: var(--base-variant);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -236,7 +239,7 @@ body {
 }
 
 .dropdown-content button {
-    color: black;
+    color: var(--text-colour);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -247,7 +250,7 @@ body {
 }
 
 .dropdown-content button:hover {
-    background-color: #ddd;
+    background-color: var(--alt-text-colour);
 }
 
 .dropdown:hover .dropdown-content {

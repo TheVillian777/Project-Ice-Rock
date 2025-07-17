@@ -1,14 +1,16 @@
+@import "theme.css";
+
 /* General styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Winky Sans', sans-serif;
 }
 
 body {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--base-colour);
+    color: var(--text-colour);
 }
 
 /* Container for content */
@@ -16,13 +18,13 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 20px;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 /* Sidebar styles */
 .sideBar {
     width: 25%;
-    background-color: #fff;
+    background-color: var(--base-variant);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -31,6 +33,7 @@ body {
 .sideBar h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
+    color: var(--text-colour);
 }
 
 .sideBar ul {
@@ -43,13 +46,13 @@ body {
 
 .sideBar ul li a {
     text-decoration: none;
-    color: #333;
+    color: var(--link-colour);
     font-size: 1.1rem;
     transition: color 0.3s ease;
 }
 
 .sideBar ul li a:hover {
-    color: #0066cc;
+    color: var(--accent-colour);
 }
 
 /* Content section styles */
@@ -61,24 +64,16 @@ body {
     display: none;
 }
 
-/* Ensure Payment Options is displayed when selected */
-#paymentOptions {
-    display: block ;
-    visibility: visible;
-    opacity: 1;
-    
-}
-
 h2 {
     font-size: 1.6rem;
     margin-bottom: 15px;
-    color: #333;
+    color: var(--text-colour);
 }
 
 h3 {
     font-size: 1.2rem;
     margin-bottom: 20px;
-    color: #666;
+    color: var(--alt-text-colour);
 }
 
 /* Form styles */
@@ -90,37 +85,25 @@ form {
 
 form label {
     font-size: 1.1rem;
-    color: #333;
+    color: var(--text-colour);
 }
 
 form input, form select {
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--alt-text-colour);
     border-radius: 5px;
+    background: var(--interface-colour);
+    color: var(--text-colour);
 }
 
 form input:focus, form select:focus {
-    border-color: #0066cc;
+    border-color: var(--link-colour);
     outline: none;
 }
 
-.name-input {
-    display: flex;
-    flex-direction: column;
-}
-
-.changePassword {
-    margin-top: 20px;
-}
-
-.changePassword p {
-    font-size: 1rem;
-    color: #666;
-}
-
 button.confirm-button {
-    background-color: #0066cc;
+    background-color: var(--primary-colour);
     color: white;
     padding: 10px;
     font-size: 1rem;
@@ -131,7 +114,7 @@ button.confirm-button {
 }
 
 button.confirm-button:hover {
-    background-color: #004c99;
+    background-color: var(--accent-colour);
 }
 
 /* Table styles */
@@ -139,28 +122,117 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background: var(--base-variant);
+    color: var(--text-colour);
 }
 
 table th, table td {
     padding: 12px;
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid var(--alt-text-colour);
 }
 
 table th {
-    background-color: #f2f2f2;
+    background-color: var(--interface-colour);
     font-weight: bold;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--base-colour);
 }
 
 table tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: var(--accent-colour);
 }
 
-/* Media queries for responsiveness */
+img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+/* Wishlist Section */
+.wishlist-section, .favourites-section {
+    margin: 20px;
+    padding: 20px;
+    background: var(--base-variant);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-section h2, .favourites-section h2 {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 15px;
+    color: var(--text-colour);
+}
+
+.favourites-list, .wishlist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.book-cover img, .wish-cover img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.wish-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid var(--alt-text-colour);
+    border-radius: 5px;
+    background: var(--base-colour);
+}
+
+.remove {
+    color: red;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.remove:hover {
+    text-decoration: underline;
+}
+
+/* Theme Switch */
+#theme-switch {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#theme-switch svg {
+    fill: var(--text-colour);
+}
+
+#theme-switch svg:last-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+    display: block;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -176,89 +248,3 @@ table tbody tr:hover {
         width: 100%;
     }
 }
-
-/*CSS Styles for Payment Options */
-.saved-payment-details {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 15px;
-}
-
-.card-details p {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-}
-
-.update-payment {
-    background-color: #007bff;
-    color: white;
-    padding: 12px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-}
-
-.update-payment:hover {
-    background-color: #0056b3;
-}
-
-/*changees*/
-
-.update-payment-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 20px auto;
-}
-
-.update-payment-form h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.update-payment-form label {
-    font-size: 1rem;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.update-payment-form input,
-.update-payment-form select {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-.update-payment-form input:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-.update-payment-form button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease;
-}
-
-.update-payment-form button:hover {
-    background-color: #0056b3;
-}
-

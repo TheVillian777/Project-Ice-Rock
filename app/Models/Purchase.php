@@ -18,12 +18,17 @@ class Purchase extends Model
         'order_status',
         'order_total_price',
         'payment_method',
-        'payment_details',
+        'payment_id',
     ];
 
     // Table Relationships
 
     public function user(){
         return $this->belongsTo(User::class); 
+    }
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
     }
 }

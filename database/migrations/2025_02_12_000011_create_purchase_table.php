@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('order_status');
             $table->decimal('order_total_price', total: 10, places: 2);
             $table->string('payment_method');
-            $table->string('payment_details');
+            $table->foreignId('payment_id')->constrained('payment')->onDelete('cascade');
             $table->timestamps();
         });
     }
